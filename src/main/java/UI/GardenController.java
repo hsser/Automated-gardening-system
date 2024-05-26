@@ -60,11 +60,11 @@ public class GardenController {
 
     }
 
-    private void setAllSoilsWet() {
+    private void setAllSoils(Image soilImage) {
         for (Node node : soilGroup.getChildren()) {
             if (node instanceof ImageView) {
                 ImageView soil = (ImageView) node;
-                soil.setImage(wetSoil);  // Change each soil to wet soil
+                soil.setImage(soilImage);
             }
         }
     }
@@ -74,11 +74,15 @@ public class GardenController {
         if(!isRaining) {
             createRaindrop(rainPane);
             isRaining = true;
-            setAllSoilsWet();
+            setAllSoils(wetSoil);
         } else {
             rainPane.getChildren().clear();
             isRaining = false;
         }
+        // Reset cursor to default every time the rain button is clicked
+        soilGroup.getScene().setCursor(Cursor.DEFAULT);
+        // Also, ensure watering mode is deactivated when rain toggled
+        isWateringMode = false;
     }
 
     private void createRaindrop(Pane pane) {

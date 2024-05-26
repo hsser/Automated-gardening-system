@@ -5,41 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Updating UI">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/background/bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/background/house.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/background/market.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/background/timebackground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/background/timebg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/background/userbackground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/aphid.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/ladybug.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/pngegg (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/water_cursor.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UI/GardenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/GardenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/UI/farm-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UI/farm-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop1/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop1/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop1/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop1/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop1/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop1/cron_end.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/cron_end.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop1/cron_start.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/cron_start.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop1/seed.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/seed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop2/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop2/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop2/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop2/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop2/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop2/cron_end.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/cron_end.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop2/cron_start.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/cron_start.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop2/seed.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/seed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (12).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (13).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (14).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (15).png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716185703029</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Updating UI">
+      <option name="closed" value="true" />
+      <created>1716698808824</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716698808825</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
