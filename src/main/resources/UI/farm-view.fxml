@@ -32,59 +32,180 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GardenController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
             <ImageView id="background" accessibleRole="CHECK_MENU_ITEM" layoutX="-14.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/background/2.png" />
+                  <Image url="@../image/background/4.png" />
                </image>
             </ImageView>
-            <ImageView id="soil" fitHeight="150.0" fitWidth="200.0" layoutX="257.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="market" fitHeight="102.0" fitWidth="148.0" layoutX="430.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/background/market.png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+            <ImageView id="shop" fitHeight="245.0" fitWidth="317.0" layoutX="597.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/background/house.png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+            <ImageView id="time" fitHeight="146.0" fitWidth="181.0" layoutX="836.0" layoutY="342.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../image/background/timebg.png" />
                </image>
             </ImageView>
-            <ImageView id="soil" fitHeight="150.0" fitWidth="200.0" layoutX="135.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true">
+            <Group id="soilGroup" fx:id="soilGroup" layoutX="26.0" layoutY="259.0">
+               <children>
+                  <ImageView id="soil1" fx:id="soil1" accessibleRole="BUTTON" cache="true" layoutX="219.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="soil2" fx:id="soil2" accessibleRole="BUTTON" layoutX="337.0" layoutY="59.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="soil3" fx:id="soil3" accessibleRole="BUTTON" layoutX="459.0" layoutY="114.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="soil4" fx:id="soil4" layoutX="582.0" layoutY="171.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="soil5" fx:id="soil5" layoutX="111.0" layoutY="58.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="soil6" fx:id="soil6" layoutX="230.0" layoutY="116.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="soil7" fx:id="soil7" layoutX="698.0" layoutY="231.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="soil8" fx:id="soil8" layoutX="348.0" layoutY="171.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="soil9" fx:id="soil9" layoutX="471.0" layoutY="226.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="soil10" fx:id="soil10" layoutX="584.0" layoutY="284.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="soil11" fx:id="soil11" layoutY="115.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="soil12" fx:id="soil12" layoutX="118.0" layoutY="173.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="soil13" fx:id="soil13" layoutX="237.0" layoutY="227.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="soil14" fx:id="soil14" layoutX="359.0" layoutY="282.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="soil15" fx:id="soil15" layoutX="478.0" layoutY="338.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/soil/3.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Group>
+            <Pane id="rainPane" fx:id="rainPane" disable="true" layoutX="-1.0" mouseTransparent="true" prefHeight="649.0" prefWidth="1020.0" />
+            <Button id="waterButton" fx:id="waterButton" contentDisplay="GRAPHIC_ONLY" layoutX="23.0" layoutY="646.0" mnemonicParsing="false" onMouseClicked="#handleWaterButtonClick" style="-fx-background-color: transparent;" textAlignment="CENTER" textFill="#650b0b" textOverrun="CLIP">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView id="water" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icon/waterButton.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="rainButton" fx:id="rainButton" contentDisplay="GRAPHIC_ONLY" layoutX="244.0" layoutY="650.0" mnemonicParsing="false" onMouseClicked="#handleRainButtonClick" prefHeight="101.0" prefWidth="74.0" style="-fx-background-color: transparent;" text="Button">
+               <graphic>
+                  <ImageView id="rain" accessibleRole="BUTTON" fitHeight="120.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icon/rainButton.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </graphic></Button>
+            <Button id="plantButton" contentDisplay="GRAPHIC_ONLY" layoutX="140.0" layoutY="641.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Button">
+               <graphic>
+                  <ImageView id="seeds" accessibleRole="BUTTON" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icon/plantButton.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="pick_button" contentDisplay="GRAPHIC_ONLY" layoutX="333.0" layoutY="649.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Button" />
+            <ImageView id="aphid" fitHeight="71.0" fitWidth="71.0" layoutX="442.0" layoutY="673.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/icon/aphid.png" />
                </image>
+               <effect>
+                  <DropShadow />
+               </effect>
             </ImageView>
-            <ImageView id="soil" fitHeight="150.0" fitWidth="200.0" layoutX="386.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="ladybug" fitHeight="75.0" fitWidth="75.0" layoutX="345.0" layoutY="664.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/icon/ladybug.png" />
                </image>
-            </ImageView>
-            <ImageView id="soil" fitHeight="150.0" fitWidth="200.0" layoutX="519.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/soil/3.png" />
-               </image>
-            </ImageView>
-            <ImageView id="soil" fitHeight="150.0" fitWidth="200.0" layoutX="670.0" layoutY="512.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/soil/3.png" />
-               </image>
-            </ImageView>
-            <ImageView id="soil" fitHeight="150.0" fitWidth="200.0" layoutX="266.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/soil/3.png" />
-               </image>
-            </ImageView>
-            <ImageView id="soil" fitHeight="150.0" fitWidth="200.0" layoutX="398.0" layoutY="512.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/soil/3.png" />
-               </image>
-            </ImageView>
-            <ImageView id="soil" fitHeight="150.0" fitWidth="200.0" layoutX="544.0" layoutY="585.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/soil/3.png" />
-               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
             </ImageView>
          </children>
     </AnchorPane>
