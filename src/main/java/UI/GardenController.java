@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.image.Image;
 import javafx.scene.ImageCursor;
 import javafx.scene.Cursor;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -19,9 +20,11 @@ public class GardenController {
     @FXML
     private Group soilGroup;
     @FXML
-    private Button waterButton, rainButton;
+    private Button waterButton, rainButton, plantButton, exitButton;
     @FXML
-    private Pane rainPane;
+    private Pane rainPane, overlayPane;
+    @FXML
+    private AnchorPane popupPane;
 
     private boolean isWateringMode = false;// Flag to track watering mode, which is toggled by the water button.
     private boolean isWatering = false;  // Flag to track watering state
@@ -101,6 +104,22 @@ public class GardenController {
             animation.setCycleCount(TranslateTransition.INDEFINITE);  // Repeat indefinitely
             animation.play();
         }
+    }
+
+    @FXML
+    private void handlePlantButtonClick(){
+        boolean isVisible = popupPane.isVisible();
+        popupPane.setVisible(!isVisible);
+        popupPane.setManaged(!isVisible);
+        overlayPane.setVisible(!isVisible);
+        overlayPane.setManaged(!isVisible);
+
+    }
+
+    @FXML
+    private void handleExitButtonClick(){
+        popupPane.setVisible(false);
+        overlayPane.setVisible(false);
     }
 
 }

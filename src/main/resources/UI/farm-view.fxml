@@ -38,11 +38,14 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GardenController">
+<VBox prefHeight="727.0" prefWidth="863.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GardenController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
@@ -149,6 +152,14 @@
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
+                  <ImageView id="ladybug" fitHeight="75.0" fitWidth="75.0" layoutX="335.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icon/ladybug.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
                </children>
             </Group>
             <Pane id="rainPane" fx:id="rainPane" disable="true" layoutX="-1.0" mouseTransparent="true" prefHeight="649.0" prefWidth="1020.0" />
@@ -167,7 +178,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="rainButton" fx:id="rainButton" contentDisplay="GRAPHIC_ONLY" layoutX="244.0" layoutY="650.0" mnemonicParsing="false" onMouseClicked="#handleRainButtonClick" prefHeight="101.0" prefWidth="74.0" style="-fx-background-color: transparent;" text="Button">
+            <Button id="rainButton" fx:id="rainButton" contentDisplay="GRAPHIC_ONLY" layoutX="247.0" layoutY="650.0" mnemonicParsing="false" onMouseClicked="#handleRainButtonClick" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: transparent;" text="Button">
                <graphic>
                   <ImageView id="rain" accessibleRole="BUTTON" fitHeight="120.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -178,7 +189,7 @@
                      </effect>
                   </ImageView>
                </graphic></Button>
-            <Button id="plantButton" contentDisplay="GRAPHIC_ONLY" layoutX="140.0" layoutY="641.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Button">
+            <Button id="plantButton" fx:id="plantButton" contentDisplay="GRAPHIC_ONLY" layoutX="149.0" layoutY="651.0" mnemonicParsing="false" onMouseClicked="#handlePlantButtonClick" prefHeight="75.0" prefWidth="74.0" style="-fx-background-color: transparent;" text="Button">
                <graphic>
                   <ImageView id="seeds" accessibleRole="BUTTON" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -190,7 +201,6 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="pick_button" contentDisplay="GRAPHIC_ONLY" layoutX="333.0" layoutY="649.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Button" />
             <ImageView id="aphid" fitHeight="71.0" fitWidth="71.0" layoutX="442.0" layoutY="673.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/icon/aphid.png" />
@@ -199,14 +209,106 @@
                   <DropShadow />
                </effect>
             </ImageView>
-            <ImageView id="ladybug" fitHeight="75.0" fitWidth="75.0" layoutX="345.0" layoutY="664.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/icon/ladybug.png" />
-               </image>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </ImageView>
+            <Pane id="overlayPane" fx:id="overlayPane" prefHeight="761.0" prefWidth="1020.0" style="-fx-background-color: rgba(0, 0, 0, 0.4);" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane id="popupPane" fx:id="popupPane" layoutX="40.0" layoutY="200.0" minHeight="0.0" minWidth="0.0" prefHeight="329.0" prefWidth="302.0" visible="false">
+               <children>
+                  <ImageView id="popupBg" fitHeight="327.0" fitWidth="308.0" layoutX="-4.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../image/background/userbackground.png" />
+                     </image>
+                  </ImageView>
+                  <Button id="exitButton" fx:id="exitButton" cancelButton="true" layoutX="91.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#handleExitButtonClick" prefHeight="46.0" prefWidth="99.0" style="-fx-background-color: lightgray;" text="Exit" textFill="#c66666">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+                  <GridPane alignment="TOP_CENTER" layoutX="22.0" layoutY="5.0" prefHeight="245.0" prefWidth="251.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button id="chiliPepperButton" fx:id="chiliPepperButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: transparent;" text="ChiliPepper" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                           <graphic>
+                              <ImageView id="chiliPepper" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/crops/crop9/seed.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button id="tomatoButton" fx:id="tomatoButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Tomato" textAlignment="CENTER" GridPane.columnIndex="2">
+                           <graphic>
+                              <ImageView id="tomato" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/crops/crop7/seed.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button id="peachButton" fx:id="peachButton" alignment="CENTER" contentDisplay="TOP" layoutX="199.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Peach" textAlignment="CENTER" GridPane.columnIndex="1">
+                           <graphic>
+                              <ImageView id="peach" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/crops/crop14/seed.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button id="cherryButton" fx:id="cherryButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Cherry" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <graphic>
+                              <ImageView id="cherry" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/crops/crop11/seed.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button id="roseButton" fx:id="roseButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Rose" textAlignment="CENTER" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                           <graphic>
+                              <ImageView id="rose" fitHeight="50.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/crops/rose/rose_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button id="hydrangeaButton" fx:id="hydrangeaButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="169.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="88.0" style="-fx-background-color: transparent;" text="Hydrangea" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                           <graphic>
+                              <ImageView id="hydrangea" fitHeight="49.0" fitWidth="45.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../image/crops/hydrangea/hydrangea.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
          </children>
     </AnchorPane>
   </children>
