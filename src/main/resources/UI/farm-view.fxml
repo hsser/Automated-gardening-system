@@ -34,6 +34,8 @@
 
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -49,7 +51,7 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <ImageView id="background" accessibleRole="CHECK_MENU_ITEM" layoutX="-14.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="background" accessibleRole="CHECK_MENU_ITEM" disable="true" layoutX="-14.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/background/4.png" />
                </image>
@@ -77,84 +79,103 @@
             </ImageView>
             <Group id="soilGroup" fx:id="soilGroup" layoutX="26.0" layoutY="259.0">
                <children>
-                  <ImageView id="soil1" fx:id="soil1" accessibleRole="BUTTON" cache="true" layoutX="219.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="1" fx:id="soil1" accessibleRole="BUTTON" layoutX="219.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="soil2" fx:id="soil2" accessibleRole="BUTTON" layoutX="337.0" layoutY="59.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="2" fx:id="soil2" accessibleRole="BUTTON" layoutX="337.0" layoutY="59.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="soil3" fx:id="soil3" accessibleRole="BUTTON" layoutX="459.0" layoutY="114.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="3" fx:id="soil3" accessibleRole="BUTTON" layoutX="459.0" layoutY="114.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="soil4" fx:id="soil4" layoutX="582.0" layoutY="171.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="4" fx:id="soil4" layoutX="582.0" layoutY="171.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="soil5" fx:id="soil5" layoutX="111.0" layoutY="58.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="5" fx:id="soil5" layoutX="698.0" layoutY="231.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="soil6" fx:id="soil6" layoutX="230.0" layoutY="116.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="6" fx:id="soil6" layoutX="111.0" layoutY="58.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="soil7" fx:id="soil7" layoutX="698.0" layoutY="231.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="7" fx:id="soil7" layoutX="230.0" layoutY="116.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="soil8" fx:id="soil8" layoutX="348.0" layoutY="171.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="8" fx:id="soil8" layoutX="348.0" layoutY="171.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="soil9" fx:id="soil9" layoutX="471.0" layoutY="226.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="9" fx:id="soil9" layoutX="471.0" layoutY="226.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="soil10" fx:id="soil10" layoutX="584.0" layoutY="284.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="10" fx:id="soil10" layoutX="584.0" layoutY="284.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="soil11" fx:id="soil11" layoutY="115.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="11" fx:id="soil11" layoutY="115.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="soil12" fx:id="soil12" layoutX="118.0" layoutY="173.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="12" fx:id="soil12" layoutX="118.0" layoutY="173.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="soil13" fx:id="soil13" layoutX="237.0" layoutY="227.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="13" fx:id="soil13" layoutX="237.0" layoutY="227.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="soil14" fx:id="soil14" layoutX="359.0" layoutY="282.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="14" fx:id="soil14" layoutX="359.0" layoutY="282.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="soil15" fx:id="soil15" layoutX="478.0" layoutY="338.0" onMouseClicked="#handleSoilClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="15" fx:id="soil15" layoutX="478.0" layoutY="338.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                      <image>
                         <Image url="@../image/soil/3.png" />
                      </image>
                   </ImageView>
                </children>
             </Group>
-            <Pane id="rainPane" fx:id="rainPane" disable="true" layoutX="-1.0" mouseTransparent="true" prefHeight="649.0" prefWidth="1020.0" />
+            <Group id="plantGroup" fx:id="plantGroup" disable="true" mouseTransparent="true">
+               <children>
+                  <ImageView id="1" fx:id="plant1" fitHeight="180.0" fitWidth="180.0" layoutX="239.0" layoutY="153.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="2" fx:id="plant2" fitHeight="180.0" fitWidth="180.0" layoutX="363.0" layoutY="210.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="3" fx:id="plant3" fitHeight="180.0" fitWidth="180.0" layoutX="483.0" layoutY="268.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="4" fx:id="plant4" fitHeight="180.0" fitWidth="180.0" layoutX="606.0" layoutY="326.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="5" fx:id="plant5" fitHeight="180.0" fitWidth="180.0" layoutX="718.0" layoutY="380.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="6" fx:id="plant6" fitHeight="180.0" fitWidth="180.0" layoutX="134.0" layoutY="210.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="7" fx:id="plant7" fitHeight="180.0" fitWidth="180.0" layoutX="250.0" layoutY="268.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="8" fx:id="plant8" fitHeight="180.0" fitWidth="180.0" layoutX="370.0" layoutY="326.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="9" fx:id="plant9" fitHeight="180.0" fitWidth="180.0" layoutX="491.0" layoutY="374.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="10" fx:id="plant10" fitHeight="180.0" fitWidth="180.0" layoutX="606.0" layoutY="438.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="11" fx:id="plant11" fitHeight="180.0" fitWidth="180.0" layoutX="22.0" layoutY="268.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="12" fx:id="plant12" fitHeight="180.0" fitWidth="180.0" layoutX="140.0" layoutY="326.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="13" fx:id="plant13" fitHeight="180.0" fitWidth="180.0" layoutX="259.0" layoutY="380.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="14" fx:id="plant14" fitHeight="180.0" fitWidth="180.0" layoutX="383.0" layoutY="431.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="15" fx:id="plant15" fitHeight="180.0" fitWidth="180.0" layoutX="498.0" layoutY="492.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Group>
+            <Pane id="rainPane" fx:id="rainPane" layoutX="-1.0" mouseTransparent="true" prefHeight="649.0" prefWidth="1020.0" />
             <Button id="waterButton" fx:id="waterButton" contentDisplay="GRAPHIC_ONLY" layoutX="23.0" layoutY="646.0" mnemonicParsing="false" onMouseClicked="#handleWaterButtonClick" style="-fx-background-color: transparent;" textAlignment="CENTER" textFill="#650b0b" textOverrun="CLIP">
                <font>
                   <Font name="System Bold" size="13.0" />
@@ -181,7 +202,7 @@
                      </effect>
                   </ImageView>
                </graphic></Button>
-            <Button id="plantButton" fx:id="plantButton" contentDisplay="GRAPHIC_ONLY" layoutX="149.0" layoutY="651.0" mnemonicParsing="false" onMouseClicked="#handlePlantButtonClick" prefHeight="75.0" prefWidth="74.0" style="-fx-background-color: transparent;" text="Button">
+            <Button id="plantButton" fx:id="plantButton" contentDisplay="GRAPHIC_ONLY" layoutX="140.0" layoutY="656.0" mnemonicParsing="false" onMouseClicked="#handlePlantButtonClick" prefHeight="75.0" prefWidth="74.0" style="-fx-background-color: transparent;" text="Button">
                <graphic>
                   <ImageView id="seeds" accessibleRole="BUTTON" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -193,7 +214,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ImageView id="aphid" fitHeight="71.0" fitWidth="71.0" layoutX="442.0" layoutY="673.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="aphid" fitHeight="71.0" fitWidth="71.0" layoutX="347.0" layoutY="673.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/icon/aphid.png" />
                </image>
@@ -201,7 +222,7 @@
                   <DropShadow />
                </effect>
             </ImageView>
-            <ImageView id="ladybug" fitHeight="75.0" fitWidth="75.0" layoutX="357.0" layoutY="656.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="ladybug" fitHeight="75.0" fitWidth="75.0" layoutX="447.0" layoutY="669.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/icon/ladybug.png" />
                </image>
@@ -209,20 +230,29 @@
                   <DropShadow />
                </effect>
             </ImageView>
-            <Pane id="overlayPane" fx:id="overlayPane" prefHeight="761.0" prefWidth="1020.0" style="-fx-background-color: rgba(0, 0, 0, 0.4);" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane id="popupPane" fx:id="popupPane" layoutX="40.0" layoutY="200.0" minHeight="0.0" minWidth="0.0" prefHeight="329.0" prefWidth="302.0" visible="false">
+            <AnchorPane fx:id="sunnyWrapper" layoutX="400.0">
                <children>
-                  <ImageView id="popupBg" fitHeight="327.0" fitWidth="308.0" layoutX="-4.0" pickOnBounds="true">
+                  <ImageView fx:id="sunny" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icon/sunny.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Pane id="overlayPane" fx:id="overlayPane" prefHeight="761.0" prefWidth="1020.0" style="-fx-background-color: rgba(0, 0, 0, 0.4);" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane id="popupSlectionPane" fx:id="popupSelectionPane" layoutX="313.0" layoutY="237.0" minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="395.0" visible="false">
+               <children>
+                  <ImageView id="popupBg" fitHeight="329.0" fitWidth="408.0" layoutX="-4.0" pickOnBounds="true">
                      <image>
                         <Image url="@../image/background/userbackground.png" />
                      </image>
                   </ImageView>
-                  <Button id="exitButton" fx:id="exitButton" cancelButton="true" layoutX="91.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#handleExitButtonClick" prefHeight="46.0" prefWidth="99.0" style="-fx-background-color: lightgray;" text="Exit" textFill="#c66666">
+                  <Button id="cancelButton" fx:id="cancelButton" cancelButton="true" layoutX="269.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#handleCancelPlanting" prefHeight="36.0" prefWidth="63.0" style="-fx-background-color: lightgray;" text="Cancel">
                      <font>
-                        <Font name="System Bold" size="19.0" />
+                        <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <GridPane alignment="TOP_CENTER" layoutX="22.0" layoutY="5.0" prefHeight="245.0" prefWidth="251.0">
+                  <GridPane id="seedSelectionGrid" fx:id="seedSelectionGrid" alignment="TOP_CENTER" layoutX="22.0" layoutY="5.0" prefHeight="214.0" prefWidth="372.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -233,7 +263,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button id="chiliPepperButton" fx:id="chiliPepperButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: transparent;" text="ChiliPepper" textAlignment="CENTER">
+                        <Button id="chiliPepperButton" fx:id="chiliPepperButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#handleSeedSelection" style="-fx-background-color: transparent;" text="ChiliPepper" textAlignment="CENTER">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
@@ -245,9 +275,9 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button id="tomatoButton" fx:id="tomatoButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Tomato" textAlignment="CENTER" GridPane.columnIndex="2">
+                        <Button id="cherryTomatoButton" fx:id="cherryTomatoButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#handleSeedSelection" style="-fx-background-color: transparent;" text="CherryTomato" textAlignment="CENTER" GridPane.columnIndex="2">
                            <graphic>
-                              <ImageView id="tomato" pickOnBounds="true" preserveRatio="true">
+                              <ImageView id="CherryTomato" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../image/crops/crop7/seed.png" />
                                  </image>
@@ -257,7 +287,7 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Button>
-                        <Button id="peachButton" fx:id="peachButton" alignment="CENTER" contentDisplay="TOP" layoutX="199.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Peach" textAlignment="CENTER" GridPane.columnIndex="1">
+                        <Button id="peachButton" fx:id="peachButton" alignment="CENTER" contentDisplay="TOP" layoutX="199.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#handleSeedSelection" style="-fx-background-color: transparent;" text="Peach" textAlignment="CENTER" GridPane.columnIndex="1">
                            <graphic>
                               <ImageView id="peach" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -269,7 +299,7 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Button>
-                        <Button id="cherryButton" fx:id="cherryButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Cherry" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button id="cherryButton" fx:id="cherryButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#handleSeedSelection" style="-fx-background-color: transparent;" text="Cherry" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView id="cherry" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -281,7 +311,7 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Button>
-                        <Button id="roseButton" fx:id="roseButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Rose" textAlignment="CENTER" GridPane.rowIndex="1">
+                        <Button id="roseButton" fx:id="roseButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#handleSeedSelection" style="-fx-background-color: transparent;" text="Rose" textAlignment="CENTER" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
@@ -293,7 +323,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button id="hydrangeaButton" fx:id="hydrangeaButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="169.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="88.0" style="-fx-background-color: transparent;" text="Hydrangea" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button id="hydrangeaButton" fx:id="hydrangeaButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#handleSeedSelection" prefHeight="115.0" prefWidth="88.0" style="-fx-background-color: transparent;" text="Hydrangea" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
@@ -307,15 +337,74 @@
                         </Button>
                      </children>
                   </GridPane>
+                  <Spinner fx:id="seedQuantitySpinner" layoutX="49.0" layoutY="245.0" prefHeight="36.0" prefWidth="83.0" visible="false" />
+                  <Button id="confirmButton" fx:id="confirmButton" cancelButton="true" layoutX="169.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#handleConfirmPlanting" prefHeight="36.0" prefWidth="63.0" style="-fx-background-color: lightgray;" text="Confirm" visible="false">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="sunnyWrapper" layoutX="400.0">
+            <AnchorPane id="popupStatusPane" fx:id="popupStatusPane" layoutX="316.0" layoutY="240.0" minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="395.0" visible="false">
                <children>
-                  <ImageView fx:id="sunny" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="popupBg" fitHeight="329.0" fitWidth="408.0" layoutX="-4.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../image/icon/sunny.png" />
+                        <Image url="@../image/background/userbackground.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="plantTypeLabel" layoutX="30.0" layoutY="40.0" text="Plant Type:">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Label>
+                  <Label fx:id="plantTypeValue" layoutX="170" layoutY="40.0" text="">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Label>
+                  <Label fx:id="plantNumberLabel" layoutX="30" layoutY="70.0" text="Plant Number:">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Label>
+                  <Label fx:id="plantNumberValue" layoutX="170" layoutY="70.0" text="">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Label>
+                  <Label fx:id="humidityLabel" layoutX="30" layoutY="100.0" text="Humidity Level:">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Label>
+                  <Label fx:id="humidityValue" layoutX="170" layoutY="100.0" text="">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Label>
+                  <Label fx:id="temperatureLabel" layoutX="30" layoutY="130.0" text="Temperature:">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Label>
+                  <Label fx:id="temperatureValue" layoutX="170" layoutY="130.0" text="">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Label>
+                  <Label fx:id="attackStatusLabel" layoutX="30" layoutY="160.0" text="Under Attack:">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Label>
+                  <Label fx:id="attackStatusValue" layoutX="170" layoutY="160.0" text="">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Label>
+                  <Label fx:id="healthStatusLabel" layoutX="30.0" layoutY="190.0" text="Health:">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Label>
+                  <Label fx:id="healthStatusValue" layoutX="170" layoutY="190.0" text="">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Label>
+                  <Button id="closeButton" fx:id="closeButton" cancelButton="true" layoutX="269.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#handleCloseButtonClick" prefHeight="36.0" prefWidth="63.0" style="-fx-background-color: lightgray;" text="Close">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </children>
