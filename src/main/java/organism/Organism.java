@@ -1,4 +1,4 @@
-package Organism;
+package organism;
 
 public abstract class Organism {
     private String name; // name of the organism

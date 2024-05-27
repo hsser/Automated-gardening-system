@@ -1,4 +1,4 @@
-package Organism.Plant;
+package organism.plant;
 
 public abstract class Crop extends Plant {
     public Crop(String name, double waterRequirement, double sunlightRequirement,

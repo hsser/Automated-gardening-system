@@ -2,8 +2,8 @@ package environment;
 
 import java.util.Random;
 import java.util.List;
-import Organism.Plant.Plant;
-import Organism.Plant.PlantManager;
+import organism.plant.Plant;
+import organism.plant.PlantManager;
 
 /**
  * Manages the creation and handling of events within the garden system.

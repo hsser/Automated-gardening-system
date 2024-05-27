@@ -1,4 +1,4 @@
-package Organism.Plant;
+package organism.plant;
 
 import java.util.ArrayList;
 import java.util.List;

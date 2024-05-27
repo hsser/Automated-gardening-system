@@ -1,4 +1,4 @@
-package Organism.Plant;
+package organism.plant;
 
 public class ChiliPepper extends Crop {
     public ChiliPepper(String name, double waterRequirement, double sunlightRequirement, double temperatureRequirement,

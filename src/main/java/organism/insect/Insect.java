@@ -1,6 +1,6 @@
-package Organism.Insect;
+package organism.insect;
 
-import Organism.Organism;
+import organism.Organism;
 
 public abstract class Insect extends Organism {
     private double damage; // damage caused by the insect

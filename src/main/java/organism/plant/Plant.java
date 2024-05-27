@@ -1,7 +1,8 @@
-package Organism.Plant;
+package organism.plant;
 
 
-import Organism.Organism;
+import organism.Organism;
+import sensors.HumiditySensor;
 
 public abstract class Plant extends Organism {
     private double minWaterLevel;
@@ -10,6 +11,7 @@ public abstract class Plant extends Organism {
     private double maxTemperatureLevel;
     private double currentWaterLevel;
     private boolean isUnderAttack;  // Flag to indicate if the plant is being attacked
+    private HumiditySensor humiditySensor;
 
     public Plant(String name, double minWaterLevel, double maxWaterLevel, double minTemperatureLevel,
                  double maxTemperatureLevel, double minTemperature, double currentWaterLevel) {
@@ -20,6 +22,7 @@ public abstract class Plant extends Organism {
         this.maxTemperatureLevel = maxTemperatureLevel;
         this.currentWaterLevel = currentWaterLevel;
         this.isUnderAttack = false;
+        this.humiditySensor = new HumiditySensor();
     }
 
     /**
@@ -31,6 +34,17 @@ public abstract class Plant extends Organism {
     public double getMaxTemperatureLevel() { return this.maxTemperatureLevel; }
     public double getCurrentWaterLevel() { return this.currentWaterLevel; }
     public boolean isUnderAttack() { return isUnderAttack; }
+    public double getHumidityLevel() {
+        return this.humiditySensor.getHumidityLevel();
+    }
+    public boolean isHumidityLevelLow(){
+        return this.humiditySensor.isHumidityLevelLow();
+    }
+
+    // update humidity level
+    public void updateHumidityLevel(double newHumidityLevel){
+        this.humiditySensor.setHumidityLevel(newHumidityLevel);
+    }
 
     /**
      * Sets the plant's under attack flag.

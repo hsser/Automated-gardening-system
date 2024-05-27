@@ -1,4 +1,4 @@
-package Organism.Plant;
+package organism.plant;
 public class CherryTomato extends Crop {
     public CherryTomato(String name, double waterRequirement, double sunlightRequirement, double temperatureRequirement,
                         double growthRate, double minTemperature, double maxTemperature) {

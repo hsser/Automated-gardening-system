@@ -1,6 +1,6 @@
-package Organism.Insect;
+package organism.insect;
 
-import Organism.Organism;
+import organism.Organism;
 
 public class Ladybug extends Insect{
     public Ladybug(String name, double damage) {

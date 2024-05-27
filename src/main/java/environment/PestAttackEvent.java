@@ -1,6 +1,6 @@
 package environment;
 
-import Organism.Plant.Plant;
+import organism.plant.Plant;
 
 public class PestAttackEvent extends Event {
     final private Plant plant;
