@@ -27,4 +27,6 @@ public class Weather {
     public void setWeatherType(WeatherType weatherType) {
         this.weatherType = weatherType;
     }
+
+    public boolean isSunny() { return weatherType == WeatherType.SUNNY; }
 }

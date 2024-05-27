@@ -1,5 +1,8 @@
 package UI;
 
+import environment.Weather;
+import environment.WeatherChangeEvent;
+import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -25,17 +28,17 @@ public class GardenController {
     private Pane rainPane, overlayPane;
     @FXML
     private AnchorPane popupPane;
+    @FXML
+    private ImageView sunny;
 
     private boolean isWateringMode = false;// Flag to track watering mode, which is toggled by the water button.
     private boolean isWatering = false;  // Flag to track watering state
-    private boolean isRaining = false;  // Flag to track raining state
 
     private Image normalSoil = new Image(getClass().getResourceAsStream("/image/soil/3.png"));
     private Image wetSoil = new Image(getClass().getResourceAsStream("/image/soil/4.png"));
     //private Image drySoil = new Image(getClass().getResourceAsStream("/image/soil/5.png"));
 
-
-
+    private Weather weather = new Weather();  // System's current weather, default is sunny
 
     @FXML
     private void initialize() {
@@ -74,18 +77,39 @@ public class GardenController {
 
     @FXML
     protected void handleRainButtonClick() {
-        if(!isRaining) {
+        if(weather.isSunny()) {
             createRaindrop(rainPane);
-            isRaining = true;
             setAllSoils(wetSoil);
+            animateSunnyImage(1.0, 0.1, false);
         } else {
             rainPane.getChildren().clear();
-            isRaining = false;
+            animateSunnyImage(0.1, 1.0, true);
         }
+        WeatherChangeEvent weatherChangeEvent = new WeatherChangeEvent(weather);
+        weatherChangeEvent.trigger();
         // Reset cursor to default every time the rain button is clicked
         soilGroup.getScene().setCursor(Cursor.DEFAULT);
         // Also, ensure watering mode is deactivated when rain toggled
         isWateringMode = false;
+    }
+
+    private void animateSunnyImage(double fromScale, double toScale, boolean setVisibleAfter) {
+        sunny.setVisible(true);
+
+        // Create a scale transition for the ImageView
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.5), sunny);
+        scaleTransition.setFromX(fromScale);
+        scaleTransition.setFromY(fromScale);
+        scaleTransition.setToX(toScale);
+        scaleTransition.setToY(toScale);
+        scaleTransition.setCycleCount(1);
+        scaleTransition.setAutoReverse(false);
+
+        if (!setVisibleAfter) {
+            scaleTransition.setOnFinished(event -> sunny.setVisible(false));
+        }
+
+        scaleTransition.play();
     }
 
     private void createRaindrop(Pane pane) {

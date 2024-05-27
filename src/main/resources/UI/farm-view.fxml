@@ -309,6 +309,15 @@
                   </GridPane>
                </children>
             </AnchorPane>
+            <AnchorPane fx:id="sunnyWrapper" layoutX="400.0">
+               <children>
+                  <ImageView fx:id="sunny" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icon/sunny.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
     </AnchorPane>
   </children>

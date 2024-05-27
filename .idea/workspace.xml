@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Minor changes on UI">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UI/GardenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/GardenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/environment/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/environment/Weather.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/UI/farm-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UI/farm-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/hydrangea /hydrangea.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/pngegg (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/sun.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,8 +119,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -133,6 +137,8 @@
       <workItem from="1716101829012" duration="15758000" />
       <workItem from="1716586378447" duration="605000" />
       <workItem from="1716587061790" duration="10141000" />
+      <workItem from="1716772348088" duration="624000" />
+      <workItem from="1716772990078" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="Defining Plant Class">
       <option name="closed" value="true" />
