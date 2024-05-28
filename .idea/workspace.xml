@@ -8,94 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UI/GardenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/GardenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/UI/farm-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UI/farm-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/cron_end.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/cron_start.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp1/seed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/cron_end.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/cron_start.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/corp2/seed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop10/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop10/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop10/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop10/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop10/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop10/cron_end.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop10/cron_start.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop10/seed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop12/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop12/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop12/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop12/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop12/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop12/cron_end.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop12/cron_start.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop12/seed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop13/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop13/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop13/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop13/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop13/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop13/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop13/cron_end.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop13/cron_start.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop13/seed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop15/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop15/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop15/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop15/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop15/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop15/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop15/cron_end.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop15/cron_start.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop15/seed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop3/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop3/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop3/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop3/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop3/cron_end.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop3/cron_start.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop3/seed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop4/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop4/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop4/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop4/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop4/cron_end.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop4/cron_start.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop4/seed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop5/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop5/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop5/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop5/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop5/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop5/cron_end.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop5/cron_start.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop5/seed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop6/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop6/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop6/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop6/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop6/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop6/cron_end.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop6/cron_start.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop6/seed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop8/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop8/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop8/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop8/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop8/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop8/cron_end.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop8/cron_start.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop8/seed.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,6 +114,14 @@
       </method>
     </configuration>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -247,6 +167,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Defining Plant Class" />

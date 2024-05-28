@@ -5,6 +5,7 @@ import environment.WeatherChangeEvent;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -20,7 +21,7 @@ import javafx.scene.Cursor;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.*;
 import javafx.util.Duration;
 import javafx.scene.paint.Color;
 
@@ -37,7 +38,7 @@ public class GardenController {
                    cancelButton, confirmButton, // for canceling and confirming planting
                    closeButton; // for closing the popup
     @FXML
-    private Label plantTypeValue, plantNumberValue, humidityValue, temperatureValue, attackStatusValue, healthStatusValue;
+    private Label soilInfoLabel, plantTypeValue, plantNumberValue, humidityValue, temperatureValue, attackStatusValue, healthStatusValue;
     @FXML
     private Pane rainPane, overlayPane;
     @FXML
@@ -49,10 +50,10 @@ public class GardenController {
     @FXML
     private GridPane seedSelectionGrid;
 
-    //private boolean isWateringMode = false;// Flag to track watering mode, which is toggled by the water button.
     private Mode currentMode = Mode.NONE;  // The current mode of the garden controller
     private String currentSeedType;  // The type of seed currently selected;
 
+    private Image grassSoil = new Image(getClass().getResourceAsStream("/image/soil/1.png"));
     private Image normalSoil = new Image(getClass().getResourceAsStream("/image/soil/3.png"));
     private Image wetSoil = new Image(getClass().getResourceAsStream("/image/soil/4.png"));
     //private Image drySoil = new Image(getClass().getResourceAsStream("/image/soil/5.png"));
@@ -61,6 +62,8 @@ public class GardenController {
 
     @FXML
     private void initialize() {
+        // Initialize the soil images
+        setAllSoils(grassSoil);
         // Configure the spinner for integer values with a min, max, and step
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 1);
         seedQuantitySpinner.setValueFactory(valueFactory);
@@ -100,35 +103,49 @@ public class GardenController {
 
     /**
      * Handles the watering of a soil when clicked.
-     * @param event The MouseEvent that triggered the watering.
+     * @param soilId The id of the soil to water.
      */
-    private void handleWatering(MouseEvent event) {
+    private void handleWatering(String soilId) {
         if (currentMode != Mode.WATERING) {
             return;
         }
 
-        ImageView clickedSoil = (ImageView) event.getSource();
-        clickedSoil.setImage(wetSoil);
+        // Get the x, y coordinates of the soil
+        ImageView clickedSoil = getSoilById(soilId);
+        if (clickedSoil == null || clickedSoil.getImage() == grassSoil) {
+            return;
+        }
 
+        Bounds boundsInScene = clickedSoil.localToScene(clickedSoil.getBoundsInLocal());
+        double x = boundsInScene.getMinX();
+        double y = boundsInScene.getMinY();
+        // Adjust the x, y coordinates to the center of the soil
+        x += clickedSoil.getImage().getWidth() / 2;
+        y += clickedSoil.getImage().getHeight() / 2;
+        // Create a droplet animation at the center of the soil
+        createDroplet(x, y);
+        clickedSoil.setImage(wetSoil);
         //TODO: Add logic to handle watering of the soil
     }
 
     /**
      * Handles the planting of a seed when clicked.
-     * @param event The MouseEvent that triggered the planting.
+     * @param soilId The id of the soil to plant.
      */
-    private void handlePlanting(MouseEvent event) {
+    private void handlePlanting(String soilId) {
         if (currentSeedType == null) {
             return;
         }
-
-        ImageView clickedSoil = (ImageView) event.getSource();
-        String soilId = clickedSoil.getId();
+        ImageView clickedSoil = getSoilById(soilId);
         ImageView plantImageView = (ImageView) plantGroup.lookup("#" + soilId);
         if (plantImageView != null && plantImageView.getImage() == null) {
+            clickedSoil.setImage(normalSoil);
             int seedQuantity = seedQuantitySpinner.getValue();
             plantImageView.setImage(new Image(getClass().getResourceAsStream("/image/plants/" + currentSeedType + ".png")));
-
+            // Check if it is raining
+            if (!weather.isSunny()) {
+                clickedSoil.setImage(wetSoil);
+            }
             //TODO: Add logic to handle planting of the seed
             System.out.println("Planting " + seedQuantity + " " + currentSeedType + " seed" +
                     ((seedQuantity > 1) ? "s" : ""));
@@ -155,11 +172,10 @@ public class GardenController {
 
     /**
      * Shows the information of a soil when clicked.
-     * @param event The MouseEvent that triggered the click.
+     * @param soilId The id of the soil to show information of.
      */
-    private void showSoilInfo(MouseEvent event) {
-        ImageView clickedSoil = (ImageView) event.getSource();
-        String soilId = clickedSoil.getId();
+    private void showSoilInfo(String soilId) {
+        soilInfoLabel.setText("Plot " + soilId + " Conditions");
         ImageView plantImageView = (ImageView) plantGroup.lookup("#" + soilId);
         if (plantImageView != null && plantImageView.getImage() != null) {
             String plantType = plantImageView.getId();
@@ -178,18 +194,21 @@ public class GardenController {
      */
     @FXML
     private void handleSoilClick(MouseEvent event) {
+        ImageView clickedSoil = (ImageView) event.getSource();
+        String soilId = clickedSoil.getId();
+
         switch (currentMode) {
             case WATERING:
-                handleWatering(event);
+                handleWatering(soilId);
                 break;
             case PLANTING:
-                handlePlanting(event);
+                handlePlanting(soilId);
                 currentMode = Mode.NONE;
                 break;
             case NONE:
-                showSoilInfo(event);
+                showSoilInfo(soilId);
                 break;
-
+            // TODO: Add more cases for other modes
         }
 
     }
@@ -208,13 +227,40 @@ public class GardenController {
     }
 
     /**
+     * Gets the soil ImageView by its id.
+     * @param soilId The id of the soil to get.
+     * @return The ImageView of the soil with the given id.
+     */
+    private ImageView getSoilById(String soilId) {
+        for (Node node : soilGroup.getChildren()) {
+            if (node instanceof ImageView) {
+                ImageView soil = (ImageView) node;
+                if (soil.getId().equals(soilId)) {
+                    return soil;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
      * Handles the click event on the rain button.
      */
     @FXML
     protected void handleRainButtonClick() {
         if(weather.isSunny()) {
             createRaindrop(rainPane);
-            setAllSoils(wetSoil);
+            // Only set the normal soils to wet, not the grass soils
+            for (Node node : soilGroup.getChildren()) {
+                if (node instanceof ImageView) {
+                    ImageView soil = (ImageView) node;
+                    if (soil.getImage() == grassSoil) {
+                        continue;
+                    }
+                    soil.setImage(wetSoil);
+                }
+            }
+
             animateSunnyImage(1.0, 0.1, false);
         } else {
             rainPane.getChildren().clear();
@@ -275,8 +321,36 @@ public class GardenController {
         }
     }
 
+
+    private void createDroplet(double x, double y) {
+        Pane sceneRoot = (Pane) soilGroup.getScene().getRoot(); // Assuming the root is a Pane
+
+        for (int i = 0; i < 35; i++) {
+            // Create the droplet at the cursor location
+            Circle droplet = new Circle(x, y, 3);
+            droplet.setStyle("-fx-fill: rgba(255, 255, 255, 0.6);");
+
+            // Adjust position if sceneRoot has transformations or offsets
+            droplet.setTranslateX(sceneRoot.getTranslateX());
+            droplet.setTranslateY(sceneRoot.getTranslateY());
+
+            sceneRoot.getChildren().add(droplet);
+
+            // Define the animation for droplet movement
+            double endX = x + Math.random() * 40 - 20; // Random endpoint for x
+            double endY = y + Math.random() * 40 - 20; // Random endpoint for y
+
+            TranslateTransition transition = new TranslateTransition(Duration.seconds(0.5), droplet);
+            transition.setToX(endX - x);
+            transition.setToY(endY - y);
+            transition.setOnFinished(e -> sceneRoot.getChildren().remove(droplet));
+            transition.play();
+
+        }
+    }
+
     /**
-     * Resets the style of all seed buttons to default.
+     * Removes the droplet animation from the scene, if it exists.
      */
     private void resetSeedButtonStyle() {
         for (Node node : seedSelectionGrid.getChildren()) {
@@ -338,6 +412,9 @@ public class GardenController {
         setNodeVisibility(overlayPane, false);
     }
 
+    /**
+     * Handles the click event on the close button of the popup.
+     */
     @FXML
     private void handleCloseButtonClick() {
         setNodeVisibility(popupStatusPane, false);
