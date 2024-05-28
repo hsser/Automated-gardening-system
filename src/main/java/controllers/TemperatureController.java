@@ -6,9 +6,9 @@ import sensors.TemperatureSensor;
  * The TemperatureController class manages the temperature adjustments base on the readings from the TemperatureSensor
  */
 public class TemperatureController {
-    private static final double HIGH_TEMPERATURE_THRESHOLD = 30.0;
-    private static final double LOW_TEMPERATURE_THRESHOLD = 20.0;
-    private static final double OPTIMAL_TEMPERATURE = 25.0;
+    private static final double HIGH_TEMPERATURE_THRESHOLD = 86.0;
+    private static final double LOW_TEMPERATURE_THRESHOLD = 68.0;
+    private static final double OPTIMAL_TEMPERATURE = 77.0;
 
     private TemperatureSensor temperatureSensor;
 
@@ -38,7 +38,7 @@ public class TemperatureController {
             // Adjust the temperature to the optimal level
             this.temperatureSensor.updateTemperature(OPTIMAL_TEMPERATURE);
         }else{
-            System.out.println("The temperature is optimal!");
+            System.out.println("The temperature is quit suitable for plants' growth!");
         }
     }
 

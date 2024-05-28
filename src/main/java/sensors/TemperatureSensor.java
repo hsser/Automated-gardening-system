@@ -2,14 +2,16 @@ package sensors;
 
 /**
  * The TemperatureSensor class simulates a temperature sensor.
- * The default temperature is set to 25.0 degrees Celsius.
+ * The default temperature is set to 77.0 degrees Fahrenheit.
  */
 public class TemperatureSensor {
     private double temperature;
 
-    //Celsius or Fahrenheit ?
+    /**
+     * Constructs a Temperature Sensor with a default temperature of 77.0 degrees Fahrenheit.
+     */
     public TemperatureSensor (){
-        this.temperature = 25.0;
+        this.temperature = 77.0;
     }
 
     /**
