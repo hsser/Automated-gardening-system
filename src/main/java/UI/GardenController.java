@@ -25,33 +25,37 @@ import javafx.scene.shape.*;
 import javafx.util.Duration;
 import javafx.scene.paint.Color;
 
+import java.util.Locale;
+
 
 enum Mode { // Enum to represent the current mode of the garden controller
-    WATERING, PLANTING, NONE
+    WATERING, PLANTING, PARASITE, NONE
 }
 
 public class GardenController {
     @FXML
-    private Group soilGroup, plantGroup;
+    private Group soilGroup, plantGroup, ladybugGroup, aphidGroup, spiderGroup, whiteflyGroup;
     @FXML
     private Button waterButton, rainButton, plantButton, // for watering, raining, and planting
                    cancelButton, confirmButton, // for canceling and confirming planting
-                   closeButton; // for closing the popup
+                   cancelButton1, confirmButton1, // for confirming parasite
+                   closeButton; // for closing the status pane
     @FXML
     private Label soilInfoLabel, plantTypeValue, plantNumberValue, humidityValue, temperatureValue, attackStatusValue, healthStatusValue;
     @FXML
     private Pane rainPane, overlayPane;
     @FXML
-    private AnchorPane popupSelectionPane, popupStatusPane;
+    private AnchorPane plantSelectionPane, popupStatusPane, parasiteSelectionPane;
     @FXML
     private ImageView sunny;
     @FXML
-    private Spinner<Integer> seedQuantitySpinner;
+    private Spinner<Integer> plantQuantitySpinner, parasiteQuantitySpinner;
     @FXML
-    private GridPane seedSelectionGrid;
+    private GridPane plantSelectionGrid, parasiteSelectionGrid;
 
     private Mode currentMode = Mode.NONE;  // The current mode of the garden controller
-    private String currentSeedType;  // The type of seed currently selected;
+    private String currentPlantType = null;  // The type of seed currently selected;
+    private String currentParasiteType = null;  // The type of parasite currently selected;
 
     private Image grassSoil = new Image(getClass().getResourceAsStream("/image/soil/1.png"));
     private Image normalSoil = new Image(getClass().getResourceAsStream("/image/soil/3.png"));
@@ -62,11 +66,15 @@ public class GardenController {
 
     @FXML
     private void initialize() {
-        // Initialize the soil images
+        // Set the default mode to none
+        currentMode = Mode.NONE;
+        // Set the default plant type to null
         setAllSoils(grassSoil);
+
         // Configure the spinner for integer values with a min, max, and step
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 1);
-        seedQuantitySpinner.setValueFactory(valueFactory);
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, 1);
+        plantQuantitySpinner.setValueFactory(valueFactory);
+        parasiteQuantitySpinner.setValueFactory(valueFactory);
     }
 
     /**
@@ -79,6 +87,8 @@ public class GardenController {
         node.setVisible(isVisible);
         node.setManaged(isVisible);
     }
+
+    /************************* WATERING *************************/
 
     /**
      * Handles the click event on the water button.
@@ -129,25 +139,110 @@ public class GardenController {
     }
 
     /**
-     * Handles the planting of a seed when clicked.
+     * Creates a droplet animation at the given x, y coordinates.
+     * @param x The x coordinate of the droplet.
+     * @param y The y coordinate of the droplet.
+     */
+    private void createDroplet(double x, double y) {
+        Pane sceneRoot = (Pane) soilGroup.getScene().getRoot(); // Assuming the root is a Pane
+
+        for (int i = 0; i < 35; i++) {
+            // Create the droplet at the cursor location
+            Circle droplet = new Circle(x, y, 3);
+            droplet.setStyle("-fx-fill: rgba(255, 255, 255, 0.6);");
+
+            // Adjust position if sceneRoot has transformations or offsets
+            droplet.setTranslateX(sceneRoot.getTranslateX());
+            droplet.setTranslateY(sceneRoot.getTranslateY());
+
+            sceneRoot.getChildren().add(droplet);
+
+            // Define the animation for droplet movement
+            double endX = x + Math.random() * 40 - 20; // Random endpoint for x
+            double endY = y + Math.random() * 40 - 20; // Random endpoint for y
+
+            TranslateTransition transition = new TranslateTransition(Duration.seconds(0.5), droplet);
+            transition.setToX(endX - x);
+            transition.setToY(endY - y);
+            transition.setOnFinished(e -> sceneRoot.getChildren().remove(droplet));
+            transition.play();
+
+        }
+    }
+
+    /************************* PLANTING *************************/
+
+    /**
+     * Handles the click event on the plant button.
+     */
+    @FXML
+    private void handlePlantButtonClick(){
+        currentMode = Mode.PLANTING;
+        setNodeVisibility(plantSelectionPane, true);
+        setNodeVisibility(overlayPane, true);
+        resetSelectionButtonStyle(plantSelectionGrid);
+    }
+
+    /**
+     * Handles the click event on a plant selection.
+     */
+    @FXML
+    private void handlePlantSelection(MouseEvent event) {
+        resetSelectionButtonStyle(plantSelectionGrid);
+        // Extract which plant was selected
+        Button selectedPlant = (Button) event.getSource();
+        selectedPlant.setEffect(new DropShadow(10, Color.BLACK));
+        currentPlantType = selectedPlant.getText();
+
+        // Configure and show the quantity spinner
+        plantQuantitySpinner.getValueFactory().setValue(1); // Reset to default value
+        setNodeVisibility(plantQuantitySpinner, true);
+        setNodeVisibility(confirmButton, true);
+    }
+
+    /**
+     * Handles the click event on the confirm planting button.
+     */
+    @FXML
+    private void handleConfirmPlanting(){
+        setNodeVisibility(plantQuantitySpinner, false);
+        setNodeVisibility(confirmButton, false);
+        plantSelectionPane.setVisible(false);
+        overlayPane.setVisible(false);
+    }
+
+    /**
+     * Handles the click event on the cancel planting button.
+     */
+    @FXML
+    private void handleCancelPlanting(){
+        currentMode = Mode.NONE;
+        setNodeVisibility(plantQuantitySpinner, false);
+        setNodeVisibility(confirmButton, false);
+        setNodeVisibility(plantSelectionPane, false);
+        setNodeVisibility(overlayPane, false);
+    }
+
+    /**
+     * Handles the planting UI effect when clicked on a certain soil/plot.
      * @param soilId The id of the soil to plant.
      */
     private void handlePlanting(String soilId) {
-        if (currentSeedType == null) {
+        if (currentPlantType == null) {
             return;
         }
         ImageView clickedSoil = getSoilById(soilId);
         ImageView plantImageView = (ImageView) plantGroup.lookup("#" + soilId);
         if (plantImageView != null && plantImageView.getImage() == null) {
             clickedSoil.setImage(normalSoil);
-            int seedQuantity = seedQuantitySpinner.getValue();
-            plantImageView.setImage(new Image(getClass().getResourceAsStream("/image/plants/" + currentSeedType + ".png")));
+            int seedQuantity = plantQuantitySpinner.getValue();
+            plantImageView.setImage(new Image(getClass().getResourceAsStream("/image/plants/" + currentPlantType + ".png")));
             // Check if it is raining
             if (!weather.isSunny()) {
                 clickedSoil.setImage(wetSoil);
             }
             //TODO: Add logic to handle planting of the seed
-            System.out.println("Planting " + seedQuantity + " " + currentSeedType + " seed" +
+            System.out.println("Planting " + seedQuantity + " " + currentPlantType + " seed" +
                     ((seedQuantity > 1) ? "s" : ""));
         }
     }
@@ -170,78 +265,7 @@ public class GardenController {
         healthStatusValue.setText(healthStatus);
     }
 
-    /**
-     * Shows the information of a soil when clicked.
-     * @param soilId The id of the soil to show information of.
-     */
-    private void showSoilInfo(String soilId) {
-        soilInfoLabel.setText("Plot " + soilId + " Conditions");
-        ImageView plantImageView = (ImageView) plantGroup.lookup("#" + soilId);
-        if (plantImageView != null && plantImageView.getImage() != null) {
-            String plantType = plantImageView.getId();
-            //TODO: Add logic to get the plant number, humidity, temperature, attack status, and health status
-
-        } else {
-            setLabelValues("N/A", "N/A", "N/A", "N/A", "N/A", "N/A");
-        }
-        setNodeVisibility(popupStatusPane, true);
-        setNodeVisibility(overlayPane, true);
-    }
-
-    /**
-     * Handles the click event on a soil.
-     * @param event The MouseEvent that triggered the click.
-     */
-    @FXML
-    private void handleSoilClick(MouseEvent event) {
-        ImageView clickedSoil = (ImageView) event.getSource();
-        String soilId = clickedSoil.getId();
-
-        switch (currentMode) {
-            case WATERING:
-                handleWatering(soilId);
-                break;
-            case PLANTING:
-                handlePlanting(soilId);
-                currentMode = Mode.NONE;
-                break;
-            case NONE:
-                showSoilInfo(soilId);
-                break;
-            // TODO: Add more cases for other modes
-        }
-
-    }
-
-    /**
-     * Sets all soils to a specific image.
-     * @param soilImage The image to set all soils to.
-     */
-    private void setAllSoils(Image soilImage) {
-        for (Node node : soilGroup.getChildren()) {
-            if (node instanceof ImageView) {
-                ImageView soil = (ImageView) node;
-                soil.setImage(soilImage);
-            }
-        }
-    }
-
-    /**
-     * Gets the soil ImageView by its id.
-     * @param soilId The id of the soil to get.
-     * @return The ImageView of the soil with the given id.
-     */
-    private ImageView getSoilById(String soilId) {
-        for (Node node : soilGroup.getChildren()) {
-            if (node instanceof ImageView) {
-                ImageView soil = (ImageView) node;
-                if (soil.getId().equals(soilId)) {
-                    return soil;
-                }
-            }
-        }
-        return null;
-    }
+    /************************* WEATHER *************************/
 
     /**
      * Handles the click event on the rain button.
@@ -321,96 +345,116 @@ public class GardenController {
         }
     }
 
-
-    private void createDroplet(double x, double y) {
-        Pane sceneRoot = (Pane) soilGroup.getScene().getRoot(); // Assuming the root is a Pane
-
-        for (int i = 0; i < 35; i++) {
-            // Create the droplet at the cursor location
-            Circle droplet = new Circle(x, y, 3);
-            droplet.setStyle("-fx-fill: rgba(255, 255, 255, 0.6);");
-
-            // Adjust position if sceneRoot has transformations or offsets
-            droplet.setTranslateX(sceneRoot.getTranslateX());
-            droplet.setTranslateY(sceneRoot.getTranslateY());
-
-            sceneRoot.getChildren().add(droplet);
-
-            // Define the animation for droplet movement
-            double endX = x + Math.random() * 40 - 20; // Random endpoint for x
-            double endY = y + Math.random() * 40 - 20; // Random endpoint for y
-
-            TranslateTransition transition = new TranslateTransition(Duration.seconds(0.5), droplet);
-            transition.setToX(endX - x);
-            transition.setToY(endY - y);
-            transition.setOnFinished(e -> sceneRoot.getChildren().remove(droplet));
-            transition.play();
-
-        }
-    }
-
     /**
      * Removes the droplet animation from the scene, if it exists.
      */
-    private void resetSeedButtonStyle() {
-        for (Node node : seedSelectionGrid.getChildren()) {
+    private void resetSelectionButtonStyle(GridPane grid) {
+        for (Node node : grid.getChildren()) {
             if (node instanceof Button) {
-                Button seedButton = (Button) node;
-                seedButton.setEffect(null);
+                Button button = (Button) node;
+                button.setEffect(null);
             }
         }
     }
 
+
+
+    /************************* PARASITE *************************/
+
     /**
-     * Handles the click event on the plant button.
+     * Handles the click event on the parasite button.
      */
     @FXML
-    private void handlePlantButtonClick(){
-        currentMode = Mode.PLANTING;
-        setNodeVisibility(popupSelectionPane, true);
+    private void handleParasiteButtonClick() {
+        currentMode = Mode.PARASITE;
+        setNodeVisibility(parasiteSelectionPane, true);
         setNodeVisibility(overlayPane, true);
-        resetSeedButtonStyle();
+        resetSelectionButtonStyle(parasiteSelectionGrid);
     }
 
     /**
-     * Handles the click event on a seed selection.
+     * Handles the click event on a parasite selection.
      */
     @FXML
-    private void handleSeedSelection(MouseEvent event) {
-        resetSeedButtonStyle();
-        // Extract which seed was selected
-        Button selectedSeedButton = (Button) event.getSource();
-        selectedSeedButton.setEffect(new DropShadow(10, Color.BLACK));
-        currentSeedType = selectedSeedButton.getText();
+    private void handleParasiteSelection(MouseEvent event) {
+        parasiteQuantitySpinner.getValueFactory().setValue(1); // Reset to default value
+        resetSelectionButtonStyle(parasiteSelectionGrid);
+        // Extract which parasite was selected
+        Button selectedParasite = (Button) event.getSource();
+        selectedParasite.setEffect(new DropShadow(10, Color.BLACK));
+        currentParasiteType = selectedParasite.getText();
 
         // Configure and show the quantity spinner
-        seedQuantitySpinner.getValueFactory().setValue(1); // Reset to default value
-        setNodeVisibility(seedQuantitySpinner, true);
-        setNodeVisibility(confirmButton, true);
+        setNodeVisibility(parasiteQuantitySpinner, true);
+        setNodeVisibility(confirmButton1, true);
     }
 
     /**
-     * Handles the click event on the confirm planting button.
+     * Handles the click event on the confirm parasite button.
      */
     @FXML
-    private void handleConfirmPlanting(){
-        setNodeVisibility(seedQuantitySpinner, false);
-        setNodeVisibility(confirmButton, false);
-        popupSelectionPane.setVisible(false);
+    private void handleConfirmParasite() {
+        setNodeVisibility(parasiteQuantitySpinner, false);
+        setNodeVisibility(confirmButton1, false);
+        parasiteSelectionPane.setVisible(false);
         overlayPane.setVisible(false);
     }
 
     /**
-     * Handles the click event on the cancel planting button.
+     * Handles the click event on the cancel parasite button.
      */
     @FXML
-    private void handleCancelPlanting(){
+    private void handleCancelParasite() {
         currentMode = Mode.NONE;
-        setNodeVisibility(seedQuantitySpinner, false);
-        setNodeVisibility(confirmButton, false);
-        setNodeVisibility(popupSelectionPane, false);
+        setNodeVisibility(parasiteQuantitySpinner, false);
+        setNodeVisibility(confirmButton1, false);
+        setNodeVisibility(parasiteSelectionPane, false);
         setNodeVisibility(overlayPane, false);
     }
+
+    /**
+     * Handles the parasite UI effect when clicked on a certain soil/plot.
+     * @param soilId The id of the soil to plant the parasite.
+     */
+    private void handleParasite(String soilId, String parasiteType) {
+        if (currentParasiteType == null) {
+            return;
+        }
+        ImageView clickedSoil = getSoilById(soilId);
+
+        if (clickedSoil.getImage() == grassSoil) {
+            return;
+        }
+
+        ImageView parasiteImageView = null;
+        switch (currentParasiteType) {
+            case "Ladybug":
+                parasiteImageView = (ImageView) ladybugGroup.lookup("#" + soilId);
+                break;
+            case "Aphid":
+                parasiteImageView = (ImageView) aphidGroup.lookup("#" + soilId);
+                break;
+            case "Spider":
+                parasiteImageView = (ImageView) spiderGroup.lookup("#" + soilId);
+                break;
+            case "Whitefly":
+                parasiteImageView = (ImageView) whiteflyGroup.lookup("#" + soilId);
+                break;
+        }
+
+        if (!parasiteImageView.isVisible()) {
+            int parasiteQuantity = parasiteQuantitySpinner.getValue();
+            parasiteImageView.setVisible(true);
+
+            //TODO: Add logic to handle releasing of the parasite
+
+            System.out.println("Releasing " + parasiteQuantity + " " + currentParasiteType +
+                    ((parasiteQuantity > 1) ? "s" : ""));
+        }
+    }
+
+
+    /************************* SOIL **************************/
 
     /**
      * Handles the click event on the close button of the popup.
@@ -419,6 +463,83 @@ public class GardenController {
     private void handleCloseButtonClick() {
         setNodeVisibility(popupStatusPane, false);
         setNodeVisibility(overlayPane, false);
+    }
+
+    /**
+     * Shows the information of a soil when clicked.
+     * @param soilId The id of the soil to show information of.
+     */
+    private void showSoilInfo(String soilId) {
+        soilInfoLabel.setText("Plot " + soilId + " Conditions");
+        ImageView plantImageView = (ImageView) plantGroup.lookup("#" + soilId);
+        if (plantImageView != null && plantImageView.getImage() != null) {
+            String plantType = plantImageView.getId();
+            //TODO: Add logic to get the plant number, humidity, temperature, attack status, and health status
+
+        } else {
+            setLabelValues("N/A", "N/A", "N/A", "N/A", "N/A", "N/A");
+        }
+        setNodeVisibility(popupStatusPane, true);
+        setNodeVisibility(overlayPane, true);
+    }
+
+    /**
+     * Sets all soils to a specific image.
+     * @param soilImage The image to set all soils to.
+     */
+    private void setAllSoils(Image soilImage) {
+        for (Node node : soilGroup.getChildren()) {
+            if (node instanceof ImageView) {
+                ImageView soil = (ImageView) node;
+                soil.setImage(soilImage);
+            }
+        }
+    }
+
+    /**
+     * Gets the soil ImageView by its id.
+     * @param soilId The id of the soil to get.
+     * @return The ImageView of the soil with the given id.
+     */
+    private ImageView getSoilById(String soilId) {
+        for (Node node : soilGroup.getChildren()) {
+            if (node instanceof ImageView) {
+                ImageView soil = (ImageView) node;
+                if (soil.getId().equals(soilId)) {
+                    return soil;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Handles the click event on a soil.
+     * @param event The MouseEvent that triggered the click.
+     */
+    @FXML
+    private void handleSoilClick(MouseEvent event) {
+        ImageView clickedSoil = (ImageView) event.getSource();
+        String soilId = clickedSoil.getId();
+
+        switch (currentMode) {
+            case WATERING:
+                handleWatering(soilId);
+                break;
+            case PLANTING:
+                handlePlanting(soilId);
+                currentMode = Mode.NONE;
+                break;
+            case PARASITE:
+                handleParasite(soilId, currentParasiteType);
+                currentMode = Mode.NONE;
+                break;
+            case NONE:
+                showSoilInfo(soilId);
+                break;
+            // TODO: Add more cases for other modes
+        }
+
     }
 
 
