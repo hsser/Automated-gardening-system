@@ -36,7 +36,7 @@ public class GardenController {
     @FXML
     private Group soilGroup, plantGroup, ladybugGroup, aphidGroup, spiderGroup, whiteflyGroup;
     @FXML
-    private Button waterButton, rainButton, plantButton, // for watering, raining, and planting
+    private Button waterButton, rainButton, plantButton, parasiteButton, // for watering, raining, parasite, and planting
                    cancelButton, confirmButton, // for canceling and confirming planting
                    cancelButton1, confirmButton1, // for confirming parasite
                    closeButton; // for closing the status pane
@@ -102,12 +102,14 @@ public class GardenController {
             soilGroup.getScene().setCursor(new ImageCursor(new Image(getClass().getResourceAsStream("/image/icon/water_cursor.png")), 0, 0));
             plantButton.setDisable(true);  // Disable the plant button
             rainButton.setDisable(true);  // Disable the rain button
+            parasiteButton.setDisable(true);  // Disable the parasite button
         } else {
             // Reset cursor to default when disabling watering mode
             soilGroup.getScene().setCursor(Cursor.DEFAULT);
             // TODO: Add logic to handle watering mode deactivation, might be needed to disable more buttons
             plantButton.setDisable(false);  // Enable the plant button
             rainButton.setDisable(false);  // Enable the rain button
+            parasiteButton.setDisable(false);  // Enable the parasite button
         }
     }
 
@@ -209,6 +211,10 @@ public class GardenController {
         setNodeVisibility(confirmButton, false);
         plantSelectionPane.setVisible(false);
         overlayPane.setVisible(false);
+        soilGroup.getScene().setCursor(new ImageCursor(new Image(getClass().getResourceAsStream("/image/icon/plant_cursor.png")), 0, 0));
+        waterButton.setDisable(true);  // Disable the water button
+        rainButton.setDisable(true);  // Disable the rain button
+        parasiteButton.setDisable(true);  // Disable the parasite button
     }
 
     /**
@@ -398,6 +404,10 @@ public class GardenController {
         setNodeVisibility(confirmButton1, false);
         parasiteSelectionPane.setVisible(false);
         overlayPane.setVisible(false);
+        soilGroup.getScene().setCursor(new ImageCursor(new Image(getClass().getResourceAsStream("/image/icon/cursor.png")), 0, 0));
+        waterButton.setDisable(true);  // Disable the water button
+        plantButton.setDisable(true);  // Disable the plant button
+        rainButton.setDisable(true);  // Disable the rain button
     }
 
     /**
@@ -528,10 +538,18 @@ public class GardenController {
                 break;
             case PLANTING:
                 handlePlanting(soilId);
+                soilGroup.getScene().setCursor(Cursor.DEFAULT);
+                waterButton.setDisable(false);  // Enable the water button
+                rainButton.setDisable(false);  // Enable the rain button
+                parasiteButton.setDisable(false);  // Enable the parasite button
                 currentMode = Mode.NONE;
                 break;
             case PARASITE:
                 handleParasite(soilId, currentParasiteType);
+                soilGroup.getScene().setCursor(Cursor.DEFAULT);
+                waterButton.setDisable(false);  // Enable the water button
+                plantButton.setDisable(false);  // Enable the plant button
+                rainButton.setDisable(false);  // Enable the rain button
                 currentMode = Mode.NONE;
                 break;
             case NONE:

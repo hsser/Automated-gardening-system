@@ -4,34 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Update UI, adding parasites">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/crops/hydrangea.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/crops/rose_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/crops/seed 2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/crops/seed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/Spider.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/cherry_cursor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/cherrytomato_cursor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/chilipepper_cursor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/cursor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/hydrangea_cursor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/parasite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/peach_cursor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/rose_cursor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/whitefly.png" afterDir="false" />
+    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Add parasite">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/parasite_cursor.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UI/GardenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/GardenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/UI/farm-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UI/farm-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/ladybug.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/icon/ladybug.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/sunButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (16).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (17).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (18).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (19).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (4).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (5).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (6).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (7).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/cursor.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/icon/cursor.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (0).png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +145,7 @@
       <workItem from="1716772348088" duration="624000" />
       <workItem from="1716772990078" duration="13000" />
       <workItem from="1716936111192" duration="10540000" />
-      <workItem from="1716967342890" duration="3457000" />
+      <workItem from="1716967342890" duration="4679000" />
     </task>
     <task id="LOCAL-00001" summary="Defining Plant Class">
       <option name="closed" value="true" />
@@ -201,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716879578438</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add parasite">
+      <option name="closed" value="true" />
+      <created>1717000121750</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1717000121750</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,6 +211,7 @@
     <MESSAGE value="Minor changes on UI" />
     <MESSAGE value="Update UI, adding watering effects" />
     <MESSAGE value="Update UI, adding parasites" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update UI, adding parasites" />
+    <MESSAGE value="Add parasite" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add parasite" />
   </component>
 </project>
