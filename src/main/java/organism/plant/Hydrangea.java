@@ -8,12 +8,6 @@ public class Hydrangea extends Flower{
     @Override
     public void water(double amount) {
 
-        System.out.println("Watering the flower with " + amount + " ml of water");
-    }
-
-    @Override
-    public void fertilize() {
-
-        System.out.println("Fertilizing the flower");
+        System.out.println("Watering the Hydrangea with " + amount + " ml of water");
     }
 }

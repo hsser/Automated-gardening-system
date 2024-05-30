@@ -9,9 +9,4 @@ public class CherryTomato extends Crop {
     public void water(double amount) {
         System.out.println("Watering the CherryTomato with " + amount + " ml of water");
     }
-
-    @Override
-    public void fertilize() {
-        System.out.println("Fertilizing the CherryTomato");
-    }
 }

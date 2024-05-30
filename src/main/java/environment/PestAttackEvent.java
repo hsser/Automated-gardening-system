@@ -5,7 +5,7 @@ import organism.plant.Plant;
 public class PestAttackEvent extends Event {
     final private Plant plant;
     public PestAttackEvent(Plant plant) {
-        super("Pest attack");
+        super("PestAttackEvent");
         this.plant = plant;
     }
 

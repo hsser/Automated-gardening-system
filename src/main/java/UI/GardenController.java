@@ -24,8 +24,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.*;
 import javafx.util.Duration;
 import javafx.scene.paint.Color;
-
-import java.util.Locale;
+import organism.plant.GardenManager;
 
 
 enum Mode { // Enum to represent the current mode of the garden controller
@@ -37,9 +36,9 @@ public class GardenController {
     private Group soilGroup, plantGroup, ladybugGroup, aphidGroup, spiderGroup, whiteflyGroup;
     @FXML
     private Button waterButton, rainButton, plantButton, parasiteButton, // for watering, raining, parasite, and planting
-                   cancelButton, confirmButton, // for canceling and confirming planting
-                   cancelButton1, confirmButton1, // for confirming parasite
-                   closeButton; // for closing the status pane
+            cancelButton, confirmButton, // for canceling and confirming planting
+            cancelButton1, confirmButton1, // for confirming parasite
+            closeButton; // for closing the status pane
     @FXML
     private Label soilInfoLabel, plantTypeValue, plantNumberValue, humidityValue, temperatureValue, attackStatusValue, healthStatusValue;
     @FXML
@@ -62,7 +61,12 @@ public class GardenController {
     private Image wetSoil = new Image(getClass().getResourceAsStream("/image/soil/4.png"));
     //private Image drySoil = new Image(getClass().getResourceAsStream("/image/soil/5.png"));
 
-    private Weather weather = new Weather();  // System's current weather, default is sunny
+    private GardenManager gardenManager;
+
+    public void setGardenManager(GardenManager gardenManager) {
+        this.gardenManager = gardenManager;
+        System.out.println("TEST-GardenManager: Set GardenManager to garden controller");
+    }
 
     @FXML
     private void initialize() {
@@ -244,12 +248,10 @@ public class GardenController {
             int seedQuantity = plantQuantitySpinner.getValue();
             plantImageView.setImage(new Image(getClass().getResourceAsStream("/image/plants/" + currentPlantType + ".png")));
             // Check if it is raining
-            if (!weather.isSunny()) {
+            if (!gardenManager.getWeather().isSunny()) {
                 clickedSoil.setImage(wetSoil);
             }
-            //TODO: Add logic to handle planting of the seed
-            System.out.println("Planting " + seedQuantity + " " + currentPlantType + " seed" +
-                    ((seedQuantity > 1) ? "s" : ""));
+            gardenManager.createPlants(currentPlantType, seedQuantity);
         }
     }
 
@@ -278,6 +280,7 @@ public class GardenController {
      */
     @FXML
     protected void handleRainButtonClick() {
+        Weather weather = gardenManager.getWeather();
         if(weather.isSunny()) {
             createRaindrop(rainPane);
             // Only set the normal soils to wet, not the grass soils

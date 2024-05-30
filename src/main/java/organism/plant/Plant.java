@@ -57,6 +57,5 @@ public abstract class Plant extends Organism {
      * Abstract methods to be implemented by subclasses
      */
     public abstract void water(double amount);
-    public abstract void fertilize();
 }
 

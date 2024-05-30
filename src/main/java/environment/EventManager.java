@@ -3,7 +3,7 @@ package environment;
 import java.util.Random;
 import java.util.List;
 import organism.plant.Plant;
-import organism.plant.PlantManager;
+import organism.plant.GardenManager;
 
 /**
  * Manages the creation and handling of events within the garden system.
@@ -11,12 +11,12 @@ import organism.plant.PlantManager;
  */
 public class EventManager {
     private Weather weather;  // Used for creating weather change event.
-    private PlantManager plantManager;  // Used to get plants for creating pest attack event.
+    private GardenManager gardenManager;  // Used to get plants for creating pest attack event.
     private Random random = new Random(8);  // Random number generator for creating random events and choose random plant for creating pest attack event.
 
-    public EventManager(Weather weather, PlantManager plantManager) {
+    public EventManager(Weather weather, GardenManager gardenManager) {
         this.weather = weather;
-        this.plantManager = plantManager;
+        this.gardenManager = gardenManager;
     }
 
     /**
@@ -32,7 +32,7 @@ public class EventManager {
                 randomEvent = new WeatherChangeEvent(weather);
                 break;
             case PEST_ATTACK:
-                List<Plant> plants = plantManager.getPlants();
+                List<Plant> plants = gardenManager.getPlants();
                 Plant victim = null;
                 if (plants.isEmpty()) victim = plants.get(random.nextInt(plants.size()));
                 randomEvent = new PestAttackEvent(victim);

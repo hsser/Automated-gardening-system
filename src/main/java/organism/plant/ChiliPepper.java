@@ -10,9 +10,4 @@ public class ChiliPepper extends Crop {
     public void water(double amount) {
         System.out.println("Watering the ChiliPepper with " + amount + " ml of water");
     }
-
-    @Override
-    public void fertilize() {
-        System.out.println("Fertilizing the ChiliPepper");
-    }
 }
