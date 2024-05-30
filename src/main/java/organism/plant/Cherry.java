@@ -1,12 +1,12 @@
 package organism.plant;
 
 public class Cherry extends Tree {
-    public Cherry(String name, double minWaterLevel, double maxWaterLevel, double minTemperatureLevel, double maxTemperatureLevel, double minTemperature, double currentWaterLevel) {
-        super(name, minWaterLevel, maxWaterLevel, minTemperatureLevel, maxTemperatureLevel, minTemperature, currentWaterLevel);
+    public Cherry(String name, PlantType plantType, double currentWaterLevel) {
+        super(name, plantType, currentWaterLevel);
     }
 
     @Override
     public void water(double amount) {
-        System.out.println("Watering the Cherry with "+ amount);
+        System.out.println("Watering the cherry tree with " + amount + " units of water.");
     }
 }

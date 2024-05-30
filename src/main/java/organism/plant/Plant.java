@@ -1,49 +1,47 @@
 package organism.plant;
 
-
 import organism.Organism;
-import sensors.HumiditySensor;
+import sensors.WaterSensor;
 
 public abstract class Plant extends Organism {
-    private double minWaterLevel;
-    private double maxWaterLevel;
     private double minTemperatureLevel;
     private double maxTemperatureLevel;
     private double currentWaterLevel;
     private boolean isUnderAttack;  // Flag to indicate if the plant is being attacked
-    private HumiditySensor humiditySensor;
+    private WaterSensor waterSensor;
+    private PlantType plantType;
 
-    public Plant(String name, double minWaterLevel, double maxWaterLevel, double minTemperatureLevel,
-                 double maxTemperatureLevel, double minTemperature, double currentWaterLevel) {
+    public Plant(String name, PlantType plantType, double currentWaterLevel) {
         super(name);
-        this.minWaterLevel = minWaterLevel;
-        this.maxWaterLevel = maxWaterLevel;
-        this.minTemperatureLevel = minTemperatureLevel;
-        this.maxTemperatureLevel = maxTemperatureLevel;
+        this.plantType = plantType;
+        //this.minTemperatureLevel = minTemperatureLevel;
+        //this.maxTemperatureLevel = maxTemperatureLevel;
         this.currentWaterLevel = currentWaterLevel;
         this.isUnderAttack = false;
-        this.humiditySensor = new HumiditySensor();
+        this.waterSensor = new WaterSensor(plantType);
     }
 
     /**
      * Getters
      */
-    public double getMinWaterLevel() { return this.minWaterLevel; }
-    public double getMaxWaterLevel() { return this.maxWaterLevel; }
+    public double getMinWaterLevel() { return this.plantType.getMinWaterLevel(); }
+    public double getMaxWaterLevel() { return this.plantType.getMaxWaterLevel(); }
     public double getMinTemperatureLevel() { return this.minTemperatureLevel; }
     public double getMaxTemperatureLevel() { return this.maxTemperatureLevel; }
     public double getCurrentWaterLevel() { return this.currentWaterLevel; }
     public boolean isUnderAttack() { return isUnderAttack; }
-    public double getHumidityLevel() {
-        return this.humiditySensor.getHumidityLevel();
+    public double getWaterLevel() {
+        return this.waterSensor.getWaterLevel();
     }
-    public boolean isHumidityLevelLow(){
-        return this.humiditySensor.isHumidityLevelLow();
+    public boolean isWaterLevelLow(){
+        return this.waterSensor.isWaterLevelLow();
     }
 
-    // update humidity level
-    public void updateHumidityLevel(double newHumidityLevel){
-        this.humiditySensor.setHumidityLevel(newHumidityLevel);
+    /**
+     * Update water level
+     */
+    public void updateWaterLevel(double newWaterLevel){
+        this.waterSensor.updateWaterLevel(newWaterLevel);
     }
 
     /**
@@ -52,10 +50,8 @@ public abstract class Plant extends Organism {
      */
     public void setUnderAttack(boolean isUnderAttack) { this.isUnderAttack = isUnderAttack; }
 
-
     /**
      * Abstract methods to be implemented by subclasses
      */
     public abstract void water(double amount);
 }
-

@@ -26,22 +26,22 @@ public class GardenManager {
         // TODO: Change plant to plantGroup, need to discuss with team before
         switch (name) {
             case "CherryTomato":
-                plant = new CherryTomato(name, 0.0, 0.0, 0.0,0.0,0.0,0.0);
+                plant = new CherryTomato(name, PlantType.CROP, 0.0);
                 break;
             case "ChiliPepper":
-                plant = new ChiliPepper(name,0.0, 0.0, 0.0,0.0,0.0,0.0);
+                plant = new ChiliPepper(name,PlantType.CROP, 0.0);
                 break;
             case "Cherry":
-                plant = new Cherry(name, 0.0, 0.0, 0.0,0.0,0.0,0.0);
+                plant = new Cherry(name, PlantType.TREE, 0.0);
                 break;
             case "Peach":
-                plant = new Peach(name, 0.0, 0.0, 0.0,0.0,0.0,0.0);
+                plant = new Peach(name, PlantType.TREE, 0.0);
                 break;
             case "Rose":
-                plant = new Rose(name, 0.0, 0.0, 0.0,0.0,0.0,0.0);
+                plant = new Rose(name, PlantType.FLOWER, 0.0);
                 break;
             case "Hydrangea":
-                plant = new Hydrangea(name, 0.0, 0.0, 0.0,0.0,0.0,0.0);
+                plant = new Hydrangea(name, PlantType.FLOWER, 0.0);
                 break;
             default:
                 System.out.println("TEST-GardenManager: No such type of plant.");

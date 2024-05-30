@@ -30,11 +30,13 @@ public class TemperatureController {
         logCurrentTemperature(currentTemperature);
 
         if(currentTemperature > HIGH_TEMPERATURE_THRESHOLD){ // The temperature is too high
-            System.out.println("Cooling down ...");
+            System.out.println("Cooler is on ...");
             temperatureToOptimal();
+            System.out.println("Cooler is off ...");
         }else if(currentTemperature < LOW_TEMPERATURE_THRESHOLD){
-            System.out.println("Heating up ...");
+            System.out.println("Heater is on ...");
             temperatureToOptimal();
+            System.out.println("Heater is off ...");
         }else{
             System.out.println("The temperature is quit suitable for plants' growth!");
         }
