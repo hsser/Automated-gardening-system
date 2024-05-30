@@ -1,6 +1,6 @@
 package organism.plant;
 
-public class PeachTree extends Trees{
+public class PeachTree extends Tree {
     public PeachTree(String name, double minWaterLevel, double maxWaterLevel, double minTemperatureLevel, double maxTemperatureLevel, double minTemperature, double currentWaterLevel) {
         super(name, minWaterLevel, maxWaterLevel, minTemperatureLevel, maxTemperatureLevel, minTemperature, currentWaterLevel);
     }

@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Minor changes on UI">
+      <change afterPath="$PROJECT_DIR$/src/main/java/organism/plant/PlantType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UI/GardenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/GardenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/UI/farm-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UI/farm-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HumidityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/WaterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/TemperatureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/TemperatureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/AppleTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/organism/plant/CherryTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/PeachTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/organism/plant/PeachTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/organism/plant/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/organism/plant/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sensors/HumiditySensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sensors/WaterSensor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -113,14 +121,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
