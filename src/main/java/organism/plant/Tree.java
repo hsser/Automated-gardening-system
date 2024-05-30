@@ -1,17 +1,12 @@
 package organism.plant;
 
-public class Tree extends Plant{
-    public Tree(String name, double minWaterLevel, double maxWaterLevel, double minTemperatureLevel, double maxTemperatureLevel, double minTemperature, double currentWaterLevel) {
-        super(name, minWaterLevel, maxWaterLevel, minTemperatureLevel, maxTemperatureLevel, minTemperature, currentWaterLevel);
+public abstract class Tree extends Plant {
+    public Tree(String name, PlantType plantType, double currentWaterLevel) {
+        super(name, plantType, currentWaterLevel);
     }
 
     @Override
     public void water(double amount) {
-
-    }
-
-    @Override
-    public void fertilize() {
-
+        System.out.println("Watering the Peach with "+ amount);
     }
 }

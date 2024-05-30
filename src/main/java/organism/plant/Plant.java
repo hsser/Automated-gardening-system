@@ -11,12 +11,11 @@ public abstract class Plant extends Organism {
     private WaterSensor waterSensor;
     private PlantType plantType;
 
-    public Plant(String name, PlantType plantType, double minTemperatureLevel,
-                 double maxTemperatureLevel, double currentWaterLevel) {
+    public Plant(String name, PlantType plantType, double currentWaterLevel) {
         super(name);
         this.plantType = plantType;
-        this.minTemperatureLevel = minTemperatureLevel;
-        this.maxTemperatureLevel = maxTemperatureLevel;
+        //this.minTemperatureLevel = minTemperatureLevel;
+        //this.maxTemperatureLevel = maxTemperatureLevel;
         this.currentWaterLevel = currentWaterLevel;
         this.isUnderAttack = false;
         this.waterSensor = new WaterSensor(plantType);
@@ -55,5 +54,4 @@ public abstract class Plant extends Organism {
      * Abstract methods to be implemented by subclasses
      */
     public abstract void water(double amount);
-    public abstract void fertilize();
 }

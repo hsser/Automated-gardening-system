@@ -46,7 +46,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GardenController">
    <children>
       <ImageView id="background" accessibleRole="CHECK_MENU_ITEM" disable="true" layoutX="-14.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
@@ -156,24 +155,520 @@
       </Group>
       <Group id="plantGroup" fx:id="plantGroup" disable="true" mouseTransparent="true">
          <children>
-            <ImageView id="1" fx:id="plant1" fitHeight="180.0" fitWidth="180.0" layoutX="239.0" layoutY="153.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="2" fx:id="plant2" fitHeight="180.0" fitWidth="180.0" layoutX="363.0" layoutY="210.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="3" fx:id="plant3" fitHeight="180.0" fitWidth="180.0" layoutX="483.0" layoutY="268.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="4" fx:id="plant4" fitHeight="180.0" fitWidth="180.0" layoutX="606.0" layoutY="326.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="5" fx:id="plant5" fitHeight="180.0" fitWidth="180.0" layoutX="718.0" layoutY="380.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="6" fx:id="plant6" fitHeight="180.0" fitWidth="180.0" layoutX="134.0" layoutY="210.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="7" fx:id="plant7" fitHeight="180.0" fitWidth="180.0" layoutX="250.0" layoutY="268.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="8" fx:id="plant8" fitHeight="180.0" fitWidth="180.0" layoutX="370.0" layoutY="326.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="9" fx:id="plant9" fitHeight="180.0" fitWidth="180.0" layoutX="491.0" layoutY="374.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="10" fx:id="plant10" fitHeight="180.0" fitWidth="180.0" layoutX="606.0" layoutY="438.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="11" fx:id="plant11" fitHeight="180.0" fitWidth="180.0" layoutX="22.0" layoutY="268.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="12" fx:id="plant12" fitHeight="180.0" fitWidth="180.0" layoutX="140.0" layoutY="326.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="13" fx:id="plant13" fitHeight="180.0" fitWidth="180.0" layoutX="259.0" layoutY="380.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="14" fx:id="plant14" fitHeight="180.0" fitWidth="180.0" layoutX="383.0" layoutY="431.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="15" fx:id="plant15" fitHeight="180.0" fitWidth="180.0" layoutX="498.0" layoutY="492.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="1" fx:id="plant1" fitHeight="180.0" fitWidth="180.0" layoutX="256.0" layoutY="173.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="2" fx:id="plant2" fitHeight="180.0" fitWidth="180.0" layoutX="373.0" layoutY="228.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="3" fx:id="plant3" fitHeight="180.0" fitWidth="180.0" layoutX="502.0" layoutY="286.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="4" fx:id="plant4" fitHeight="180.0" fitWidth="180.0" layoutX="620.0" layoutY="344.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="5" fx:id="plant5" fitHeight="180.0" fitWidth="180.0" layoutX="738.0" layoutY="402.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="6" fx:id="plant6" fitHeight="180.0" fitWidth="180.0" layoutX="145.0" layoutY="228.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="7" fx:id="plant7" fitHeight="180.0" fitWidth="180.0" layoutX="267.0" layoutY="288.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="8" fx:id="plant8" fitHeight="180.0" fitWidth="180.0" layoutX="383.0" layoutY="344.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="9" fx:id="plant9" fitHeight="180.0" fitWidth="180.0" layoutX="509.0" layoutY="398.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="10" fx:id="plant10" fitHeight="180.0" fitWidth="180.0" layoutX="622.0" layoutY="454.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="11" fx:id="plant11" fitHeight="180.0" fitWidth="180.0" layoutX="30.0" layoutY="283.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="12" fx:id="plant12" fitHeight="180.0" fitWidth="180.0" layoutX="152.0" layoutY="340.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="13" fx:id="plant13" fitHeight="180.0" fitWidth="180.0" layoutX="273.0" layoutY="396.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="14" fx:id="plant14" fitHeight="180.0" fitWidth="180.0" layoutX="399.0" layoutY="451.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="15" fx:id="plant15" fitHeight="180.0" fitWidth="180.0" layoutX="512.0" layoutY="506.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Group>
-      <Pane id="rainPane" fx:id="rainPane" layoutX="-1.0" mouseTransparent="true" prefHeight="649.0" prefWidth="1020.0" />
+      <Group id="ladybugGroup" fx:id="ladybugGroup" disable="true" layoutX="10.0" layoutY="10.0" mouseTransparent="true">
+         <children>
+            <ImageView id="1" fx:id="ladybug1" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="321.0" layoutY="260.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+            <ImageView id="2" fx:id="ladybug2" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="445.0" layoutY="333.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+            <ImageView id="3" fx:id="ladybug3" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="576.0" layoutY="387.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+            <ImageView id="4" fx:id="ladybug4" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="688.0" layoutY="443.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+            <ImageView id="5" fx:id="ladybug5" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="806.0" layoutY="530.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+            <ImageView id="6" fx:id="ladybug6" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="222.0" layoutY="333.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+            <ImageView id="7" fx:id="ladybug7" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="336.0" layoutY="409.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+            <ImageView id="8" fx:id="ladybug8" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="453.0" layoutY="443.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+            <ImageView id="9" fx:id="ladybug9" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="576.0" layoutY="498.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+            <ImageView id="10" fx:id="ladybug10" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="680.0" layoutY="581.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+            <ImageView id="11" fx:id="ladybug11" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="99.0" layoutY="420.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+            <ImageView id="12" fx:id="ladybug12" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="216.0" layoutY="465.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+            <ImageView id="13" fx:id="ladybug13" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="345.0" layoutY="525.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+            <ImageView id="14" fx:id="ladybug14" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="468.0" layoutY="592.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+            <ImageView id="15" fx:id="ladybug15" disable="true" fitHeight="180.0" fitWidth="30.0" layoutX="582.0" layoutY="641.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Ladybug.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
+      <Group id="aphidGroup" fx:id="aphidGroup" disable="true" mouseTransparent="true">
+         <children>
+            <ImageView id="1" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="336.0" layoutY="251.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+            <ImageView id="2" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="461.0" layoutY="310.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+            <ImageView id="3" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="582.0" layoutY="362.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+            <ImageView id="4" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="705.0" layoutY="420.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+            <ImageView id="5" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="765.0" layoutY="530.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+            <ImageView id="6" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="191.0" layoutY="325.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+            <ImageView id="7" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="351.0" layoutY="362.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+            <ImageView id="8" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="468.0" layoutY="420.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+            <ImageView id="9" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="592.0" layoutY="469.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+            <ImageView id="10" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="642.0" layoutY="577.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+            <ImageView id="11" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="43.0" layoutY="397.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+            <ImageView id="12" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="154.0" layoutY="452.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+            <ImageView id="13" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="273.0" layoutY="507.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+            <ImageView id="14" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="401.0" layoutY="567.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+            <ImageView id="15" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="511.0" layoutY="628.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Aphid.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
+      <Group id="spiderGroup" fx:id="spiderGroup" disable="true" layoutX="20.0" layoutY="20.0" mouseTransparent="true">
+         <children>
+            <ImageView id="1" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="336.0" layoutY="251.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+            <ImageView id="2" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="461.0" layoutY="310.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+            <ImageView id="3" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="582.0" layoutY="362.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+            <ImageView id="4" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="705.0" layoutY="420.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+            <ImageView id="5" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="806.0" layoutY="530.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+            <ImageView id="6" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="163.0" layoutY="310.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+            <ImageView id="7" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="351.0" layoutY="362.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+            <ImageView id="8" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="468.0" layoutY="420.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+            <ImageView id="9" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="592.0" layoutY="469.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+            <ImageView id="10" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="680.0" layoutY="581.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+            <ImageView id="11" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="80.0" layoutY="420.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+            <ImageView id="12" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="213.0" layoutY="465.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+            <ImageView id="13" fx:id="plant1311" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="332.0" layoutY="525.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+            <ImageView id="14" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="453.0" layoutY="581.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+            <ImageView id="15" disable="true" fitHeight="180.0" fitWidth="50.0" layoutX="582.0" layoutY="641.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/Spider.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
+      <Group id="whiteflyGroup" fx:id="whiteflyGroup" disable="true" layoutX="30.0" layoutY="30.0" mouseTransparent="true">
+         <children>
+            <ImageView id="1" fx:id="plant1111" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="309.0" layoutY="205.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+            <ImageView id="2" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="422.0" layoutY="260.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+            <ImageView id="3" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="556.0" layoutY="319.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+            <ImageView id="4" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="674.0" layoutY="377.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+            <ImageView id="5" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="830.0" layoutY="487.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+            <ImageView id="6" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="187.0" layoutY="267.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+            <ImageView id="7" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="324.0" layoutY="319.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+            <ImageView id="8" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="437.0" layoutY="377.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+            <ImageView id="9" fx:id="plant9112" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="556.0" layoutY="422.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+            <ImageView id="10" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="704.0" layoutY="538.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+            <ImageView id="11" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="104.0" layoutY="377.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+            <ImageView id="12" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="237.0" layoutY="422.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+            <ImageView id="13" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="356.0" layoutY="482.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+            <ImageView id="14" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="477.0" layoutY="538.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+            <ImageView id="15" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="606.0" layoutY="598.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../image/icon/whitefly.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
+      <Pane id="rainPane" fx:id="rainPane" mouseTransparent="true" prefHeight="649.0" prefWidth="1020.0" />
       <Button id="waterButton" fx:id="waterButton" contentDisplay="GRAPHIC_ONLY" layoutX="23.0" layoutY="646.0" mnemonicParsing="false" onMouseClicked="#handleWaterButtonClick" style="-fx-background-color: transparent;" textAlignment="CENTER" textFill="#650b0b" textOverrun="CLIP">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -213,22 +708,18 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView id="aphid" fitHeight="71.0" fitWidth="71.0" layoutX="347.0" layoutY="673.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/icon/aphid.png" />
-         </image>
-         <effect>
-            <DropShadow />
-         </effect>
-      </ImageView>
-      <ImageView id="ladybug" fitHeight="75.0" fitWidth="75.0" layoutX="447.0" layoutY="669.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/icon/ladybug.png" />
-         </image>
-         <effect>
-            <DropShadow />
-         </effect>
-      </ImageView>
+      <Button id="parasiteButton" fx:id="parasiteButton" contentDisplay="GRAPHIC_ONLY" layoutX="357.0" layoutY="667.0" mnemonicParsing="false" onMouseClicked="#handleParasiteButtonClick" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView id="parasite" fitHeight="71.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icon/parasite.png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+         </graphic>
+      </Button>
       <AnchorPane fx:id="sunnyWrapper" layoutX="400.0">
          <children>
             <ImageView fx:id="sunny" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
@@ -239,7 +730,7 @@
          </children>
       </AnchorPane>
       <Pane id="overlayPane" fx:id="overlayPane" prefHeight="761.0" prefWidth="1020.0" style="-fx-background-color: rgba(0, 0, 0, 0.4);" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane id="popupSlectionPane" fx:id="popupSelectionPane" layoutX="313.0" layoutY="237.0" minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="395.0" visible="false">
+      <AnchorPane id="plantSelectionPane" fx:id="plantSelectionPane" layoutX="313.0" layoutY="237.0" minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="395.0" visible="false">
          <children>
             <ImageView id="popupBg" fitHeight="329.0" fitWidth="408.0" layoutX="-4.0" pickOnBounds="true">
                <image>
@@ -251,7 +742,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <GridPane id="seedSelectionGrid" fx:id="seedSelectionGrid" alignment="TOP_CENTER" layoutX="22.0" layoutY="5.0" prefHeight="214.0" prefWidth="372.0">
+            <GridPane id="plantSelectionGrid" fx:id="plantSelectionGrid" alignment="TOP_CENTER" layoutX="22.0" layoutY="5.0" prefHeight="214.0" prefWidth="372.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -262,7 +753,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button id="chiliPepperButton" fx:id="chiliPepperButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#handleSeedSelection" style="-fx-background-color: transparent;" text="ChiliPepper" textAlignment="CENTER">
+                  <Button id="chiliPepperButton" fx:id="chiliPepperButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#handlePlantSelection" style="-fx-background-color: transparent;" text="ChiliPepper" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -274,7 +765,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button id="cherryTomatoButton" fx:id="cherryTomatoButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#handleSeedSelection" style="-fx-background-color: transparent;" text="CherryTomato" textAlignment="CENTER" GridPane.columnIndex="2">
+                  <Button id="cherryTomatoButton" fx:id="cherryTomatoButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#handlePlantSelection" style="-fx-background-color: transparent;" text="CherryTomato" textAlignment="CENTER" GridPane.columnIndex="2">
                      <graphic>
                         <ImageView id="CherryTomato" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -286,7 +777,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button id="peachButton" fx:id="peachButton" alignment="CENTER" contentDisplay="TOP" layoutX="199.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#handleSeedSelection" style="-fx-background-color: transparent;" text="Peach" textAlignment="CENTER" GridPane.columnIndex="1">
+                  <Button id="peachButton" fx:id="peachButton" alignment="CENTER" contentDisplay="TOP" layoutX="199.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#handlePlantSelection" style="-fx-background-color: transparent;" text="Peach" textAlignment="CENTER" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView id="peach" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -298,7 +789,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button id="cherryButton" fx:id="cherryButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#handleSeedSelection" style="-fx-background-color: transparent;" text="Cherry" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button id="cherryButton" fx:id="cherryButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#handlePlantSelection" style="-fx-background-color: transparent;" text="Cherry" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <graphic>
                         <ImageView id="cherry" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -310,7 +801,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button id="roseButton" fx:id="roseButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#handleSeedSelection" style="-fx-background-color: transparent;" text="Rose" textAlignment="CENTER" GridPane.rowIndex="1">
+                  <Button id="roseButton" fx:id="roseButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#handlePlantSelection" style="-fx-background-color: transparent;" text="Rose" textAlignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -322,7 +813,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button id="hydrangeaButton" fx:id="hydrangeaButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#handleSeedSelection" prefHeight="115.0" prefWidth="88.0" style="-fx-background-color: transparent;" text="Hydrangea" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button id="hydrangeaButton" fx:id="hydrangeaButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#handlePlantSelection" prefHeight="115.0" prefWidth="88.0" style="-fx-background-color: transparent;" text="Hydrangea" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -336,7 +827,7 @@
                   </Button>
                </children>
             </GridPane>
-            <Spinner fx:id="seedQuantitySpinner" layoutX="49.0" layoutY="245.0" prefHeight="36.0" prefWidth="83.0" visible="false" />
+            <Spinner fx:id="plantQuantitySpinner" layoutX="49.0" layoutY="245.0" prefHeight="36.0" prefWidth="83.0" visible="false" />
             <Button id="confirmButton" fx:id="confirmButton" cancelButton="true" layoutX="169.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#handleConfirmPlanting" prefHeight="36.0" prefWidth="63.0" style="-fx-background-color: lightgray;" text="Confirm" visible="false">
                <font>
                   <Font name="System Bold" size="13.0" />
@@ -417,6 +908,74 @@
                </font>
             </Label>
             <Button id="closeButton" fx:id="closeButton" cancelButton="true" layoutX="269.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#handleCloseButtonClick" prefHeight="36.0" prefWidth="63.0" style="-fx-background-color: lightgray;" text="Close">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="parasiteSelectionPane" fx:id="parasiteSelectionPane" layoutX="323.0" layoutY="247.0" minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="395.0" visible="false">
+         <children>
+            <ImageView id="popupBg" fitHeight="329.0" fitWidth="408.0" layoutX="-4.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../image/background/userbackground.png" />
+               </image>
+            </ImageView>
+            <Button id="cancelButton" fx:id="cancelButton1" cancelButton="true" layoutX="269.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#handleCancelParasite" prefHeight="36.0" prefWidth="63.0" style="-fx-background-color: lightgray;" text="Cancel">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <GridPane id="parasiteSelectionGrid" fx:id="parasiteSelectionGrid" alignment="TOP_CENTER" layoutX="22.0" layoutY="5.0" prefHeight="214.0" prefWidth="343.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button id="aphidButton" fx:id="chiliPepperButton1" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#handleParasiteSelection" style="-fx-background-color: transparent;" text="Aphid" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <graphic>
+                        <ImageView id="aphid" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/icon/Aphid.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="whiteflyButton" fx:id="cherryButton1" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#handleParasiteSelection" style="-fx-background-color: transparent;" text="Whitefly" textAlignment="CENTER" GridPane.columnIndex="1">
+                     <graphic>
+                        <ImageView id="whitefly" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/icon/whitefly.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button id="SpiderButton" fx:id="hydrangeaButton1" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#handleParasiteSelection" style="-fx-background-color: transparent;" text="Spider" textAlignment="CENTER" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <graphic>
+                        <ImageView id="spider" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../image/icon/Spider.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </GridPane>
+            <Spinner fx:id="parasiteQuantitySpinner" layoutX="49.0" layoutY="245.0" prefHeight="36.0" prefWidth="83.0" visible="false" />
+            <Button id="confirmButton" fx:id="confirmButton1" cancelButton="true" layoutX="169.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#handleConfirmParasite" prefHeight="36.0" prefWidth="63.0" style="-fx-background-color: lightgray;" text="Confirm" visible="false">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

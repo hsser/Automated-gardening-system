@@ -3,7 +3,7 @@ package environment;
 public class WeatherChangeEvent extends Event {
     private Weather weather;
     public WeatherChangeEvent(Weather weather) {
-        super("Weather change");
+        super("WeatherChangeEvent");
         this.weather = weather;
     }
 
