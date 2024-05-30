@@ -245,13 +245,13 @@ public class GardenController {
         ImageView plantImageView = (ImageView) plantGroup.lookup("#" + soilId);
         if (plantImageView != null && plantImageView.getImage() == null) {
             clickedSoil.setImage(normalSoil);
-            int seedQuantity = plantQuantitySpinner.getValue();
+            int plantQuantity = plantQuantitySpinner.getValue();
             plantImageView.setImage(new Image(getClass().getResourceAsStream("/image/plants/" + currentPlantType + ".png")));
             // Check if it is raining
             if (!gardenManager.getWeather().isSunny()) {
                 clickedSoil.setImage(wetSoil);
             }
-            gardenManager.createPlants(currentPlantType, seedQuantity);
+            gardenManager.createPlants(currentPlantType, plantQuantity);
         }
     }
 
@@ -293,7 +293,6 @@ public class GardenController {
                     soil.setImage(wetSoil);
                 }
             }
-
             animateSunnyImage(1.0, 0.1, false);
         } else {
             rainPane.getChildren().clear();
