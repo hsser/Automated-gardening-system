@@ -1,5 +1,6 @@
 package plant;
 
+import environment.EventManager;
 import environment.Weather;
 
 import java.util.ArrayList;
@@ -8,56 +9,65 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Manages the garden system, including weather, temperature, plants and events.
- * Provides methods to access system's current weather and temperature.
- * Provides methods to access and manipulate plants.
  */
+// TODO: Add timer, sensor and controller
+// TODO: Delete all TEST output
 public class GardenManager {
     private Weather weather = new Weather();  // System's current weather, default is sunny
     private AtomicInteger temperature = new AtomicInteger(80);  // System's current temperature, default is 80
-    private List<Plant> plants = new ArrayList<>();
+    private List<List<Plant>> plantGroups = new ArrayList<>();
+    private EventManager eventManager = new EventManager(weather, temperature, plantGroups);
+    private final int MAX_PLOT = 15;
+    private int numberOfPlants = 0;
 
     public GardenManager() {
         System.out.println("TEST-GardenManager: Construct GardenManager");
+        for (int i = 0; i < MAX_PLOT; i++) {
+            plantGroups.add(i, new ArrayList<>());
+        }
     }
 
-    public void createPlants(String name, int quantity) {
-        Plant plant = null;
-        // TODO: Add real values to construct plant
-        // TODO: Change plant to plantGroup, need to discuss with team before
-        switch (name) {
-            case "CherryTomato":
-                plant = new CherryTomato(name, PlantType.CROP, 0.0);
-                break;
-            case "ChiliPepper":
-                plant = new ChiliPepper(name,PlantType.CROP, 0.0);
-                break;
-            case "Cherry":
-                plant = new Cherry(name, PlantType.TREE, 0.0);
-                break;
-            case "Peach":
-                plant = new Peach(name, PlantType.TREE, 0.0);
-                break;
-            case "Rose":
-                plant = new Rose(name, PlantType.FLOWER, 0.0);
-                break;
-            case "Hydrangea":
-                plant = new Hydrangea(name, PlantType.FLOWER, 0.0);
-                break;
-            default:
-                System.out.println("TEST-GardenManager: No such type of plant.");
+    // TODO: Add script planting mode.
+    // TODO: Match API (void initializeGarden(), Map<String, Object> getPlants(), void temperature(int), void parasite(str), void getState()).
+    /**
+     * Create plants for UI planting mode.
+     */
+    public void createPlants(String name, int quantity, String soilId) {
+        List<Plant> plantGroup = new ArrayList<>();
+        // TODO: What is the initial current water level?
+        for (int i = 0; i < quantity; i++) {
+            switch (name) {
+                case "CherryTomato":
+                    plantGroup.add(new CherryTomato(name, PlantType.CROP, 0.0));
+                    break;
+                case "ChiliPepper":
+                    plantGroup.add(new ChiliPepper(name, PlantType.CROP, 0.0));
+                    break;
+                case "Cherry":
+                    plantGroup.add(new Cherry(name, PlantType.TREE, 0.0));
+                    break;
+                case "Peach":
+                    plantGroup.add(new Peach(name, PlantType.TREE, 0.0));
+                    break;
+                case "Rose":
+                    plantGroup.add(new Rose(name, PlantType.FLOWER, 0.0));
+                    break;
+                case "Hydrangea":
+                    plantGroup.add(new Hydrangea(name, PlantType.FLOWER, 0.0));
+                    break;
+                default:
+                    System.out.println("TEST-GardenManager: No such type of plant.");
+            }
         }
-        if (plants != null) {
-            this.plants.add(plant);
+        if (plantGroup != null) {
+            int index = Integer.parseInt(soilId) - 1;
+            plantGroups.set(index, plantGroup);
             System.out.println("Planting " + quantity + " " + name + " seed" +
-                    ((quantity > 1) ? "s" : ""));
+                    ((quantity > 1) ? "s" : "") + " in plot " + (index + 1));
+            numberOfPlants += quantity;
+            System.out.println("TEST-GardenManager: Current number of plant is " + numberOfPlants);
         }
-
-        System.out.println("TEST-GardenManager: Current bunches of plant are " + plants.size());
     }
 
     public Weather getWeather() { return weather; }
-    public AtomicInteger getTemperature() { return temperature; }
-    public List<Plant> getPlants() {
-        return plants;
-    }
 }

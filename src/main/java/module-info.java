@@ -3,6 +3,6 @@ module org.example.demo {
     requires javafx.fxml;
 
 
-    opens Application to javafx.fxml;
-    exports Application;
+    opens application to javafx.fxml;
+    exports application;
 }

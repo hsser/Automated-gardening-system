@@ -2,11 +2,13 @@ package environment;
 
 import plant.Plant;
 
+import java.util.List;
+
 public class PestAttackEvent extends Event {
-    final private Plant plant;
-    public PestAttackEvent(Plant plant) {
+    final private List<Plant> plantGroup;
+    public PestAttackEvent(List<Plant> plantGroup) {
         super("PestAttackEvent");
-        this.plant = plant;
+        this.plantGroup = plantGroup;
     }
 
     /**
@@ -14,10 +16,12 @@ public class PestAttackEvent extends Event {
      * If there is no plant in the garden, print out the message accordingly
      */
     public void trigger() {
-        if (plant != null) {
-            plant.setUnderAttack(true);
+        if (plantGroup != null) {
+            for (Plant plant: plantGroup) {
+                plant.setUnderAttack(true);
+            }
             // TODO: Need to involve pest control module
-            System.out.println("Event: Pest attack to " + plant.getName());
+            System.out.println("Event: Pest attack to " + plantGroup.get(0).getName());
         } else {
             System.out.println("Event: Pest attack to the garden, but no plant is attacked");
         }

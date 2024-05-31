@@ -1,4 +1,4 @@
-package Application;
+package application;
 
 import environment.Weather;
 import environment.WeatherChangeEvent;
@@ -542,7 +542,7 @@ public class GardenController {
             case PLANTING:
                 //TODO: need to check if the soil is occupied by a plant
                 int plantQuantity = plantQuantitySpinner.getValue();
-                gardenManager.createPlants(currentPlantType, plantQuantity);
+                gardenManager.createPlants(currentPlantType, plantQuantity, soilId);
                 // Show the planting effect on the soil
                 showPlantingEffect(soilId, currentPlantType);
                 // Reset cursor to default after planting
