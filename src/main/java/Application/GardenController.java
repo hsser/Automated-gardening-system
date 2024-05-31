@@ -1,4 +1,4 @@
-package UI;
+package Application;
 
 import environment.Weather;
 import environment.WeatherChangeEvent;
@@ -26,6 +26,9 @@ import javafx.util.Duration;
 import javafx.scene.paint.Color;
 import plant.GardenManager;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 enum Mode { // Enum to represent the current mode of the garden controller
     WATERING, PLANTING, PARASITE, NONE
@@ -48,10 +51,11 @@ public class GardenController {
     @FXML
     private ImageView sunny, plantCover;
     @FXML
-    private Spinner<Integer> plantQuantitySpinner, parasiteQuantitySpinner;
+    private Spinner<Integer> plantQuantitySpinner;
     @FXML
     private GridPane plantSelectionGrid, parasiteSelectionGrid;
 
+    private Map<String, ImageView> imageviews = new HashMap<>();
     private Mode currentMode = Mode.NONE;  // The current mode of the garden controller
     private String currentPlantType = null;  // The type of seed currently selected;
     private String currentParasiteType = null;  // The type of parasite currently selected;
@@ -70,15 +74,15 @@ public class GardenController {
 
     @FXML
     private void initialize() {
-        // Set the default mode to none
-        currentMode = Mode.NONE;
+        imageviews.put("sunny", sunny);
+        imageviews.put("plantCover", plantCover);
+
         // Set the default plant type to null
         setAllSoils(grassSoil);
 
         // Configure the spinner for integer values with a min, max, and step
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, 1);
         plantQuantitySpinner.setValueFactory(valueFactory);
-        parasiteQuantitySpinner.setValueFactory(valueFactory);
     }
 
     /**
@@ -293,10 +297,10 @@ public class GardenController {
                     soil.setImage(wetSoil);
                 }
             }
-            animateSunnyImage(1.0, 0.1, false);
+            animateImage("sunny",1.0, 0.1, false);
         } else {
             rainPane.getChildren().clear();
-            animateSunnyImage(0.1, 1.0, true);
+            animateImage("sunny", 0.1, 1.0, true);
         }
         WeatherChangeEvent weatherChangeEvent = new WeatherChangeEvent(weather);
         weatherChangeEvent.trigger();
@@ -307,16 +311,22 @@ public class GardenController {
     }
 
     /**
-     * Animates the sunny image to appear or disappear.
+     * Animates the image to appear or disappear.
      * @param fromScale The starting scale of the image.
      * @param toScale The ending scale of the image.
      * @param setVisibleAfter Whether to set the image to invisible after the animation.
      */
-    private void animateSunnyImage(double fromScale, double toScale, boolean setVisibleAfter) {
-        sunny.setVisible(true);
+    private void animateImage(String imageName, double fromScale, double toScale, boolean setVisibleAfter) {
+        ImageView image = imageviews.get(imageName);
+        if (image == null) {
+            System.err.println("Image not found: " + imageName);
+            return;
+        }
+
+        image.setVisible(true);
 
         // Create a scale transition for the ImageView
-        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.5), sunny);
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.5), image);
         scaleTransition.setFromX(fromScale);
         scaleTransition.setFromY(fromScale);
         scaleTransition.setToX(toScale);
@@ -325,31 +335,11 @@ public class GardenController {
         scaleTransition.setAutoReverse(false);
 
         if (!setVisibleAfter) {
-            scaleTransition.setOnFinished(event -> sunny.setVisible(false));
+            scaleTransition.setOnFinished(event -> image.setVisible(false));
         }
 
         scaleTransition.play();
     }
-
-    private void animatePlantCoverImage(double fromScale, double toScale, boolean setVisibleAfter) {
-        plantCover.setVisible(true);
-
-        // Create a scale transition for the ImageView
-        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.5), plantCover);
-        scaleTransition.setFromX(fromScale);
-        scaleTransition.setFromY(fromScale);
-        scaleTransition.setToX(toScale);
-        scaleTransition.setToY(toScale);
-        scaleTransition.setCycleCount(1);
-        scaleTransition.setAutoReverse(false);
-
-        if (!setVisibleAfter) {
-            scaleTransition.setOnFinished(event -> plantCover.setVisible(false));
-        }
-
-        scaleTransition.play();
-    }
-
 
     /**
      * Creates a raindrop animation on the given pane.
@@ -404,7 +394,6 @@ public class GardenController {
      */
     @FXML
     private void handleParasiteSelection(MouseEvent event) {
-        parasiteQuantitySpinner.getValueFactory().setValue(1); // Reset to default value
         resetSelectionButtonStyle(parasiteSelectionGrid);
         // Extract which parasite was selected
         Button selectedParasite = (Button) event.getSource();
@@ -412,7 +401,6 @@ public class GardenController {
         currentParasiteType = selectedParasite.getText();
 
         // Configure and show the quantity spinner
-        setNodeVisibility(parasiteQuantitySpinner, true);
         setNodeVisibility(confirmButton1, true);
     }
 
@@ -421,15 +409,10 @@ public class GardenController {
      */
     @FXML
     private void handleConfirmParasite() {
-        setNodeVisibility(parasiteQuantitySpinner, false);
         setNodeVisibility(confirmButton1, false);
         parasiteSelectionPane.setVisible(false);
         overlayPane.setVisible(false);
-        soilGroup.getScene().setCursor(new ImageCursor(new Image(getClass().getResourceAsStream("/image/icon/cursor.png")), 0, 0));
-        waterButton.setDisable(true);  // Disable the water button
-        plantButton.setDisable(true);  // Disable the plant button
-        rainButton.setDisable(true);  // Disable the rain button
-        // manager(type)
+        //TODO: pass user selected parasite to Garden Manager, Garden Manager then calls handleParasite()
     }
 
     /**
@@ -438,7 +421,7 @@ public class GardenController {
     @FXML
     private void handleCancelParasite() {
         currentMode = Mode.NONE;
-        setNodeVisibility(parasiteQuantitySpinner, false);
+        currentParasiteType = null;
         setNodeVisibility(confirmButton1, false);
         setNodeVisibility(parasiteSelectionPane, false);
         setNodeVisibility(overlayPane, false);
@@ -450,7 +433,7 @@ public class GardenController {
      */
     private void handleParasite(String soilId, String parasiteType) {
         if (currentParasiteType == null) {
-            return;
+            currentParasiteType = parasiteType;
         }
         ImageView clickedSoil = getSoilById(soilId);
 
@@ -475,14 +458,10 @@ public class GardenController {
         }
 
         if (!parasiteImageView.isVisible()) {
-            int parasiteQuantity = parasiteQuantitySpinner.getValue();
             parasiteImageView.setVisible(true);
-
-            //TODO: Add logic to handle releasing of the parasite
-
-            System.out.println("Releasing " + parasiteQuantity + " " + currentParasiteType +
-                    ((parasiteQuantity > 1) ? "s" : ""));
         }
+
+        currentParasiteType = null;
     }
 
 
@@ -564,14 +543,6 @@ public class GardenController {
                 waterButton.setDisable(false);  // Enable the water button
                 rainButton.setDisable(false);  // Enable the rain button
                 parasiteButton.setDisable(false);  // Enable the parasite button
-                currentMode = Mode.NONE;
-                break;
-            case PARASITE:
-                handleParasite(soilId, currentParasiteType);
-                soilGroup.getScene().setCursor(Cursor.DEFAULT);
-                waterButton.setDisable(false);  // Enable the water button
-                plantButton.setDisable(false);  // Enable the plant button
-                rainButton.setDisable(false);  // Enable the rain button
                 currentMode = Mode.NONE;
                 break;
             case NONE:
