@@ -1,9 +1,9 @@
-package organism.plant;
+package plant;
 
-import organism.Organism;
 import sensors.WaterSensor;
 
-public abstract class Plant extends Organism {
+public abstract class Plant{
+    private String name;
     private double minTemperatureLevel;
     private double maxTemperatureLevel;
     private double currentWaterLevel;
@@ -12,7 +12,7 @@ public abstract class Plant extends Organism {
     private PlantType plantType;
 
     public Plant(String name, PlantType plantType, double currentWaterLevel) {
-        super(name);
+        this.name = name;
         this.plantType = plantType;
         //this.minTemperatureLevel = minTemperatureLevel;
         //this.maxTemperatureLevel = maxTemperatureLevel;
@@ -24,6 +24,7 @@ public abstract class Plant extends Organism {
     /**
      * Getters
      */
+    public String getName() { return this.name; }
     public double getMinWaterLevel() { return this.plantType.getMinWaterLevel(); }
     public double getMaxWaterLevel() { return this.plantType.getMaxWaterLevel(); }
     public double getMinTemperatureLevel() { return this.minTemperatureLevel; }

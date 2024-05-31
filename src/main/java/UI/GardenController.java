@@ -24,7 +24,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.*;
 import javafx.util.Duration;
 import javafx.scene.paint.Color;
-import organism.plant.GardenManager;
+import plant.GardenManager;
 
 
 enum Mode { // Enum to represent the current mode of the garden controller
@@ -46,7 +46,7 @@ public class GardenController {
     @FXML
     private AnchorPane plantSelectionPane, popupStatusPane, parasiteSelectionPane;
     @FXML
-    private ImageView sunny;
+    private ImageView sunny, plantCover;
     @FXML
     private Spinner<Integer> plantQuantitySpinner, parasiteQuantitySpinner;
     @FXML
@@ -282,7 +282,7 @@ public class GardenController {
     protected void handleRainButtonClick() {
         Weather weather = gardenManager.getWeather();
         if(weather.isSunny()) {
-            createRaindrop(rainPane);
+            createRaindrop();
             // Only set the normal soils to wet, not the grass soils
             for (Node node : soilGroup.getChildren()) {
                 if (node instanceof ImageView) {
@@ -331,23 +331,42 @@ public class GardenController {
         scaleTransition.play();
     }
 
+    private void animatePlantCoverImage(double fromScale, double toScale, boolean setVisibleAfter) {
+        plantCover.setVisible(true);
+
+        // Create a scale transition for the ImageView
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.5), plantCover);
+        scaleTransition.setFromX(fromScale);
+        scaleTransition.setFromY(fromScale);
+        scaleTransition.setToX(toScale);
+        scaleTransition.setToY(toScale);
+        scaleTransition.setCycleCount(1);
+        scaleTransition.setAutoReverse(false);
+
+        if (!setVisibleAfter) {
+            scaleTransition.setOnFinished(event -> plantCover.setVisible(false));
+        }
+
+        scaleTransition.play();
+    }
+
+
     /**
      * Creates a raindrop animation on the given pane.
-     * @param pane The Pane to create the raindrop animation on.
      */
-    private void createRaindrop(Pane pane) {
+    private void createRaindrop() {
         for (int i = 0; i < 100; i++) {  // Number of raindrops
             Rectangle drop = new Rectangle(2, 20);  // Creating a drop as a small rectangle
-            drop.setX(Math.random() * pane.getWidth());  // Randomize the starting position x
+            drop.setX(Math.random() * rainPane.getWidth());  // Randomize the starting position x
             drop.setY(-10);  // Start above the pane
             drop.setStyle("-fx-fill: rgba(255, 255, 255, 0.6);");  // Set color and partial transparency
 
-            pane.getChildren().add(drop);
+            rainPane.getChildren().add(drop);
 
             // Create the animation for the drop
             TranslateTransition animation = new TranslateTransition(Duration.seconds(1 + Math.random()), drop);
             animation.setFromY(20);
-            animation.setToY(pane.getHeight() + 20);  // Let the drop fall below the pane
+            animation.setToY(rainPane.getHeight() + 20);  // Let the drop fall below the pane
             animation.setCycleCount(TranslateTransition.INDEFINITE);  // Repeat indefinitely
             animation.play();
         }
@@ -410,6 +429,7 @@ public class GardenController {
         waterButton.setDisable(true);  // Disable the water button
         plantButton.setDisable(true);  // Disable the plant button
         rainButton.setDisable(true);  // Disable the rain button
+        // manager(type)
     }
 
     /**

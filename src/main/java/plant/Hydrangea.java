@@ -1,4 +1,4 @@
-package organism.plant;
+package plant;
 
 public class Hydrangea extends Flower {
     public Hydrangea(String name, PlantType plantType, double currentWaterLevel) {

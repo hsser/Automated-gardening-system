@@ -1,4 +1,4 @@
-package organism.plant;
+package plant;
 
 public class Peach extends Tree {
     public Peach(String name, PlantType plantType, double currentWaterLevel) {

@@ -1,7 +1,6 @@
 package controllers;
 
-import organism.plant.Plant;
-import organism.plant.PlantType;
+import plant.Plant;
 
 /**
  * The WaterController class provides methods to manage the water levels of plants.

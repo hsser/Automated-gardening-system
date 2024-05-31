@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import organism.plant.GardenManager;
+import plant.GardenManager;
 
 import java.io.IOException;
 

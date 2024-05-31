@@ -1,4 +1,4 @@
-package organism.plant;
+package plant;
 
 public class Rose extends Flower {
     public Rose(String name, PlantType plantType, double currentWaterLevel) {

@@ -1,4 +1,4 @@
-package organism.plant;
+package plant;
 
 public enum PlantType {
     TREE(20.0, 100.0, 30.0, 6.0, 1.5, 68.0, 86.0),

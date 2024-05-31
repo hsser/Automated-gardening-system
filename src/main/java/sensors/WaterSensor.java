@@ -1,6 +1,6 @@
 package sensors;
 
-import organism.plant.PlantType;
+import plant.PlantType;
 
 public class WaterSensor {
     private double waterLevel;

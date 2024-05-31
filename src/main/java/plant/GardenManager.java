@@ -1,4 +1,4 @@
-package organism.plant;
+package plant;
 
 import environment.Weather;
 

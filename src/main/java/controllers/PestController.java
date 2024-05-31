@@ -1,6 +1,6 @@
 package controllers;
 
-import organism.plant.Plant;
+import plant.Plant;
 
 /**
  * The PestController class provides methods to manage pest attacks on plants.

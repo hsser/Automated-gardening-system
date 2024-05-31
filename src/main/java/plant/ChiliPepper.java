@@ -1,4 +1,4 @@
-package organism.plant;
+package plant;
 
 public class ChiliPepper extends Crop {
     public ChiliPepper(String name, PlantType plantType, double currentWaterLevel) {

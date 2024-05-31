@@ -729,6 +729,14 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <ImageView id="plantCover" fx:id="plantCover" fitHeight="699.0" fitWidth="699.0" layoutX="126.0" layoutY="-116.0" mouseTransparent="true" pickOnBounds="true" visible="false">
+         <image>
+            <Image url="@../image/background/plant_cover.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
       <Pane id="overlayPane" fx:id="overlayPane" prefHeight="761.0" prefWidth="1020.0" style="-fx-background-color: rgba(0, 0, 0, 0.4);" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane id="plantSelectionPane" fx:id="plantSelectionPane" layoutX="313.0" layoutY="237.0" minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="395.0" visible="false">
          <children>
