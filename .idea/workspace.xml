@@ -4,51 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Minor changes on UI">
-      <change afterPath="$PROJECT_DIR$/src/main/java/environment/TemperatureChangeEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/organism/plant/Cherry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/organism/plant/GardenManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/organism/plant/Peach.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/crops/hydrangea.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/crops/rose_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/crops/seed 2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/crops/seed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/Spider.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/parasite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/whitefly.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UI/GardenApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/GardenApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UI/GardenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/GardenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/environment/EventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/environment/EventManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/environment/EventType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/environment/EventType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/environment/PestAttackEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/environment/PestAttackEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/environment/WeatherChangeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/environment/WeatherChangeEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/CherryTomato.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/organism/plant/CherryTomato.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/CherryTree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/ChiliPepper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/organism/plant/ChiliPepper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/organism/plant/Crop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/Flower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/organism/plant/Flower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/Hydrangea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/organism/plant/Hydrangea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/PeachTree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/organism/plant/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/PlantManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/PlantType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/organism/plant/PlantType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/Rose.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/organism/plant/Rose.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/organism/plant/Tree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/organism/plant/Trees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/organism/plant/Trees.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/UI/farm-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UI/farm-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/ladybug.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/icon/ladybug.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/sunButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (0).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/image/icon/cursor.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (16).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (17).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (18).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (19).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (4).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (5).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (6).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/topbutton (7).png" beforeDir="false" />
-    </list>
+    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Minor changes on UI" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,7 +85,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging new-feature-branch",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

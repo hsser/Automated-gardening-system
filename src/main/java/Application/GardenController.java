@@ -125,7 +125,7 @@ public class GardenController {
      * Handles the watering of a soil when clicked.
      * @param soilId The id of the soil to water.
      */
-    private void handleWatering(String soilId) {
+    private void showWateringEffect(String soilId) {
         if (currentMode != Mode.WATERING) {
             return;
         }
@@ -240,23 +240,24 @@ public class GardenController {
     /**
      * Handles the planting UI effect when clicked on a certain soil/plot.
      * @param soilId The id of the soil to plant.
+     * @param plantType The type of plant to show.
      */
-    private void handlePlanting(String soilId) {
+    private void showPlantingEffect(String soilId, String plantType) {
         if (currentPlantType == null) {
-            return;
+            currentPlantType = plantType;
         }
+
         ImageView clickedSoil = getSoilById(soilId);
         ImageView plantImageView = (ImageView) plantGroup.lookup("#" + soilId);
         if (plantImageView != null && plantImageView.getImage() == null) {
             clickedSoil.setImage(normalSoil);
-            int plantQuantity = plantQuantitySpinner.getValue();
             plantImageView.setImage(new Image(getClass().getResourceAsStream("/image/plants/" + currentPlantType + ".png")));
             // Check if it is raining
             if (!gardenManager.getWeather().isSunny()) {
                 clickedSoil.setImage(wetSoil);
             }
-            gardenManager.createPlants(currentPlantType, plantQuantity);
         }
+        currentParasiteType = null;
     }
 
     /**
@@ -412,7 +413,7 @@ public class GardenController {
         setNodeVisibility(confirmButton1, false);
         parasiteSelectionPane.setVisible(false);
         overlayPane.setVisible(false);
-        //TODO: pass user selected parasite to Garden Manager, Garden Manager then calls handleParasite()
+        //TODO: pass user selected parasite to Garden Manager, Garden Manager then calls showParasiteEffect()
     }
 
     /**
@@ -429,9 +430,10 @@ public class GardenController {
 
     /**
      * Handles the parasite UI effect when clicked on a certain soil/plot.
-     * @param soilId The id of the soil to plant the parasite.
+     * @param soilId The id of the soil to plant.
+     * @param parasiteType The type of parasite to show.
      */
-    private void handleParasite(String soilId, String parasiteType) {
+    private void showParasiteEffect(String soilId, String parasiteType) {
         if (currentParasiteType == null) {
             currentParasiteType = parasiteType;
         }
@@ -535,11 +537,17 @@ public class GardenController {
 
         switch (currentMode) {
             case WATERING:
-                handleWatering(soilId);
+                showWateringEffect(soilId);
                 break;
             case PLANTING:
-                handlePlanting(soilId);
+                //TODO: need to check if the soil is occupied by a plant
+                int plantQuantity = plantQuantitySpinner.getValue();
+                gardenManager.createPlants(currentPlantType, plantQuantity);
+                // Show the planting effect on the soil
+                showPlantingEffect(soilId, currentPlantType);
+                // Reset cursor to default after planting
                 soilGroup.getScene().setCursor(Cursor.DEFAULT);
+                // Enable the buttons after planting
                 waterButton.setDisable(false);  // Enable the water button
                 rainButton.setDisable(false);  // Enable the rain button
                 parasiteButton.setDisable(false);  // Enable the parasite button
@@ -548,7 +556,6 @@ public class GardenController {
             case NONE:
                 showSoilInfo(soilId);
                 break;
-            // TODO: Add more cases for other modes
         }
 
     }
