@@ -43,7 +43,8 @@ public class GardenController {
             cancelButton1, confirmButton1, // for confirming parasite
             closeButton; // for closing the status pane
     @FXML
-    private Label soilInfoLabel, plantTypeValue, plantNumberValue, humidityValue, temperatureValue, attackStatusValue, healthStatusValue;
+    private Label soilInfoLabel, plantTypeValue, plantNumberValue, humidityValue, temperatureValue,
+            attackStatusValue, healthStatusValue, currentDay;
     @FXML
     private Pane rainPane, overlayPane;
     @FXML
@@ -125,7 +126,7 @@ public class GardenController {
      * Handles the watering of a soil when clicked.
      * @param soilId The id of the soil to water.
      */
-    private void showWateringEffect(String soilId) {
+    protected void showWateringEffect(String soilId) {
         if (currentMode != Mode.WATERING) {
             return;
         }
@@ -242,7 +243,7 @@ public class GardenController {
      * @param soilId The id of the soil to plant.
      * @param plantType The type of plant to show.
      */
-    private void showPlantingEffect(String soilId, String plantType) {
+    protected void showPlantingEffect(String soilId, String plantType) {
         if (currentPlantType == null) {
             currentPlantType = plantType;
         }
@@ -269,7 +270,7 @@ public class GardenController {
      * @param attackStatus The attack status of the plant.
      * @param healthStatus The health status of the plant.
      */
-    private void setLabelValues(String plantType, String plantNumber, String humidity, String temperature, String attackStatus, String healthStatus) {
+    protected void setLabelValues(String plantType, String plantNumber, String humidity, String temperature, String attackStatus, String healthStatus) {
         plantTypeValue.setText(plantType);
         plantNumberValue.setText(plantNumber);
         humidityValue.setText(humidity);
@@ -284,7 +285,7 @@ public class GardenController {
      * Handles the click event on the rain button.
      */
     @FXML
-    protected void handleRainButtonClick() {
+    private void handleRainButtonClick() {
         Weather weather = gardenManager.getWeather();
         if(weather.isSunny()) {
             createRaindrop();
@@ -317,7 +318,7 @@ public class GardenController {
      * @param toScale The ending scale of the image.
      * @param setVisibleAfter Whether to set the image to invisible after the animation.
      */
-    private void animateImage(String imageName, double fromScale, double toScale, boolean setVisibleAfter) {
+    protected void animateImage(String imageName, double fromScale, double toScale, boolean setVisibleAfter) {
         ImageView image = imageviews.get(imageName);
         if (image == null) {
             System.err.println("Image not found: " + imageName);
@@ -345,7 +346,7 @@ public class GardenController {
     /**
      * Creates a raindrop animation on the given pane.
      */
-    private void createRaindrop() {
+    protected void createRaindrop() {
         for (int i = 0; i < 100; i++) {  // Number of raindrops
             Rectangle drop = new Rectangle(2, 20);  // Creating a drop as a small rectangle
             drop.setX(Math.random() * rainPane.getWidth());  // Randomize the starting position x
@@ -433,7 +434,7 @@ public class GardenController {
      * @param soilId The id of the soil to plant.
      * @param parasiteType The type of parasite to show.
      */
-    private void showParasiteEffect(String soilId, String parasiteType) {
+    protected void showParasiteEffect(String soilId, String parasiteType) {
         if (currentParasiteType == null) {
             currentParasiteType = parasiteType;
         }
@@ -558,6 +559,14 @@ public class GardenController {
                 break;
         }
 
+    }
+
+    /**
+     * Update the current day label with the given day.
+     * @param day The day to update the label with.
+     */
+    protected void showCurrentDay(int day) {
+        currentDay.setText("Day " + day);
     }
 
 
