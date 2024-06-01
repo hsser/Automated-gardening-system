@@ -1,6 +1,5 @@
 package application;
 import javafx.application.Platform;
-import plant.GardenManager;
 
 import java.util.concurrent.*;
 

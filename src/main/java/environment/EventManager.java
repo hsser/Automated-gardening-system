@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import plant.Plant;
-import plant.GardenManager;
 
 /**
  * Manages the creation and handling of events within the garden system.

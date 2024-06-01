@@ -24,9 +24,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.*;
 import javafx.util.Duration;
 import javafx.scene.paint.Color;
-import plant.GardenManager;
+import plant.Plant;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -258,7 +259,7 @@ public class GardenController {
                 clickedSoil.setImage(wetSoil);
             }
         }
-        currentParasiteType = null;
+        currentPlantType = null;
     }
 
     /**
@@ -535,6 +536,7 @@ public class GardenController {
     private void handleSoilClick(MouseEvent event) {
         ImageView clickedSoil = (ImageView) event.getSource();
         String soilId = clickedSoil.getId();
+        int plotIndex = Integer.parseInt(soilId) - 1;
 
         switch (currentMode) {
             case WATERING:
@@ -543,7 +545,8 @@ public class GardenController {
             case PLANTING:
                 //TODO: need to check if the soil is occupied by a plant
                 int plantQuantity = plantQuantitySpinner.getValue();
-                gardenManager.createPlants(currentPlantType, plantQuantity, soilId);
+                List<Plant> plantGroup = gardenManager.createPlantGroup(currentPlantType, plantQuantity);
+                gardenManager.placePlantGroup(plantGroup, plotIndex);
                 // Show the planting effect on the soil
                 showPlantingEffect(soilId, currentPlantType);
                 // Reset cursor to default after planting

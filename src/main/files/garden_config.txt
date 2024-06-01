@@ -1,0 +1,6 @@
+Rose, 10
+Peach, 10
+Cherry, 10
+CherryTomato, 10
+ChiliPepper, 10
+Hydrangea, 10
