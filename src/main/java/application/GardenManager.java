@@ -46,7 +46,7 @@ public class GardenManager {
             plantConfigs = loader.loadPlantsConfigureations();// Start from 1
             for (GardenConfigLoader.PlantConfig plantConfig : plantConfigs) {
                 List<Plant> plantGroup = createPlantGroup(plantConfig.getType(), plantConfig.getQuantity());
-                int plotIndex = placePlantGroup(plantGroup, 0); // Always start from 0
+                int plotIndex = placePlantGroup(plantGroup, 0, true); // Always start from 0
                 if (plotIndex != -1) {
                     // Update UI
                     String soilId = String.valueOf(plotIndex + 1);
@@ -96,8 +96,7 @@ public class GardenManager {
         return plantGroup;
     }
 
-    public int placePlantGroup(List<Plant> plantGroup, int plotIndex) {
-        boolean AllPlotsOccupied = false;
+    public int placePlantGroup(List<Plant> plantGroup, int plotIndex, boolean isScriptMode) {
         int quantity = plantGroup.size();
         String type = plantGroup.get(0).getName();
 
@@ -124,14 +123,16 @@ public class GardenManager {
         }
 
         // Check if all plots are occupied, if find an empty plot, plant the group
-        for(int i = 0; i < MAX_PLOT; i++) {
-            if (plantGroups.get(i).size() == 0) {
-                plantGroups.set(i, plantGroup);
-                System.out.println("Planting " + quantity + " " + type + " seed" +
-                        ((quantity > 1) ? "s" : "") + " in plot " + (i + 1));
-                numberOfPlants += quantity;
-                System.out.println("TEST-GardenManager: Current number of plant is " + numberOfPlants);
-                return i;
+        if(isScriptMode) {
+            for (int i = 0; i < MAX_PLOT; i++) {
+                if (plantGroups.get(i).size() == 0) {
+                    plantGroups.set(i, plantGroup);
+                    System.out.println("Planting " + quantity + " " + type + " seed" +
+                            ((quantity > 1) ? "s" : "") + " in plot " + (i + 1));
+                    numberOfPlants += quantity;
+                    System.out.println("TEST-GardenManager: Current number of plant is " + numberOfPlants);
+                    return i;
+                }
             }
         }
 
@@ -142,6 +143,6 @@ public class GardenManager {
         plantFromLoader();
     }
 
-
+    public List<List<Plant>> getPlantGroups() { return plantGroups; }
     public Weather getWeather() { return weather; }
 }

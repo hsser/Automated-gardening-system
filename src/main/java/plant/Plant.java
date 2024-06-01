@@ -37,6 +37,9 @@ public abstract class Plant{
     public boolean isWaterLevelLow(){
         return this.waterSensor.isWaterLevelLow();
     }
+    public boolean isAlive() { //TODO: Implement this method
+        return true;
+    }
 
     /**
      * Update water level

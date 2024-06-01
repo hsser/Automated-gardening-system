@@ -189,10 +189,21 @@ public class GardenController {
      */
     @FXML
     private void handlePlantButtonClick(){
-        currentMode = Mode.PLANTING;
-        setNodeVisibility(plantSelectionPane, true);
-        setNodeVisibility(overlayPane, true);
-        resetSelectionButtonStyle(plantSelectionGrid);
+        // Toggle planting mode
+        currentMode = (currentMode == Mode.PLANTING) ? Mode.NONE : Mode.PLANTING;
+        if (currentMode == Mode.PLANTING) {
+            setNodeVisibility(plantSelectionPane, true);
+            setNodeVisibility(overlayPane, true);
+            resetSelectionButtonStyle(plantSelectionGrid);
+        }
+        else {
+            // Reset cursor to default when disabling watering mode
+            soilGroup.getScene().setCursor(Cursor.DEFAULT);
+            // Enable other buttons
+            waterButton.setDisable(false);
+            rainButton.setDisable(false);
+            parasiteButton.setDisable(false);
+        }
     }
 
     /**
@@ -486,11 +497,18 @@ public class GardenController {
      */
     private void showSoilInfo(String soilId) {
         soilInfoLabel.setText("Plot " + soilId + " Conditions");
-        ImageView plantImageView = (ImageView) plantGroup.lookup("#" + soilId);
-        if (plantImageView != null && plantImageView.getImage() != null) {
-            String plantType = plantImageView.getId();
+        List<Plant> currentPlantGroup = gardenManager.getPlantGroups().get(Integer.parseInt(soilId) - 1);
+        int size = currentPlantGroup.size();
+        if (size > 0) {
+            Plant plant = currentPlantGroup.get(0);
             //TODO: Add logic to get the plant number, humidity, temperature, attack status, and health status
-
+            String type = plant.getName();
+            String quantity = String.valueOf(size);
+            String humidity = String.valueOf(plant.getCurrentWaterLevel());
+            String temperature = "N/A"; // TODO: Add logic to get current temperature
+            String attackStatus = plant.isUnderAttack() ? "Yes" : "No";
+            String healthStatus = plant.isAlive() ? "Alive" : "Dead";
+            setLabelValues(type, quantity, humidity, temperature, attackStatus, healthStatus);
         } else {
             setLabelValues("N/A", "N/A", "N/A", "N/A", "N/A", "N/A");
         }
@@ -546,7 +564,7 @@ public class GardenController {
                 //TODO: need to check if the soil is occupied by a plant
                 int plantQuantity = plantQuantitySpinner.getValue();
                 List<Plant> plantGroup = gardenManager.createPlantGroup(currentPlantType, plantQuantity);
-                gardenManager.placePlantGroup(plantGroup, plotIndex);
+                gardenManager.placePlantGroup(plantGroup, plotIndex, false);
                 // Show the planting effect on the soil
                 showPlantingEffect(soilId, currentPlantType);
                 // Reset cursor to default after planting

@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Add GardenTimer, update UI">
-      <change afterPath="$PROJECT_DIR$/src/main/files/garden_config.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/IO/GardenConfigLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/IO/GardenLogWriter.java" afterDir="false" />
+    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Add GardenConfigLoader class for loading config file, update GardenManager to handle planting part.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenTimer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/environment/EventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/environment/EventManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plant/GardenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plant/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plant/Plant.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717195185209</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add GardenConfigLoader class for loading config file, update GardenManager to handle planting part.">
+      <option name="closed" value="true" />
+      <created>1717225410976</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1717225410976</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +208,7 @@
     <MESSAGE value="Minor changes on UI" />
     <MESSAGE value="Rename and refactor several UI effect methods (showWateringEffect(), showPlantingEffect(),showParasiteEffect), making them can be called by GardenManager Class." />
     <MESSAGE value="Add GardenTimer, update UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add GardenTimer, update UI" />
+    <MESSAGE value="Add GardenConfigLoader class for loading config file, update GardenManager to handle planting part." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add GardenConfigLoader class for loading config file, update GardenManager to handle planting part." />
   </component>
 </project>
