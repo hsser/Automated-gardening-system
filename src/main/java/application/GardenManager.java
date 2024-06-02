@@ -1,8 +1,9 @@
 package application;
 
-import IO.GardenConfigLoader;
+import io.GardenConfigLoader;
 import environment.EventManager;
 import environment.Weather;
+import javafx.application.Platform;
 import plant.*;
 
 import java.io.IOException;
@@ -27,8 +28,12 @@ public class GardenManager {
     private GardenConfigLoader loader;
     private List<GardenConfigLoader.PlantConfig> plantConfigs;
 
-    // For UI
+    // UI
     private GardenController controller;
+
+    // Timer
+    private GardenTimer timer;
+    private int currentDay = 1;
 
     public GardenManager(GardenController controller, String configPath) {
         System.out.println("TEST-GardenManager: Construct GardenManager");
@@ -37,8 +42,8 @@ public class GardenManager {
         }
         this.controller = controller;
         loader = new GardenConfigLoader(configPath);
+        this.timer = new GardenTimer(this::simulateDay);
     }
-
 
     // TODO: Add script planting mode.
     public void plantFromLoader() {
@@ -122,7 +127,7 @@ public class GardenManager {
             return plotIndex;
         }
 
-        // Check if all plots are occupied, if find an empty plot, plant the group
+        // Check if all plots are occupied, if finding an empty plot, plant the group
         if(isScriptMode) {
             for (int i = 0; i < MAX_PLOT; i++) {
                 if (plantGroups.get(i).size() == 0) {
@@ -140,9 +145,22 @@ public class GardenManager {
     }
 
     public void initializeGarden() {
+        startTimer();
         plantFromLoader();
     }
 
     public List<List<Plant>> getPlantGroups() { return plantGroups; }
     public Weather getWeather() { return weather; }
+
+
+    public void startTimer() { timer.start(); }
+    public void stopTimer() { timer.stop(); }
+    public void simulateDay() {
+        Platform.runLater(() -> {
+            //TODO: Add daily events here and update UI
+            controller.showCurrentDay(currentDay);
+            System.out.println("TEST-GardenManager: Day " + currentDay + " starts.");
+            currentDay++;
+        });
+    }
 }
