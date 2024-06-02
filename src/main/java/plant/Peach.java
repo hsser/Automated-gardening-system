@@ -1,8 +1,8 @@
 package plant;
 
 public class Peach extends Tree {
-    public Peach(String name, PlantType plantType, double currentWaterLevel) {
-        super(name, plantType, currentWaterLevel);
+    public Peach() {
+        super();
     }
 
     @Override
