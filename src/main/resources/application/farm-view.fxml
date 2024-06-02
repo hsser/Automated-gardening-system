@@ -994,5 +994,29 @@
             </Button>
          </children>
       </AnchorPane>
+      <ImageView id="sprinkler" fx:id="sprinkler" fitHeight="150.0" fitWidth="150.0" layoutX="870.0" layoutY="611.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <image>
+            <Image url="@../image/icon/sprinkler.png" />
+         </image>
+      </ImageView>
+      <ImageView id="cooler" fx:id="cooler" fitHeight="150.0" fitWidth="150.0" layoutX="870.0" layoutY="612.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <image>
+            <Image url="@../image/icon/cooler.png" />
+         </image>
+      </ImageView>
+      <ImageView id="heater" fx:id="heater" fitHeight="150.0" fitWidth="150.0" layoutX="872.0" layoutY="611.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <image>
+            <Image url="@../image/icon/heater.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

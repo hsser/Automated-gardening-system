@@ -51,7 +51,7 @@ public class GardenController {
     @FXML
     private AnchorPane plantSelectionPane, popupStatusPane, parasiteSelectionPane;
     @FXML
-    private ImageView sunny, plantCover;
+    private ImageView sunny, plantCover, sprinkler, heater, cooler;
     @FXML
     private Spinner<Integer> plantQuantitySpinner;
     @FXML
@@ -78,6 +78,9 @@ public class GardenController {
     private void initialize() {
         imageviews.put("sunny", sunny);
         imageviews.put("plantCover", plantCover);
+        imageviews.put("sprinkler", sprinkler);
+        imageviews.put("heater", heater);
+        imageviews.put("cooler", cooler);
 
         // Set the default plant type to null
         setAllSoils(grassSoil);
@@ -147,7 +150,6 @@ public class GardenController {
         // Create a droplet animation at the center of the soil
         createDroplet(x, y);
         clickedSoil.setImage(wetSoil);
-        //TODO: Add logic to handle watering of the soil
     }
 
     /**
@@ -308,6 +310,7 @@ public class GardenController {
                     if (soil.getImage() == grassSoil) {
                         continue;
                     }
+                    // TODO: Add humidity to all the plants in the plot
                     soil.setImage(wetSoil);
                 }
             }
@@ -316,6 +319,7 @@ public class GardenController {
             rainPane.getChildren().clear();
             animateImage("sunny", 0.1, 1.0, true);
         }
+        // TODO: might need to handle weather changes in the GardenManager
         WeatherChangeEvent weatherChangeEvent = new WeatherChangeEvent(weather);
         weatherChangeEvent.trigger();
         // Reset cursor to default every time the rain button is clicked
@@ -558,10 +562,11 @@ public class GardenController {
 
         switch (currentMode) {
             case WATERING:
+                //TODO: Need to add humidity to all the plants in the plot
                 showWateringEffect(soilId);
                 break;
+
             case PLANTING:
-                //TODO: need to check if the soil is occupied by a plant
                 int plantQuantity = plantQuantitySpinner.getValue();
                 List<Plant> plantGroup = gardenManager.createPlantGroup(currentPlantType, plantQuantity);
                 gardenManager.placePlantGroup(plantGroup, plotIndex, false);
@@ -575,6 +580,7 @@ public class GardenController {
                 parasiteButton.setDisable(false);  // Enable the parasite button
                 currentMode = Mode.NONE;
                 break;
+
             case NONE:
                 showSoilInfo(soilId);
                 break;

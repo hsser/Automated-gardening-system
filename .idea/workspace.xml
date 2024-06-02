@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Implement logic in to handle plot status when click on certain plot. Fix several bugs.">
+    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Move GardenTimer into GardenManager">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/cooler.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/heater.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/sprinkler.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/GardenConfigLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/GardenConfigLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenTimer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application/farm-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application/farm-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +86,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.GardenApplication.executor": "Run",
     "Application.GardenSimulationAPI.executor": "Run",
     "Application.HelloApplication.executor": "Run",
@@ -196,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717227905664</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Move GardenTimer into GardenManager">
+      <option name="closed" value="true" />
+      <created>1717302357801</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1717302357801</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,6 +223,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Defining Plant Class" />
     <MESSAGE value="Updating UI" />
     <MESSAGE value="Minor changes on UI" />
@@ -221,6 +231,7 @@
     <MESSAGE value="Add GardenTimer, update UI" />
     <MESSAGE value="Add GardenConfigLoader class for loading config file, update GardenManager to handle planting part." />
     <MESSAGE value="Implement logic in to handle plot status when click on certain plot. Fix several bugs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement logic in to handle plot status when click on certain plot. Fix several bugs." />
+    <MESSAGE value="Move GardenTimer into GardenManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="Move GardenTimer into GardenManager" />
   </component>
 </project>
