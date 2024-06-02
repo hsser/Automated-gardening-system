@@ -1,7 +1,7 @@
 package plant;
 
 public abstract class Tree extends Plant {
-    public Tree() {
-        super(PlantType.TREE, 80.0);
+    public Tree(String name) {
+        super(name, PlantType.TREE, 80.0);
     }
 }

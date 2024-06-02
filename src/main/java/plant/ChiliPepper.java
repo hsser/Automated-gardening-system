@@ -2,7 +2,7 @@ package plant;
 
 public class ChiliPepper extends Crop {
     public ChiliPepper() {
-        super();
+        super("ChiliPepper");
     }
 
     @Override

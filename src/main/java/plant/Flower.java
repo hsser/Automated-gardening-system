@@ -1,7 +1,7 @@
 package plant;
 
 public abstract class Flower extends Plant {
-    public Flower() {
-        super(PlantType.FLOWER, 40);
+    public Flower(String name) {
+        super(name, PlantType.FLOWER, 40);
     }
 }

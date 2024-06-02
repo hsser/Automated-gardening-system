@@ -11,7 +11,7 @@ public abstract class Plant{
     private WaterSensor waterSensor;
     private PlantType plantType;
 
-    public Plant(PlantType plantType, double currentWaterLevel) {
+    public Plant(String name, PlantType plantType, double currentWaterLevel) {
         this.name = name;
         this.plantType = plantType;
         //this.minTemperatureLevel = minTemperatureLevel;

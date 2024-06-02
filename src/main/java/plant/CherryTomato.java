@@ -2,7 +2,7 @@ package plant;
 
 public class CherryTomato extends Crop {
     public CherryTomato() {
-        super();
+        super("CherryTomato");
     }
 
     @Override
