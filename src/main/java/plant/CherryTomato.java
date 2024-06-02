@@ -1,8 +1,8 @@
 package plant;
 
 public class CherryTomato extends Crop {
-    public CherryTomato(String name, PlantType plantType, double currentWaterLevel) {
-        super(name, plantType, currentWaterLevel);
+    public CherryTomato() {
+        super();
     }
 
     @Override

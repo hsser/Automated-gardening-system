@@ -72,26 +72,25 @@ public class GardenManager {
      */
     public List<Plant> createPlantGroup(String name, int quantity) {
         List<Plant> plantGroup = new ArrayList<>();
-        // TODO: What is the initial current water level?
         for (int i = 0; i < quantity; i++) {
             switch (name) {
                 case "CherryTomato":
-                    plantGroup.add(new CherryTomato(name, PlantType.CROP, 0.0));
+                    plantGroup.add(new CherryTomato());
                     break;
                 case "ChiliPepper":
-                    plantGroup.add(new ChiliPepper(name, PlantType.CROP, 0.0));
+                    plantGroup.add(new ChiliPepper());
                     break;
                 case "Cherry":
-                    plantGroup.add(new Cherry(name, PlantType.TREE, 0.0));
+                    plantGroup.add(new Cherry());
                     break;
                 case "Peach":
-                    plantGroup.add(new Peach(name, PlantType.TREE, 0.0));
+                    plantGroup.add(new Peach());
                     break;
                 case "Rose":
-                    plantGroup.add(new Rose(name, PlantType.FLOWER, 0.0));
+                    plantGroup.add(new Rose());
                     break;
                 case "Hydrangea":
-                    plantGroup.add(new Hydrangea(name, PlantType.FLOWER, 0.0));
+                    plantGroup.add(new Hydrangea());
                     break;
                 default:
                     System.out.println("TEST-GardenManager: No such type of plant.");
