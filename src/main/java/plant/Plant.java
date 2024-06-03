@@ -4,8 +4,6 @@ import sensors.WaterSensor;
 
 public abstract class Plant{
     private String name;
-    private double minTemperatureLevel;
-    private double maxTemperatureLevel;
     private double currentWaterLevel;
     private boolean isUnderAttack;  // Flag to indicate if the plant is being attacked
     private WaterSensor waterSensor;
@@ -14,11 +12,9 @@ public abstract class Plant{
     public Plant(String name, PlantType plantType, double currentWaterLevel) {
         this.name = name;
         this.plantType = plantType;
-        //this.minTemperatureLevel = minTemperatureLevel;
-        //this.maxTemperatureLevel = maxTemperatureLevel;
         this.currentWaterLevel = currentWaterLevel;
         this.isUnderAttack = false;
-        this.waterSensor = new WaterSensor(plantType);
+        this.waterSensor = new WaterSensor(this);
     }
 
     /**
@@ -27,16 +23,11 @@ public abstract class Plant{
     public String getName() { return this.name; }
     public double getMinWaterLevel() { return this.plantType.getMinWaterLevel(); }
     public double getMaxWaterLevel() { return this.plantType.getMaxWaterLevel(); }
-    public double getMinTemperatureLevel() { return this.minTemperatureLevel; }
-    public double getMaxTemperatureLevel() { return this.maxTemperatureLevel; }
+    public double getMinTemperatureLevel() { return this.plantType.getMinTemperature(); }
+    public double getMaxTemperatureLevel() { return this.plantType.getMaxTemperature(); }
     public double getCurrentWaterLevel() { return this.currentWaterLevel; }
+    public double getPlantLowWaterThreshold() {return this.plantType.getLowWaterThreshold();}
     public boolean isUnderAttack() { return isUnderAttack; }
-    public double getWaterLevel() {
-        return this.waterSensor.getWaterLevel();
-    }
-    public boolean isWaterLevelLow(){
-        return this.waterSensor.isWaterLevelLow();
-    }
     public boolean isAlive() { //TODO: Implement this method
         return true;
     }

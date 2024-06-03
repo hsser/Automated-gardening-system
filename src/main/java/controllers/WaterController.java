@@ -20,21 +20,15 @@ public class WaterController {
     /**
      * Auto-watering of the plant based on its current water level.
      */
-    public void autoWatering() {
-        double currentWaterLevel = plant.getWaterLevel();
+    public static void autoWatering(Plant plant) {
+        double currentWaterLevel = plant.getCurrentWaterLevel();
         System.out.println("Current water level is " + currentWaterLevel);
 
-        if (plant.isWaterLevelLow()) {
-            System.out.println("Warning: The water level of " + plant.getName() + " is low!");
-            increaseWaterLevel(currentWaterLevel);
-        } else {
-            System.out.println("The water level for " + plant.getName() + " is sufficient!");
-        }
-
-        if (currentWaterLevel >= plant.getMaxWaterLevel()) {
-            System.out.println("Protection: The water level of " + plant.getName() + " is too high!");
-            System.out.println(stopWatering());
-        }
+        System.out.println("""
+        Warning: The water level of the plant is low!
+        Auto watering system activates!
+        """);
+        increaseWaterLevel(plant,currentWaterLevel);
     }
 
     /**
@@ -42,18 +36,18 @@ public class WaterController {
      *
      * @param currentWaterLevel the current water level of the plant
      */
-    public void increaseWaterLevel(double currentWaterLevel) {
+    public static void increaseWaterLevel(Plant plant, double currentWaterLevel) {
         // Increase the water level
         plant.updateWaterLevel(currentWaterLevel + 5.0);
-        System.out.println("Now, new water level of " + plant.getName() + " is " + plant.getWaterLevel());
+        System.out.println("Now, water level of the plant is updated to " + plant.getCurrentWaterLevel());
     }
 
     /**
      * Stops the watering of the plant and returns true.
      */
-    public boolean stopWatering() {
-        String protectionMessage = "Overwatering warning！Watering protection activated.";
-        System.out.println(protectionMessage);
+    public static boolean stopWatering() {
+        System.out.println("Overwatering warning！Watering protection activated.");
+        // TODO: Create a pretection animation
         return true;
     }
 
@@ -61,10 +55,10 @@ public class WaterController {
      * Decreases the water level of the plant daily.
      */
     public void dailyWaterDecrease() {
-        double currentWaterLevel = plant.getWaterLevel();
+        double currentWaterLevel = plant.getCurrentWaterLevel();
         if (currentWaterLevel > plant.getMinWaterLevel()) {
             plant.updateWaterLevel(currentWaterLevel - 5);
         }
-        System.out.println("Daily water level decrease applied. New water level of " + plant.getName() + " is " + plant.getWaterLevel());
+        System.out.println("Daily water level decrease applied. New water level of the plant is " + plant.getCurrentWaterLevel());
     }
 }
