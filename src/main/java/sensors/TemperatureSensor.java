@@ -1,34 +1,44 @@
 package sensors;
 
-/**
- * The TemperatureSensor class simulates a temperature sensor.
- * The default temperature is set to 77.0 degrees Fahrenheit.
- */
+import controllers.TemperatureController;
+
 public class TemperatureSensor {
+
+    private static final double HIGH_TEMPERATURE_THRESHOLD = 104.0;
+    private static final double LOW_TEMPERATURE_THRESHOLD = 50.0;
+    private static final double OPTIMAL_TEMPERATURE = 77.0;
+
     private double temperature;
 
-    /**
-     * Constructs a Temperature Sensor with a default temperature of 77.0 degrees Fahrenheit.
-     */
-    public TemperatureSensor (){
-        this.temperature = 77.0;
+    public TemperatureSensor() {
+        this.temperature = 77.0; // default temperature
     }
 
-    /**
-     * Gets the current temperature.
-     *
-     * @return the current temperature
-     */
     public double getTemperature() {
         return temperature;
     }
 
-    /**
-     * Updates the temperature.
-     *
-     * @param newTemperature the new temperature
-     */
     public void updateTemperature(double newTemperature) {
         this.temperature = newTemperature;
+        this.temperature = checkAndAdjustTemperature();
+    }
+
+    private double checkAndAdjustTemperature() {
+        if (temperature > HIGH_TEMPERATURE_THRESHOLD || temperature < LOW_TEMPERATURE_THRESHOLD) {
+            temperature = TemperatureController.adjustTemperature(temperature);
+        }
+        return temperature;
+    }
+
+    public static double getHighTemperatureThreshold() {
+        return HIGH_TEMPERATURE_THRESHOLD;
+    }
+
+    public static double getLowTemperatureThreshold() {
+        return LOW_TEMPERATURE_THRESHOLD;
+    }
+
+    public static double getOptimalTemperature() {
+        return OPTIMAL_TEMPERATURE;
     }
 }

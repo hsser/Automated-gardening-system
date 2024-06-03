@@ -2,74 +2,42 @@ package controllers;
 
 import sensors.TemperatureSensor;
 
-/**
- * The TemperatureController class manages the temperature adjustments base on the readings from the TemperatureSensor
- */
 public class TemperatureController {
-    private static final double HIGH_TEMPERATURE_THRESHOLD = 86.0;
-    private static final double LOW_TEMPERATURE_THRESHOLD = 68.0;
-    private static final double OPTIMAL_TEMPERATURE = 77.0;
 
-    private TemperatureSensor temperatureSensor;
+    public static double adjustTemperature(double currentTemperature) {
+        double highThreshold = TemperatureSensor.getHighTemperatureThreshold();
+        double lowThreshold = TemperatureSensor.getLowTemperatureThreshold();
+        double optimalTemperature = TemperatureSensor.getOptimalTemperature();
 
-    /**
-     * Constructs a TemperatureController with a default TemperatureSensor
-     */
-    public TemperatureController(){
-        this.temperatureSensor = new TemperatureSensor();
-    }
-
-    /**
-     * Adjust the temperature based on the current reading from the TemperatureSensor.
-     * If the temperature is too high, it will cool down.
-     * If the temperature is too low, it will heat up.
-     * If the temperature is optimal, no action is needed.
-     */
-    public void adjustTemperature(){
-        double currentTemperature = this.temperatureSensor.getTemperature();
-        logCurrentTemperature(currentTemperature);
-
-        if(currentTemperature > HIGH_TEMPERATURE_THRESHOLD){ // The temperature is too high
-            System.out.println("Cooler is on ...");
-            temperatureToOptimal();
-            System.out.println("Cooler is off ...");
-        }else if(currentTemperature < LOW_TEMPERATURE_THRESHOLD){
-            System.out.println("Heater is on ...");
-            temperatureToOptimal();
-            System.out.println("Heater is off ...");
-        }else{
-            System.out.println("The temperature is quit suitable for plants' growth!");
+        if (currentTemperature > highThreshold) {
+            System.out.println("Warning: Temperature has exceeded the high limit of " + highThreshold + " degrees.");
+            return coolDown(currentTemperature, optimalTemperature);
+        } else if (currentTemperature < lowThreshold) {
+            System.out.println("Warning: Temperature has fallen below the low limit of " + lowThreshold + " degrees.");
+            return heatUp(currentTemperature, optimalTemperature);
+        } else {
+            System.out.println("The temperature is quite suitable for plants' growth.");
+            return currentTemperature;
         }
     }
 
-    /**
-     * Logs the current temperature.
-     *
-     * @param temperature
-     */
-    private void logCurrentTemperature(double temperature){
-        System.out.println("The current real-time temperature is " + temperature + " degrees");
+    private static double coolDown(double currentTemperature, double optimalTemperature) {
+        System.out.println("Cooler is on.");
+        while (currentTemperature > optimalTemperature) {
+            currentTemperature -= 1.0;
+            System.out.println("Cooling: Current temperature is " + currentTemperature + " degrees.");
+        }
+        System.out.println("Cooler is off. Temperature adjusted to optimal level: " + optimalTemperature + " degrees.");
+        return currentTemperature;
     }
 
-    /**
-     * Adjust the temperature to the optimal level
-     */
-    private void temperatureToOptimal() {
-        double currentTemperature = this.temperatureSensor.getTemperature();
-        if (currentTemperature > OPTIMAL_TEMPERATURE) {
-            while (currentTemperature > OPTIMAL_TEMPERATURE) {
-                // Simulate cooling down
-                currentTemperature -= 1.0;
-                System.out.println("Cooling: Current temperature is " + currentTemperature + " degrees.");
-            }
-        } else if (currentTemperature < OPTIMAL_TEMPERATURE) {
-            while (currentTemperature < OPTIMAL_TEMPERATURE) {
-                // Simulate heating up
-                currentTemperature += 1.0;
-                System.out.println("Heating: Current temperature is " + currentTemperature + " degrees.");
-            }
+    private static double heatUp(double currentTemperature, double optimalTemperature) {
+        System.out.println("Heater is on.");
+        while (currentTemperature < optimalTemperature) {
+            currentTemperature += 1.0;
+            System.out.println("Heating: Current temperature is " + currentTemperature + " degrees.");
         }
-        this.temperatureSensor.updateTemperature(OPTIMAL_TEMPERATURE);
-        System.out.println("Temperature adjusted to optimal level: " + OPTIMAL_TEMPERATURE + " degrees.");
+        System.out.println("Heater is off. Temperature adjusted to optimal level: " + optimalTemperature + " degrees.");
+        return currentTemperature;
     }
 }
