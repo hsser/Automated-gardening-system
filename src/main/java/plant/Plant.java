@@ -21,9 +21,7 @@ public abstract class Plant{
         this.health = 100;  // Starting health
     }
 
-    /**
-     * Getters
-     */
+    // Getter
     public String getName() { return this.name; }
     public double getMinWaterLevel() { return this.plantType.getMinWaterLevel(); }
     public double getMaxWaterLevel() { return this.plantType.getMaxWaterLevel(); }
@@ -35,6 +33,9 @@ public abstract class Plant{
     public boolean isUnderAttack() { return isUnderAttack; }
     public int getHealth() { return health; }
     public boolean isAlive() { return this.health > 0; }
+
+    // Setter
+    public void setHealth(int health){ this.health = health;}
 
     /**
      * Update water level
@@ -48,45 +49,6 @@ public abstract class Plant{
      * @param isUnderAttack whether the plant is currently being attacked.
      */
     public void setUnderAttack(boolean isUnderAttack) { this.isUnderAttack = isUnderAttack; }
-
-    // Method to update the plant's health based on various conditions
-    public void updateHealth() {
-        if (this.currentWaterLevel < this.plantType.getMinWaterLevel() ||
-                this.currentWaterLevel > this.plantType.getMaxWaterLevel()) {
-            this.health -= 10;  // Reduce health due to improper water level
-        }
-
-        if (isUnderAttack) {
-            this.health -= 20;  // Reduce health due to pest attack
-        }
-
-        double currentTemperature = TemperatureSensor.getTemperature();  // Assuming water sensor can also read temperature
-        if (currentTemperature < getMinTemperatureLevel() ||
-                currentTemperature > getMaxTemperatureLevel()) {
-            this.health -= 15;  // Reduce health due to temperature extremes
-        }
-
-        if (this.health <= 0) {
-            System.out.println(this.name + " has died.");
-        } else {
-            recoverHealth();  // Recover health if conditions are good
-        }
-    }
-
-    // Method to gradually recover health if not under any stress
-    private void recoverHealth() {
-        if (this.health < 100 && !isUnderAttack &&
-                currentWaterLevel >= getMinWaterLevel() &&
-                currentWaterLevel <= getMaxWaterLevel() &&
-                TemperatureSensor.getTemperature() >= getMinTemperatureLevel() &&
-                TemperatureSensor.getTemperature() <= getMaxTemperatureLevel()) {
-            this.health += 20;  // Increment health daily if conditions are optimal
-            if (this.health > 100) {
-                this.health = 100;
-            }
-            System.out.println(this.name + " is recovering, current health: " + health);
-        }
-    }
 
     /**
      * Abstract methods to be implemented by subclasses

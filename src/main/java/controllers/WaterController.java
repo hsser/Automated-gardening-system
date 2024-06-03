@@ -8,11 +8,6 @@ import plant.Plant;
 public class WaterController {
     private Plant plant;
 
-    /**
-     * Constructs a WaterController for a specific plant.
-     *
-     * @param plant the plant to be monitored and controlled
-     */
     public WaterController(Plant plant) {
         this.plant = plant;
     }
@@ -39,13 +34,13 @@ public class WaterController {
     public static void increaseWaterLevel(Plant plant, double currentWaterLevel) {
         // Increase the water level
         plant.updateWaterLevel(currentWaterLevel + 5.0);
-        System.out.println("Now, water level of the plant is updated to " + plant.getCurrentWaterLevel());
+        System.out.println("Now, water level of " + plant.getName() + " is updated to " + plant.getCurrentWaterLevel());
     }
 
     /**
      * Stops the watering of the plant and returns true.
      */
-    public static boolean stopWatering() {
+    public static boolean stopWatering(Plant plant) {
         System.out.println("Overwatering warning！Watering protection activated.");
         // TODO: Create a pretection animation
         return true;
@@ -54,11 +49,11 @@ public class WaterController {
     /**
      * Decreases the water level of the plant daily.
      */
-    public void dailyWaterDecrease() {
+    public static void dailyWaterDecrease(Plant plant) {
         double currentWaterLevel = plant.getCurrentWaterLevel();
         if (currentWaterLevel > plant.getMinWaterLevel()) {
             plant.updateWaterLevel(currentWaterLevel - 5);
         }
-        System.out.println("Daily water level decrease applied. New water level of the plant is " + plant.getCurrentWaterLevel());
+        System.out.println("Daily water level decrease applied. New water level of " + plant.getName() + " is " + plant.getCurrentWaterLevel());
     }
 }
