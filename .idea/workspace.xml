@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Update UI">
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/GardenSimulationAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/GardenSimulator.java" afterDir="false" />
+    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Add GardenSimulationAPI and GardenSimulator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application/garden-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application/garden-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/GardenSimulationAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/GardenSimulationAPI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +144,7 @@
       <workItem from="1716587061790" duration="10141000" />
       <workItem from="1716772348088" duration="624000" />
       <workItem from="1716772990078" duration="13000" />
-      <workItem from="1717311691033" duration="15612000" />
+      <workItem from="1717311691033" duration="16101000" />
     </task>
     <task id="LOCAL-00001" summary="Defining Plant Class">
       <option name="closed" value="true" />
@@ -228,7 +226,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717389766912</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add GardenSimulationAPI and GardenSimulator">
+      <option name="closed" value="true" />
+      <created>1717395318671</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1717395318671</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,6 +263,7 @@
     <MESSAGE value="Move GardenTimer into GardenManager" />
     <MESSAGE value="Add cooler, heater, sprinkler to UI" />
     <MESSAGE value="Update UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update UI" />
+    <MESSAGE value="Add GardenSimulationAPI and GardenSimulator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add GardenSimulationAPI and GardenSimulator" />
   </component>
 </project>

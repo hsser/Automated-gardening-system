@@ -34,6 +34,9 @@ public class GardenSimulationAPI {
                 parasites.add(plantParasites);
             }
         }
+        result.put("plants", plants);
+        result.put("waterRequirement", waterRequirement);
+        result.put("parasites", parasites);
         return result;
     }
 
