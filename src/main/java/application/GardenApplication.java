@@ -12,7 +12,7 @@ public class GardenApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(GardenApplication.class.getResource("farm-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(GardenApplication.class.getResource("garden-view.fxml"));
         AnchorPane anchorPane = fxmlLoader.load();
         GardenController controller = fxmlLoader.getController();
         GardenManager gardenManager = new GardenManager(controller, "src/main/files/garden_config.txt");

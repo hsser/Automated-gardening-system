@@ -51,7 +51,7 @@ public class GardenController {
     @FXML
     private AnchorPane plantSelectionPane, popupStatusPane, parasiteSelectionPane;
     @FXML
-    private ImageView sunny, plantCover, sprinkler, heater, cooler;
+    private ImageView sunny, plantCover, sprinkler, heater, cooler, pesticide;
     @FXML
     private Spinner<Integer> plantQuantitySpinner;
     @FXML
@@ -81,6 +81,7 @@ public class GardenController {
         imageviews.put("sprinkler", sprinkler);
         imageviews.put("heater", heater);
         imageviews.put("cooler", cooler);
+        imageviews.put("pesticide", pesticide);
 
         // Set the default plant type to null
         setAllSoils(grassSoil);
