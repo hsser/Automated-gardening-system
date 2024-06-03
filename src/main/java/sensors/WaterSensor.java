@@ -48,7 +48,7 @@ public class WaterSensor {
         if(waterLevel <= plant.getPlantLowWaterThreshold()){
             WaterController.autoWatering(plant);
         }else if (waterLevel >= plant.getMaxWaterLevel()) {
-            System.out.println(WaterController.stopWatering());
+            WaterController.stopWatering();
         }
     }
 }
