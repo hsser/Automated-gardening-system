@@ -51,7 +51,7 @@ public class GardenController {
     @FXML
     private AnchorPane plantSelectionPane, popupStatusPane, parasiteSelectionPane;
     @FXML
-    private ImageView sunny, plantCover, sprinkler, heater, cooler, pesticide;
+    private ImageView sunny, rainy, plantCover, sprinkler, heater, cooler, pesticide;
     @FXML
     private Spinner<Integer> plantQuantitySpinner;
     @FXML
@@ -304,6 +304,7 @@ public class GardenController {
         Weather weather = gardenManager.getWeather();
         if(weather.isSunny()) {
             createRaindrop();
+            rainy.setImage(sunny.getImage());
             // Only set the normal soils to wet, not the grass soils
             for (Node node : soilGroup.getChildren()) {
                 if (node instanceof ImageView) {
@@ -317,6 +318,7 @@ public class GardenController {
             }
             animateImage("sunny",1.0, 0.1, false);
         } else {
+            rainy.setImage(new Image(getClass().getResourceAsStream("/image/icon/rainButton.png")));
             rainPane.getChildren().clear();
             animateImage("sunny", 0.1, 1.0, true);
         }
