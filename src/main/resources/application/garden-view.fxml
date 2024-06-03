@@ -674,7 +674,7 @@
             </ImageView>
          </children>
       </Group>
-      <ImageView id="sprinkler" fx:id="sprinkler" fitHeight="150.0" fitWidth="150.0" layoutX="723.0" layoutY="612.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView id="sprinkler" fx:id="sprinkler" fitHeight="150.0" fitWidth="150.0" layoutX="723.0" layoutY="612.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
          <effect>
             <DropShadow />
          </effect>
@@ -682,7 +682,7 @@
             <Image url="@../image/icon/sprinkler.png" />
          </image>
       </ImageView>
-      <ImageView id="cooler" fx:id="cooler" fitHeight="150.0" fitWidth="150.0" layoutX="870.0" layoutY="612.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView id="cooler" fx:id="cooler" fitHeight="150.0" fitWidth="150.0" layoutX="870.0" layoutY="612.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
          <effect>
             <DropShadow />
          </effect>
@@ -690,7 +690,7 @@
             <Image url="@../image/icon/cooler.png" />
          </image>
       </ImageView>
-      <ImageView id="heater" fx:id="heater" fitHeight="150.0" fitWidth="150.0" layoutX="872.0" layoutY="611.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView id="heater" fx:id="heater" fitHeight="150.0" fitWidth="150.0" layoutX="872.0" layoutY="611.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
          <effect>
             <DropShadow />
          </effect>
