@@ -3,7 +3,7 @@ package controllers;
 import plant.Plant;
 
 /**
- * The PestController class provides methods to manage pest attacks on plants.
+ * The PestController class provides specialized methods to manage pest attacks on plants.
  */
 public class PestController {
     private Plant plant;
@@ -13,36 +13,49 @@ public class PestController {
      *
      * @param plant the plant to be protected from pests
      */
-    public PestController(Plant plant){
+    public PestController(Plant plant) {
         this.plant = plant;
     }
 
     /**
-     * Uses pesticide to help the plant restore health if it is under pest attack.
+     * Treats the plant with pesticides if it is under pest attack.
      */
-    public void pesticideMethod() {
-        handlePestAttack("pesticide");
-    }
-
-    /**
-     * Uses ladybugs to help the plant restore health if it is under pest attack.
-     */
-    public void ladybugMethod() {
-        handlePestAttack("ladybug");
-    }
-
-    /**
-     * Handles pest attack using the specified method.
-     *
-     * @param method the method used to handle the pest attack (pesticide or ladybug)
-     */
-    private void handlePestAttack(String method) {
+    public void usePesticide() {
         if (this.plant.isUnderAttack()) {
-            System.out.println("Warning! " + this.plant.getName() + " is under pest attack! ");
-            System.out.println("Using " + method + " to help plant restore health!");
-            this.plant.setUnderAttack(false);
+            System.out.println("Warning! " + this.plant.getName() + " is under pest attack using pesticides!");
+            applyPesticide();
         } else {
-            System.out.println(this.plant.getName() + " is not affected by pests now.");
+            System.out.println(this.plant.getName() + " is not currently affected by pests.");
         }
+    }
+
+    /**
+     * Treats the plant with ladybugs if it is under pest attack.
+     */
+    public void useLadybugs() {
+        if (this.plant.isUnderAttack()) {
+            System.out.println("Warning! " + this.plant.getName() + " is under pest attack using ladybugs!");
+            applyLadybugs();
+        } else {
+            System.out.println(this.plant.getName() + " is not currently affected by pests.");
+        }
+    }
+
+    /**
+     * Applies pesticide to the plant and logs the action.
+     */
+    private void applyPesticide() {
+        // Specific logic to apply pesticide
+        System.out.println("Applying pesticide to help " + this.plant.getName() + " restore health.");
+        this.plant.setUnderAttack(false);
+    }
+
+    /**
+     * Releases ladybugs to the plant and logs the action.
+     */
+    private void applyLadybugs() {
+        // Specific logic to release ladybugs
+        System.out.println("Releasing ladybugs to help " + this.plant.getName() + " combat pests.");
+        this.plant.setUnderAttack(false);
     }
 }
