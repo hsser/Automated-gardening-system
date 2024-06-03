@@ -1,26 +1,18 @@
 package sensors;
 
-import plant.PlantType;
+import controllers.WaterController;
+import plant.Plant;
 
 public class WaterSensor {
     private double waterLevel;
-    private PlantType plantType;
+    private Plant plant;
 
     /**
      * Constructs a WaterSensor with a default water level based on plant type.
      */
-    public WaterSensor(PlantType plantType) {
-        this.plantType = plantType;
-        this.waterLevel = plantType.getMinWaterLevel();
-    }
-
-    /**
-     * Sets the water level.
-     *
-     * @param newWaterLevel the new water level
-     */
-    public void setWaterLevel(double newWaterLevel) {
-        this.waterLevel = newWaterLevel;
+    public WaterSensor(Plant plant) {
+        this.plant = plant;
+        this.waterLevel = plant.getCurrentWaterLevel();
     }
 
     /**
@@ -39,19 +31,24 @@ public class WaterSensor {
      * @param newWaterLevel the new water level
      */
     public void updateWaterLevel(double newWaterLevel) {
-        if (newWaterLevel < plantType.getMinWaterLevel() || newWaterLevel > plantType.getMaxWaterLevel()) {
-            System.out.println("The plant will die due to inappropriate water levels!");
+        if (newWaterLevel < plant.getMinWaterLevel() || newWaterLevel > plant.getMaxWaterLevel()) {
+            System.out.println("The plant will die due to inappropriate water level!");
+            WaterController.stopWatering();
         } else {
             this.waterLevel = newWaterLevel;
+            System.out.println("The plant's water level has been updated");
+            System.out.println("Plant's current water level is " + plant.getCurrentWaterLevel());
         }
     }
 
     /**
-     * Checks if the water level is low.
-     *
-     * @return true if the water level is below the low water threshold for the plant type
+     * Check water level.
      */
-    public boolean isWaterLevelLow() {
-        return waterLevel <= plantType.getLowWaterThreshold();
+    public void checkWaterLevel(Plant plant) {
+        if(waterLevel <= plant.getPlantLowWaterThreshold()){
+            WaterController.autoWatering(plant);
+        }else if (waterLevel >= plant.getMaxWaterLevel()) {
+            WaterController.stopWatering();
+        }
     }
 }
