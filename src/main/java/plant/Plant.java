@@ -1,5 +1,6 @@
 package plant;
 
+import sensors.TemperatureSensor;
 import sensors.WaterSensor;
 import java.util.List;
 
@@ -9,6 +10,7 @@ public abstract class Plant{
     private boolean isUnderAttack;  // Flag to indicate if the plant is being attacked
     private WaterSensor waterSensor;
     private PlantType plantType;
+    private int health;  // Health of the plant
 
     public Plant(String name, PlantType plantType, double currentWaterLevel) {
         this.name = name;
@@ -16,11 +18,10 @@ public abstract class Plant{
         this.currentWaterLevel = currentWaterLevel;
         this.isUnderAttack = false;
         this.waterSensor = new WaterSensor(this);
+        this.health = 100;  // Starting health
     }
 
-    /**
-     * Getters
-     */
+    // Getter
     public String getName() { return this.name; }
     public double getMinWaterLevel() { return this.plantType.getMinWaterLevel(); }
     public double getMaxWaterLevel() { return this.plantType.getMaxWaterLevel(); }
@@ -30,9 +31,11 @@ public abstract class Plant{
     public double getPlantLowWaterThreshold() {return this.plantType.getLowWaterThreshold();}
     public List<String> getPestList(){ return this.plantType.getPests();}
     public boolean isUnderAttack() { return isUnderAttack; }
-    public boolean isAlive() { //TODO: Implement this method
-        return true;
-    }
+    public int getHealth() { return health; }
+    public boolean isAlive() { return this.health > 0; }
+
+    // Setter
+    public void setHealth(int health){ this.health = health;}
 
     /**
      * Update water level

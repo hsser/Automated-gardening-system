@@ -8,22 +8,18 @@ public class TemperatureSensor {
     private static final double LOW_TEMPERATURE_THRESHOLD = 50.0;
     private static final double OPTIMAL_TEMPERATURE = 77.0;
 
-    private double temperature;
+    private static double temperature = OPTIMAL_TEMPERATURE; // Default temperature
 
-    public TemperatureSensor() {
-        this.temperature = 77.0; // default temperature
-    }
-
-    public double getTemperature() {
+    public static double getTemperature() {
         return temperature;
     }
 
-    public void updateTemperature(double newTemperature) {
-        this.temperature = newTemperature;
-        this.temperature = checkAndAdjustTemperature();
+    public static void updateTemperature(double newTemperature) {
+        temperature = newTemperature;
+        temperature = checkAndAdjustTemperature();
     }
 
-    private double checkAndAdjustTemperature() {
+    private static double checkAndAdjustTemperature() {
         if (temperature > HIGH_TEMPERATURE_THRESHOLD || temperature < LOW_TEMPERATURE_THRESHOLD) {
             temperature = TemperatureController.adjustTemperature(temperature);
         }
