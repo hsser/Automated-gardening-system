@@ -1,6 +1,7 @@
 package plant;
 
 import sensors.WaterSensor;
+import java.util.List;
 
 public abstract class Plant{
     private String name;
@@ -27,6 +28,7 @@ public abstract class Plant{
     public double getMaxTemperatureLevel() { return this.plantType.getMaxTemperature(); }
     public double getCurrentWaterLevel() { return this.currentWaterLevel; }
     public double getPlantLowWaterThreshold() {return this.plantType.getLowWaterThreshold();}
+    public List<String> getPestList(){ return this.plantType.getPests();}
     public boolean isUnderAttack() { return isUnderAttack; }
     public boolean isAlive() { //TODO: Implement this method
         return true;
