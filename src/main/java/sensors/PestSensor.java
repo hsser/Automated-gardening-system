@@ -1,6 +1,5 @@
 package sensors;
 
-import plant.Peach;
 import plant.Plant;
 import controllers.PestController;
 import java.util.Random;
