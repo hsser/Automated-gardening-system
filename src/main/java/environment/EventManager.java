@@ -1,7 +1,6 @@
 package environment;
 
-import java.util.Random;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import plant.Plant;
@@ -14,42 +13,62 @@ public class EventManager {
     private Weather weather;
     private AtomicInteger temperature;
     private List<List<Plant>> plantGroups;
-
+    private List<String> pestType = new ArrayList<>(Arrays.asList("Aphid", "Spider", "Whitefly"));
+    Map<String, List<Integer>> pestToPlotIndex;
 
     // Random number generator for creating random events and choose random plant for creating pest attack event
     private Random random = new Random(8);
 
     final int LOWEST_TEMPERATURE = 40;
+    final int LOWEST_RAIN_AMOUNT = 1;
+    final int MAX_NUM_OF_PEST = 100;
 
-    public EventManager(Weather weather, AtomicInteger temperature, List<List<Plant>> plantGroups) {
+    public EventManager(Weather weather, AtomicInteger temperature, List<List<Plant>> plantGroups, Map<String, List<Integer>> pestToPlotIndex) {
         this.weather = weather;
         this.temperature = temperature;
         this.plantGroups = plantGroups;
+        this.pestToPlotIndex = pestToPlotIndex;
     }
 
-    // TODO: Change to provide specific event, random with parameters.
-    /**
-     * Creates a random event, either a weather change or a pest attack.
-     * @return A new random event.
-     */
-    public Event createRandomEvent() {
-        Event randomEvent = null;
-        EventType[] eventTypes = EventType.values();
-        EventType eventType = eventTypes[random.nextInt(eventTypes.length)];
-        switch (eventType) {
-            case WEATHER_CHANGE:
-                randomEvent = new WeatherChangeEvent(weather);
-                break;
-            case TEMPERATURE_CHANGE:
-                randomEvent = new TemperatureChangeEvent(temperature, LOWEST_TEMPERATURE + random.nextInt(80));
-                break;
-            case PEST_ATTACK:
-                List<Plant> victim = null;
-                if (plantGroups.isEmpty()) {
-                    victim = plantGroups.get(random.nextInt(plantGroups.size()));
-                    randomEvent = new PestAttackEvent(victim);
-                }
+    // Events for API use Only
+    public RainyEvent createRainyEvent(int rainAmount) {
+         return new RainyEvent(weather, WeatherType.RAINY, rainAmount, plantGroups);
+    }
+
+    // Events also for non API use
+    public WeatherChangeEvent createWeatherChangeEvent() {
+        return new WeatherChangeEvent(weather, LOWEST_RAIN_AMOUNT + random.nextInt(5), plantGroups);
+    }
+
+    public TemperatureChangeEvent createTemperatureChangeEvent(int targetTemperature) {
+        return new TemperatureChangeEvent(temperature, targetTemperature);
+    }
+
+    public PestAttackEvent createPestAttackEvent(String predator) {
+        List<Plant> prey = null;
+        int preyIndex = -1;
+        int numOfPredators = random.nextInt(MAX_NUM_OF_PEST);
+        List<Integer> preyIndexs = pestToPlotIndex.get(predator);
+        if (preyIndexs != null) {
+            preyIndex = preyIndexs.get(random.nextInt(preyIndexs.size()) - 1);
+            prey = plantGroups.get(preyIndex);
+            numOfPredators += prey.size();
         }
-        return randomEvent;
+        return new PestAttackEvent(prey, preyIndex, numOfPredators, predator);
+    }
+
+    // Daily Events
+    public void triggerAllEvents() {
+        List<Event> events = new ArrayList<>();
+
+        // Create Events
+        events.add(createWeatherChangeEvent());
+        events.add(createTemperatureChangeEvent(LOWEST_TEMPERATURE + random.nextInt(80)));
+        events.add(createPestAttackEvent(pestType.get(random.nextInt(pestType.size()))));
+
+        // Trigger Events
+        for (Event event : events) {
+            event.trigger();
+        }
     }
 }

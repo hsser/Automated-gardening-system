@@ -36,6 +36,7 @@ public abstract class Plant{
 
     // Setter
     public void setHealth(int health){ this.health = health;}
+    public void setCurrentWaterLevel(double currentWaterLevel) { this.currentWaterLevel = currentWaterLevel;}
 
     /**
      * Update water level

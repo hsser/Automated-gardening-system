@@ -1,7 +1,6 @@
 package application;
 
 import environment.Weather;
-import environment.WeatherChangeEvent;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -69,9 +68,14 @@ public class GardenController {
 
     private GardenManager gardenManager;
 
-    public void setGardenManager(GardenManager gardenManager) {
+    public GardenController(GardenManager gardenManager) {
         this.gardenManager = gardenManager;
         System.out.println("TEST-GardenManager: Set GardenManager to garden controller");
+
+        // Register UI callbacks
+        gardenManager.setOnWeatherChanged((Weather weather) -> showWeatherChangeEffect(weather));
+        gardenManager.setOnPlantingChanged((String soilId, String plantType) -> showPlantingEffect(soilId, plantType));
+        gardenManager.setOnDayChanged((Integer day) -> showCurrentDay(day));
     }
 
     @FXML
@@ -297,12 +301,10 @@ public class GardenController {
     /************************* WEATHER *************************/
 
     /**
-     * Handles the click event on the rain button.
+     * Show UI according to changed weather data.
      */
-    @FXML
-    private void handleRainButtonClick() {
-        Weather weather = gardenManager.getWeather();
-        if(weather.isSunny()) {
+    void showWeatherChangeEffect(Weather weather) {
+        if (!weather.isSunny()) {
             createRaindrop();
             rainy.setImage(sunny.getImage());
             // Only set the normal soils to wet, not the grass soils
@@ -322,13 +324,19 @@ public class GardenController {
             rainPane.getChildren().clear();
             animateImage("sunny", 0.1, 1.0, true);
         }
-        // TODO: might need to handle weather changes in the GardenManager
-        WeatherChangeEvent weatherChangeEvent = new WeatherChangeEvent(weather);
-        weatherChangeEvent.trigger();
         // Reset cursor to default every time the rain button is clicked
         soilGroup.getScene().setCursor(Cursor.DEFAULT);
         // Also, ensure watering mode is deactivated when rain toggled
         currentMode = Mode.NONE;
+    }
+
+    /**
+     * Handles the click event on the rain button.
+     */
+    @FXML
+    private void handleRainButtonClick() {
+        Weather weather = gardenManager.getWeather();
+        gardenManager.changeWeather(weather);  // Change data
     }
 
     /**
@@ -596,8 +604,6 @@ public class GardenController {
      * @param day The day to update the label with.
      */
     protected void showCurrentDay(int day) {
-        currentDay.setText("Day " + day);
+        currentDay.setText("Day " + day); // Change data
     }
-
-
 }

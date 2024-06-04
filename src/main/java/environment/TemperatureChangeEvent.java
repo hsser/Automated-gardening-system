@@ -16,6 +16,6 @@ public class TemperatureChangeEvent extends Event{
      */
     public void trigger() {
         temperature.set(targetTemperature);
-        System.out.println("Event: Weather change to " + targetTemperature);
+        System.out.println("Event: Temperature change from " + temperature + " to " + targetTemperature);
     }
 }
