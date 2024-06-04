@@ -6,7 +6,7 @@ public class CherryTomato extends Crop {
     }
 
     @Override
-    public void water(double amount) {
+    public void water(int amount) {
         System.out.println("Watering the cherry tomato with " + amount + " ml of water");
     }
 }

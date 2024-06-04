@@ -23,7 +23,7 @@ public class GardenSimulationAPI {
         Map<String, Object> result = new HashMap<>();
         List<List<Plant>> plantGroups = gardenManager.getPlantGroups();
         List<String> plants = new ArrayList<>();
-        List<Double> waterRequirement = new ArrayList<>();
+        List<Integer> waterRequirement = new ArrayList<>();
         List<List<String>> parasites = new ArrayList<>();
 
         for (List<Plant> plantGroup : plantGroups) {

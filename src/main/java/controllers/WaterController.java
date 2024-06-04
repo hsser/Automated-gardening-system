@@ -16,7 +16,7 @@ public class WaterController {
      * Auto-watering of the plant based on its current water level.
      */
     public static void autoWatering(Plant plant) {
-        double currentWaterLevel = plant.getCurrentWaterLevel();
+        int currentWaterLevel = plant.getCurrentWaterLevel();
         System.out.println("Current water level is " + currentWaterLevel);
 
         System.out.println("""
@@ -31,9 +31,9 @@ public class WaterController {
      *
      * @param currentWaterLevel the current water level of the plant
      */
-    public static void increaseWaterLevel(Plant plant, double currentWaterLevel) {
+    public static void increaseWaterLevel(Plant plant, int currentWaterLevel) {
         // Increase the water level
-        plant.updateWaterLevel(currentWaterLevel + 5.0);
+        plant.updateWaterLevel(currentWaterLevel + 5);
         System.out.println("Now, water level of " + plant.getName() + " is updated to " + plant.getCurrentWaterLevel());
     }
 
@@ -50,7 +50,7 @@ public class WaterController {
      * Decreases the water level of the plant daily.
      */
     public static void dailyWaterDecrease(Plant plant) {
-        double currentWaterLevel = plant.getCurrentWaterLevel();
+        int currentWaterLevel = plant.getCurrentWaterLevel();
         if (currentWaterLevel > plant.getMinWaterLevel()) {
             plant.updateWaterLevel(currentWaterLevel - 5);
         }

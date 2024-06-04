@@ -6,7 +6,7 @@ public class ChiliPepper extends Crop {
     }
 
     @Override
-    public void water(double amount) {
+    public void water(int amount) {
         System.out.println("Watering the chili pepper with " + amount + " ml of water");
     }
 }
