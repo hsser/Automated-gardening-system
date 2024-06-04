@@ -21,24 +21,20 @@ public class PestController {
      * Treats the plant with pesticides if it is under pest attack.
      */
     public void usePesticide() {
-        if (this.plant.isUnderAttack()) {
-            System.out.println("Warning! " + this.plant.getName() + " is under pest attack using pesticides!");
-            applyPesticide();
-        } else {
-            System.out.println(this.plant.getName() + " is not currently affected by pests.");
-        }
+        // Specific logic to apply pesticide
+        System.out.println("Applying pesticide to help " + this.plant.getName() + " restore health.");
+        this.plant.setNumOfPestsAttacking(0);
     }
 
     /**
      * Treats the plant with ladybugs if it is under pest attack.
      */
     public void useLadybugs() {
-        if (this.plant.isUnderAttack()) {
-            System.out.println("Warning! " + this.plant.getName() + " is under pest attack using ladybugs!");
-            applyLadybugs();
-        } else {
-            System.out.println(this.plant.getName() + " is not currently affected by pests.");
-        }
+        // Specific logic to release ladybugs
+        System.out.println("Deploying " + this.plant.getNumOfPestsAttacking() +
+                " ladybug" + ((plant.getNumOfPestsAttacking() > 1) ? "s" : "") +
+                " to help " + this.plant.getName() + " fight off the pests.");
+        this.plant.setNumOfPestsAttacking(0);
     }
 
     /**
@@ -47,7 +43,7 @@ public class PestController {
     private void applyPesticide() {
         // Specific logic to apply pesticide
         System.out.println("Applying pesticide to help " + this.plant.getName() + " restore health.");
-        this.plant.setUnderAttack(false);
+        this.plant.setNumOfPestsAttacking(0);
     }
 
     /**
@@ -56,6 +52,6 @@ public class PestController {
     private void applyLadybugs() {
         // Specific logic to release ladybugs
         System.out.println("Releasing ladybugs to help " + this.plant.getName() + " combat pests.");
-        this.plant.setUnderAttack(false);
+        this.plant.setNumOfPestsAttacking(0);
     }
 }

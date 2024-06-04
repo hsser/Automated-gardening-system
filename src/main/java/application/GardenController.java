@@ -521,7 +521,7 @@ public class GardenController {
             String quantity = String.valueOf(size);
             String humidity = String.valueOf(plant.getCurrentWaterLevel());
             String temperature = "N/A"; // TODO: Add logic to get current temperature
-            String attackStatus = plant.isUnderAttack() ? "Yes" : "No";
+            String attackStatus = plant.getNumOfPestsAttacking() > 0 ? "Yes" : "No";
             String healthStatus = plant.isAlive() ? "Alive" : "Dead";
             setLabelValues(type, quantity, humidity, temperature, attackStatus, healthStatus);
         } else {

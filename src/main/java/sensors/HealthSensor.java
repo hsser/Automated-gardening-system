@@ -18,7 +18,7 @@ public class HealthSensor {
             healthController.reduceHealth(10);
         }
 
-        if (plant.isUnderAttack()) {
+        if (plant.getNumOfPestsAttacking() > 0) {
             healthController.reduceHealth(20);
         }
 
