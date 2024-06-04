@@ -6,7 +6,7 @@ public class Hydrangea extends Flower {
     }
 
     @Override
-    public void water(double amount) {
+    public void water(int amount) {
         System.out.println("Watering the hydrangea with " + amount + " ml of water");
     }
 }
