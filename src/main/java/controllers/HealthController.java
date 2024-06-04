@@ -16,7 +16,7 @@ public class HealthController {
     }
 
     public void recoverHealth() {
-        if (plant.getHealth() < 100 && !plant.isUnderAttack() &&
+        if (plant.getHealth() < 100 && plant.getNumOfPestsAttacking() == 0 &&
                 plant.getCurrentWaterLevel() >= plant.getMinWaterLevel() &&
                 plant.getCurrentWaterLevel() <= plant.getMaxWaterLevel() &&
                 TemperatureSensor.getTemperature() >= plant.getMinTemperatureLevel() &&

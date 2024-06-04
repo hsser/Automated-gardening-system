@@ -24,7 +24,8 @@ public class PestAttackEvent extends Event {
     public void trigger() {
         if (plantGroup != null) {
             for (Plant plant: plantGroup) {
-                plant.setUnderAttack(true);
+                plant.setNumOfPestsAttacking(numOfPest);
+                plant.setTypeOfPestsAttacking(pest);
             }
             System.out.println("Event: " + numOfPest + " " + pest + " attack to " + plantGroup.get(0).getName() + " in plot " + plotIndex);
         } else {

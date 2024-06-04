@@ -27,8 +27,10 @@ public class PestSensor {
      * Monitors and handles pest attacks if detected.
      */
     public void monitorForPestAttack() {
-        if (plant.isUnderAttack()) {
-            System.out.println("Pest attack detected on " + plant.getName() + "!");
+        if (plant.getNumOfPestsAttacking() > 0) {
+            System.out.println("Warning! " + plant.getName() + " is being attacked by " +
+                    plant.getNumOfPestsAttacking() + " " +
+                    plant.getTypeOfPestsAttacking() + ((plant.getNumOfPestsAttacking() > 1) ? "s!" : "!"));
             if (random.nextBoolean()) {
                 pestController.usePesticide();  // Randomly use pesticide
             } else {
@@ -39,3 +41,4 @@ public class PestSensor {
         }
     }
 }
+
