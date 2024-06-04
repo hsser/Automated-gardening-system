@@ -36,22 +36,4 @@ public class PestController {
                 " to help " + this.plant.getName() + " fight off the pests.");
         this.plant.setNumOfPestsAttacking(0);
     }
-
-    /**
-     * Applies pesticide to the plant and logs the action.
-     */
-    private void applyPesticide() {
-        // Specific logic to apply pesticide
-        System.out.println("Applying pesticide to help " + this.plant.getName() + " restore health.");
-        this.plant.setNumOfPestsAttacking(0);
-    }
-
-    /**
-     * Releases ladybugs to the plant and logs the action.
-     */
-    private void applyLadybugs() {
-        // Specific logic to release ladybugs
-        System.out.println("Releasing ladybugs to help " + this.plant.getName() + " combat pests.");
-        this.plant.setNumOfPestsAttacking(0);
-    }
 }
