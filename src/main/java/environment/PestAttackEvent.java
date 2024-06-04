@@ -14,6 +14,7 @@ public class PestAttackEvent extends Event {
         this.plantGroup = plantGroup;
         this.plotIndex = plotIndex;
         this.numOfPest = numOfPest;
+        this.pest = pest;
     }
 
     /**
@@ -25,9 +26,9 @@ public class PestAttackEvent extends Event {
             for (Plant plant: plantGroup) {
                 plant.setUnderAttack(true);
             }
-            System.out.println("Event: " + numOfPest + " " + pest + "attack to " + plantGroup.get(0).getName() + "in plot " + plotIndex);
+            System.out.println("Event: " + numOfPest + " " + pest + " attack to " + plantGroup.get(0).getName() + " in plot " + plotIndex);
         } else {
-            System.out.println("Event: " + numOfPest + " " + pest + "attack to the garden, but no plant is attacked");
+            System.out.println("Event: " + numOfPest + " " + pest + " attack to the garden, but no plant is attacked");
         }
     }
 }

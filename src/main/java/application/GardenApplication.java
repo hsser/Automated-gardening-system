@@ -24,9 +24,25 @@ public class GardenApplication extends Application {
         stage.setTitle("Automated Gardening System");
         stage.setScene(scene);
         stage.show();
-        // TEST BEGIN: Weather change event with UI change without press button
+
+        // TEST BEGIN: WeatherChangeEvent with UI change without press button
         gardenManager.changeWeather(gardenManager.getWeather());
-        // TEST BEGIN: Weather change event with UI change without press button
+        // TEST BEGIN: WeatherChangeEvent with UI change without press button
+
+        // TEST BEGIN: For PestAttackEvent
+        gardenManager.printPestToPlotIndex();
+        gardenManager.parasite("Whitefly");
+        gardenManager.parasite("Spider");
+        gardenManager.parasite("Aphid");
+        // TEST END: For PestAttackEvent
+
+        // TEST BEGIN: For TemperatureEvent
+        gardenManager.temperature(60);
+        // TEST BEGIN: For TemperatureEvent
+
+        // TEST BEGIN: For RainyEvent
+        gardenManager.rain(10);
+        // TEST BEGIN: For RainyEvent
     }
 
     public static void main(String[] args) {

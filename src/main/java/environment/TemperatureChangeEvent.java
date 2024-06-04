@@ -15,7 +15,8 @@ public class TemperatureChangeEvent extends Event{
      * Trigger temperature change event and set the current temperature to the input value.
      */
     public void trigger() {
+        int previousTemperature = temperature.get();
         temperature.set(targetTemperature);
-        System.out.println("Event: Temperature change from " + temperature + " to " + targetTemperature);
+        System.out.println("Event: Temperature change from " + previousTemperature + " to " + targetTemperature);
     }
 }

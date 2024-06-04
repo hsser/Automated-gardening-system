@@ -50,7 +50,7 @@ public class EventManager {
         int numOfPredators = random.nextInt(MAX_NUM_OF_PEST);
         List<Integer> preyIndexs = pestToPlotIndex.get(predator);
         if (preyIndexs != null) {
-            preyIndex = preyIndexs.get(random.nextInt(preyIndexs.size()) - 1);
+            preyIndex = preyIndexs.get(random.nextInt(preyIndexs.size()));
             prey = plantGroups.get(preyIndex);
             numOfPredators += prey.size();
         }

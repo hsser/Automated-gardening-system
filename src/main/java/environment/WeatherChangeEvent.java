@@ -19,18 +19,19 @@ public class WeatherChangeEvent extends Event {
      * Trigger weather change event and set the current weather to another.
      */
     public void trigger() {
-        WeatherType newWeatherType = (weather.getWeatherType() == WeatherType.SUNNY) ? WeatherType.RAINY : WeatherType.SUNNY;
-        String output = "Event: Weather change to " + newWeatherType.getName();
-        weather.setWeatherType(newWeatherType);
-        if (newWeatherType == WeatherType.RAINY) {
+        String output = "Event: Weather change to ";
+        if (weather.isSunny()) {
+            weather.setWeatherType(WeatherType.RAINY);
             for (List<Plant> plantGroup : plantGroups) {
                 for (Plant plant : plantGroup) {
                     plant.setCurrentWaterLevel(plant.getCurrentWaterLevel() + rainAmount);
                 }
             }
-            output += ", the amount of rain is " + rainAmount;
+            output += weather.getWeatherType().getName() + ", the amount of rain is " + rainAmount;;
+        } else {
+            weather.setWeatherType(WeatherType.SUNNY);
+            output += weather.getWeatherType().getName();
         }
         System.out.println(output);
-
     }
 }

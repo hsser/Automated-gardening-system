@@ -140,6 +140,18 @@ public class GardenManager {
         return plantGroup;
     }
 
+    private void setPestToPlotIndex(int plotIndex, List<String> pests) {
+        for (String pest : pests) {
+            if (pestToPlotIndex.containsKey(pest)) {
+                pestToPlotIndex.get(pest).add(plotIndex);
+            } else {
+                List<Integer> list = new ArrayList<>();
+                list.add(plotIndex);
+                pestToPlotIndex.put(pest, list);
+            }
+        }
+    }
+
     public int placePlantGroup(List<Plant> plantGroup, int plotIndex, boolean isScriptMode) {
         int quantity = plantGroup.size();
         String type = plantGroup.get(0).getName();
@@ -156,6 +168,8 @@ public class GardenManager {
             return -1;
         }
 
+        List<String> pests = plantGroup.get(0).getPestList();
+
         // Check if the plot is occupied
         if (plantGroups.get(plotIndex).size() == 0) {
             plantGroups.set(plotIndex, plantGroup);
@@ -163,6 +177,8 @@ public class GardenManager {
                     ((quantity > 1) ? "s" : "") + " in plot " + (plotIndex + 1));
             numberOfPlants += quantity;
             System.out.println("TEST-GardenManager: Current number of plant is " + numberOfPlants);
+            // Set pestToPlotIndex after place plantGroup
+            setPestToPlotIndex(plotIndex, pests);
             return plotIndex;
         }
 
@@ -175,25 +191,31 @@ public class GardenManager {
                             ((quantity > 1) ? "s" : "") + " in plot " + (i + 1));
                     numberOfPlants += quantity;
                     System.out.println("TEST-GardenManager: Current number of plant is " + numberOfPlants);
+                    // Set pestToPlotIndex after place plantGroup
+                    setPestToPlotIndex(i, pests);
                     return i;
                 }
             }
         }
 
-        // Set pestToPlotIndex after place plantGroup
-        List<String> pests = plantGroup.get(0).getPestList();
-        for (String pest : pests) {
-            if (pestToPlotIndex.containsKey(pest)) {
-                pestToPlotIndex.get(pest).add(plotIndex);
-            } else {
-                List<Integer> list = new ArrayList<>();
-                list.add(plotIndex);
-                pestToPlotIndex.put(pest, list);
-            }
-        }
-
         return -1;
     }
+
+    // TEST BEGIN: printPestToPlotIndex
+    public void printPestToPlotIndex() {
+        for (Map.Entry<String, List<Integer>> entry : pestToPlotIndex.entrySet()) {
+            String pest = entry.getKey();
+            List<Integer> plotIndices = entry.getValue();
+            System.out.println("TEST-GardenManager: ");
+            System.out.println("Pest: " + pest);
+            System.out.print("Plot Indices: ");
+            for (Integer index : plotIndices) {
+                System.out.print(index + " ");
+            }
+            System.out.println(); // New line after each pest's plot indices
+        }
+    }
+    // TEST END: printPestToPlotIndex
 
     /************************* WEATHER *************************/
 
