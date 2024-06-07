@@ -19,7 +19,6 @@ public class GardenLogger {
     public static void log(int currentDayInGarden, String message) {
         String timestamp = formatter.format(LocalDateTime.now());
         String logMessage = String.format("%s: [Day %d] %s%n", timestamp, currentDayInGarden, message);
-        System.out.print(logMessage);  // Print the log message to the console
 
         try {
             Files.writeString(Paths.get(LOG_FILE_PATH), logMessage, StandardOpenOption.CREATE, StandardOpenOption.APPEND);

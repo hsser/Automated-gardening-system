@@ -51,8 +51,8 @@ public class GardenManager {
     /************************* API *************************/
 
     public void initializeGarden() {
-        startTimer();
         plantFromLoader();
+        startTimer();
     }
 
     public Map<String, Object> getPlants() {
@@ -278,12 +278,19 @@ public class GardenManager {
     }
 
     public void simulateDay() {
-        Platform.runLater(() -> {
-            //TODO: Add daily events here and update UI
-            if (onDayChanged != null) {
-                onDayChanged.accept(++currentDay);
-            }
-            System.out.println("TEST-GardenManager: Day " + currentDay + " starts.");
-        });
+        // TODO: Add daily events here for both javafx and non-javafx threads
+        currentDay++;
+
+        // Update UI on JavaFX thread
+        if (Platform.isFxApplicationThread()) {
+            Platform.runLater(() -> {
+                //TODO: update UI here
+                if (onDayChanged != null) {
+                    onDayChanged.accept(currentDay);
+                }
+            });
+        }
+
+        System.out.println("TEST-GardenManager: Day " + currentDay + " starts.");
     }
 }
