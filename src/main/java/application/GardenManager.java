@@ -4,6 +4,8 @@ import environment.*;
 import io.GardenConfigLoader;
 import javafx.application.Platform;
 import plant.*;
+import sensors.TemperatureSensor;
+import sensors.WaterSensor;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,6 +32,8 @@ public class GardenManager {
     private Consumer<Weather> onWeatherChanged;
     private BiConsumer<String, String> onPlantingChanged;
     private Consumer<Integer> onDayChanged;
+    private TemperatureSensor temperatureSensor = new TemperatureSensor();
+    private WaterSensor waterSensor;
 
     // For loading plants from config file
     private GardenConfigLoader loader;
@@ -252,6 +256,49 @@ public class GardenManager {
         }
     }
     // TEST END: printPestToPlotIndex
+
+    /************************* Status *************************/
+    /*
+    Obtain Plant Type, Plant Number,Humidity Level, Temperature, Under Attack, Health：
+     */
+
+    // Obtain Plant Type
+    public String getPlantTypeOfPlantGroup(int index){
+        return plantGroups.get(index).get(0).getPlantType().name();
+    }
+
+    // Obtain Plant Number
+    public int getPlantNumberOfPlantGroups(int index){
+        return plantGroups.get(index).size();
+    }
+
+    // Obtain Humidity Level
+    public int getHumidityLevelOfPlantGroup(int index){
+        return plantGroups.get(index).get(0).getCurrentWaterLevel();
+    }
+
+    // Obtain Temperature
+    public int getTemperature() {
+        try {
+            int currentTemp = temperatureSensor.getTemperature();
+            System.out.println("Current temperature is " + currentTemp + "°F");
+            return currentTemp;
+        } catch (Exception e) {
+            System.err.println("Error retrieving temperature: " + e.getMessage());
+            return -1;
+        }
+    }
+
+    // obtain Under Attack
+    public boolean getUnderAttackOfPlantGroup(int index){
+        return plantGroups.get(index).get(0).getNumOfPestsAttacking() > 0 ? true: false;
+    }
+
+
+    // obtain Health
+    public int getHealthOfPlantGroup(int index){
+        return plantGroups.get(index).get(0).getHealth();
+    }
 
     /************************* WEATHER *************************/
 

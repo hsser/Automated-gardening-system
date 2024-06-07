@@ -4,10 +4,10 @@ import sensors.TemperatureSensor;
 
 public class TemperatureController {
 
-    public static double adjustTemperature(double currentTemperature) {
-        double highThreshold = TemperatureSensor.getHighTemperatureThreshold();
-        double lowThreshold = TemperatureSensor.getLowTemperatureThreshold();
-        double optimalTemperature = TemperatureSensor.getOptimalTemperature();
+    public static int adjustTemperature(int currentTemperature) {
+        int highThreshold = TemperatureSensor.getHighTemperatureThreshold();
+        int lowThreshold = TemperatureSensor.getLowTemperatureThreshold();
+        int optimalTemperature = TemperatureSensor.getOptimalTemperature();
 
         if (currentTemperature > highThreshold) {
             System.out.println("Warning: Temperature has exceeded the high limit of " + highThreshold + " degrees.");
@@ -21,20 +21,20 @@ public class TemperatureController {
         }
     }
 
-    private static double coolDown(double currentTemperature, double optimalTemperature) {
+    private static int coolDown(int currentTemperature, int optimalTemperature) {
         System.out.println("Cooler is on.");
         while (currentTemperature > optimalTemperature) {
-            currentTemperature -= 1.0;
+            currentTemperature -= 1;
             System.out.println("Cooling: Current temperature is " + currentTemperature + " degrees.");
         }
         System.out.println("Cooler is off. Temperature adjusted to optimal level: " + optimalTemperature + " degrees.");
         return currentTemperature;
     }
 
-    private static double heatUp(double currentTemperature, double optimalTemperature) {
+    private static int heatUp(int currentTemperature, int optimalTemperature) {
         System.out.println("Heater is on.");
         while (currentTemperature < optimalTemperature) {
-            currentTemperature += 1.0;
+            currentTemperature += 1;
             System.out.println("Heating: Current temperature is " + currentTemperature + " degrees.");
         }
         System.out.println("Heater is off. Temperature adjusted to optimal level: " + optimalTemperature + " degrees.");
