@@ -34,6 +34,9 @@ public abstract class Plant{
     public String getTypeOfPestsAttacking() {
         return typeOfPestsAttacking;
     }
+    public PlantType getPlantType() {
+        return plantType;
+    }
     public int getHealth() { return health; }
     public boolean isAlive() { return this.health > 0; }
 
