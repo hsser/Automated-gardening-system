@@ -637,49 +637,32 @@ public class GardenController {
 
 
     /**
-     * Shows the ladybug handling effect on the given soil.
-     * Once the ladybug is shown, pest attack is handled.
+     * Shows the pest attack handling effect on the given soil.
      * @param soilId The id of the soil to show the ladybug handling effect on.
+     * @param handlerType The type of handler to show the effect for.
+     *                    Can be "ladybug" or "pesticide".
      */
-    protected void showLadybugHandlingEffect(String soilId) {
-        ImageView ladybug = (ImageView) ladybugGroup.lookup("#" + soilId);
-        ImageView aphid = (ImageView) aphidGroup.lookup("#" + soilId);
-        ImageView spider = (ImageView) spiderGroup.lookup("#" + soilId);
-        ImageView whitefly = (ImageView) whiteflyGroup.lookup("#" + soilId);
-
-        // Make the ladybug visible
-        if (!ladybug.isVisible()) {
-            ladybug.setVisible(true);
-
-            // Create a pause transition for the desired duration
-            PauseTransition pause = new PauseTransition(Duration.seconds(5)); // Adjust duration as needed
-            pause.setOnFinished(event -> ladybug.setVisible(false)); // Hide the ladybug after the pause
-            pause.play();
+    protected void showPestAttackHandlingEffect(String soilId, String handlerType) {
+        ImageView handler;
+        if (handlerType.equals("ladybug")) {
+            handler = (ImageView) ladybugGroup.lookup("#" + soilId);
+        } else if (handlerType.equals("pesticide")) {
+            handler = pesticide;
+        } else {
+            handler = null;
         }
 
-        // Hide pests
-        aphid.setVisible(false);
-        spider.setVisible(false);
-        whitefly.setVisible(false);
-    }
-
-    /**
-     * Shows the pesticide handling effect on the given soil.
-     * Once the pesticide is shown, pest attack is handled.
-     * @param soilId The id of the soil to show the pesticide handling effect on.
-     */
-    protected void showPesticideHandlingEffect(String soilId) {
         ImageView aphid = (ImageView) aphidGroup.lookup("#" + soilId);
         ImageView spider = (ImageView) spiderGroup.lookup("#" + soilId);
         ImageView whitefly = (ImageView) whiteflyGroup.lookup("#" + soilId);
 
-        // Make the pesticide visible
-        if (!pesticide.isVisible()) {
-            animateImage("pesticide", 0.1, 1.0, true);
+        // Make the handler visible
+        if (handler != null && !handler.isVisible()) {
+            handler.setVisible(true);
 
             // Create a pause transition for the desired duration
             PauseTransition pause = new PauseTransition(Duration.seconds(5)); // Adjust duration as needed
-            pause.setOnFinished(event -> animateImage("pesticide", 1.0, 0.1, false)); // Hide the pesticide after the pause
+            pause.setOnFinished(event -> handler.setVisible(false)); // Hide the handler after the pause
             pause.play();
         }
 
