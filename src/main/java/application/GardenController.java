@@ -1,6 +1,7 @@
 package application;
 
 import environment.Weather;
+import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -64,7 +65,7 @@ public class GardenController {
     private Image grassSoil = new Image(getClass().getResourceAsStream("/image/soil/1.png"));
     private Image normalSoil = new Image(getClass().getResourceAsStream("/image/soil/3.png"));
     private Image wetSoil = new Image(getClass().getResourceAsStream("/image/soil/4.png"));
-    //private Image drySoil = new Image(getClass().getResourceAsStream("/image/soil/5.png"));
+    private Image deadPlant = new Image(getClass().getResourceAsStream("/image/crops/crop7/cron_end.png"));
 
     private GardenManager gardenManager;
 
@@ -278,6 +279,17 @@ public class GardenController {
             }
         }
         currentPlantType = null;
+    }
+
+    /**
+     * Handles the dead plant UI effect when a plant dies.
+     * @param soilId The id of the soil to show the dead plant effect on.
+     */
+    protected void showDeadPlantEffect(String soilId) {
+        ImageView plant = (ImageView) plantGroup.lookup("#" + soilId);
+        if (plant != null) {
+            plant.setImage(deadPlant);
+        }
     }
 
     /**
@@ -606,4 +618,75 @@ public class GardenController {
     protected void showCurrentDay(int day) {
         currentDay.setText("Day " + day); // Change data
     }
+
+    /**
+     * Shows the subsystems effect for 5 seconds.
+     * @param subsystem The subsystem to show the effect for.
+     *                  Can be "sprinkler", "heater", or "cooler".
+     */
+    protected void showSubsystemsEffect(String subsystem) {
+        animateImage(subsystem, 0.1, 1.0, true);
+        PauseTransition pause = new PauseTransition(Duration.seconds(5)); // Adjust duration as needed
+        pause.setOnFinished(event -> animateImage(subsystem, 1.0, 0.1, false)); // Hide the sprinkler after the pause
+        pause.play();
+    }
+
+    // TODO: need to decide how long the effect should last
+    protected void showPlantCover() { animateImage("plantCover", 0.1, 1.0, true); }
+    protected void hidePlantCover() { animateImage("plantCover", 1.0, 0.1, false); }
+
+
+    /**
+     * Shows the ladybug handling effect on the given soil.
+     * Once the ladybug is shown, pest attack is handled.
+     * @param soilId The id of the soil to show the ladybug handling effect on.
+     */
+    protected void showLadybugHandlingEffect(String soilId) {
+        ImageView ladybug = (ImageView) ladybugGroup.lookup("#" + soilId);
+        ImageView aphid = (ImageView) aphidGroup.lookup("#" + soilId);
+        ImageView spider = (ImageView) spiderGroup.lookup("#" + soilId);
+        ImageView whitefly = (ImageView) whiteflyGroup.lookup("#" + soilId);
+
+        // Make the ladybug visible
+        if (!ladybug.isVisible()) {
+            ladybug.setVisible(true);
+
+            // Create a pause transition for the desired duration
+            PauseTransition pause = new PauseTransition(Duration.seconds(5)); // Adjust duration as needed
+            pause.setOnFinished(event -> ladybug.setVisible(false)); // Hide the ladybug after the pause
+            pause.play();
+        }
+
+        // Hide pests
+        aphid.setVisible(false);
+        spider.setVisible(false);
+        whitefly.setVisible(false);
+    }
+
+    /**
+     * Shows the pesticide handling effect on the given soil.
+     * Once the pesticide is shown, pest attack is handled.
+     * @param soilId The id of the soil to show the pesticide handling effect on.
+     */
+    protected void showPesticideHandlingEffect(String soilId) {
+        ImageView aphid = (ImageView) aphidGroup.lookup("#" + soilId);
+        ImageView spider = (ImageView) spiderGroup.lookup("#" + soilId);
+        ImageView whitefly = (ImageView) whiteflyGroup.lookup("#" + soilId);
+
+        // Make the pesticide visible
+        if (!pesticide.isVisible()) {
+            animateImage("pesticide", 0.1, 1.0, true);
+
+            // Create a pause transition for the desired duration
+            PauseTransition pause = new PauseTransition(Duration.seconds(5)); // Adjust duration as needed
+            pause.setOnFinished(event -> animateImage("pesticide", 1.0, 0.1, false)); // Hide the pesticide after the pause
+            pause.play();
+        }
+
+        // Hide pests
+        aphid.setVisible(false);
+        spider.setVisible(false);
+        whitefly.setVisible(false);
+    }
+
 }

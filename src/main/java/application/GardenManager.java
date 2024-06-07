@@ -134,14 +134,7 @@ public class GardenManager {
             plantConfigs = loader.loadPlantsConfigurations();// Start from 1
             for (GardenConfigLoader.PlantConfig plantConfig : plantConfigs) {
                 List<Plant> plantGroup = createPlantGroup(plantConfig.getType(), plantConfig.getQuantity());
-                int plotIndex = placePlantGroup(plantGroup, 0, true); // Always start from 0
-                if (plotIndex != -1) {
-                    // Update UI
-                    String soilId = String.valueOf(plotIndex + 1);
-                    if (onPlantingChanged != null) {
-                        onPlantingChanged.accept(soilId, plantConfig.getType());
-                    }
-                }
+                placePlantGroup(plantGroup, 0, true); // Always start from 0
             }
         } catch (IOException e) {
             System.out.println("TEST-GardenManager: Error loading plant configurations: " + e.getMessage());

@@ -18,8 +18,7 @@ public class GardenApplication extends Application {
         GardenManager gardenManager = new GardenManager("src/main/files/garden_config.txt");
         fxmlLoader.setControllerFactory((Class<?> c) -> new GardenController(gardenManager));
         AnchorPane anchorPane = fxmlLoader.load();
-        // TODO: Where should we put this initializeGarden() ????
-        gardenManager.initializeGarden();
+        gardenManager.startTimer();
         Scene scene = new Scene(anchorPane);
         stage.setTitle("Automated Gardening System");
         stage.setScene(scene);
