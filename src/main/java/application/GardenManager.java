@@ -37,7 +37,7 @@ public class GardenManager {
 
     // Timer
     private GardenTimer timer;
-    private int currentDay = 1;
+    private int currentDay = 0;
 
     public GardenManager(String configPath) {
         System.out.println("TEST-GardenManager: Construct GardenManager");
@@ -55,9 +55,24 @@ public class GardenManager {
         plantFromLoader();
     }
 
-    Map<String, Object> getPlants() {
-        // TODO: Add content
-        return null;
+    public Map<String, Object> getPlants() {
+        Map<String, Object> result = new HashMap<>();
+        List<String> plants = new ArrayList<>();
+        List<Integer> waterRequirement = new ArrayList<>();
+        List<List<String>> parasites = new ArrayList<>();
+
+        for (List<Plant> plantGroup : plantGroups) {
+            if (!plantGroup.isEmpty()) {
+                plants.add(plantGroup.getFirst().getName());
+                waterRequirement.add(plantGroup.getFirst().getMinWaterLevel()); // TODO: Check if this is correct
+                List<String> plantParasites = plantGroup.getFirst().getPestList();
+                parasites.add(plantParasites);
+            }
+        }
+        result.put("plants", plants);
+        result.put("waterRequirement", waterRequirement);
+        result.put("parasites", parasites);
+        return result;
     }
 
     public void rain(int rainAmount) {
@@ -76,7 +91,35 @@ public class GardenManager {
     }
 
     public void getState() {
-        // TODO: Add content
+        StringBuilder state = new StringBuilder();
+        state.append("===================================\n");
+        state.append("Garden State of Day ").append(currentDay).append(":\n");
+        state.append("-----------------------------------\n");
+        state.append("Weather: ").append(weather.getWeatherType()).append("\n");
+        state.append("Temperature: ").append(temperature).append("\n");
+        state.append("Number of Plants in total: ").append(numberOfPlants).append("\n");
+        state.append("-----------------------------------\n");
+        for (int i = 0; i < MAX_PLOT; i++) {
+            List<Plant> plantGroup = plantGroups.get(i);
+            state.append("Plot " + (i + 1) + ": ");
+            if (!plantGroup.isEmpty()) {
+                state.append(plantGroup.getFirst().getName());
+                int alive = 0, dead = 0;
+                for (Plant plant : plantGroups.get(i)) {
+                    if (plant.isAlive()) {
+                        alive++;
+                    } else {
+                        dead++;
+                    }
+                }
+                state.append(", Alive: " + alive + ", Dead: " + dead + "\n");
+
+            } else {
+                state.append("Empty Plot\n");
+            }
+        }
+        state.append("===================================\n");
+        System.out.println(state.toString());
     }
 
     /************************* PLANTING *************************/
@@ -88,7 +131,7 @@ public class GardenManager {
     // TODO: Add script planting mode.
     public void plantFromLoader() {
         try {
-            plantConfigs = loader.loadPlantsConfigureations();// Start from 1
+            plantConfigs = loader.loadPlantsConfigurations();// Start from 1
             for (GardenConfigLoader.PlantConfig plantConfig : plantConfigs) {
                 List<Plant> plantGroup = createPlantGroup(plantConfig.getType(), plantConfig.getQuantity());
                 int plotIndex = placePlantGroup(plantGroup, 0, true); // Always start from 0
@@ -233,7 +276,7 @@ public class GardenManager {
 
     public List<List<Plant>> getPlantGroups() { return plantGroups; }
     public Weather getWeather() { return weather; }
-
+    public int getCurrentDay() { return currentDay; }
     public void startTimer() { timer.start(); }
     public void stopTimer() { timer.stop(); }
 
@@ -245,10 +288,9 @@ public class GardenManager {
         Platform.runLater(() -> {
             //TODO: Add daily events here and update UI
             if (onDayChanged != null) {
-                onDayChanged.accept(currentDay);
+                onDayChanged.accept(++currentDay);
             }
             System.out.println("TEST-GardenManager: Day " + currentDay + " starts.");
-            currentDay++;
         });
     }
 }

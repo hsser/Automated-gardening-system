@@ -11,7 +11,7 @@ public class GardenConfigLoader {
 
     public GardenConfigLoader(String configFilePath) { this.configFilePath = configFilePath; }
 
-    public List<PlantConfig> loadPlantsConfigureations() throws IOException {
+    public List<PlantConfig> loadPlantsConfigurations() throws IOException {
         List<PlantConfig> plants = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(configFilePath))) {
             String line;
