@@ -1,6 +1,7 @@
 package application;
 
 import environment.Weather;
+import io.GardenLogger;
 import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
@@ -129,6 +130,7 @@ public class GardenController {
             plantButton.setDisable(true);  // Disable the plant button
             rainButton.setDisable(true);  // Disable the rain button
             parasiteButton.setDisable(true);  // Disable the parasite button
+            GardenLogger.log("User", "Watering button clicked, watering mode enabled.");
         } else {
             // Reset cursor to default when disabling watering mode
             soilGroup.getScene().setCursor(Cursor.DEFAULT);
@@ -136,6 +138,7 @@ public class GardenController {
             plantButton.setDisable(false);  // Enable the plant button
             rainButton.setDisable(false);  // Enable the rain button
             parasiteButton.setDisable(false);  // Enable the parasite button
+            GardenLogger.log("User", "Watering button clicked, watering mode disabled.");
         }
     }
 
@@ -219,6 +222,7 @@ public class GardenController {
             rainButton.setDisable(false);
             parasiteButton.setDisable(false);
         }
+        GardenLogger.log("User", "Planting button clicked, planting mode enabled.");
     }
 
     /**
@@ -263,6 +267,7 @@ public class GardenController {
         setNodeVisibility(confirmButton, false);
         setNodeVisibility(plantSelectionPane, false);
         setNodeVisibility(overlayPane, false);
+        GardenLogger.log("User", "Planting button clicked, planting mode disabled.");
     }
 
     /**
@@ -356,6 +361,7 @@ public class GardenController {
      */
     @FXML
     private void handleRainButtonClick() {
+        GardenLogger.log("User", "Weather button clicked, changing weather.");
         gardenManager.changeWeather();  // Change data
     }
 
@@ -436,6 +442,7 @@ public class GardenController {
         setNodeVisibility(parasiteSelectionPane, true);
         setNodeVisibility(overlayPane, true);
         resetSelectionButtonStyle(parasiteSelectionGrid);
+        GardenLogger.log("User", "Parasite button clicked, parasite mode enabled.");
     }
 
     /**
@@ -474,6 +481,7 @@ public class GardenController {
         setNodeVisibility(confirmButton1, false);
         setNodeVisibility(parasiteSelectionPane, false);
         setNodeVisibility(overlayPane, false);
+        GardenLogger.log("User", "Parasite button clicked, parasite mode disabled.");
     }
 
     /**

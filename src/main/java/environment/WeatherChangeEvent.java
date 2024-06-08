@@ -22,9 +22,10 @@ public class WeatherChangeEvent extends Event {
     public void trigger() {
         if (weather.isSunny()) {
             weather.setWeatherType(WeatherType.RAINY);
+            GardenLogger.log("Event", "Weather change to " + weather.getWeatherType().getName() + ", the amount of rain is " + rainAmount);
+
             for (List<Plant> plantGroup : plantGroups) {
                 for (Plant plant : plantGroup) {
-                    GardenLogger.log("Event", "Weather change to " + weather.getWeatherType().getName() + ", the amount of rain is " + rainAmount);
                     plant.updateWaterLevel(plant.getCurrentWaterLevel() + rainAmount);
                 }
             }
