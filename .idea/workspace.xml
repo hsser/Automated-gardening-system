@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Add water level to plants when user clicking on watering button">
+    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Add plantGroup, refactor several classes. UI needs to be bound to the controllers/sensors">
       <change afterPath="$PROJECT_DIR$/src/main/files/garden_log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HealthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HealthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/TemperatureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/TemperatureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sensors/HealthSensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sensors/HealthSensor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sensors/TemperatureSensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sensors/TemperatureSensor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plant/PlantGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plant/PlantGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sensors/PestSensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sensors/PestSensor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sensors/WaterSensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sensors/WaterSensor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -307,7 +306,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717856747059</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Add plantGroup, refactor several classes. UI needs to be bound to the controllers/sensors">
+      <option name="closed" value="true" />
+      <created>1717869856574</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1717869856574</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,6 +351,7 @@
     <MESSAGE value="Add logs" />
     <MESSAGE value="Fix bug in WeatherChangeEvent" />
     <MESSAGE value="Add water level to plants when user clicking on watering button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add water level to plants when user clicking on watering button" />
+    <MESSAGE value="Add plantGroup, refactor several classes. UI needs to be bound to the controllers/sensors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add plantGroup, refactor several classes. UI needs to be bound to the controllers/sensors" />
   </component>
 </project>
