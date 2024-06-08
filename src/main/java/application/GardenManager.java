@@ -34,7 +34,7 @@ public class GardenManager {
     private PestAttackHandlingAction onPestAttackHandling;
     private SubsystemEffectAction onSubsystemsEffect;
     private Consumer<Integer> onDayChanged;
-    private TemperatureSensor temperatureSensor = new TemperatureSensor();
+    private TemperatureSensor temperatureSensor;
 
     // For loading plants from config file
     private GardenConfigLoader loader;
@@ -50,6 +50,8 @@ public class GardenManager {
         }
         loader = new GardenConfigLoader(configPath);
         this.timer = new GardenTimer(this::simulateDay);
+        this.temperatureSensor = TemperatureSensor.getInstance();
+        temperatureSensor.setTemperature(temperature.get());
     }
 
     /************************* API *************************/
@@ -249,49 +251,6 @@ public class GardenManager {
         }
     }
     // TEST END: printPestToPlotIndex
-
-    /************************* Status *************************/
-    /*
-    Obtain Plant Type, Plant Number,Humidity Level, Temperature, Under Attack, Health：
-     */
-
-    // Obtain Plant Type
-    public String getPlantTypeOfPlantGroup(int index){
-        return plantGroups.get(index).getName();
-    }
-
-    // Obtain Plant Number
-    public int getPlantNumberOfPlantGroups(int index){
-        return plantGroups.get(index).size();
-    }
-
-    // Obtain Humidity Level
-    public int getHumidityLevelOfPlantGroup(int index){
-        return plantGroups.get(index).getCurrentWaterLevel();
-    }
-
-    // Obtain Temperature
-    public int getTemperature() {
-        try {
-            int currentTemp = temperatureSensor.getTemperature();
-            System.out.println("Current temperature is " + currentTemp + "°F");
-            return currentTemp;
-        } catch (Exception e) {
-            System.err.println("Error retrieving temperature: " + e.getMessage());
-            return -1;
-        }
-    }
-
-    // obtain Under Attack
-    public boolean getUnderAttackOfPlantGroup(int index){
-        return plantGroups.get(index).getNumOfPestsAttacking() > 0 ? true: false;
-    }
-
-
-    // obtain Health
-    public int getHealthOfPlantGroup(int index){
-        return plantGroups.get(index).getHealth();
-    }
 
     /************************* WEATHER *************************/
 
