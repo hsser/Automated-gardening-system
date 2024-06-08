@@ -267,7 +267,7 @@ public class GardenManager {
     public List<PlantGroup> getPlantGroups() { return plantGroups; }
     public Weather getWeather() { return weather; }
     public int getCurrentDay() { return currentDay; }
-    public void startTimer() { /*timer.start();*/ }
+    public void startTimer() { timer.start(); }
     public void stopTimer() { timer.stop(); }
 
     public void setOnDayChanged(Consumer<Integer> consumer) {

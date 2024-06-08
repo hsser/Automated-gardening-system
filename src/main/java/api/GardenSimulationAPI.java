@@ -21,6 +21,6 @@ public class GardenSimulationAPI {
     public Map<String, Object> getPlants() { return gardenManager.getPlants(); }
     public void rain(int amount) { gardenManager.rain(amount); }
     public void temperature(int temperature) { gardenManager.temperature(temperature); }
-    public void parasite(String parasite) { gardenManager.parasite(parasite); }
+    public void parasite(String parasite) { gardenManager.parasite(parasite); } // Can be "Aphid", "Spider", "Whitefly"
     public void getState() { gardenManager.getState(); }
 }
