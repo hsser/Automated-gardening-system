@@ -28,6 +28,7 @@ import javafx.util.Duration;
 import javafx.scene.paint.Color;
 import plant.Plant;
 import plant.PlantGroup;
+import sensors.TemperatureSensor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -561,7 +562,7 @@ public class GardenController {
             String type = currentPlantGroup.getName();
             String quantity = String.valueOf(size);
             String humidity = String.valueOf(currentPlantGroup.getCurrentWaterLevel());
-            String temperature = "N/A"; // TODO: Add logic to get current temperature
+            String temperature =  String.valueOf(TemperatureSensor.getInstance().getTemperature());
             String attackStatus = currentPlantGroup.getNumOfPestsAttacking() > 0 ? "Yes" : "No";
             String healthStatus = String.valueOf(currentPlantGroup.getHealth());
             setLabelValues(type, quantity, humidity, temperature, attackStatus, healthStatus);

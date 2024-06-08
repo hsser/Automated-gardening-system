@@ -20,12 +20,13 @@ public class HealthController {
     }
 
     public void recoverHealth() {
+        int currentTemperature = TemperatureSensor.getInstance().getTemperature();
         for(Plant plant : plantGroup.getPlants()){
             if (plant.getHealth() < 100 && plantGroup.getNumOfPestsAttacking() == 0 &&
                     plant.getCurrentWaterLevel() >= plant.getMinWaterLevel() &&
                     plant.getCurrentWaterLevel() <= plant.getMaxWaterLevel() &&
-                    TemperatureSensor.getTemperature() >= plant.getMinTemperatureLevel() &&
-                    TemperatureSensor.getTemperature() <= plant.getMaxTemperatureLevel()) {
+                    currentTemperature >= plant.getMinTemperatureLevel() &&
+                    currentTemperature <= plant.getMaxTemperatureLevel()) {
                 plant.setHealth(plant.getHealth() + 20);
                 if (plant.getHealth() > 100) {
                     plant.setHealth(100);

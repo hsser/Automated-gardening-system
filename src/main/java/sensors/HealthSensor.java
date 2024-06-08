@@ -24,7 +24,7 @@ public class HealthSensor {
             healthController.reduceHealth(20);
         }
 
-        double currentTemperature = TemperatureSensor.getTemperature();
+        int currentTemperature = TemperatureSensor.getInstance().getTemperature();
         if (currentTemperature < plantGroup.getMinTemperatureLevel() ||
                 currentTemperature > plantGroup.getMaxTemperatureLevel()) {
             healthController.reduceHealth(15);

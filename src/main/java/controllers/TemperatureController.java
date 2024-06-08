@@ -4,18 +4,28 @@ import io.GardenLogger;
 import sensors.TemperatureSensor;
 
 public class TemperatureController {
+    private final int HIGH_TEMPERATURE_THRESHOLD = 104;
+    private final int LOW_TEMPERATURE_THRESHOLD = 50;
+    private final int OPTIMAL_TEMPERATURE = 77;
 
-    public static int adjustTemperature(int currentTemperature) {
-        int highThreshold = TemperatureSensor.getHighTemperatureThreshold();
-        int lowThreshold = TemperatureSensor.getLowTemperatureThreshold();
-        int optimalTemperature = TemperatureSensor.getOptimalTemperature();
+    private static TemperatureController instance;
 
-        if (currentTemperature > highThreshold) {
-            GardenLogger.log("Temperature Controller", "Warning: Temperature has exceeded the high limit of " + highThreshold + " degrees.");
-            return coolDown(currentTemperature, optimalTemperature);
-        } else if (currentTemperature < lowThreshold) {
-            GardenLogger.log("Temperature Controller","Warning: Temperature has fallen below the low limit of " + lowThreshold + " degrees.");
-            return heatUp(currentTemperature, optimalTemperature);
+    private TemperatureController() {}
+
+    public static synchronized TemperatureController getInstance() {
+        if (instance == null) {
+            instance = new TemperatureController();
+        }
+        return instance;
+    }
+
+    public int adjustTemperature(int currentTemperature) {
+        if (currentTemperature > HIGH_TEMPERATURE_THRESHOLD) {
+            GardenLogger.log("Temperature Controller", "Warning: Temperature has exceeded the high limit of " + HIGH_TEMPERATURE_THRESHOLD + " degrees.");
+            return coolDown(currentTemperature, OPTIMAL_TEMPERATURE);
+        } else if (currentTemperature < LOW_TEMPERATURE_THRESHOLD) {
+            GardenLogger.log("Temperature Controller","Warning: Temperature has fallen below the low limit of " + LOW_TEMPERATURE_THRESHOLD + " degrees.");
+            return heatUp(currentTemperature, OPTIMAL_TEMPERATURE);
         } else {
             GardenLogger.log("Temperature Controller","The temperature is quite suitable for plants' growth.");
             return currentTemperature;

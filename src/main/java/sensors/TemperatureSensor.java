@@ -3,38 +3,62 @@ package sensors;
 import controllers.TemperatureController;
 
 public class TemperatureSensor {
+    private static TemperatureSensor instance;
+    private int temperature;
 
-    private static final int HIGH_TEMPERATURE_THRESHOLD = 104;
-    private static final int LOW_TEMPERATURE_THRESHOLD = 50;
-    private static final int OPTIMAL_TEMPERATURE = 77;
+    private TemperatureSensor() {}
 
-    private static int temperature = OPTIMAL_TEMPERATURE; // Default temperature
+    public static synchronized TemperatureSensor getInstance() {
+        if (instance == null) {
+            instance = new TemperatureSensor();
+        }
+        return instance;
+    }
 
-    public static int getTemperature() {
+    public int getTemperature() {
         return temperature;
     }
 
-    public static void updateTemperature(int newTemperature) {
+    public void setTemperature(int newTemperature) {
+        this.temperature = TemperatureController.getInstance().adjustTemperature(newTemperature);
+    }
+
+
+    /*private final int HIGH_TEMPERATURE_THRESHOLD = 104;
+    private final int LOW_TEMPERATURE_THRESHOLD = 50;
+    private final int OPTIMAL_TEMPERATURE = 77;
+
+    private int temperature; // Instance variable for temperature
+
+    public TemperatureSensor(int initialTemperature) {
+        this.temperature = initialTemperature;
+    }
+
+    public int getTemperature() {
+        return temperature;
+    }
+
+    public void updateTemperature(int newTemperature) {
         temperature = newTemperature;
         temperature = checkAndAdjustTemperature();
     }
 
-    private static int checkAndAdjustTemperature() {
+    private int checkAndAdjustTemperature() {
         if (temperature > HIGH_TEMPERATURE_THRESHOLD || temperature < LOW_TEMPERATURE_THRESHOLD) {
             temperature = TemperatureController.adjustTemperature(temperature);
         }
         return temperature;
     }
 
-    public static int getHighTemperatureThreshold() {
+    public int getHighTemperatureThreshold() {
         return HIGH_TEMPERATURE_THRESHOLD;
     }
 
-    public static int getLowTemperatureThreshold() {
+    public int getLowTemperatureThreshold() {
         return LOW_TEMPERATURE_THRESHOLD;
     }
 
-    public static int getOptimalTemperature() {
+    public int getOptimalTemperature() {
         return OPTIMAL_TEMPERATURE;
-    }
+    }*/
 }
