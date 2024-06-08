@@ -42,9 +42,8 @@ public class GardenController {
     private Group soilGroup, plantGroup, ladybugGroup, aphidGroup, spiderGroup, whiteflyGroup;
     @FXML
     private Button waterButton, rainButton, plantButton, parasiteButton, // for watering, raining, parasite, and planting
-            cancelButton, confirmButton, // for canceling and confirming planting
-            cancelButton1, confirmButton1, // for confirming parasite
-            closeButton; // for closing the status pane
+            confirmButton, // for canceling and confirming planting
+            confirmButton1; // for confirming parasite
     @FXML
     private Label soilInfoLabel, plantTypeValue, plantNumberValue, humidityValue, temperatureValue,
             attackStatusValue, healthStatusValue, currentDay;
@@ -85,6 +84,11 @@ public class GardenController {
             showPlantingEffect(soilId, name);
         });
         gardenManager.setOnDayChanged((Integer day) -> showCurrentDay(day));
+        //gardenManager.setOnSubsystemsEffect((String subsystem) -> showSubsystemsEffect(subsystem));
+        //gardenManager.setOnPlantCover(() -> showPlantCover());
+        //gardenManager.setOnPlantCoverEnd(() -> hidePlantCover());
+        //gardenManager.setOnPestAttackHandling((int plotIndex, String handlerType) -> showPestAttackHandlingEffect(Integer.toString(plotIndex + 1), handlerType));
+        //gardenManager.setOnDeadPlant((int plotIndex) -> showDeadPlantEffect(Integer.toString(plotIndex + 1)));
     }
 
     @FXML
@@ -616,8 +620,16 @@ public class GardenController {
 
         switch (currentMode) {
             case WATERING:
-                //TODO: Need to add humidity to all the plants in the plot
+                // Increase the water level of all plants in the plot
+                List<Plant> selectedPlantGroup = gardenManager.getPlantGroups().get(plotIndex);
+                String plantType = selectedPlantGroup.get(0).getName();
+                if (!selectedPlantGroup.isEmpty()) {
+                    for (Plant plant : selectedPlantGroup) {
+                        plant.updateWaterLevel(plant.getCurrentWaterLevel() + 1);
+                    }
+                }
                 showWateringEffect(soilId);
+                GardenLogger.log("User", "Watering " + plantType + " in plot " + soilId);
                 break;
 
             case PLANTING:

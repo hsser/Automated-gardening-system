@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Add logs">
+    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Fix bug in WeatherChangeEvent">
       <change afterPath="$PROJECT_DIR$/src/main/files/garden_log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/environment/WeatherChangeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/environment/WeatherChangeEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sensors/PestSensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sensors/PestSensor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,7 +279,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717830534525</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Fix bug in WeatherChangeEvent">
+      <option name="closed" value="true" />
+      <created>1717832132937</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1717832132937</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,6 +322,7 @@
     <MESSAGE value="Update API methods in GardenManager, update GardenSimulationAPI" />
     <MESSAGE value="Update UI, exclude script mode from UI" />
     <MESSAGE value="Add logs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add logs" />
+    <MESSAGE value="Fix bug in WeatherChangeEvent" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix bug in WeatherChangeEvent" />
   </component>
 </project>

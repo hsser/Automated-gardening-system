@@ -215,7 +215,7 @@ public class GardenManager {
             numberOfPlants += quantity;
             GardenLogger.log("Event", "Planting " + quantity + " " + type + " seed" +
                     ((quantity > 1) ? "s" : "") + " in plot " + (plotIndex + 1) +
-                    ". Current number of plant is " + numberOfPlants);
+                    ". Current number of plants is " + numberOfPlants);
 
             // Set pestToPlotIndex after place plantGroup
             setPlotIndicesOfVulnerablePlantByPest(plotIndex, pests);
