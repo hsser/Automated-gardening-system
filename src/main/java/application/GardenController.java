@@ -690,24 +690,28 @@ public class GardenController {
             handler = null;
         }
 
-        ImageView aphid = (ImageView) aphidGroup.lookup("#" + soilId);
-        ImageView spider = (ImageView) spiderGroup.lookup("#" + soilId);
-        ImageView whitefly = (ImageView) whiteflyGroup.lookup("#" + soilId);
-
         // Make the handler visible
         if (handler != null && !handler.isVisible()) {
             handler.setVisible(true);
 
             // Create a pause transition for the desired duration
             PauseTransition pause = new PauseTransition(Duration.seconds(5)); // Adjust duration as needed
-            pause.setOnFinished(event -> handler.setVisible(false)); // Hide the handler after the pause
+            pause.setOnFinished(event -> {
+                handler.setVisible(false);
+                ImageView aphid = (ImageView) aphidGroup.lookup("#" + soilId);
+                ImageView spider = (ImageView) spiderGroup.lookup("#" + soilId);
+                ImageView whitefly = (ImageView) whiteflyGroup.lookup("#" + soilId);
+
+                // Hide pests
+                aphid.setVisible(false);
+                spider.setVisible(false);
+                whitefly.setVisible(false);
+
+            }); // Hide the handler after the pause
             pause.play();
         }
 
-        // Hide pests
-        aphid.setVisible(false);
-        spider.setVisible(false);
-        whitefly.setVisible(false);
+
     }
     @FXML
     private void handleNextDay(){

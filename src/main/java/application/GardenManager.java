@@ -29,6 +29,10 @@ public class GardenManager {
     private final int MAX_PLOT = 15;
     private int numberOfPlants = 0;
     private PlantChangeAction onPlantingChanged;
+    private OnWateringProtectionAction onWateringProtectionAction;
+    private OffWateringProtectionAction offWateringProtectionAction;
+    private PestAttackHandlingAction onPestAttackHandling;
+    private SubsystemEffectAction onSubsystemsEffect;
     private Consumer<Integer> onDayChanged;
     private TemperatureSensor temperatureSensor = new TemperatureSensor();
 
@@ -213,6 +217,10 @@ public class GardenManager {
         if (plantGroups.get(plotIndex).size() == 0) {
             plantGroups.set(plotIndex, plantGroup);
             plantGroup.setCurrentPlotIndex(plotIndex);
+            plantGroup.setOnWateringProtection(onWateringProtectionAction);
+            plantGroup.setOffWateringProtection(offWateringProtectionAction);
+            plantGroup.setOnPestAttackHandling(onPestAttackHandling);
+            plantGroup.setOnSubsystemsEffect(onSubsystemsEffect);
             numberOfPlants += quantity;
             GardenLogger.log("Event", "Planting " + quantity + " " + type + " seed" +
                     ((quantity > 1) ? "s" : "") + " in plot " + (plotIndex + 1) +
@@ -324,7 +332,9 @@ public class GardenManager {
 
         if (currentDay != 0) {
             for (PlantGroup plantGroup : plantGroups) {
-                WaterController.dailyWaterDecrease(plantGroup);
+                if (!plantGroup.isEmpty()) {
+                    WaterController.dailyWaterDecrease(plantGroup);
+                }
             }
         }
 
@@ -333,18 +343,15 @@ public class GardenManager {
     }
 
     public void setOnSubsystemsEffect(SubsystemEffectAction action) {
-        // pass the action to the plantGroup
+        this.onSubsystemsEffect = action;
     }
-
     public void setOnWateringProtection(OnWateringProtectionAction action) {
-        // pass the action to the plantGroup
+        this.onWateringProtectionAction = action;
     }
-
     public void setOffWateringProtection(OffWateringProtectionAction action) {
-        // pass the action to the plantGroup
+        this.offWateringProtectionAction = action;
     }
-
     public void setOnPestAttackHandling(PestAttackHandlingAction action) {
-        // pass the action to the plantGroup
+        this.onPestAttackHandling = action;
     }
 }

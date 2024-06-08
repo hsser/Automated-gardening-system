@@ -33,12 +33,21 @@ public class WaterSensor {
         if (newWaterLevel < plantGroup.getLowWaterThreshold()){
             WaterController.autoWatering(plantGroup);
             // Update UI: hide watering protection and show sprinkler
-            //offWateringProtectionAction.run();
-            //sprinklerAction.run("sprinkler");
+            if (this.onWateringProtectionAction != null) {
+                offWateringProtectionAction.run();
+            }
+            if (this.sprinklerAction != null) {
+                sprinklerAction.run("sprinkler");
+            }
         } else if (newWaterLevel > plantGroup.getMaxWaterLevel()) {
             WaterController.stopWatering(plantGroup);
             // Update UI: show watering protection
-            //onWateringProtectionAction.run();
+            if (this.onWateringProtectionAction != null) {
+                System.out.println("Watering protection activated");
+                onWateringProtectionAction.run();
+            } else {
+                System.out.println("Warning: onWateringProtectionAction not set.");
+            }
         } else {
             plantGroup.setCurrentWaterLevel(newWaterLevel);
             GardenLogger.log("Water Sensor", "The plant's water level has been updated, it's current water level is " + plantGroup.getCurrentWaterLevel());
