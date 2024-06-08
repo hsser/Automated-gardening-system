@@ -1,5 +1,6 @@
 package application;
 
+import io.GardenLogger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,6 +27,7 @@ public class GardenApplication extends Application {
     }
 
     public static void main(String[] args) {
+        GardenLogger.clearLog();
         launch();
     }
 }

@@ -3,6 +3,7 @@ package application;
 import controllers.WaterController;
 import environment.*;
 import io.GardenConfigLoader;
+import io.GardenLogger;
 import plant.*;
 import sensors.TemperatureSensor;
 
@@ -131,7 +132,7 @@ public class GardenManager {
     // TODO: Add script planting mode.
     public void plantFromLoader() {
         try {
-            plantConfigs = loader.loadPlantsConfigurations();// Start from 1
+            plantConfigs = loader.loadPlantsConfigurations();
             int plotIndex = 0;
             for (GardenConfigLoader.PlantConfig plantConfig : plantConfigs) {
                 List<Plant> plantGroup = createPlantGroup(plantConfig.getType(), plantConfig.getQuantity());
@@ -139,7 +140,7 @@ public class GardenManager {
                 plotIndex++;
             }
         } catch (IOException e) {
-            System.out.println("TEST-GardenManager: Error loading plant configurations: " + e.getMessage());
+            GardenLogger.log("Error","Error loading plant configurations: " + e.getMessage());
         }
     }
 
@@ -171,7 +172,7 @@ public class GardenManager {
                     plantGroup.add(new Hydrangea());
                     break;
                 default:
-                    System.out.println("TEST-GardenManager: No such type of plant.");
+                    GardenLogger.log("Warning", "No such type of plant.");
             }
         }
 
@@ -196,13 +197,13 @@ public class GardenManager {
 
         // Check if the plant group is empty
         if (quantity == 0) {
-            System.out.println("TEST-GardenManager: Plant group is empty.");
+            GardenLogger.log("Warning", "Plant group is empty.");
             return;
         }
 
         // Check if the plot index is valid
         if (plotIndex < 0 || plotIndex >= MAX_PLOT) {
-            System.out.println("TEST-GardenManager: Invalid plot index.");
+            GardenLogger.log("Warning", "Invalid plot index.");
             return;
         }
 
@@ -211,10 +212,11 @@ public class GardenManager {
         // Check if the plot is occupied
         if (plantGroups.get(plotIndex).size() == 0) {
             plantGroups.set(plotIndex, plantGroup);
-            System.out.println("Planting " + quantity + " " + type + " seed" +
-                    ((quantity > 1) ? "s" : "") + " in plot " + (plotIndex + 1));
             numberOfPlants += quantity;
-            System.out.println("TEST-GardenManager: Current number of plant is " + numberOfPlants);
+            GardenLogger.log("Event", "Planting " + quantity + " " + type + " seed" +
+                    ((quantity > 1) ? "s" : "") + " in plot " + (plotIndex + 1) +
+                    ". Current number of plant is " + numberOfPlants);
+
             // Set pestToPlotIndex after place plantGroup
             setPlotIndicesOfVulnerablePlantByPest(plotIndex, pests);
             if (onPlantingChanged != null) {
@@ -315,25 +317,19 @@ public class GardenManager {
     }
 
     public void simulateDay() {
-        // Day end
-        // Decrease water level
+        // Day change
+        dayChange();
+        GardenLogger.log("Event","Day " + currentDay + " starts.");
+
         if (currentDay != 0) {
-            System.out.println("=== Manual operations end ===");
             for (List<Plant> plantGroup : plantGroups) {
                 for (Plant plant : plantGroup) {
                     WaterController.dailyWaterDecrease(plant);
                 }
             }
-            System.out.println("TEST-GardenManager: Day " + currentDay + " ends.");
-            System.out.println();
         }
-
-        // Day change
-        dayChange();
-        System.out.println("TEST-GardenManager: Day " + currentDay + " starts.");
 
         // Day start, trigger daily events
         eventManager.triggerAllEvents();
-        System.out.println("=== Manual operations start ===");
     }
 }

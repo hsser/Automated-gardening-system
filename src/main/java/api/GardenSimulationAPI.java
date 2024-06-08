@@ -1,6 +1,7 @@
 package api;
 
 import application.GardenManager;
+import io.GardenLogger;
 import plant.Plant;
 
 import java.util.ArrayList;
@@ -11,7 +12,10 @@ import java.util.Map;
 public class GardenSimulationAPI {
     private GardenManager gardenManager;
 
-    public GardenSimulationAPI() { gardenManager = new GardenManager("src/main/files/garden_config.txt"); }
+    public GardenSimulationAPI() {
+        GardenLogger.clearLog();
+        gardenManager = new GardenManager("src/main/files/garden_config.txt");
+    }
 
     public void initializeGarden() { gardenManager.initializeGarden(); }
     public Map<String, Object> getPlants() { return gardenManager.getPlants(); }

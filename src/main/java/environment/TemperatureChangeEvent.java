@@ -1,5 +1,7 @@
 package environment;
 
+import io.GardenLogger;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TemperatureChangeEvent extends Event{
@@ -17,6 +19,6 @@ public class TemperatureChangeEvent extends Event{
     public void trigger() {
         int previousTemperature = temperature.get();
         temperature.set(targetTemperature);
-        System.out.println("Event: Temperature change from " + previousTemperature + " to " + targetTemperature);
+        GardenLogger.log("Event", "Temperature change from " + previousTemperature + " to " + targetTemperature);
     }
 }

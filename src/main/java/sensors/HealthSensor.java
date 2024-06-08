@@ -1,5 +1,6 @@
 package sensors;
 
+import io.GardenLogger;
 import plant.Plant;
 import controllers.HealthController;
 
@@ -29,7 +30,7 @@ public class HealthSensor {
         }
 
         if (plant.getHealth() <= 0) {
-            System.out.println(plant.getName() + " has died.");
+            GardenLogger.log("Health Sensor", plant.getName() + " has died.");
         } else {
             healthController.recoverHealth();  // Recover health if conditions are good
         }

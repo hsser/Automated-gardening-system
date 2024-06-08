@@ -1,5 +1,6 @@
 package controllers;
 
+import io.GardenLogger;
 import plant.Plant;
 import sensors.TemperatureSensor;
 
@@ -12,7 +13,7 @@ public class HealthController {
 
     public void reduceHealth(int amount) {
         plant.setHealth(plant.getHealth() - amount);
-        System.out.println(plant.getName() + " health reduced by " + amount + ", current health: " + plant.getHealth());
+        GardenLogger.log("Heath Controller", plant.getName() + " health reduced by " + amount + ", current health: " + plant.getHealth());
     }
 
     public void recoverHealth() {
@@ -25,7 +26,7 @@ public class HealthController {
             if (plant.getHealth() > 100) {
                 plant.setHealth(100);
             }
-            System.out.println(plant.getName() + " is recovering, current health: " + plant.getHealth());
+            GardenLogger.log("Heath Controller", plant.getName() + " is recovering, current health: " + plant.getHealth());
         }
     }
 }

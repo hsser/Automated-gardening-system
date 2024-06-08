@@ -1,6 +1,7 @@
 package environment;
 
 import application.PestAttackAction;
+import io.GardenLogger;
 import plant.Plant;
 
 import java.util.List;
@@ -28,13 +29,13 @@ public class PestAttackEvent extends Event {
             for (Plant plant: plantGroup) {
                 plant.setPest(pest, numOfPest);
             }
-            System.out.println("Event: " + numOfPest + " " + pest + " attack to " + plantGroup.get(0).getName() + " in plot " + plotIndex);
+            GardenLogger.log("Event", numOfPest + " " + pest + " attack to " + plantGroup.get(0).getName() + " in plot " + plotIndex + 1);
             // UI change for pest attack
             if (pestAttackAction != null) {
                 pestAttackAction.run(plotIndex, pest);
             }
         } else {
-            System.out.println("Event: " + numOfPest + " " + pest + " attack to the garden, but no plant is attacked");
+            GardenLogger.log("Event", numOfPest + " " + pest + " attack to the garden, but no plant is attacked");
         }
     }
     public void setOnPestAttack(PestAttackAction action) {

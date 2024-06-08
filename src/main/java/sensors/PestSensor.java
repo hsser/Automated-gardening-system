@@ -1,5 +1,6 @@
 package sensors;
 
+import io.GardenLogger;
 import plant.Plant;
 import controllers.PestController;
 import java.util.Random;
@@ -28,7 +29,7 @@ public class PestSensor {
      */
     public void monitorForPestAttack() {
         if (plant.getNumOfPestsAttacking() > 0) {
-            System.out.println("Warning! " + plant.getName() + " is being attacked by " +
+            GardenLogger.log("Pest Sensor", plant.getName() + " is being attacked by " +
                     plant.getNumOfPestsAttacking() + " " +
                     plant.getTypeOfPestsAttacking() + ((plant.getNumOfPestsAttacking() > 1) ? "s!" : "!"));
             if (random.nextBoolean()) {
@@ -37,7 +38,7 @@ public class PestSensor {
                 pestController.useLadybugs();  // Or randomly use ladybugs
             }
         } else {
-            System.out.println("No pest attack detected on " + plant.getName() + ".");
+            GardenLogger.log("Pest Sensor", "No pest attack detected on " + plant.getName() + ".");
         }
     }
 }

@@ -1,5 +1,6 @@
 package controllers;
 
+import io.GardenLogger;
 import plant.Plant;
 
 /**
@@ -17,9 +18,9 @@ public class WaterController {
      */
     public static void autoWatering(Plant plant) {
         int currentWaterLevel = plant.getCurrentWaterLevel();
-        System.out.println("Current water level is " + currentWaterLevel);
+        GardenLogger.log("Water Controller","Current water level is " + currentWaterLevel);
 
-        System.out.println("""
+        GardenLogger.log("Water Controller", """
         Warning: The water level of the plant is low!
         Auto watering system activates!
         """);
@@ -34,14 +35,14 @@ public class WaterController {
     public static void increaseWaterLevel(Plant plant, int currentWaterLevel) {
         // Increase the water level
         plant.updateWaterLevel(currentWaterLevel + 5);
-        System.out.println("Now, water level of " + plant.getName() + " is updated to " + plant.getCurrentWaterLevel());
+        GardenLogger.log("Water Controller","Now, water level of " + plant.getName() + " is updated to " + plant.getCurrentWaterLevel());
     }
 
     /**
      * Stops the watering of the plant and returns true.
      */
     public static boolean stopWatering(Plant plant) {
-        System.out.println(plant.getName() + " water level is " + plant.getCurrentWaterLevel() + ", this value plus rain amount should below " + plant.getPlantType().getMaxWaterLevel() + ". Overwatering warning！Watering protection activated.");
+        GardenLogger.log("Water Controller",plant.getName() + " water level is " + plant.getCurrentWaterLevel() + ", this value plus rain amount should below " + plant.getPlantType().getMaxWaterLevel() + ". Overwatering warning！Watering protection activated.");
         // TODO: Create a pretection animation
         return true;
     }
@@ -52,7 +53,7 @@ public class WaterController {
     public static void dailyWaterDecrease(Plant plant) {
         int currentWaterLevel = plant.getCurrentWaterLevel();
         if (currentWaterLevel > plant.getMinWaterLevel()) {
-            System.out.print("Daily water level decrease applied. ");
+            GardenLogger.log("EVENT","Daily water level decrease applied. ");
             plant.updateWaterLevel(currentWaterLevel - 5);
         }
 //        System.out.println("Daily water level decrease applied. New water level of " + plant.getName() + " is " + plant.getCurrentWaterLevel());

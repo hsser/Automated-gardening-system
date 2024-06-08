@@ -1,5 +1,6 @@
 package environment;
 
+import io.GardenLogger;
 import plant.Plant;
 
 import java.util.List;
@@ -23,13 +24,13 @@ public class WeatherChangeEvent extends Event {
             weather.setWeatherType(WeatherType.RAINY);
             for (List<Plant> plantGroup : plantGroups) {
                 for (Plant plant : plantGroup) {
-                    System.out.println("Event: Weather change to " + weather.getWeatherType().getName() + ", the amount of rain is " + rainAmount);
+                    GardenLogger.log("Event", "Weather change to " + weather.getWeatherType().getName() + ", the amount of rain is " + rainAmount);
                     plant.updateWaterLevel(plant.getCurrentWaterLevel() + rainAmount);
                 }
             }
         } else {
             weather.setWeatherType(WeatherType.SUNNY);
-            System.out.println("Event: Weather change to " + weather.getWeatherType().getName());
+            GardenLogger.log("Event", "Weather change to " + weather.getWeatherType().getName());
         }
     }
 }

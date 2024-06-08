@@ -1,5 +1,6 @@
 package controllers;
 
+import io.GardenLogger;
 import plant.Plant;
 
 /**
@@ -22,7 +23,7 @@ public class PestController {
      */
     public void usePesticide() {
         // Specific logic to apply pesticide
-        System.out.println("Applying pesticide to help " + this.plant.getName() + " restore health.");
+        GardenLogger.log("Pest Controller", "Applying pesticide to help " + this.plant.getName() + " restore health.");
         plant.clearPest();
     }
 
@@ -31,7 +32,7 @@ public class PestController {
      */
     public void useLadybugs() {
         // Specific logic to release ladybugs
-        System.out.println("Deploying " + this.plant.getNumOfPestsAttacking() +
+        GardenLogger.log("Pest Controller", "Deploying " + this.plant.getNumOfPestsAttacking() +
                 " ladybug" + ((plant.getNumOfPestsAttacking() > 1) ? "s" : "") +
                 " to help " + this.plant.getName() + " fight off the pests.");
         plant.clearPest();

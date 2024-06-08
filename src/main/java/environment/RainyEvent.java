@@ -1,5 +1,6 @@
 package environment;
 
+import io.GardenLogger;
 import plant.Plant;
 
 import java.util.List;
@@ -27,6 +28,6 @@ public class RainyEvent extends Event {
                 plant.updateWaterLevel(plant.getCurrentWaterLevel() + rainAmount);
             }
         }
-        System.out.println("Event: Weather change to " + weatherType.getName() + ", the amount of rain is " + rainAmount);
+        GardenLogger.log("Event", "Weather change to " + weatherType.getName() + ", the amount of rain is " + rainAmount);
     }
 }

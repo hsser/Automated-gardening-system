@@ -20,7 +20,6 @@ public class GardenConfigLoader {
                 if (parts.length == 2) {
                     String type = parts[0].trim();
                     int quantity = Integer.parseInt(parts[1].trim());
-                    System.out.println("TEST-GardenConfigLoader: Plant type: " + type + ", quantity: " + quantity);
                     plants.add(new PlantConfig(type, quantity));
                 }
             }

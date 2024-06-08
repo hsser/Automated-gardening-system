@@ -132,7 +132,7 @@ public class GardenController {
         } else {
             // Reset cursor to default when disabling watering mode
             soilGroup.getScene().setCursor(Cursor.DEFAULT);
-            // TODO: Add logic to handle watering mode deactivation, might be needed to disable more buttons
+
             plantButton.setDisable(false);  // Enable the plant button
             rainButton.setDisable(false);  // Enable the rain button
             parasiteButton.setDisable(false);  // Enable the parasite button
@@ -509,21 +509,21 @@ public class GardenController {
 
         if (!parasiteImageView.isVisible()) {
             parasiteImageView.setVisible(true);
-            final ImageView view = parasiteImageView;
-            Platform.runLater(() -> {
-                PauseTransition pause = new PauseTransition(Duration.seconds(2)); // Adjust duration as needed
-                pause.setOnFinished(event -> {
-                    view.setVisible(false);
-                    // HACK: Force redraw
-                    view.getScene().getWindow().setWidth(view.getScene().getWindow().getWidth() + 1);
-                    PauseTransition restore = new PauseTransition(Duration.seconds(1));
-                    restore.setOnFinished(e -> {
-                        view.getScene().getWindow().setWidth(view.getScene().getWindow().getWidth() - 1);
-                    });
-                    restore.play();
-                }); // Hide the pest after the pause
-                pause.play();
-            });
+//            final ImageView view = parasiteImageView;
+//            Platform.runLater(() -> {
+//                PauseTransition pause = new PauseTransition(Duration.seconds(2)); // Adjust duration as needed
+//                pause.setOnFinished(event -> {
+//                    view.setVisible(false);
+//                    // HACK: Force redraw
+//                    view.getScene().getWindow().setWidth(view.getScene().getWindow().getWidth() + 1);
+//                    PauseTransition restore = new PauseTransition(Duration.seconds(1));
+//                    restore.setOnFinished(e -> {
+//                        view.getScene().getWindow().setWidth(view.getScene().getWindow().getWidth() - 1);
+//                    });
+//                    restore.play();
+//                }); // Hide the pest after the pause
+//                pause.play();
+//            });
         }
 
         currentParasiteType = null;

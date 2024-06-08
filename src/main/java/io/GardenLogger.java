@@ -13,17 +13,26 @@ public class GardenLogger {
 
     /**
      * Writes a log message to the log file with a timestamp.
-     * @param currentDayInGarden The current day in the garden.
+     * @param logType The type of log message.
      * @param message The message to log.
      */
-    public static void log(int currentDayInGarden, String message) {
+    public static void log(String logType, String message) {
         String timestamp = formatter.format(LocalDateTime.now());
-        String logMessage = String.format("%s: [Day %d] %s%n", timestamp, currentDayInGarden, message);
+        String logMessage = String.format("%s: [%s] %s%n", timestamp, logType, message);
 
         try {
             Files.writeString(Paths.get(LOG_FILE_PATH), logMessage, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            System.out.println(logMessage);
         } catch (IOException e) {
             System.err.println("Error writing to log file: " + e.getMessage());
+        }
+    }
+
+    public static void clearLog() {
+        try {
+            Files.writeString(Paths.get(LOG_FILE_PATH), "", StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (IOException e) {
+            System.err.println("Error deleting log file: " + e.getMessage());
         }
     }
 }

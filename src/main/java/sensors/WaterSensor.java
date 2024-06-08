@@ -1,6 +1,7 @@
 package sensors;
 
 import controllers.WaterController;
+import io.GardenLogger;
 import plant.Plant;
 
 public class WaterSensor {
@@ -17,7 +18,7 @@ public class WaterSensor {
             WaterController.stopWatering(plant);
         } else {
             plant.setCurrentWaterLevel(newWaterLevel);
-            System.out.println("The plant's water level has been updated, it's current water level is " + plant.getCurrentWaterLevel());
+            GardenLogger.log("Water Sensor", "The plant's water level has been updated, it's current water level is " + plant.getCurrentWaterLevel());
         }
     }
 }
