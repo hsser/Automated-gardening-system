@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import application.PestAttackAction;
 import plant.Plant;
+import plant.PlantGroup;
 
 /**
  * Manages the creation and handling of events within the garden system.
@@ -13,7 +14,7 @@ import plant.Plant;
 public class EventManager {
     private Weather weather;
     private AtomicInteger temperature;
-    private List<List<Plant>> plantGroups;
+    private List<PlantGroup> plantGroups;
     private List<String> pestType = new ArrayList<>(Arrays.asList("Aphid", "Spider", "Whitefly"));
     Map<String, List<Integer>> plotIndicesOfVulnerablePlantByPest;
 
@@ -26,7 +27,7 @@ public class EventManager {
     final int LOWEST_RAIN_AMOUNT = 20;
     final int MAX_NUM_OF_PEST = 100;
 
-    public EventManager(Weather weather, AtomicInteger temperature, List<List<Plant>> plantGroups, Map<String, List<Integer>> plotIndicesOfVulnerablePlantByPest) {
+    public EventManager(Weather weather, AtomicInteger temperature, List<PlantGroup> plantGroups, Map<String, List<Integer>> plotIndicesOfVulnerablePlantByPest) {
         this.weather = weather;
         this.temperature = temperature;
         this.plantGroups = plantGroups;
@@ -48,7 +49,7 @@ public class EventManager {
     }
 
     public PestAttackEvent createPestAttackEvent(String pest) {
-        List<Plant> plantGroup = null;
+        PlantGroup plantGroup = null;
         int plantIndex = -1;
         int numOfPests = random.nextInt(MAX_NUM_OF_PEST);
         List<Integer> plotIndices = plotIndicesOfVulnerablePlantByPest.get(pest);

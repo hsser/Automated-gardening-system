@@ -3,34 +3,35 @@ package sensors;
 import io.GardenLogger;
 import plant.Plant;
 import controllers.HealthController;
+import plant.PlantGroup;
 
 public class HealthSensor {
-    private Plant plant;
+    private PlantGroup plantGroup;
     private HealthController healthController;
 
-    public HealthSensor(Plant plant) {
-        this.plant = plant;
-        this.healthController = new HealthController(plant);
+    public HealthSensor(PlantGroup plantGroup) {
+        this.plantGroup = plantGroup;
+        this.healthController = new HealthController(plantGroup);
     }
 
     public void checkHealth() {
-        if (plant.getCurrentWaterLevel() < plant.getMinWaterLevel() ||
-                plant.getCurrentWaterLevel() > plant.getMaxWaterLevel()) {
+        if (plantGroup.getCurrentWaterLevel() < plantGroup.getMinWaterLevel() ||
+                plantGroup.getCurrentWaterLevel() > plantGroup.getMaxWaterLevel()) {
             healthController.reduceHealth(10);
         }
 
-        if (plant.getNumOfPestsAttacking() > 0) {
+        if (plantGroup.getNumOfPestsAttacking() > 0) {
             healthController.reduceHealth(20);
         }
 
         double currentTemperature = TemperatureSensor.getTemperature();
-        if (currentTemperature < plant.getMinTemperatureLevel() ||
-                currentTemperature > plant.getMaxTemperatureLevel()) {
+        if (currentTemperature < plantGroup.getMinTemperatureLevel() ||
+                currentTemperature > plantGroup.getMaxTemperatureLevel()) {
             healthController.reduceHealth(15);
         }
 
-        if (plant.getHealth() <= 0) {
-            GardenLogger.log("Health Sensor", plant.getName() + " has died.");
+        if (plantGroup.getHealth() <= 0) {
+            GardenLogger.log("Health Sensor", plantGroup.getName() + " has died.");
         } else {
             healthController.recoverHealth();  // Recover health if conditions are good
         }

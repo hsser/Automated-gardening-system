@@ -6,9 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Add water level to plants when user clicking on watering button">
       <change afterPath="$PROJECT_DIR$/src/main/files/garden_log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/OffWateringProtectionAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/OnWateringProtectionAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/PestAttackHandlingAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/SubsystemEffectAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/plant/PlantGroup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/GardenLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/GardenLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HealthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HealthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/WaterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/WaterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/environment/EventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/environment/EventManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/environment/PestAttackEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/environment/PestAttackEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/environment/RainyEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/environment/RainyEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/environment/WeatherChangeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/environment/WeatherChangeEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plant/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plant/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sensors/HealthSensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sensors/HealthSensor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sensors/PestSensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sensors/PestSensor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sensors/WaterSensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sensors/WaterSensor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +36,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -294,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717855886587</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Add water level to plants when user clicking on watering button">
+      <option name="closed" value="true" />
+      <created>1717856747059</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1717856747059</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

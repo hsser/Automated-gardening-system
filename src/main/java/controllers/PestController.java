@@ -2,20 +2,21 @@ package controllers;
 
 import io.GardenLogger;
 import plant.Plant;
+import plant.PlantGroup;
 
 /**
  * The PestController class provides specialized methods to manage pest attacks on plants.
  */
 public class PestController {
-    private Plant plant;
+    private PlantGroup plantGroup;
 
     /**
      * Constructs a PestController for a specific plant.
      *
-     * @param plant the plant to be protected from pests
+     * @param plantGroup the plants to be protected from pests
      */
-    public PestController(Plant plant) {
-        this.plant = plant;
+    public PestController(PlantGroup plantGroup) {
+        this.plantGroup = plantGroup;
     }
 
     /**
@@ -23,8 +24,8 @@ public class PestController {
      */
     public void usePesticide() {
         // Specific logic to apply pesticide
-        GardenLogger.log("Pest Controller", "Applying pesticide to help " + this.plant.getName() + " restore health.");
-        plant.clearPest();
+        GardenLogger.log("Pest Controller", "Applying pesticide to help " + this.plantGroup.getName() + " restore health.");
+        plantGroup.clearPest();
     }
 
     /**
@@ -32,9 +33,9 @@ public class PestController {
      */
     public void useLadybugs() {
         // Specific logic to release ladybugs
-        GardenLogger.log("Pest Controller", "Deploying " + this.plant.getNumOfPestsAttacking() +
-                " ladybug" + ((plant.getNumOfPestsAttacking() > 1) ? "s" : "") +
-                " to help " + this.plant.getName() + " fight off the pests.");
-        plant.clearPest();
+        GardenLogger.log("Pest Controller", "Deploying " + this.plantGroup.getNumOfPestsAttacking() +
+                " ladybug" + ((plantGroup.getNumOfPestsAttacking() > 1) ? "s" : "") +
+                " to help " + this.plantGroup.getName() + " fight off the pests.");
+        plantGroup.clearPest();
     }
 }

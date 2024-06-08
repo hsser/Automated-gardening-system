@@ -2,6 +2,7 @@ package environment;
 
 import io.GardenLogger;
 import plant.Plant;
+import plant.PlantGroup;
 
 import java.util.List;
 
@@ -9,8 +10,8 @@ public class RainyEvent extends Event {
     private Weather weather;
     private WeatherType weatherType;
     private int rainAmount;
-    private List<List<Plant>> plantGroups;
-    public RainyEvent(Weather weather, WeatherType weatherType, int rainAmount, List<List<Plant>> plantGroups) {
+    private List<PlantGroup> plantGroups;
+    public RainyEvent(Weather weather, WeatherType weatherType, int rainAmount, List<PlantGroup> plantGroups) {
         super("RainyEvent");
         this.weather = weather;
         this.weatherType = weatherType;
@@ -23,10 +24,8 @@ public class RainyEvent extends Event {
      */
     public void trigger() {
         weather.setWeatherType(weatherType);
-        for (List<Plant> plantGroup : plantGroups) {
-            for (Plant plant : plantGroup) {
-                plant.updateWaterLevel(plant.getCurrentWaterLevel() + rainAmount);
-            }
+        for (PlantGroup plantGroup : plantGroups) {
+            plantGroup.updateWaterLevel(plantGroup.getCurrentWaterLevel() + rainAmount);
         }
         GardenLogger.log("Event", "Weather change to " + weatherType.getName() + ", the amount of rain is " + rainAmount);
     }

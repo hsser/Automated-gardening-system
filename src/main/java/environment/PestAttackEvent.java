@@ -3,16 +3,15 @@ package environment;
 import application.PestAttackAction;
 import io.GardenLogger;
 import plant.Plant;
-
-import java.util.List;
+import plant.PlantGroup;
 
 public class PestAttackEvent extends Event {
-    final private List<Plant> plantGroup;
+    final private PlantGroup plantGroup;
     private int plotIndex;
     private int numOfPest;
     private String pest;
     private PestAttackAction pestAttackAction;
-    public PestAttackEvent(List<Plant> plantGroup, int plotIndex, int numOfPest, String pest) {
+    public PestAttackEvent(PlantGroup plantGroup, int plotIndex, int numOfPest, String pest) {
         super("PestAttackEvent");
         this.plantGroup = plantGroup;
         this.plotIndex = plotIndex;
@@ -26,10 +25,9 @@ public class PestAttackEvent extends Event {
      */
     public void trigger() {
         if (plantGroup != null) {
-            for (Plant plant: plantGroup) {
-                plant.setPest(pest, numOfPest);
-            }
-            GardenLogger.log("Event", numOfPest + " " + pest + " attack to " + plantGroup.get(0).getName() + " in plot " + plotIndex + 1);
+            plantGroup.setPest(pest, numOfPest);
+
+            GardenLogger.log("Event", numOfPest + " " + pest + " attack to " + plantGroup.getName() + " in plot " + plotIndex + 1);
             // UI change for pest attack
             if (pestAttackAction != null) {
                 pestAttackAction.run(plotIndex, pest);

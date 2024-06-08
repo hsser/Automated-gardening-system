@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 /**
@@ -24,7 +23,7 @@ import java.util.function.Consumer;
 public class GardenManager {
     private Weather weather = new Weather();  // System's current weather, default is sunny
     private AtomicInteger temperature = new AtomicInteger(80);  // System's current temperature, default is 80
-    private List<List<Plant>> plantGroups = new ArrayList<>();
+    private List<PlantGroup> plantGroups = new ArrayList<>();
     private Map<String, List<Integer>> plotIndicesOfVulnerablePlantByPest = new HashMap<>();
     private EventManager eventManager = new EventManager(weather, temperature, plantGroups, plotIndicesOfVulnerablePlantByPest);
     private final int MAX_PLOT = 15;
@@ -43,7 +42,7 @@ public class GardenManager {
 
     public GardenManager(String configPath) {
         for (int i = 0; i < MAX_PLOT; i++) {
-            plantGroups.add(i, new ArrayList<>());
+            plantGroups.add(i, new PlantGroup(new ArrayList<>()));
         }
         loader = new GardenConfigLoader(configPath);
         this.timer = new GardenTimer(this::simulateDay);
@@ -62,11 +61,11 @@ public class GardenManager {
         List<Integer> waterRequirement = new ArrayList<>();
         List<List<String>> parasites = new ArrayList<>();
 
-        for (List<Plant> plantGroup : plantGroups) {
+        for (PlantGroup plantGroup : plantGroups) {
             if (!plantGroup.isEmpty()) {
-                plants.add(plantGroup.getFirst().getName());
-                waterRequirement.add(plantGroup.getFirst().getMinWaterLevel()); // TODO: Check if this is correct
-                List<String> plantParasites = plantGroup.getFirst().getPestList();
+                plants.add(plantGroup.getName());
+                waterRequirement.add(plantGroup.getCurrentWaterLevel()); // TODO: Check if this is correct
+                List<String> plantParasites = plantGroup.getPestList();
                 parasites.add(plantParasites);
             }
         }
@@ -101,12 +100,12 @@ public class GardenManager {
         state.append("Number of Plants in total: ").append(numberOfPlants).append("\n");
         state.append("-----------------------------------\n");
         for (int i = 0; i < MAX_PLOT; i++) {
-            List<Plant> plantGroup = plantGroups.get(i);
+            PlantGroup plantGroup = plantGroups.get(i);
             state.append("Plot " + (i + 1) + ": ");
             if (!plantGroup.isEmpty()) {
-                state.append(plantGroup.getFirst().getName());
+                state.append(plantGroup.getName());
                 int alive = 0, dead = 0;
-                for (Plant plant : plantGroups.get(i)) {
+                for (Plant plant : plantGroups.get(i).getPlants()) {
                     if (plant.isAlive()) {
                         alive++;
                     } else {
@@ -135,7 +134,7 @@ public class GardenManager {
             plantConfigs = loader.loadPlantsConfigurations();
             int plotIndex = 0;
             for (GardenConfigLoader.PlantConfig plantConfig : plantConfigs) {
-                List<Plant> plantGroup = createPlantGroup(plantConfig.getType(), plantConfig.getQuantity());
+                PlantGroup plantGroup = createPlantGroup(plantConfig.getType(), plantConfig.getQuantity());
                 placePlantGroup(plantGroup, plotIndex); // Always start from 0
                 plotIndex++;
             }
@@ -149,32 +148,33 @@ public class GardenManager {
      * @param name The name of the plant.
      * @param quantity The quantity of the plant.
      */
-    public List<Plant> createPlantGroup(String name, int quantity) {
-        List<Plant> plantGroup = new ArrayList<>();
+    public PlantGroup createPlantGroup(String name, int quantity) {
+        List<Plant> plantList = new ArrayList<>();
         for (int i = 0; i < quantity; i++) {
             switch (name) {
                 case "CherryTomato":
-                    plantGroup.add(new CherryTomato());
+                    plantList.add(new CherryTomato());
                     break;
                 case "ChiliPepper":
-                    plantGroup.add(new ChiliPepper());
+                    plantList.add(new ChiliPepper());
                     break;
                 case "Cherry":
-                    plantGroup.add(new Cherry());
+                    plantList.add(new Cherry());
                     break;
                 case "Peach":
-                    plantGroup.add(new Peach());
+                    plantList.add(new Peach());
                     break;
                 case "Rose":
-                    plantGroup.add(new Rose());
+                    plantList.add(new Rose());
                     break;
                 case "Hydrangea":
-                    plantGroup.add(new Hydrangea());
+                    plantList.add(new Hydrangea());
                     break;
                 default:
                     GardenLogger.log("Warning", "No such type of plant.");
             }
         }
+        PlantGroup plantGroup = new PlantGroup(plantList);
 
         return plantGroup;
     }
@@ -191,9 +191,9 @@ public class GardenManager {
         }
     }
 
-    public void placePlantGroup(List<Plant> plantGroup, int plotIndex) {
+    public void placePlantGroup(PlantGroup plantGroup, int plotIndex) {
         int quantity = plantGroup.size();
-        String type = plantGroup.get(0).getName();
+        String type = plantGroup.getName();
 
         // Check if the plant group is empty
         if (quantity == 0) {
@@ -207,11 +207,12 @@ public class GardenManager {
             return;
         }
 
-        List<String> pests = plantGroup.get(0).getPestList();
+        List<String> pests = plantGroup.getPestList();
 
         // Check if the plot is occupied
         if (plantGroups.get(plotIndex).size() == 0) {
             plantGroups.set(plotIndex, plantGroup);
+            plantGroup.setCurrentPlotIndex(plotIndex);
             numberOfPlants += quantity;
             GardenLogger.log("Event", "Planting " + quantity + " " + type + " seed" +
                     ((quantity > 1) ? "s" : "") + " in plot " + (plotIndex + 1) +
@@ -248,7 +249,7 @@ public class GardenManager {
 
     // Obtain Plant Type
     public String getPlantTypeOfPlantGroup(int index){
-        return plantGroups.get(index).get(0).getPlantType().name();
+        return plantGroups.get(index).getName();
     }
 
     // Obtain Plant Number
@@ -258,7 +259,7 @@ public class GardenManager {
 
     // Obtain Humidity Level
     public int getHumidityLevelOfPlantGroup(int index){
-        return plantGroups.get(index).get(0).getCurrentWaterLevel();
+        return plantGroups.get(index).getCurrentWaterLevel();
     }
 
     // Obtain Temperature
@@ -275,13 +276,13 @@ public class GardenManager {
 
     // obtain Under Attack
     public boolean getUnderAttackOfPlantGroup(int index){
-        return plantGroups.get(index).get(0).getNumOfPestsAttacking() > 0 ? true: false;
+        return plantGroups.get(index).getNumOfPestsAttacking() > 0 ? true: false;
     }
 
 
     // obtain Health
     public int getHealthOfPlantGroup(int index){
-        return plantGroups.get(index).get(0).getHealth();
+        return plantGroups.get(index).getHealth();
     }
 
     /************************* WEATHER *************************/
@@ -299,7 +300,7 @@ public class GardenManager {
         weatherChangeEvent.trigger();
     }
 
-    public List<List<Plant>> getPlantGroups() { return plantGroups; }
+    public List<PlantGroup> getPlantGroups() { return plantGroups; }
     public Weather getWeather() { return weather; }
     public int getCurrentDay() { return currentDay; }
     public void startTimer() { /*timer.start();*/ }
@@ -322,14 +323,28 @@ public class GardenManager {
         GardenLogger.log("Event","Day " + currentDay + " starts.");
 
         if (currentDay != 0) {
-            for (List<Plant> plantGroup : plantGroups) {
-                for (Plant plant : plantGroup) {
-                    WaterController.dailyWaterDecrease(plant);
-                }
+            for (PlantGroup plantGroup : plantGroups) {
+                WaterController.dailyWaterDecrease(plantGroup);
             }
         }
 
         // Day start, trigger daily events
         eventManager.triggerAllEvents();
+    }
+
+    public void setOnSubsystemsEffect(SubsystemEffectAction action) {
+        // pass the action to the plantGroup
+    }
+
+    public void setOnWateringProtection(OnWateringProtectionAction action) {
+        // pass the action to the plantGroup
+    }
+
+    public void setOffWateringProtection(OffWateringProtectionAction action) {
+        // pass the action to the plantGroup
+    }
+
+    public void setOnPestAttackHandling(PestAttackHandlingAction action) {
+        // pass the action to the plantGroup
     }
 }

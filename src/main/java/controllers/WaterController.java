@@ -2,29 +2,30 @@ package controllers;
 
 import io.GardenLogger;
 import plant.Plant;
+import plant.PlantGroup;
 
 /**
  * The WaterController class provides methods to manage the water levels of plants.
  */
 public class WaterController {
-    private Plant plant;
+    private PlantGroup plantGroup;
 
-    public WaterController(Plant plant) {
-        this.plant = plant;
+    public WaterController(PlantGroup plantGroup) {
+        this.plantGroup = plantGroup;
     }
 
     /**
      * Auto-watering of the plant based on its current water level.
      */
-    public static void autoWatering(Plant plant) {
-        int currentWaterLevel = plant.getCurrentWaterLevel();
+    public static void autoWatering(PlantGroup plantGroup) {
+        int currentWaterLevel = plantGroup.getCurrentWaterLevel();
         GardenLogger.log("Water Controller","Current water level is " + currentWaterLevel);
 
         GardenLogger.log("Water Controller", """
-        Warning: The water level of the plant is low!
+        Warning: The water level of the plants is low!
         Auto watering system activates!
         """);
-        increaseWaterLevel(plant,currentWaterLevel);
+        increaseWaterLevel(plantGroup,currentWaterLevel);
     }
 
     /**
@@ -32,17 +33,19 @@ public class WaterController {
      *
      * @param currentWaterLevel the current water level of the plant
      */
-    public static void increaseWaterLevel(Plant plant, int currentWaterLevel) {
+    public static void increaseWaterLevel(PlantGroup plantGroup, int currentWaterLevel) {
         // Increase the water level
-        plant.updateWaterLevel(currentWaterLevel + 5);
-        GardenLogger.log("Water Controller","Now, water level of " + plant.getName() + " is updated to " + plant.getCurrentWaterLevel());
+        for(Plant plant : plantGroup.getPlants()){
+            plant.setCurrentWaterLevel(currentWaterLevel + 5);
+        }
+        GardenLogger.log("Water Controller","Now, water level of " + plantGroup.getName() + " is updated to " + plantGroup.getCurrentWaterLevel());
     }
 
     /**
      * Stops the watering of the plant and returns true.
      */
-    public static boolean stopWatering(Plant plant) {
-        GardenLogger.log("Water Controller",plant.getName() + " water level is " + plant.getCurrentWaterLevel() + ", this value plus rain amount should below " + plant.getPlantType().getMaxWaterLevel() + ". Overwatering warning！Watering protection activated.");
+    public static boolean stopWatering(PlantGroup plantGroup) {
+        GardenLogger.log("Water Controller",plantGroup.getName() + " water level is " + plantGroup.getCurrentWaterLevel() + ", this value plus rain amount should below " + plantGroup.getMaxWaterLevel() + ". Overwatering warning！Watering protection activated.");
         // TODO: Create a pretection animation
         return true;
     }
@@ -50,11 +53,13 @@ public class WaterController {
     /**
      * Decreases the water level of the plant daily.
      */
-    public static void dailyWaterDecrease(Plant plant) {
-        int currentWaterLevel = plant.getCurrentWaterLevel();
-        if (currentWaterLevel > plant.getMinWaterLevel()) {
-            GardenLogger.log("EVENT","Daily water level decrease applied. ");
-            plant.updateWaterLevel(currentWaterLevel - 5);
+    public static void dailyWaterDecrease(PlantGroup plantGroup) {
+        int currentWaterLevel = plantGroup.getCurrentWaterLevel();
+        if (currentWaterLevel > plantGroup.getMinWaterLevel()) {
+            GardenLogger.log("Event","Daily water level decrease applied. ");
+            for(Plant plant : plantGroup.getPlants()){
+                plant.setCurrentWaterLevel(currentWaterLevel - 5);
+            }
         }
 //        System.out.println("Daily water level decrease applied. New water level of " + plant.getName() + " is " + plant.getCurrentWaterLevel());
     }

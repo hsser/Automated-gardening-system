@@ -27,9 +27,9 @@ import javafx.scene.shape.*;
 import javafx.util.Duration;
 import javafx.scene.paint.Color;
 import plant.Plant;
+import plant.PlantGroup;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -84,10 +84,10 @@ public class GardenController {
             showPlantingEffect(soilId, name);
         });
         gardenManager.setOnDayChanged((Integer day) -> showCurrentDay(day));
-        //gardenManager.setOnSubsystemsEffect((String subsystem) -> showSubsystemsEffect(subsystem));
-        //gardenManager.setOnPlantCover(() -> showPlantCover());
-        //gardenManager.setOnPlantCoverEnd(() -> hidePlantCover());
-        //gardenManager.setOnPestAttackHandling((int plotIndex, String handlerType) -> showPestAttackHandlingEffect(Integer.toString(plotIndex + 1), handlerType));
+        gardenManager.setOnSubsystemsEffect((String subsystem) -> showSubsystemsEffect(subsystem));
+        gardenManager.setOnWateringProtection(() -> showPlantCover());
+        gardenManager.setOffWateringProtection(() -> hidePlantCover());
+        gardenManager.setOnPestAttackHandling((int plotIndex, String handlerType) -> showPestAttackHandlingEffect(Integer.toString(plotIndex + 1), handlerType));
         //gardenManager.setOnDeadPlant((int plotIndex) -> showDeadPlantEffect(Integer.toString(plotIndex + 1)));
     }
 
@@ -554,17 +554,16 @@ public class GardenController {
      */
     private void showSoilInfo(String soilId) {
         soilInfoLabel.setText("Plot " + soilId + " Conditions");
-        List<Plant> currentPlantGroup = gardenManager.getPlantGroups().get(Integer.parseInt(soilId) - 1);
+        PlantGroup currentPlantGroup = gardenManager.getPlantGroups().get(Integer.parseInt(soilId) - 1);
         int size = currentPlantGroup.size();
         if (size > 0) {
-            Plant plant = currentPlantGroup.get(0);
             //TODO: Add logic to get the plant number, humidity, temperature, attack status, and health status
-            String type = plant.getName();
+            String type = currentPlantGroup.getName();
             String quantity = String.valueOf(size);
-            String humidity = String.valueOf(plant.getCurrentWaterLevel());
+            String humidity = String.valueOf(currentPlantGroup.getCurrentWaterLevel());
             String temperature = "N/A"; // TODO: Add logic to get current temperature
-            String attackStatus = plant.getNumOfPestsAttacking() > 0 ? "Yes" : "No";
-            String healthStatus = plant.isAlive() ? "Alive" : "Dead";
+            String attackStatus = currentPlantGroup.getNumOfPestsAttacking() > 0 ? "Yes" : "No";
+            String healthStatus = String.valueOf(currentPlantGroup.getHealth());
             setLabelValues(type, quantity, humidity, temperature, attackStatus, healthStatus);
         } else {
             setLabelValues("N/A", "N/A", "N/A", "N/A", "N/A", "N/A");
@@ -616,13 +615,11 @@ public class GardenController {
         switch (currentMode) {
             case WATERING:
                 // Increase the water level of all plants in the plot
-                List<Plant> selectedPlantGroup = gardenManager.getPlantGroups().get(plotIndex);
+                PlantGroup selectedPlantGroup = gardenManager.getPlantGroups().get(plotIndex);
                 if (clickedSoil.getImage() != grassSoil && !selectedPlantGroup.isEmpty()) {
-                    String plantType = selectedPlantGroup.get(0).getName();
+                    String plantType = selectedPlantGroup.getName();
                     showWateringEffect(soilId);
-                    for (Plant plant : selectedPlantGroup) {
-                        plant.updateWaterLevel(plant.getCurrentWaterLevel() + 1);
-                    }
+                    selectedPlantGroup.updateWaterLevel(selectedPlantGroup.getCurrentWaterLevel() + 1);
                     GardenLogger.log("User", "Watering " + plantType + " in plot " + soilId);
                 }
 
@@ -630,7 +627,7 @@ public class GardenController {
 
             case PLANTING:
                 int plantQuantity = plantQuantitySpinner.getValue();
-                List<Plant> plantGroup = gardenManager.createPlantGroup(currentPlantType, plantQuantity);
+                PlantGroup plantGroup = gardenManager.createPlantGroup(currentPlantType, plantQuantity);
                 gardenManager.placePlantGroup(plantGroup, plotIndex);
                 // Show the planting effect on the soil
                 // showPlantingEffect(soilId, currentPlantType);
