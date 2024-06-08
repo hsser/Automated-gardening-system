@@ -60,8 +60,6 @@ public class WaterController {
                 plant.setCurrentWaterLevel(currentWaterLevel - 5);
             }
         }
-        GardenLogger.log("Event","Daily water level decrease applied. ");
-
 //        System.out.println("Daily water level decrease applied. New water level of " + plant.getName() + " is " + plant.getCurrentWaterLevel());
     }
 }

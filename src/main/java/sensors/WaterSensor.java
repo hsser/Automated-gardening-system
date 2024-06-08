@@ -43,14 +43,11 @@ public class WaterSensor {
             WaterController.stopWatering(plantGroup);
             // Update UI: show watering protection
             if (this.onWateringProtectionAction != null) {
-                System.out.println("Watering protection activated");
                 onWateringProtectionAction.run();
-            } else {
-                System.out.println("Warning: onWateringProtectionAction not set.");
             }
         } else {
             plantGroup.setCurrentWaterLevel(newWaterLevel);
-            GardenLogger.log("Water Sensor", "The plant's water level has been updated, it's current water level is " + plantGroup.getCurrentWaterLevel());
+            GardenLogger.log("Water Sensor", plantGroup.getName() + "'s water level has been updated, it's current water level is " + plantGroup.getCurrentWaterLevel());
         }
     }
 }

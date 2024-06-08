@@ -336,6 +336,7 @@ public class GardenManager {
                     WaterController.dailyWaterDecrease(plantGroup);
                 }
             }
+            GardenLogger.log("Event","Daily water level decrease applied. ");
         }
 
         // Day start, trigger daily events
