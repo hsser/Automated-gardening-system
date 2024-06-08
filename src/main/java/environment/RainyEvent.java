@@ -24,7 +24,7 @@ public class RainyEvent extends Event {
         weather.setWeatherType(weatherType);
         for (List<Plant> plantGroup : plantGroups) {
             for (Plant plant : plantGroup) {
-                plant.setCurrentWaterLevel(plant.getCurrentWaterLevel() + rainAmount);
+                plant.updateWaterLevel(plant.getCurrentWaterLevel() + rainAmount);
             }
         }
         System.out.println("Event: Weather change to " + weatherType.getName() + ", the amount of rain is " + rainAmount);

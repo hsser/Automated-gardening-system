@@ -41,7 +41,7 @@ public class WaterController {
      * Stops the watering of the plant and returns true.
      */
     public static boolean stopWatering(Plant plant) {
-        System.out.println("Overwatering warning！Watering protection activated.");
+        System.out.println(plant.getName() + " water level is " + plant.getCurrentWaterLevel() + ", this value plus rain amount should below " + plant.getPlantType().getMaxWaterLevel() + ". Overwatering warning！Watering protection activated.");
         // TODO: Create a pretection animation
         return true;
     }
@@ -52,8 +52,9 @@ public class WaterController {
     public static void dailyWaterDecrease(Plant plant) {
         int currentWaterLevel = plant.getCurrentWaterLevel();
         if (currentWaterLevel > plant.getMinWaterLevel()) {
+            System.out.print("Daily water level decrease applied. ");
             plant.updateWaterLevel(currentWaterLevel - 5);
         }
-        System.out.println("Daily water level decrease applied. New water level of " + plant.getName() + " is " + plant.getCurrentWaterLevel());
+//        System.out.println("Daily water level decrease applied. New water level of " + plant.getName() + " is " + plant.getCurrentWaterLevel());
     }
 }

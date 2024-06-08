@@ -1,11 +1,10 @@
 package application;
 
+import controllers.WaterController;
 import environment.*;
 import io.GardenConfigLoader;
-import javafx.application.Platform;
 import plant.*;
 import sensors.TemperatureSensor;
-import sensors.WaterSensor;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,15 +24,13 @@ public class GardenManager {
     private Weather weather = new Weather();  // System's current weather, default is sunny
     private AtomicInteger temperature = new AtomicInteger(80);  // System's current temperature, default is 80
     private List<List<Plant>> plantGroups = new ArrayList<>();
-    private Map<String, List<Integer>> pestToPlotIndex = new HashMap<>();
-    private EventManager eventManager = new EventManager(weather, temperature, plantGroups, pestToPlotIndex);
+    private Map<String, List<Integer>> plotIndicesOfVulnerablePlantByPest = new HashMap<>();
+    private EventManager eventManager = new EventManager(weather, temperature, plantGroups, plotIndicesOfVulnerablePlantByPest);
     private final int MAX_PLOT = 15;
     private int numberOfPlants = 0;
-    private Consumer<Weather> onWeatherChanged;
-    private BiConsumer<String, String> onPlantingChanged;
+    private PlantChangeAction onPlantingChanged;
     private Consumer<Integer> onDayChanged;
     private TemperatureSensor temperatureSensor = new TemperatureSensor();
-    private WaterSensor waterSensor;
 
     // For loading plants from config file
     private GardenConfigLoader loader;
@@ -44,7 +41,6 @@ public class GardenManager {
     private int currentDay = 0;
 
     public GardenManager(String configPath) {
-        System.out.println("TEST-GardenManager: Construct GardenManager");
         for (int i = 0; i < MAX_PLOT; i++) {
             plantGroups.add(i, new ArrayList<>());
         }
@@ -128,17 +124,19 @@ public class GardenManager {
 
     /************************* PLANTING *************************/
 
-    public void setOnPlantingChanged(BiConsumer<String , String> biConsumer) {
-        this.onPlantingChanged = biConsumer;
+    public void setOnPlantingChanged(PlantChangeAction action) {
+        this.onPlantingChanged = action;
     }
 
     // TODO: Add script planting mode.
     public void plantFromLoader() {
         try {
             plantConfigs = loader.loadPlantsConfigurations();// Start from 1
+            int plotIndex = 0;
             for (GardenConfigLoader.PlantConfig plantConfig : plantConfigs) {
                 List<Plant> plantGroup = createPlantGroup(plantConfig.getType(), plantConfig.getQuantity());
-                placePlantGroup(plantGroup, 0, true); // Always start from 0
+                placePlantGroup(plantGroup, plotIndex); // Always start from 0
+                plotIndex++;
             }
         } catch (IOException e) {
             System.out.println("TEST-GardenManager: Error loading plant configurations: " + e.getMessage());
@@ -180,32 +178,32 @@ public class GardenManager {
         return plantGroup;
     }
 
-    private void setPestToPlotIndex(int plotIndex, List<String> pests) {
+    private void setPlotIndicesOfVulnerablePlantByPest(int plotIndex, List<String> pests) {
         for (String pest : pests) {
-            if (pestToPlotIndex.containsKey(pest)) {
-                pestToPlotIndex.get(pest).add(plotIndex);
+            if (plotIndicesOfVulnerablePlantByPest.containsKey(pest)) {
+                plotIndicesOfVulnerablePlantByPest.get(pest).add(plotIndex);
             } else {
                 List<Integer> list = new ArrayList<>();
                 list.add(plotIndex);
-                pestToPlotIndex.put(pest, list);
+                plotIndicesOfVulnerablePlantByPest.put(pest, list);
             }
         }
     }
 
-    public int placePlantGroup(List<Plant> plantGroup, int plotIndex, boolean isScriptMode) {
+    public void placePlantGroup(List<Plant> plantGroup, int plotIndex) {
         int quantity = plantGroup.size();
         String type = plantGroup.get(0).getName();
 
         // Check if the plant group is empty
         if (quantity == 0) {
             System.out.println("TEST-GardenManager: Plant group is empty.");
-            return -1;
+            return;
         }
 
         // Check if the plot index is valid
         if (plotIndex < 0 || plotIndex >= MAX_PLOT) {
             System.out.println("TEST-GardenManager: Invalid plot index.");
-            return -1;
+            return;
         }
 
         List<String> pests = plantGroup.get(0).getPestList();
@@ -218,32 +216,16 @@ public class GardenManager {
             numberOfPlants += quantity;
             System.out.println("TEST-GardenManager: Current number of plant is " + numberOfPlants);
             // Set pestToPlotIndex after place plantGroup
-            setPestToPlotIndex(plotIndex, pests);
-            return plotIndex;
-        }
-
-        // Check if all plots are occupied, if finding an empty plot, plant the group
-        if(isScriptMode) {
-            for (int i = 0; i < MAX_PLOT; i++) {
-                if (plantGroups.get(i).size() == 0) {
-                    plantGroups.set(i, plantGroup);
-                    System.out.println("Planting " + quantity + " " + type + " seed" +
-                            ((quantity > 1) ? "s" : "") + " in plot " + (i + 1));
-                    numberOfPlants += quantity;
-                    System.out.println("TEST-GardenManager: Current number of plant is " + numberOfPlants);
-                    // Set pestToPlotIndex after place plantGroup
-                    setPestToPlotIndex(i, pests);
-                    return i;
-                }
+            setPlotIndicesOfVulnerablePlantByPest(plotIndex, pests);
+            if (onPlantingChanged != null) {
+                onPlantingChanged.run(plotIndex, type);
             }
         }
-
-        return -1;
     }
 
     // TEST BEGIN: printPestToPlotIndex
     public void printPestToPlotIndex() {
-        for (Map.Entry<String, List<Integer>> entry : pestToPlotIndex.entrySet()) {
+        for (Map.Entry<String, List<Integer>> entry : plotIndicesOfVulnerablePlantByPest.entrySet()) {
             String pest = entry.getKey();
             List<Integer> plotIndices = entry.getValue();
             System.out.println("TEST-GardenManager: ");
@@ -303,41 +285,55 @@ public class GardenManager {
     /************************* WEATHER *************************/
 
     public void setOnWeatherChanged(Consumer<Weather> consumer) {
-        this.onWeatherChanged = consumer;
+        weather.setOnWeatherChanged(consumer);
     }
 
-    public void changeWeather(Weather weather) {
+    public void setOnPestAttack(PestAttackAction action) {
+        eventManager.setOnPestAttack(action);
+    }
+
+    public void changeWeather() {
         WeatherChangeEvent weatherChangeEvent = eventManager.createWeatherChangeEvent();
         weatherChangeEvent.trigger();
-        if (onWeatherChanged != null) {
-            onWeatherChanged.accept(weather);
-        }
     }
 
     public List<List<Plant>> getPlantGroups() { return plantGroups; }
     public Weather getWeather() { return weather; }
     public int getCurrentDay() { return currentDay; }
-    public void startTimer() { timer.start(); }
+    public void startTimer() { /*timer.start();*/ }
     public void stopTimer() { timer.stop(); }
 
     public void setOnDayChanged(Consumer<Integer> consumer) {
         this.onDayChanged = consumer;
     }
 
-    public void simulateDay() {
-        // TODO: Add daily events here for both javafx and non-javafx threads
+    public void dayChange() {
         currentDay++;
+        if (onDayChanged != null) {
+            onDayChanged.accept(currentDay);
+        }
+    }
 
-        // Update UI on JavaFX thread
-        if (Platform.isFxApplicationThread()) {
-            Platform.runLater(() -> {
-                //TODO: update UI here
-                if (onDayChanged != null) {
-                    onDayChanged.accept(currentDay);
+    public void simulateDay() {
+        // Day end
+        // Decrease water level
+        if (currentDay != 0) {
+            System.out.println("=== Manual operations end ===");
+            for (List<Plant> plantGroup : plantGroups) {
+                for (Plant plant : plantGroup) {
+                    WaterController.dailyWaterDecrease(plant);
                 }
-            });
+            }
+            System.out.println("TEST-GardenManager: Day " + currentDay + " ends.");
+            System.out.println();
         }
 
+        // Day change
+        dayChange();
         System.out.println("TEST-GardenManager: Day " + currentDay + " starts.");
+
+        // Day start, trigger daily events
+        eventManager.triggerAllEvents();
+        System.out.println("=== Manual operations start ===");
     }
 }

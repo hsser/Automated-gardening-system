@@ -1,5 +1,6 @@
 package plant;
 
+import sensors.PestSensor;
 import sensors.WaterSensor;
 import java.util.List;
 
@@ -9,6 +10,7 @@ public abstract class Plant{
     private int numOfPestsAttacking;
     private String typeOfPestsAttacking;
     private WaterSensor waterSensor;
+    private PestSensor pestSensor;
     private PlantType plantType;
     private int health;  // Health of the plant
 
@@ -18,6 +20,7 @@ public abstract class Plant{
         this.currentWaterLevel = currentWaterLevel;
         this.numOfPestsAttacking = 0;
         this.waterSensor = new WaterSensor(this);
+        this.pestSensor = new PestSensor(this);
         this.health = 100;  // Starting health
     }
 
@@ -43,11 +46,15 @@ public abstract class Plant{
     // Setter
     public void setHealth(int health){ this.health = health;}
     public void setCurrentWaterLevel(int currentWaterLevel) { this.currentWaterLevel = currentWaterLevel;}
-    public void setNumOfPestsAttacking(int numOfPestsAttacking) {
-        this.numOfPestsAttacking = numOfPestsAttacking;
-    }
-    public void setTypeOfPestsAttacking(String typeOfPestsAttacking) {
+
+    public void setPest(String typeOfPestsAttacking, int numOfPestsAttacking) {
         this.typeOfPestsAttacking = typeOfPestsAttacking;
+        this.numOfPestsAttacking = numOfPestsAttacking;
+        pestSensor.monitorForPestAttack();
+    }
+
+    public void clearPest() {
+        setPest(null, 0);
     }
 
     /**

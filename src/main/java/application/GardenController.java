@@ -4,6 +4,7 @@ import environment.Weather;
 import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
@@ -71,11 +72,17 @@ public class GardenController {
 
     public GardenController(GardenManager gardenManager) {
         this.gardenManager = gardenManager;
-        System.out.println("TEST-GardenManager: Set GardenManager to garden controller");
 
         // Register UI callbacks
         gardenManager.setOnWeatherChanged((Weather weather) -> showWeatherChangeEffect(weather));
-        gardenManager.setOnPlantingChanged((String soilId, String plantType) -> showPlantingEffect(soilId, plantType));
+        gardenManager.setOnPestAttack((int plotIndex, String pest) -> {
+            String soilId = Integer.toString(plotIndex + 1);
+            showParasiteEffect(soilId, pest);
+        });
+        gardenManager.setOnPlantingChanged((int plotIndex, String name) -> {
+            String soilId = Integer.toString(plotIndex + 1);
+            showPlantingEffect(soilId, name);
+        });
         gardenManager.setOnDayChanged((Integer day) -> showCurrentDay(day));
     }
 
@@ -316,30 +323,32 @@ public class GardenController {
      * Show UI according to changed weather data.
      */
     void showWeatherChangeEffect(Weather weather) {
-        if (!weather.isSunny()) {
-            createRaindrop();
-            rainy.setImage(sunny.getImage());
-            // Only set the normal soils to wet, not the grass soils
-            for (Node node : soilGroup.getChildren()) {
-                if (node instanceof ImageView) {
-                    ImageView soil = (ImageView) node;
-                    if (soil.getImage() == grassSoil) {
-                        continue;
+        Platform.runLater(() -> {
+            if (!weather.isSunny()) {
+                createRaindrop();
+                rainy.setImage(sunny.getImage());
+                // Only set the normal soils to wet, not the grass soils
+                for (Node node : soilGroup.getChildren()) {
+                    if (node instanceof ImageView) {
+                        ImageView soil = (ImageView) node;
+                        if (soil.getImage() == grassSoil) {
+                            continue;
+                        }
+                        // TODO: Add humidity to all the plants in the plot
+                        soil.setImage(wetSoil);
                     }
-                    // TODO: Add humidity to all the plants in the plot
-                    soil.setImage(wetSoil);
                 }
+                animateImage("sunny", 1.0, 0.1, false);
+            } else {
+                rainy.setImage(new Image(getClass().getResourceAsStream("/image/icon/rainButton.png")));
+                rainPane.getChildren().clear();
+                animateImage("sunny", 0.1, 1.0, true);
             }
-            animateImage("sunny",1.0, 0.1, false);
-        } else {
-            rainy.setImage(new Image(getClass().getResourceAsStream("/image/icon/rainButton.png")));
-            rainPane.getChildren().clear();
-            animateImage("sunny", 0.1, 1.0, true);
-        }
-        // Reset cursor to default every time the rain button is clicked
-        soilGroup.getScene().setCursor(Cursor.DEFAULT);
-        // Also, ensure watering mode is deactivated when rain toggled
-        currentMode = Mode.NONE;
+            // Reset cursor to default every time the rain button is clicked
+            soilGroup.getScene().setCursor(Cursor.DEFAULT);
+            // Also, ensure watering mode is deactivated when rain toggled
+            currentMode = Mode.NONE;
+        });
     }
 
     /**
@@ -347,8 +356,7 @@ public class GardenController {
      */
     @FXML
     private void handleRainButtonClick() {
-        Weather weather = gardenManager.getWeather();
-        gardenManager.changeWeather(weather);  // Change data
+        gardenManager.changeWeather();  // Change data
     }
 
     /**
@@ -453,7 +461,7 @@ public class GardenController {
         setNodeVisibility(confirmButton1, false);
         parasiteSelectionPane.setVisible(false);
         overlayPane.setVisible(false);
-        //TODO: pass user selected parasite to Garden Manager, Garden Manager then calls showParasiteEffect()
+        gardenManager.parasite(currentParasiteType);
     }
 
     /**
@@ -501,6 +509,21 @@ public class GardenController {
 
         if (!parasiteImageView.isVisible()) {
             parasiteImageView.setVisible(true);
+            final ImageView view = parasiteImageView;
+            Platform.runLater(() -> {
+                PauseTransition pause = new PauseTransition(Duration.seconds(2)); // Adjust duration as needed
+                pause.setOnFinished(event -> {
+                    view.setVisible(false);
+                    // HACK: Force redraw
+                    view.getScene().getWindow().setWidth(view.getScene().getWindow().getWidth() + 1);
+                    PauseTransition restore = new PauseTransition(Duration.seconds(1));
+                    restore.setOnFinished(e -> {
+                        view.getScene().getWindow().setWidth(view.getScene().getWindow().getWidth() - 1);
+                    });
+                    restore.play();
+                }); // Hide the pest after the pause
+                pause.play();
+            });
         }
 
         currentParasiteType = null;
@@ -592,9 +615,9 @@ public class GardenController {
             case PLANTING:
                 int plantQuantity = plantQuantitySpinner.getValue();
                 List<Plant> plantGroup = gardenManager.createPlantGroup(currentPlantType, plantQuantity);
-                gardenManager.placePlantGroup(plantGroup, plotIndex, false);
+                gardenManager.placePlantGroup(plantGroup, plotIndex);
                 // Show the planting effect on the soil
-                showPlantingEffect(soilId, currentPlantType);
+                // showPlantingEffect(soilId, currentPlantType);
                 // Reset cursor to default after planting
                 soilGroup.getScene().setCursor(Cursor.DEFAULT);
                 // Enable the buttons after planting
@@ -616,7 +639,9 @@ public class GardenController {
      * @param day The day to update the label with.
      */
     protected void showCurrentDay(int day) {
-        currentDay.setText("Day " + day); // Change data
+        Platform.runLater(() -> {
+            currentDay.setText("Day " + day); // Change data
+        });
     }
 
     /**
@@ -670,6 +695,10 @@ public class GardenController {
         aphid.setVisible(false);
         spider.setVisible(false);
         whitefly.setVisible(false);
+    }
+    @FXML
+    private void handleNextDay(){
+        gardenManager.simulateDay();
     }
 
 }

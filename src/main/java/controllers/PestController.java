@@ -23,7 +23,7 @@ public class PestController {
     public void usePesticide() {
         // Specific logic to apply pesticide
         System.out.println("Applying pesticide to help " + this.plant.getName() + " restore health.");
-        this.plant.setNumOfPestsAttacking(0);
+        plant.clearPest();
     }
 
     /**
@@ -34,6 +34,6 @@ public class PestController {
         System.out.println("Deploying " + this.plant.getNumOfPestsAttacking() +
                 " ladybug" + ((plant.getNumOfPestsAttacking() > 1) ? "s" : "") +
                 " to help " + this.plant.getName() + " fight off the pests.");
-        this.plant.setNumOfPestsAttacking(0);
+        plant.clearPest();
     }
 }
