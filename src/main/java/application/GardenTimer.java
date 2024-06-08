@@ -10,7 +10,7 @@ public class GardenTimer {
     public GardenTimer(Runnable dailyTask) { this.dailyTask = dailyTask; }
 
     public void start() {
-        scheduler.scheduleAtFixedRate(dailyTask, 0, 5, TimeUnit.SECONDS); //TODO: change to 1 hour
+        scheduler.scheduleAtFixedRate(dailyTask, 0, 20, TimeUnit.SECONDS); //TODO: change to 1 hour
     }
 
     public void stop() {

@@ -517,21 +517,6 @@ public class GardenController {
 
         if (!parasiteImageView.isVisible()) {
             parasiteImageView.setVisible(true);
-//            final ImageView view = parasiteImageView;
-//            Platform.runLater(() -> {
-//                PauseTransition pause = new PauseTransition(Duration.seconds(2)); // Adjust duration as needed
-//                pause.setOnFinished(event -> {
-//                    view.setVisible(false);
-//                    // HACK: Force redraw
-//                    view.getScene().getWindow().setWidth(view.getScene().getWindow().getWidth() + 1);
-//                    PauseTransition restore = new PauseTransition(Duration.seconds(1));
-//                    restore.setOnFinished(e -> {
-//                        view.getScene().getWindow().setWidth(view.getScene().getWindow().getWidth() - 1);
-//                    });
-//                    restore.play();
-//                }); // Hide the pest after the pause
-//                pause.play();
-//            });
         }
 
         currentParasiteType = null;
@@ -664,15 +649,26 @@ public class GardenController {
      *                  Can be "sprinkler", "heater", or "cooler".
      */
     protected void showSubsystemsEffect(String subsystem) {
-        animateImage(subsystem, 0.1, 1.0, true);
-        PauseTransition pause = new PauseTransition(Duration.seconds(5)); // Adjust duration as needed
-        pause.setOnFinished(event -> animateImage(subsystem, 1.0, 0.1, false)); // Hide the sprinkler after the pause
-        pause.play();
+        Platform.runLater(() -> {
+            animateImage(subsystem, 0.1, 1.0, true);
+            PauseTransition pause = new PauseTransition(Duration.seconds(5)); // Adjust duration as needed
+            pause.setOnFinished(event -> animateImage(subsystem, 1.0, 0.1, false)); // Hide the sprinkler after the pause
+            pause.play();
+        });
     }
 
     // TODO: need to decide how long the effect should last
-    protected void showPlantCover() { animateImage("plantCover", 0.1, 1.0, true); }
-    protected void hidePlantCover() { animateImage("plantCover", 1.0, 0.1, false); }
+    protected void showPlantCover() {
+        Platform.runLater(() -> {
+            animateImage("plantCover", 0.1, 1.0, true);
+        });
+    }
+
+    protected void hidePlantCover() {
+        Platform.runLater(() -> {
+            animateImage("plantCover", 1.0, 0.1, false);
+        });
+    }
 
 
     /**
@@ -682,36 +678,37 @@ public class GardenController {
      *                    Can be "ladybug" or "pesticide".
      */
     protected void showPestAttackHandlingEffect(String soilId, String handlerType) {
-        ImageView handler;
-        if (handlerType.equals("ladybug")) {
-            handler = (ImageView) ladybugGroup.lookup("#" + soilId);
-        } else if (handlerType.equals("pesticide")) {
-            handler = pesticide;
-        } else {
-            handler = null;
-        }
+        Platform.runLater(() -> {
+            ImageView handler;
+            if (handlerType.equals("ladybug")) {
+                handler = (ImageView) ladybugGroup.lookup("#" + soilId);
+            } else if (handlerType.equals("pesticide")) {
+                handler = pesticide;
+            } else {
+                handler = null;
+            }
 
-        // Make the handler visible
-        if (handler != null && !handler.isVisible()) {
-            handler.setVisible(true);
+            // Make the handler visible
+            if (handler != null && !handler.isVisible()) {
+                handler.setVisible(true);
 
-            // Create a pause transition for the desired duration
-            PauseTransition pause = new PauseTransition(Duration.seconds(5)); // Adjust duration as needed
-            pause.setOnFinished(event -> {
-                handler.setVisible(false);
-                ImageView aphid = (ImageView) aphidGroup.lookup("#" + soilId);
-                ImageView spider = (ImageView) spiderGroup.lookup("#" + soilId);
-                ImageView whitefly = (ImageView) whiteflyGroup.lookup("#" + soilId);
+                // Create a pause transition for the desired duration
+                PauseTransition pause = new PauseTransition(Duration.seconds(5)); // Adjust duration as needed
+                pause.setOnFinished(event -> {
+                    handler.setVisible(false);
+                    ImageView aphid = (ImageView) aphidGroup.lookup("#" + soilId);
+                    ImageView spider = (ImageView) spiderGroup.lookup("#" + soilId);
+                    ImageView whitefly = (ImageView) whiteflyGroup.lookup("#" + soilId);
 
-                // Hide pests
-                aphid.setVisible(false);
-                spider.setVisible(false);
-                whitefly.setVisible(false);
+                    // Hide pests
+                    aphid.setVisible(false);
+                    spider.setVisible(false);
+                    whitefly.setVisible(false);
 
-            }); // Hide the handler after the pause
-            pause.play();
-        }
-
+                }); // Hide the handler after the pause
+                pause.play();
+            }
+        });
 
     }
     @FXML
