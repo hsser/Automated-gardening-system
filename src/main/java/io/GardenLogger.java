@@ -22,7 +22,7 @@ public class GardenLogger {
 
         try {
             Files.writeString(Paths.get(LOG_FILE_PATH), logMessage, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-            System.out.println(logMessage);
+            System.out.print(logMessage);
         } catch (IOException e) {
             System.err.println("Error writing to log file: " + e.getMessage());
         }

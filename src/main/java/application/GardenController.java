@@ -42,9 +42,8 @@ public class GardenController {
     private Group soilGroup, plantGroup, ladybugGroup, aphidGroup, spiderGroup, whiteflyGroup;
     @FXML
     private Button waterButton, rainButton, plantButton, parasiteButton, // for watering, raining, parasite, and planting
-            cancelButton, confirmButton, // for canceling and confirming planting
-            cancelButton1, confirmButton1, // for confirming parasite
-            closeButton; // for closing the status pane
+            confirmButton, // for canceling and confirming planting
+            confirmButton1; // for confirming parasite
     @FXML
     private Label soilInfoLabel, plantTypeValue, plantNumberValue, humidityValue, temperatureValue,
             attackStatusValue, healthStatusValue, currentDay;
@@ -85,6 +84,11 @@ public class GardenController {
             showPlantingEffect(soilId, name);
         });
         gardenManager.setOnDayChanged((Integer day) -> showCurrentDay(day));
+        //gardenManager.setOnSubsystemsEffect((String subsystem) -> showSubsystemsEffect(subsystem));
+        //gardenManager.setOnPlantCover(() -> showPlantCover());
+        //gardenManager.setOnPlantCoverEnd(() -> hidePlantCover());
+        //gardenManager.setOnPestAttackHandling((int plotIndex, String handlerType) -> showPestAttackHandlingEffect(Integer.toString(plotIndex + 1), handlerType));
+        //gardenManager.setOnDeadPlant((int plotIndex) -> showDeadPlantEffect(Integer.toString(plotIndex + 1)));
     }
 
     @FXML
@@ -130,7 +134,6 @@ public class GardenController {
             plantButton.setDisable(true);  // Disable the plant button
             rainButton.setDisable(true);  // Disable the rain button
             parasiteButton.setDisable(true);  // Disable the parasite button
-            GardenLogger.log("User", "Watering button clicked, watering mode enabled.");
         } else {
             // Reset cursor to default when disabling watering mode
             soilGroup.getScene().setCursor(Cursor.DEFAULT);
@@ -138,7 +141,6 @@ public class GardenController {
             plantButton.setDisable(false);  // Enable the plant button
             rainButton.setDisable(false);  // Enable the rain button
             parasiteButton.setDisable(false);  // Enable the parasite button
-            GardenLogger.log("User", "Watering button clicked, watering mode disabled.");
         }
     }
 
@@ -222,7 +224,6 @@ public class GardenController {
             rainButton.setDisable(false);
             parasiteButton.setDisable(false);
         }
-        GardenLogger.log("User", "Planting button clicked, planting mode enabled.");
     }
 
     /**
@@ -267,7 +268,6 @@ public class GardenController {
         setNodeVisibility(confirmButton, false);
         setNodeVisibility(plantSelectionPane, false);
         setNodeVisibility(overlayPane, false);
-        GardenLogger.log("User", "Planting button clicked, planting mode disabled.");
     }
 
     /**
@@ -481,7 +481,6 @@ public class GardenController {
         setNodeVisibility(confirmButton1, false);
         setNodeVisibility(parasiteSelectionPane, false);
         setNodeVisibility(overlayPane, false);
-        GardenLogger.log("User", "Parasite button clicked, parasite mode disabled.");
     }
 
     /**
@@ -616,8 +615,17 @@ public class GardenController {
 
         switch (currentMode) {
             case WATERING:
-                //TODO: Need to add humidity to all the plants in the plot
-                showWateringEffect(soilId);
+                // Increase the water level of all plants in the plot
+                List<Plant> selectedPlantGroup = gardenManager.getPlantGroups().get(plotIndex);
+                if (clickedSoil.getImage() != grassSoil && !selectedPlantGroup.isEmpty()) {
+                    String plantType = selectedPlantGroup.get(0).getName();
+                    showWateringEffect(soilId);
+                    for (Plant plant : selectedPlantGroup) {
+                        plant.updateWaterLevel(plant.getCurrentWaterLevel() + 1);
+                    }
+                    GardenLogger.log("User", "Watering " + plantType + " in plot " + soilId);
+                }
+
                 break;
 
             case PLANTING:
