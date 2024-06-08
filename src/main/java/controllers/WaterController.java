@@ -54,16 +54,12 @@ public class WaterController {
      * Decreases the water level of the plant daily.
      */
     public static void dailyWaterDecrease(PlantGroup plantGroup) {
-        if(!plantGroup.isEmpty()){
-            int currentWaterLevel = plantGroup.getCurrentWaterLevel();
-            if (currentWaterLevel > plantGroup.getMinWaterLevel()) {
-                GardenLogger.log("Event","Daily water level decrease applied. ");
-                for(Plant plant : plantGroup.getPlants()){
-                    plant.setCurrentWaterLevel(currentWaterLevel - 5);
-                }
+        int currentWaterLevel = plantGroup.getCurrentWaterLevel();
+        if (currentWaterLevel > plantGroup.getMinWaterLevel()) {
+            for(Plant plant : plantGroup.getPlants()){
+                plant.setCurrentWaterLevel(currentWaterLevel - 5);
             }
         }
-
 //        System.out.println("Daily water level decrease applied. New water level of " + plant.getName() + " is " + plant.getCurrentWaterLevel());
     }
 }
