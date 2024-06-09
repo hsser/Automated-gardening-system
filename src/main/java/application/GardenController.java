@@ -42,8 +42,7 @@ public class GardenController {
     private Group soilGroup, plantGroup, ladybugGroup, aphidGroup, spiderGroup, whiteflyGroup;
     @FXML
     private Button waterButton, rainButton, plantButton, parasiteButton, // for watering, raining, parasite, and planting
-            confirmButton, // for canceling and confirming planting
-            confirmButton1; // for confirming parasite
+            confirmButton, nextDayButton, confirmButton1;
     @FXML
     private Label soilInfoLabel, plantTypeValue, plantNumberValue, humidityValue, temperatureValue,
             attackStatusValue, healthStatusValue, currentDay;
@@ -134,6 +133,7 @@ public class GardenController {
             plantButton.setDisable(true);  // Disable the plant button
             rainButton.setDisable(true);  // Disable the rain button
             parasiteButton.setDisable(true);  // Disable the parasite button
+            nextDayButton.setDisable(true);  // Disable the next day button
         } else {
             // Reset cursor to default when disabling watering mode
             soilGroup.getScene().setCursor(Cursor.DEFAULT);
@@ -141,6 +141,7 @@ public class GardenController {
             plantButton.setDisable(false);  // Enable the plant button
             rainButton.setDisable(false);  // Enable the rain button
             parasiteButton.setDisable(false);  // Enable the parasite button
+            nextDayButton.setDisable(false);  // Enable the next day button
         }
     }
 
@@ -223,6 +224,7 @@ public class GardenController {
             waterButton.setDisable(false);
             rainButton.setDisable(false);
             parasiteButton.setDisable(false);
+            nextDayButton.setDisable(false);
         }
     }
 
@@ -256,6 +258,7 @@ public class GardenController {
         waterButton.setDisable(true);  // Disable the water button
         rainButton.setDisable(true);  // Disable the rain button
         parasiteButton.setDisable(true);  // Disable the parasite button
+        nextDayButton.setDisable(true);  // Disable the next day button
     }
 
     /**
@@ -622,6 +625,7 @@ public class GardenController {
                 waterButton.setDisable(false);  // Enable the water button
                 rainButton.setDisable(false);  // Enable the rain button
                 parasiteButton.setDisable(false);  // Enable the parasite button
+                nextDayButton.setDisable(false);  // Enable the next day button
                 currentMode = Mode.NONE;
                 break;
 

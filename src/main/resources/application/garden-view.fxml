@@ -32,21 +32,28 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GardenController">
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GardenController">
    <children>
       <ImageView id="background" accessibleRole="CHECK_MENU_ITEM" disable="true" layoutX="-14.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/background/4.png" />
          </image>
       </ImageView>
-      <Button layoutX="89.0" layoutY="167.0" mnemonicParsing="false" onAction="#handleNextDay" prefHeight="100.0" prefWidth="100.0" text="NextDay" />
       <ImageView id="market" fitHeight="102.0" fitWidth="148.0" layoutX="430.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/background/market.png" />
@@ -700,7 +707,7 @@
          </effect>
       </ImageView>
       <Pane id="rainPane" fx:id="rainPane" mouseTransparent="true" prefHeight="649.0" prefWidth="1020.0" />
-      <Button id="waterButton" fx:id="waterButton" contentDisplay="GRAPHIC_ONLY" layoutX="23.0" layoutY="646.0" mnemonicParsing="false" onMouseClicked="#handleWaterButtonClick" style="-fx-background-color: transparent;" textAlignment="CENTER" textFill="#650b0b" textOverrun="CLIP">
+      <Button id="waterButton" fx:id="waterButton" contentDisplay="GRAPHIC_ONLY" layoutY="660.0" mnemonicParsing="false" onMouseClicked="#handleWaterButtonClick" style="-fx-background-color: transparent;" textAlignment="CENTER" textFill="#650b0b" textOverrun="CLIP">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -715,7 +722,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button id="rainButton" fx:id="rainButton" contentDisplay="GRAPHIC_ONLY" layoutX="247.0" layoutY="650.0" mnemonicParsing="false" onMouseClicked="#handleRainButtonClick" prefHeight="95.0" prefWidth="71.0" style="-fx-background-color: transparent;" text="Button">
+      <Button id="rainButton" fx:id="rainButton" contentDisplay="GRAPHIC_ONLY" layoutX="184.0" layoutY="665.0" mnemonicParsing="false" onMouseClicked="#handleRainButtonClick" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: transparent;" text="Button">
          <graphic>
             <ImageView id="rain" fx:id="rainy" accessibleRole="BUTTON" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -727,7 +734,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button id="plantButton" fx:id="plantButton" contentDisplay="GRAPHIC_ONLY" layoutX="140.0" layoutY="656.0" mnemonicParsing="false" onMouseClicked="#handlePlantButtonClick" prefHeight="75.0" prefWidth="74.0" style="-fx-background-color: transparent;" text="Button">
+      <Button id="plantButton" fx:id="plantButton" contentDisplay="GRAPHIC_ONLY" layoutX="97.0" layoutY="665.0" mnemonicParsing="false" onMouseClicked="#handlePlantButtonClick" prefHeight="75.0" prefWidth="74.0" style="-fx-background-color: transparent;" text="Button">
          <graphic>
             <ImageView id="seeds" accessibleRole="BUTTON" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -739,7 +746,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button id="parasiteButton" fx:id="parasiteButton" contentDisplay="GRAPHIC_ONLY" layoutX="357.0" layoutY="660.0" mnemonicParsing="false" onMouseClicked="#handleParasiteButtonClick" style="-fx-background-color: transparent;">
+      <Button id="parasiteButton" fx:id="parasiteButton" contentDisplay="GRAPHIC_ONLY" layoutX="287.0" layoutY="670.0" mnemonicParsing="false" onMouseClicked="#handleParasiteButtonClick" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView id="parasite" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -751,6 +758,20 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button fx:id="nextDayButton" contentDisplay="GRAPHIC_ONLY" layoutX="374.0" layoutY="668.0" mnemonicParsing="false" onAction="#handleNextDay" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: transparent;" textAlignment="CENTER" textFill="#1e2097e0" wrapText="true">
+         <graphic>
+            <ImageView id="time" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icon/next.png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Button>
       <AnchorPane fx:id="sunnyWrapper" layoutX="400.0">
          <children>
             <ImageView fx:id="sunny" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
