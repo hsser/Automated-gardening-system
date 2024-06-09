@@ -25,11 +25,15 @@ public class PestAttackEvent extends Event {
      */
     public void trigger() {
         if (plantGroup != null) {
-            GardenLogger.log("Event", numOfPest + " " + pest + " attack to " + plantGroup.getName() + " in plot " + (plotIndex + 1));
-            plantGroup.setPest(pest, numOfPest);
-            // UI change for pest attack
-            if (pestAttackAction != null) {
-                pestAttackAction.run(plotIndex, pest);
+            if (plantGroup.getPlants().getFirst().isAlive()) {
+                GardenLogger.log("Event", numOfPest + " " + pest + " attack to " + plantGroup.getName() + " in plot " + (plotIndex + 1));
+                plantGroup.setPest(pest, numOfPest);
+                // UI change for pest attack
+                if (pestAttackAction != null) {
+                    pestAttackAction.run(plotIndex, pest);
+                }
+            } else {
+                GardenLogger.log("Event", numOfPest + " " + pest + " try to attack to " + plantGroup.getName() + " in plot " + (plotIndex + 1) + ", but the plant has died.");
             }
         } else {
             GardenLogger.log("Event", numOfPest + " " + pest + " attack to the garden, but no plant is attacked");

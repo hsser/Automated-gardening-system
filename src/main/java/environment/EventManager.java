@@ -23,7 +23,7 @@ public class EventManager {
     private PestAttackAction pestAttackAction;
 
     final int LOWEST_TEMPERATURE = 40;
-    final int LOWEST_RAIN_AMOUNT = 5;
+    final int LOWEST_RAIN_AMOUNT = 1;  // TEST: Very low rain amount; Previous: 5
     final int MAX_NUM_OF_PEST = 100;
 
     public EventManager(Weather weather, AtomicInteger temperature, List<PlantGroup> plantGroups, Map<String, List<Integer>> plotIndicesOfVulnerablePlantByPest) {

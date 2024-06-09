@@ -303,17 +303,17 @@ public class GardenManager {
     }
 
     public void simulateDay() {
-        // Day change
-        dayChange();
-        GardenLogger.log("Event","========== Day " + currentDay + " starts. ==========");
-
+        // Day end
         if (currentDay != 0) {
             boolean hasPlants = false;
             for (PlantGroup plantGroup : plantGroups) {
-                WaterSensor waterSensor = new WaterSensor(plantGroup);
                 if (!plantGroup.isEmpty()) {
                     hasPlants = true;
-                    waterSensor.dailyWaterDecrease(plantGroup);
+                    plantGroup.getWaterSensor().dailyWaterDecrease(plantGroup);
+//                    if (plantGroup.getPlants().getFirst().isAlive()) {
+//                        plantGroup.updateWaterLevel(plantGroup.getCurrentWaterLevel());
+//                        plantGroup.getHealthSensor().checkHealth();
+//                    }
                 }
             }
             if(hasPlants)
@@ -321,6 +321,12 @@ public class GardenManager {
             else
                 GardenLogger.log("Event","No plants in the garden. Daily water level decrease is not applied.");
         }
+
+        // Day change
+        dayChange();
+        GardenLogger.log("","====================================================");
+        GardenLogger.log("Event","                   Day " + currentDay + " starts.                  ");
+        GardenLogger.log("","====================================================");
 
         // Day start, trigger daily events
         eventManager.triggerAllEvents();

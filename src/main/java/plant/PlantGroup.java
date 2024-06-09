@@ -4,6 +4,7 @@ import application.OffWateringProtectionAction;
 import application.OnWateringProtectionAction;
 import application.PestAttackHandlingAction;
 import application.SubsystemEffectAction;
+import sensors.HealthSensor;
 import sensors.PestSensor;
 import sensors.WaterSensor;
 
@@ -16,6 +17,7 @@ public class PlantGroup {
     private String typeOfPestsAttacking;
     private WaterSensor waterSensor;
     private PestSensor pestSensor;
+    private HealthSensor healthSensor;
     private OnWateringProtectionAction onWateringProtectionAction;
     private OffWateringProtectionAction offWateringProtectionAction;
     private PestAttackHandlingAction pestAttackHandlingAction;
@@ -85,6 +87,14 @@ public class PlantGroup {
 
     public String getTypeOfPestsAttacking() {
         return typeOfPestsAttacking;
+    }
+
+    public WaterSensor getWaterSensor() {
+        return waterSensor;
+    }
+
+    public HealthSensor getHealthSensor() {
+        return healthSensor;
     }
 
     public Plant get(int index) {
