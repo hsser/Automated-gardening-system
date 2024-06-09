@@ -3,10 +3,14 @@ package sensors;
 import application.SubsystemEffectAction;
 import controllers.TemperatureController;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 public class TemperatureSensor {
     private static TemperatureSensor instance;
     private int temperature;
     private static SubsystemEffectAction coolerOrHeaterOnAction;
+    private HealthCheckCallback healthCheckCallback;
+    private final ReentrantLock lock = new ReentrantLock();
 
     private TemperatureSensor() {}
 
@@ -18,54 +22,36 @@ public class TemperatureSensor {
     }
 
     public int getTemperature() {
-        return temperature;
+        lock.lock();
+        try {
+            return temperature;
+        } finally {
+            lock.unlock();
+        }
     }
 
     public void setTemperature(int newTemperature) {
-        TemperatureController.setCoolerOrHeaterOnAction(coolerOrHeaterOnAction);
-        this.temperature = TemperatureController.getInstance().adjustTemperature(newTemperature);
+        lock.lock();
+        try {
+            this.temperature = newTemperature;
+
+            if (healthCheckCallback != null) {
+                healthCheckCallback.execute();
+            }
+
+            TemperatureController.setCoolerOrHeaterOnAction(coolerOrHeaterOnAction);
+            this.temperature = TemperatureController.getInstance().adjustTemperature(newTemperature);
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public void setHealthCheckCallback(HealthCheckCallback callback) {
+        this.healthCheckCallback = callback;
     }
 
     public static void setSubsystemsEffectAction(SubsystemEffectAction action) {
         coolerOrHeaterOnAction = action;
     }
 
-
-    /*private final int HIGH_TEMPERATURE_THRESHOLD = 104;
-    private final int LOW_TEMPERATURE_THRESHOLD = 50;
-    private final int OPTIMAL_TEMPERATURE = 77;
-
-    private int temperature; // Instance variable for temperature
-
-    public TemperatureSensor(int initialTemperature) {
-        this.temperature = initialTemperature;
-    }
-
-    public int getTemperature() {
-        return temperature;
-    }
-
-    public void updateTemperature(int newTemperature) {
-        temperature = newTemperature;
-        temperature = checkAndAdjustTemperature();
-    }
-
-    private int checkAndAdjustTemperature() {
-        if (temperature > HIGH_TEMPERATURE_THRESHOLD || temperature < LOW_TEMPERATURE_THRESHOLD) {
-            temperature = TemperatureController.adjustTemperature(temperature);
-        }
-        return temperature;
-    }
-
-    public int getHighTemperatureThreshold() {
-        return HIGH_TEMPERATURE_THRESHOLD;
-    }
-
-    public int getLowTemperatureThreshold() {
-        return LOW_TEMPERATURE_THRESHOLD;
-    }
-
-    public int getOptimalTemperature() {
-        return OPTIMAL_TEMPERATURE;
-    }*/
 }

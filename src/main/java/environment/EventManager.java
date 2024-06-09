@@ -23,7 +23,7 @@ public class EventManager {
     private PestAttackAction pestAttackAction;
 
     final int LOWEST_TEMPERATURE = 40;
-    final int LOWEST_RAIN_AMOUNT = 20;
+    final int LOWEST_RAIN_AMOUNT = 5;
     final int MAX_NUM_OF_PEST = 100;
 
     public EventManager(Weather weather, AtomicInteger temperature, List<PlantGroup> plantGroups, Map<String, List<Integer>> plotIndicesOfVulnerablePlantByPest) {
@@ -40,11 +40,11 @@ public class EventManager {
 
     // Events also for non API use
     public WeatherToggleEvent createWeatherToggleEvent() {
-        return new WeatherToggleEvent(weather, LOWEST_RAIN_AMOUNT + random.nextInt(5), plantGroups);
+        return new WeatherToggleEvent(weather, LOWEST_RAIN_AMOUNT + random.nextInt(10), plantGroups);
     }
 
     public WeatherChangeEvent createWeatherChangeEvent() {
-        return new WeatherChangeEvent(weather, LOWEST_RAIN_AMOUNT + random.nextInt(5), plantGroups);
+        return new WeatherChangeEvent(weather, LOWEST_RAIN_AMOUNT + random.nextInt(10), plantGroups);
     }
 
     public TemperatureChangeEvent createTemperatureChangeEvent(int targetTemperature) {

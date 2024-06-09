@@ -19,12 +19,8 @@ public class WaterController {
      */
     public static void autoWatering(PlantGroup plantGroup) {
         int currentWaterLevel = plantGroup.getCurrentWaterLevel();
-        GardenLogger.log("Water Controller","Current water level is " + currentWaterLevel);
-
-        GardenLogger.log("Water Controller", """
-        Warning: The water level of the plants is low!
-        Auto watering system activates!
-        """);
+        GardenLogger.log("Water Controller",plantGroup.getName() +" water level is " + currentWaterLevel);
+        GardenLogger.log("Water Controller", "Warning: The water level of the plants is too low! Auto watering system activates!");
         increaseWaterLevel(plantGroup,currentWaterLevel);
     }
 
@@ -38,7 +34,7 @@ public class WaterController {
         for(Plant plant : plantGroup.getPlants()){
             plant.setCurrentWaterLevel(currentWaterLevel + 5);
         }
-        GardenLogger.log("Water Controller","Now, water level of " + plantGroup.getName() + " is updated to " + plantGroup.getCurrentWaterLevel());
+        GardenLogger.log("Water Controller","Now, " + plantGroup.getName() + " water level is updated to " + plantGroup.getCurrentWaterLevel());
     }
 
     /**
@@ -56,11 +52,8 @@ public class WaterController {
     public static void dailyWaterDecrease(PlantGroup plantGroup) {
         if(!plantGroup.isEmpty()){
             int currentWaterLevel = plantGroup.getCurrentWaterLevel();
-            if (currentWaterLevel > plantGroup.getMinWaterLevel()) {
-                for(Plant plant : plantGroup.getPlants()){
-                    plant.setCurrentWaterLevel(currentWaterLevel - 5);
-                }
-
+            for(Plant plant : plantGroup.getPlants()){
+                plant.setCurrentWaterLevel(currentWaterLevel - 10);
             }
         }
 //        System.out.println("Daily water level decrease applied. New water level of " + plant.getName() + " is " + plant.getCurrentWaterLevel());

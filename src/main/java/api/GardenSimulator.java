@@ -12,10 +12,14 @@ public class GardenSimulator {
 
         // day 1
         api.rain(10);
+        api.temperature(10);
+        api.parasite("Aphid");
+        api.getState();
         sleepOneHour();
         // day 2
         api.temperature(60);
         api.parasite("Aphid");
+        api.getState();
         sleepOneHour();
         // day 3
         api.temperature(100);

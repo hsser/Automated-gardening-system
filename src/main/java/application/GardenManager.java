@@ -5,7 +5,10 @@ import environment.*;
 import io.GardenConfigLoader;
 import io.GardenLogger;
 import plant.*;
+import sensors.HealthSensor;
+import sensors.PestSensor;
 import sensors.TemperatureSensor;
+import sensors.WaterSensor;
 
 import java.io.IOException;
 import java.util.*;
@@ -42,13 +45,25 @@ public class GardenManager {
     private int currentDay = 0;
 
     public GardenManager(String configPath) {
+        this.timer = new GardenTimer(this::simulateDay);
+
         for (int i = 0; i < MAX_PLOT; i++) {
             plantGroups.add(i, new PlantGroup(new ArrayList<>()));
         }
+
         loader = new GardenConfigLoader(configPath);
-        this.timer = new GardenTimer(this::simulateDay);
+
         this.temperatureSensor = TemperatureSensor.getInstance();
         temperatureSensor.setTemperature(temperature.get());
+        // Set the health check callback
+        temperatureSensor.setHealthCheckCallback(() -> {
+            // Logic to execute health checks
+            checkHealthForAllPlantGroups();
+        });
+        /*for (PlantGroup group : plantGroups) {
+            PestSensor sensor = new PestSensor(group);
+            sensor.setHealthCheckCallback(this::checkHealthForAllPlantGroups);
+        }*/
     }
 
     /************************* API *************************/
@@ -115,7 +130,8 @@ public class GardenManager {
                         dead++;
                     }
                 }
-                state.append(", Alive: " + alive + ", Dead: " + dead + "\n");
+                int health = plantGroup.getHealth();
+                state.append(", Alive: " + alive + ", Health: " + health + ", Dead: " + dead + "\n");
 
             } else {
                 state.append("Empty Plot\n");
@@ -294,9 +310,10 @@ public class GardenManager {
         if (currentDay != 0) {
             boolean hasPlants = false;
             for (PlantGroup plantGroup : plantGroups) {
+                WaterSensor waterSensor = new WaterSensor(plantGroup);
                 if (!plantGroup.isEmpty()) {
                     hasPlants = true;
-                    WaterController.dailyWaterDecrease(plantGroup);
+                    waterSensor.dailyWaterDecrease(plantGroup);
                 }
             }
             if(hasPlants)
@@ -307,6 +324,15 @@ public class GardenManager {
 
         // Day start, trigger daily events
         eventManager.triggerAllEvents();
+    }
+
+    private void checkHealthForAllPlantGroups() {
+        for (PlantGroup plantGroup : plantGroups) {
+            if(!plantGroup.isEmpty()){
+                HealthSensor healthSensor = new HealthSensor(plantGroup);
+                healthSensor.checkHealth();
+            }
+        }
     }
 
     public void setOnSubsystemsEffect(SubsystemEffectAction action) {
