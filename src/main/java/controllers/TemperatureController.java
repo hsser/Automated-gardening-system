@@ -17,6 +17,7 @@ public class TemperatureController {
     public static synchronized TemperatureController getInstance() {
         if (instance == null) {
             instance = new TemperatureController();
+            GardenLogger.log("Kindly Remind","Game time！Ha!");
         }
         return instance;
     }
@@ -37,7 +38,7 @@ public class TemperatureController {
             }
             return heatUp(currentTemperature, OPTIMAL_TEMPERATURE);
         } else {
-            GardenLogger.log("Temperature Controller","The temperature is quite suitable for plants' growth.");
+            //GardenLogger.log("Temperature Controller","The temperature is quite suitable for plants' growth.");
             return currentTemperature;
         }
     }

@@ -10,27 +10,31 @@ import plant.PlantGroup;
 public class PestController {
     private PlantGroup plantGroup;
 
-    /**
-     * Constructs a PestController for a specific plant.
-     *
-     * @param plantGroup the plants to be protected from pests
-     */
+
     public PestController(PlantGroup plantGroup) {
         this.plantGroup = plantGroup;
     }
 
-    /**
-     * Treats the plant with pesticides if it is under pest attack.
-     */
+    public void pestAttacking(){
+        int newHealth;
+        for(Plant plant: plantGroup.getPlants()){
+            newHealth = plant.getHealth() - 20;
+            if(newHealth > 0){
+                plant.setHealth(newHealth);
+            }else{
+                plant.setHealth(0);
+            }
+        }
+    }
+
+
     public void usePesticide() {
         // Specific logic to apply pesticide
         GardenLogger.log("Pest Controller", "Applying pesticide to help " + this.plantGroup.getName() + " restore health.");
         plantGroup.clearPest();
     }
 
-    /**
-     * Treats the plant with ladybugs if it is under pest attack.
-     */
+
     public void useLadybugs() {
         // Specific logic to release ladybugs
         GardenLogger.log("Pest Controller", "Deploying " + this.plantGroup.getNumOfPestsAttacking() +

@@ -12,6 +12,7 @@ public class WaterSensor {
     SubsystemEffectAction sprinklerAction;
     OnWateringProtectionAction onWateringProtectionAction;
     OffWateringProtectionAction offWateringProtectionAction;
+    private HealthCheckCallback healthCheckCallback;
 
     public WaterSensor(PlantGroup plantGroup) {
         this.plantGroup = plantGroup;
@@ -50,4 +51,16 @@ public class WaterSensor {
             GardenLogger.log("Water Sensor", plantGroup.getName() + "'s water level has been updated, it's current water level is " + plantGroup.getCurrentWaterLevel());
         }
     }
+    public void dailyWaterDecrease(PlantGroup plantGroup){
+        WaterController.dailyWaterDecrease(plantGroup);
+
+        if (healthCheckCallback != null) {
+            healthCheckCallback.execute();
+        }
+    }
+
+    public void setHealthCheckCallback(HealthCheckCallback callback) {
+        this.healthCheckCallback = callback;
+    }
+
 }

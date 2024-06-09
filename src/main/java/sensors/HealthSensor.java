@@ -17,17 +17,17 @@ public class HealthSensor {
     public void checkHealth() {
         if (plantGroup.getCurrentWaterLevel() < plantGroup.getMinWaterLevel() ||
                 plantGroup.getCurrentWaterLevel() > plantGroup.getMaxWaterLevel()) {
-            healthController.reduceHealth(10);
+            healthController.reduceHealth(10, 0);
         }
 
         if (plantGroup.getNumOfPestsAttacking() > 0) {
-            healthController.reduceHealth(20);
+            healthController.reduceHealth(20, 0);
         }
 
         int currentTemperature = TemperatureSensor.getInstance().getTemperature();
         if (currentTemperature < plantGroup.getMinTemperatureLevel() ||
                 currentTemperature > plantGroup.getMaxTemperatureLevel()) {
-            healthController.reduceHealth(15);
+            healthController.reduceHealth(15, currentTemperature);
         }
 
         if (plantGroup.getHealth() <= 0) {
