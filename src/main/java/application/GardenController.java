@@ -26,7 +26,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.*;
 import javafx.util.Duration;
 import javafx.scene.paint.Color;
-import plant.Plant;
 import plant.PlantGroup;
 import sensors.TemperatureSensor;
 
@@ -363,7 +362,7 @@ public class GardenController {
     @FXML
     private void handleRainButtonClick() {
         GardenLogger.log("User", "Weather button clicked, changing weather.");
-        gardenManager.changeWeather();  // Change data
+        gardenManager.toggleChangeWeather();  // Change data
     }
 
     /**

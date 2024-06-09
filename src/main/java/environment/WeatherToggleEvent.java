@@ -4,13 +4,12 @@ import io.GardenLogger;
 import plant.PlantGroup;
 
 import java.util.List;
-import java.util.Random;
 
-public class WeatherChangeEvent extends Event{
+public class WeatherToggleEvent extends Event {
     private Weather weather;
     private int rainAmount;
     private List<PlantGroup> plantGroups;
-    public WeatherChangeEvent(Weather weather, int rainAmount, List<PlantGroup> plantGroups) {
+    public WeatherToggleEvent(Weather weather, int rainAmount, List<PlantGroup> plantGroups) {
         super("WeatherChangeEvent");
         this.weather = weather;
         this.rainAmount = rainAmount;
@@ -20,14 +19,10 @@ public class WeatherChangeEvent extends Event{
     /**
      * Trigger weather change event and set the current weather to another.
      */
-    @Override
     public void trigger() {
-        Random random = new Random();
-        boolean isRainy = random.nextBoolean();
-
-        if (isRainy) {
+        if (weather.isSunny()) {
             weather.setWeatherType(WeatherType.RAINY);
-            GardenLogger.log("Event", "Weather is " + weather.getWeatherType().getName() + ", the amount of rain is " + rainAmount);
+            GardenLogger.log("Event", "Weather change to " + weather.getWeatherType().getName() + ", the amount of rain is " + rainAmount);
 
             for (PlantGroup plantGroup : plantGroups) {
                 if(!plantGroup.isEmpty())
@@ -35,7 +30,7 @@ public class WeatherChangeEvent extends Event{
             }
         } else {
             weather.setWeatherType(WeatherType.SUNNY);
-            GardenLogger.log("Event", "Weather is " + weather.getWeatherType().getName());
+            GardenLogger.log("Event", "Weather change to " + weather.getWeatherType().getName());
         }
     }
 }

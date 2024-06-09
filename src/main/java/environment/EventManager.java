@@ -39,6 +39,10 @@ public class EventManager {
     }
 
     // Events also for non API use
+    public WeatherToggleEvent createWeatherToggleEvent() {
+        return new WeatherToggleEvent(weather, LOWEST_RAIN_AMOUNT + random.nextInt(5), plantGroups);
+    }
+
     public WeatherChangeEvent createWeatherChangeEvent() {
         return new WeatherChangeEvent(weather, LOWEST_RAIN_AMOUNT + random.nextInt(5), plantGroups);
     }
