@@ -25,7 +25,8 @@ public class RainyEvent extends Event {
     public void trigger() {
         weather.setWeatherType(weatherType);
         for (PlantGroup plantGroup : plantGroups) {
-            plantGroup.updateWaterLevel(plantGroup.getCurrentWaterLevel() + rainAmount);
+            if(!plantGroup.isEmpty())
+                plantGroup.updateWaterLevel(plantGroup.getCurrentWaterLevel() + rainAmount);
         }
         GardenLogger.log("Event", "Weather change to " + weatherType.getName() + ", the amount of rain is " + rainAmount);
     }
