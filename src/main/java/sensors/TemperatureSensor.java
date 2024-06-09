@@ -1,10 +1,12 @@
 package sensors;
 
+import application.SubsystemEffectAction;
 import controllers.TemperatureController;
 
 public class TemperatureSensor {
     private static TemperatureSensor instance;
     private int temperature;
+    private static SubsystemEffectAction coolerOrHeaterOnAction;
 
     private TemperatureSensor() {}
 
@@ -20,7 +22,12 @@ public class TemperatureSensor {
     }
 
     public void setTemperature(int newTemperature) {
+        TemperatureController.setCoolerOrHeaterOnAction(coolerOrHeaterOnAction);
         this.temperature = TemperatureController.getInstance().adjustTemperature(newTemperature);
+    }
+
+    public static void setSubsystemsEffectAction(SubsystemEffectAction action) {
+        coolerOrHeaterOnAction = action;
     }
 
 

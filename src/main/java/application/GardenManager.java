@@ -284,15 +284,20 @@ public class GardenManager {
     public void simulateDay() {
         // Day change
         dayChange();
-        GardenLogger.log("Event","Day " + currentDay + " starts.");
+        GardenLogger.log("Event","========== Day " + currentDay + " starts. ==========");
 
         if (currentDay != 0) {
+            boolean hasPlants = false;
             for (PlantGroup plantGroup : plantGroups) {
                 if (!plantGroup.isEmpty()) {
+                    hasPlants = true;
                     WaterController.dailyWaterDecrease(plantGroup);
                 }
             }
-            GardenLogger.log("Event","Daily water level decrease applied. ");
+            if(hasPlants)
+                GardenLogger.log("Event","Daily water level decrease applied. ");
+            else
+                GardenLogger.log("Event","No plants in the garden. Daily water level decrease is not applied.");
         }
 
         // Day start, trigger daily events
@@ -301,6 +306,7 @@ public class GardenManager {
 
     public void setOnSubsystemsEffect(SubsystemEffectAction action) {
         this.onSubsystemsEffect = action;
+        TemperatureSensor.setSubsystemsEffectAction(action);
     }
     public void setOnWateringProtection(OnWateringProtectionAction action) {
         this.onWateringProtectionAction = action;

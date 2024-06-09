@@ -57,7 +57,6 @@ public class WaterController {
         if(!plantGroup.isEmpty()){
             int currentWaterLevel = plantGroup.getCurrentWaterLevel();
             if (currentWaterLevel > plantGroup.getMinWaterLevel()) {
-                GardenLogger.log("Event","Daily water level decrease applied. ");
                 for(Plant plant : plantGroup.getPlants()){
                     plant.setCurrentWaterLevel(currentWaterLevel - 5);
                 }

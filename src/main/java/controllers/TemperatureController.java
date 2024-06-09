@@ -1,5 +1,6 @@
 package controllers;
 
+import application.SubsystemEffectAction;
 import io.GardenLogger;
 import sensors.TemperatureSensor;
 
@@ -9,6 +10,7 @@ public class TemperatureController {
     private final int OPTIMAL_TEMPERATURE = 77;
 
     private static TemperatureController instance;
+    private static SubsystemEffectAction coolerOrHeaterOnAction;
 
     private TemperatureController() {}
 
@@ -22,9 +24,17 @@ public class TemperatureController {
     public int adjustTemperature(int currentTemperature) {
         if (currentTemperature > HIGH_TEMPERATURE_THRESHOLD) {
             GardenLogger.log("Temperature Controller", "Warning: Temperature has exceeded the high limit of " + HIGH_TEMPERATURE_THRESHOLD + " degrees.");
+            // Update UI: show cooler
+            if(coolerOrHeaterOnAction != null){
+                coolerOrHeaterOnAction.run("cooler");
+            }
             return coolDown(currentTemperature, OPTIMAL_TEMPERATURE);
         } else if (currentTemperature < LOW_TEMPERATURE_THRESHOLD) {
             GardenLogger.log("Temperature Controller","Warning: Temperature has fallen below the low limit of " + LOW_TEMPERATURE_THRESHOLD + " degrees.");
+            // Update UI: show heater
+            if(coolerOrHeaterOnAction != null){
+                coolerOrHeaterOnAction.run("heater");
+            }
             return heatUp(currentTemperature, OPTIMAL_TEMPERATURE);
         } else {
             GardenLogger.log("Temperature Controller","The temperature is quite suitable for plants' growth.");
@@ -54,5 +64,9 @@ public class TemperatureController {
         }
         GardenLogger.log("Temperature Controller","Heater is off. Temperature adjusted to optimal level: " + optimalTemperature + " degrees.");
         return currentTemperature;
+    }
+
+    public static void setCoolerOrHeaterOnAction(SubsystemEffectAction action) {
+        coolerOrHeaterOnAction = action;
     }
 }

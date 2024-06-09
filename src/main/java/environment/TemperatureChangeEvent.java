@@ -21,7 +21,7 @@ public class TemperatureChangeEvent extends Event{
     public void trigger() {
         int previousTemperature = temperature.get();
         temperature.set(targetTemperature);
-        TemperatureSensor.getInstance().setTemperature(targetTemperature);
         GardenLogger.log("Event", "Temperature change from " + previousTemperature + " to " + targetTemperature);
+        TemperatureSensor.getInstance().setTemperature(targetTemperature);
     }
 }
