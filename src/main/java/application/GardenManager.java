@@ -54,8 +54,8 @@ public class GardenManager {
     /************************* API *************************/
 
     public void initializeGarden() {
-        plantFromLoader();
         startTimer();
+        plantFromLoader();
     }
 
     public Map<String, Object> getPlants() {

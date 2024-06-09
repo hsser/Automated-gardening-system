@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Enable timer, bugs fixing on UI">
+    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Bug fixing in PestSensor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/files/garden_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/files/garden_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/TemperatureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/TemperatureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/WaterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/WaterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/environment/EventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/environment/EventManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/environment/PestAttackEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/environment/PestAttackEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/environment/TemperatureChangeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/environment/TemperatureChangeEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sensors/TemperatureSensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sensors/TemperatureSensor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/GardenSimulationAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/GardenSimulationAPI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -340,7 +334,31 @@
       <option name="project" value="LOCAL" />
       <updated>1717889123398</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Bind cooler heater ui effects to temperature sensor and controller">
+      <option name="closed" value="true" />
+      <created>1717910644737</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1717910644737</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Bug fixing in RainyEvent">
+      <option name="closed" value="true" />
+      <created>1717911387875</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1717911387875</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Bug fixing in PestSensor">
+      <option name="closed" value="true" />
+      <created>1717911937017</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1717911937017</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,6 +399,9 @@
     <MESSAGE value="Bind ui to the plant groups" />
     <MESSAGE value="Minor changes on logs" />
     <MESSAGE value="Enable timer, bugs fixing on UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enable timer, bugs fixing on UI" />
+    <MESSAGE value="Bind cooler heater ui effects to temperature sensor and controller" />
+    <MESSAGE value="Bug fixing in RainyEvent" />
+    <MESSAGE value="Bug fixing in PestSensor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fixing in PestSensor" />
   </component>
 </project>
