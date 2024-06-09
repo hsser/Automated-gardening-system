@@ -36,6 +36,7 @@ public class PlantGroup {
     public int getNumOfPestsAttacking() { return numOfPestsAttacking; }
     public String getTypeOfPestsAttacking() { return typeOfPestsAttacking; }
     public Plant get(int index) { return plants.get(index); }
+
     // Setters
     public void setPlants(List<Plant> plants) { this.plants = plants; }
     public void setCurrentPlotIndex(int currentPlotIndex) { this.currentPlotIndex = currentPlotIndex; }
@@ -44,16 +45,19 @@ public class PlantGroup {
             plant.setHealth(health);
         }
     }
+
     public void setCurrentWaterLevel(int currentWaterLevel) {
         for (Plant plant : plants) {
             plant.setCurrentWaterLevel(currentWaterLevel);
         }
     }
+
     public void setPest(String typeOfPestsAttacking, int numOfPestsAttacking) {
         this.typeOfPestsAttacking = typeOfPestsAttacking;
         this.numOfPestsAttacking = numOfPestsAttacking;
         pestSensor.monitorForPestAttack();
     }
+
     public void clearPest() {
         setPest(null, 0);
     }
