@@ -663,13 +663,15 @@ public class GardenController {
     // TODO: need to decide how long the effect should last
     protected void showPlantCover() {
         Platform.runLater(() -> {
-            animateImage("plantCover", 0.1, 1.0, true);
+            if(!plantCover.isVisible())
+                animateImage("plantCover", 0.1, 1.0, true);
         });
     }
 
     protected void hidePlantCover() {
         Platform.runLater(() -> {
-            animateImage("plantCover", 1.0, 0.1, false);
+            if(plantCover.isVisible())
+                animateImage("plantCover", 1.0, 0.1, false);
         });
     }
 
