@@ -19,6 +19,7 @@ public class GardenSimulator {
         sleepOneHour();
         // day 3
         api.temperature(100);
+        api.parasite("Aphid");
         api.rain(20);
         sleepOneHour();
         // day 4
@@ -26,63 +27,83 @@ public class GardenSimulator {
         api.rain(20);
         sleepOneHour();
         // day 5
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 6
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 7
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 8
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 9
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 10
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 11
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 12
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 13
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 14
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 15
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 16
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 17
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 18
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 19
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 20
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 21
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 22
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 23
-
+        api.temperature(40);
+        sleepOneHour();
 
         // day 24
+        api.temperature(40);
         sleepOneHour();
 
         api.getState();
