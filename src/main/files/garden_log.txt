@@ -1,111 +1,72 @@
-2024/06/08 19:43:59: [Temperature Controller] The temperature is quite suitable for plants' growth.
-2024/06/08 19:45:13: [Event] Planting 1 ChiliPepper seed in plot 1. Current number of plants is 1
-2024/06/08 19:45:15: [Event] Day 1 starts.
-2024/06/08 19:45:15: [Event] Daily water level decrease applied. 
-2024/06/08 19:45:15: [Debug] Triggering all events now...
-2024/06/08 19:45:15: [Event] Weather change to Rainy, the amount of rain is 24
-2024/06/08 19:45:15: [Water Sensor] The plant's water level has been updated, it's current water level is 79
-2024/06/08 19:45:15: [Temperature Controller] Warning: Temperature has exceeded the high limit of 104 degrees.
-2024/06/08 19:45:15: [Temperature Controller] Cooler is on.
-2024/06/08 19:45:15: [Temperature Controller] Cooling: Current temperature is 110 degrees.
-2024/06/08 19:45:15: [Temperature Controller] Cooling: Current temperature is 100 degrees.
-2024/06/08 19:45:15: [Temperature Controller] Cooling: Current temperature is 90 degrees.
-2024/06/08 19:45:15: [Temperature Controller] Cooling: Current temperature is 80 degrees.
-2024/06/08 19:45:15: [Temperature Controller] Cooling: Current temperature is 77 degrees.
-2024/06/08 19:45:15: [Temperature Controller] Cooler is off. Temperature adjusted to optimal level: 77 degrees.
-2024/06/08 19:45:15: [Event] Temperature change from 80 to 116
-2024/06/08 19:45:15: [Pest Sensor] ChiliPepper is being attacked by 21 Spiders!
-2024/06/08 19:45:15: [Pest Controller] Deploying 21 ladybugs to help ChiliPepper fight off the pests.
-2024/06/08 19:45:15: [Pest Sensor] No pest attack detected on ChiliPepper.
-2024/06/08 19:45:15: [Event] 21 Spider attack to ChiliPepper in plot 01
-2024/06/08 19:45:52: [Event] Day 2 starts.
-2024/06/08 19:45:52: [Event] Daily water level decrease applied. 
-2024/06/08 19:45:52: [Debug] Triggering all events now...
-2024/06/08 19:45:52: [Event] Weather change to Sunny
-2024/06/08 19:45:52: [Temperature Controller] The temperature is quite suitable for plants' growth.
-2024/06/08 19:45:52: [Event] Temperature change from 116 to 91
-2024/06/08 19:45:52: [Pest Sensor] ChiliPepper is being attacked by 53 Whiteflys!
-2024/06/08 19:45:52: [Pest Controller] Applying pesticide to help ChiliPepper restore health.
-2024/06/08 19:45:52: [Pest Sensor] No pest attack detected on ChiliPepper.
-2024/06/08 19:45:52: [Event] 53 Whitefly attack to ChiliPepper in plot 01
-2024/06/08 19:46:01: [Event] Day 3 starts.
-2024/06/08 19:46:01: [Event] Daily water level decrease applied. 
-2024/06/08 19:46:01: [Debug] Triggering all events now...
-2024/06/08 19:46:01: [Event] Weather change to Rainy, the amount of rain is 24
-2024/06/08 19:46:01: [Water Controller] ChiliPepper water level is 69, this value plus rain amount should below 80. Overwatering warning！Watering protection activated.
-2024/06/08 19:46:01: [Temperature Controller] The temperature is quite suitable for plants' growth.
-2024/06/08 19:46:01: [Event] Temperature change from 91 to 90
-2024/06/08 19:46:01: [Pest Sensor] ChiliPepper is being attacked by 57 Whiteflys!
-2024/06/08 19:46:01: [Pest Controller] Applying pesticide to help ChiliPepper restore health.
-2024/06/08 19:46:01: [Pest Sensor] No pest attack detected on ChiliPepper.
-2024/06/08 19:46:01: [Event] 57 Whitefly attack to ChiliPepper in plot 01
-2024/06/08 19:46:02: [Event] Day 4 starts.
-2024/06/08 19:46:02: [Event] Daily water level decrease applied. 
-2024/06/08 19:46:02: [Debug] Triggering all events now...
-2024/06/08 19:46:02: [Event] Weather change to Sunny
-2024/06/08 19:46:02: [Temperature Controller] The temperature is quite suitable for plants' growth.
-2024/06/08 19:46:02: [Event] Temperature change from 90 to 62
-2024/06/08 19:46:02: [Pest Sensor] ChiliPepper is being attacked by 83 Spiders!
-2024/06/08 19:46:02: [Pest Controller] Applying pesticide to help ChiliPepper restore health.
-2024/06/08 19:46:02: [Pest Sensor] No pest attack detected on ChiliPepper.
-2024/06/08 19:46:02: [Event] 83 Spider attack to ChiliPepper in plot 01
-2024/06/08 19:46:03: [Event] Day 5 starts.
-2024/06/08 19:46:03: [Event] Daily water level decrease applied. 
-2024/06/08 19:46:03: [Debug] Triggering all events now...
-2024/06/08 19:46:03: [Event] Weather change to Rainy, the amount of rain is 23
-2024/06/08 19:46:03: [Water Controller] ChiliPepper water level is 59, this value plus rain amount should below 80. Overwatering warning！Watering protection activated.
-2024/06/08 19:46:03: [Temperature Controller] The temperature is quite suitable for plants' growth.
-2024/06/08 19:46:03: [Event] Temperature change from 62 to 81
-2024/06/08 19:46:03: [Pest Sensor] ChiliPepper is being attacked by 60 Whiteflys!
-2024/06/08 19:46:03: [Pest Controller] Deploying 60 ladybugs to help ChiliPepper fight off the pests.
-2024/06/08 19:46:03: [Pest Sensor] No pest attack detected on ChiliPepper.
-2024/06/08 19:46:03: [Event] 60 Whitefly attack to ChiliPepper in plot 01
-2024/06/08 19:46:09: [Event] Day 6 starts.
-2024/06/08 19:46:09: [Event] Daily water level decrease applied. 
-2024/06/08 19:46:09: [Debug] Triggering all events now...
-2024/06/08 19:46:09: [Event] Weather change to Sunny
-2024/06/08 19:46:09: [Temperature Controller] The temperature is quite suitable for plants' growth.
-2024/06/08 19:46:09: [Event] Temperature change from 81 to 75
-2024/06/08 19:46:09: [Pest Sensor] ChiliPepper is being attacked by 99 Aphids!
-2024/06/08 19:46:09: [Pest Controller] Deploying 99 ladybugs to help ChiliPepper fight off the pests.
-2024/06/08 19:46:09: [Pest Sensor] No pest attack detected on ChiliPepper.
-2024/06/08 19:46:09: [Event] 99 Aphid attack to ChiliPepper in plot 01
-2024/06/08 19:46:12: [Event] Day 7 starts.
-2024/06/08 19:46:12: [Event] Daily water level decrease applied. 
-2024/06/08 19:46:12: [Debug] Triggering all events now...
-2024/06/08 19:46:12: [Event] Weather change to Rainy, the amount of rain is 22
-2024/06/08 19:46:12: [Water Sensor] The plant's water level has been updated, it's current water level is 71
-2024/06/08 19:46:12: [Temperature Controller] The temperature is quite suitable for plants' growth.
-2024/06/08 19:46:12: [Event] Temperature change from 75 to 81
-2024/06/08 19:46:12: [Pest Sensor] ChiliPepper is being attacked by 33 Spiders!
-2024/06/08 19:46:12: [Pest Controller] Deploying 33 ladybugs to help ChiliPepper fight off the pests.
-2024/06/08 19:46:12: [Pest Sensor] No pest attack detected on ChiliPepper.
-2024/06/08 19:46:12: [Event] 33 Spider attack to ChiliPepper in plot 01
-2024/06/08 19:46:14: [Event] Day 8 starts.
-2024/06/08 19:46:14: [Event] Daily water level decrease applied. 
-2024/06/08 19:46:14: [Debug] Triggering all events now...
-2024/06/08 19:46:14: [Event] Weather change to Sunny
-2024/06/08 19:46:14: [Temperature Controller] Warning: Temperature has exceeded the high limit of 104 degrees.
-2024/06/08 19:46:14: [Temperature Controller] Cooler is on.
-2024/06/08 19:46:14: [Temperature Controller] Cooling: Current temperature is 110 degrees.
-2024/06/08 19:46:14: [Temperature Controller] Cooling: Current temperature is 100 degrees.
-2024/06/08 19:46:14: [Temperature Controller] Cooling: Current temperature is 90 degrees.
-2024/06/08 19:46:14: [Temperature Controller] Cooling: Current temperature is 80 degrees.
-2024/06/08 19:46:14: [Temperature Controller] Cooling: Current temperature is 77 degrees.
-2024/06/08 19:46:14: [Temperature Controller] Cooler is off. Temperature adjusted to optimal level: 77 degrees.
-2024/06/08 19:46:14: [Event] Temperature change from 81 to 119
-2024/06/08 19:46:14: [Pest Sensor] ChiliPepper is being attacked by 78 Spiders!
-2024/06/08 19:46:14: [Pest Controller] Deploying 78 ladybugs to help ChiliPepper fight off the pests.
-2024/06/08 19:46:14: [Pest Sensor] No pest attack detected on ChiliPepper.
-2024/06/08 19:46:14: [Event] 78 Spider attack to ChiliPepper in plot 01
-2024/06/08 19:46:16: [Event] Day 9 starts.
-2024/06/08 19:46:16: [Event] Daily water level decrease applied. 
-2024/06/08 19:46:16: [Debug] Triggering all events now...
-2024/06/08 19:46:16: [Event] Weather change to Rainy, the amount of rain is 22
-2024/06/08 19:46:16: [Water Controller] ChiliPepper water level is 61, this value plus rain amount should below 80. Overwatering warning！Watering protection activated.
-2024/06/08 19:46:16: [Temperature Controller] The temperature is quite suitable for plants' growth.
-2024/06/08 19:46:16: [Event] Temperature change from 119 to 76
-2024/06/08 19:46:16: [Pest Sensor] ChiliPepper is being attacked by 23 Spiders!
-2024/06/08 19:46:16: [Pest Controller] Applying pesticide to help ChiliPepper restore health.
-2024/06/08 19:46:16: [Pest Sensor] No pest attack detected on ChiliPepper.
-2024/06/08 19:46:16: [Event] 23 Spider attack to ChiliPepper in plot 01
+2024/06/08 20:02:22: [Temperature Controller] The temperature is quite suitable for plants' growth.
+2024/06/08 20:02:30: [Event] Planting 4 ChiliPepper seeds in plot 1. Current number of plants is 4
+2024/06/08 20:02:34: [Event] Day 1 starts.
+2024/06/08 20:02:34: [Event] Daily water level decrease applied. 
+2024/06/08 20:02:34: [Debug] Triggering all events now...
+2024/06/08 20:02:34: [Event] Weather change to Rainy, the amount of rain is 24
+2024/06/08 20:02:34: [Water Sensor] The plant's water level has been updated, it's current water level is 79
+2024/06/08 20:02:34: [Temperature Controller] Warning: Temperature has exceeded the high limit of 104 degrees.
+2024/06/08 20:02:34: [Temperature Controller] Cooler is on.
+2024/06/08 20:02:34: [Temperature Controller] Cooling: Current temperature is 110 degrees.
+2024/06/08 20:02:34: [Temperature Controller] Cooling: Current temperature is 100 degrees.
+2024/06/08 20:02:34: [Temperature Controller] Cooling: Current temperature is 90 degrees.
+2024/06/08 20:02:34: [Temperature Controller] Cooling: Current temperature is 80 degrees.
+2024/06/08 20:02:34: [Temperature Controller] Cooling: Current temperature is 77 degrees.
+2024/06/08 20:02:34: [Temperature Controller] Cooler is off. Temperature adjusted to optimal level: 77 degrees.
+2024/06/08 20:02:34: [Event] Temperature change from 80 to 116
+2024/06/08 20:02:34: [Pest Sensor] ChiliPepper is being attacked by 21 Spiders!
+2024/06/08 20:02:34: [Pest Controller] Deploying 21 ladybugs to help ChiliPepper fight off the pests.
+2024/06/08 20:02:34: [Pest Sensor] No pest attack detected on ChiliPepper.
+2024/06/08 20:02:34: [Event] 21 Spider attack to ChiliPepper in plot 01
+2024/06/08 20:02:34: [Event] Day 2 starts.
+2024/06/08 20:02:34: [Event] Daily water level decrease applied. 
+2024/06/08 20:02:34: [Debug] Triggering all events now...
+2024/06/08 20:02:34: [Event] Weather change to Sunny
+2024/06/08 20:02:34: [Temperature Controller] The temperature is quite suitable for plants' growth.
+2024/06/08 20:02:34: [Event] Temperature change from 116 to 91
+2024/06/08 20:02:34: [Pest Sensor] ChiliPepper is being attacked by 53 Whiteflys!
+2024/06/08 20:02:34: [Pest Controller] Applying pesticide to help ChiliPepper restore health.
+2024/06/08 20:02:34: [Pest Sensor] No pest attack detected on ChiliPepper.
+2024/06/08 20:02:34: [Event] 53 Whitefly attack to ChiliPepper in plot 01
+2024/06/08 20:02:38: [Event] Day 3 starts.
+2024/06/08 20:02:38: [Event] Daily water level decrease applied. 
+2024/06/08 20:02:38: [Debug] Triggering all events now...
+2024/06/08 20:02:38: [Event] Weather change to Rainy, the amount of rain is 24
+2024/06/08 20:02:38: [Water Controller] ChiliPepper water level is 69, this value plus rain amount should below 80. Overwatering warning！Watering protection activated.
+2024/06/08 20:02:38: [Temperature Controller] The temperature is quite suitable for plants' growth.
+2024/06/08 20:02:38: [Event] Temperature change from 91 to 90
+2024/06/08 20:02:38: [Pest Sensor] ChiliPepper is being attacked by 57 Whiteflys!
+2024/06/08 20:02:38: [Pest Controller] Deploying 57 ladybugs to help ChiliPepper fight off the pests.
+2024/06/08 20:02:38: [Pest Sensor] No pest attack detected on ChiliPepper.
+2024/06/08 20:02:38: [Event] 57 Whitefly attack to ChiliPepper in plot 01
+2024/06/08 20:02:43: [Event] Day 4 starts.
+2024/06/08 20:02:43: [Event] Daily water level decrease applied. 
+2024/06/08 20:02:43: [Debug] Triggering all events now...
+2024/06/08 20:02:43: [Event] Weather change to Sunny
+2024/06/08 20:02:43: [Temperature Controller] The temperature is quite suitable for plants' growth.
+2024/06/08 20:02:43: [Event] Temperature change from 90 to 62
+2024/06/08 20:02:43: [Pest Sensor] ChiliPepper is being attacked by 83 Spiders!
+2024/06/08 20:02:43: [Pest Controller] Deploying 83 ladybugs to help ChiliPepper fight off the pests.
+2024/06/08 20:02:43: [Pest Sensor] No pest attack detected on ChiliPepper.
+2024/06/08 20:02:43: [Event] 83 Spider attack to ChiliPepper in plot 01
+2024/06/08 20:02:45: [Event] Day 5 starts.
+2024/06/08 20:02:45: [Event] Daily water level decrease applied. 
+2024/06/08 20:02:45: [Debug] Triggering all events now...
+2024/06/08 20:02:45: [Event] Weather change to Rainy, the amount of rain is 23
+2024/06/08 20:02:45: [Water Controller] ChiliPepper water level is 59, this value plus rain amount should below 80. Overwatering warning！Watering protection activated.
+2024/06/08 20:02:45: [Temperature Controller] The temperature is quite suitable for plants' growth.
+2024/06/08 20:02:45: [Event] Temperature change from 62 to 81
+2024/06/08 20:02:45: [Pest Sensor] ChiliPepper is being attacked by 60 Whiteflys!
+2024/06/08 20:02:45: [Pest Controller] Deploying 60 ladybugs to help ChiliPepper fight off the pests.
+2024/06/08 20:02:45: [Pest Sensor] No pest attack detected on ChiliPepper.
+2024/06/08 20:02:45: [Event] 60 Whitefly attack to ChiliPepper in plot 01
+2024/06/08 20:02:48: [Event] Day 6 starts.
+2024/06/08 20:02:48: [Event] Daily water level decrease applied. 
+2024/06/08 20:02:48: [Debug] Triggering all events now...
+2024/06/08 20:02:48: [Event] Weather change to Sunny
+2024/06/08 20:02:48: [Temperature Controller] The temperature is quite suitable for plants' growth.
+2024/06/08 20:02:48: [Event] Temperature change from 81 to 75
+2024/06/08 20:02:48: [Pest Sensor] ChiliPepper is being attacked by 99 Aphids!
+2024/06/08 20:02:48: [Pest Controller] Deploying 99 ladybugs to help ChiliPepper fight off the pests.
+2024/06/08 20:02:48: [Pest Sensor] No pest attack detected on ChiliPepper.
+2024/06/08 20:02:48: [Event] 99 Aphid attack to ChiliPepper in plot 01
