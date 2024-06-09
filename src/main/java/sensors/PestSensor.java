@@ -43,11 +43,13 @@ public class PestSensor {
             if (random.nextBoolean()) {
                 pestController.usePesticide();  // Randomly use pesticide
                 // Update UI: show pesticide
-                handlingAction.run(plantGroup.getCurrentPlotIndex(), "pesticide");
+                if(handlingAction != null)
+                    handlingAction.run(plantGroup.getCurrentPlotIndex(), "pesticide");
             } else {
                 pestController.useLadybugs();  // Or randomly use ladybugs
                 // Update UI: show ladybugs
-                handlingAction.run(plantGroup.getCurrentPlotIndex(), "ladybug");
+                if(handlingAction != null)
+                    handlingAction.run(plantGroup.getCurrentPlotIndex(), "ladybug");
             }
         } else {
             GardenLogger.log("Pest Sensor", "No pest attack detected on " + plantGroup.getName() + ".");
