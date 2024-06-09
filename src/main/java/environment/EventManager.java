@@ -18,7 +18,7 @@ public class EventManager {
     Map<String, List<Integer>> plotIndicesOfVulnerablePlantByPest;
 
     // Random number generator for creating random events and choose random plant for creating pest attack event
-    private Random random = new Random(8);
+    private Random random = new Random();
 
     private PestAttackAction pestAttackAction;
 
