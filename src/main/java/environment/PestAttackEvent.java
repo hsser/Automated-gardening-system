@@ -27,7 +27,7 @@ public class PestAttackEvent extends Event {
         if (plantGroup != null) {
             plantGroup.setPest(pest, numOfPest);
 
-            GardenLogger.log("Event", numOfPest + " " + pest + " attack to " + plantGroup.getName() + " in plot " + plotIndex + 1);
+            GardenLogger.log("Event", numOfPest + " " + pest + " attack to " + plantGroup.getName() + " in plot " + (plotIndex + 1));
             // UI change for pest attack
             if (pestAttackAction != null) {
                 pestAttackAction.run(plotIndex, pest);
