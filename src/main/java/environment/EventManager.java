@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import application.PestAttackAction;
+import io.GardenLogger;
 import plant.Plant;
 import plant.PlantGroup;
 
@@ -64,6 +65,9 @@ public class EventManager {
 
     // Daily Events
     public void triggerAllEvents() {
+        // Testing
+        GardenLogger.log("Debug", "Triggering all events now...");
+
         List<Event> events = new ArrayList<>();
 
         // Create Events

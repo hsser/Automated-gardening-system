@@ -36,7 +36,9 @@ public class TemperatureController {
         GardenLogger.log("Temperature Controller","Cooler is on.");
         while (currentTemperature > optimalTemperature) {
             currentTemperature -= 1;
-            GardenLogger.log("Temperature Controller","Cooling: Current temperature is " + currentTemperature + " degrees.");
+            if(currentTemperature%10 == 0 || currentTemperature == optimalTemperature){
+                GardenLogger.log("Temperature Controller","Cooling: Current temperature is " + currentTemperature + " degrees.");
+            }
         }
         GardenLogger.log("Temperature Controller","Cooler is off. Temperature adjusted to optimal level: " + optimalTemperature + " degrees.");
         return currentTemperature;
@@ -46,7 +48,9 @@ public class TemperatureController {
         GardenLogger.log("Temperature Controller","Heater is on.");
         while (currentTemperature < optimalTemperature) {
             currentTemperature += 1;
-            GardenLogger.log("Temperature Controller","Heating: Current temperature is " + currentTemperature + " degrees.");
+            if(currentTemperature%10 == 0 || currentTemperature == optimalTemperature){
+                GardenLogger.log("Temperature Controller","Heating: Current temperature is " + currentTemperature + " degrees.");
+            }
         }
         GardenLogger.log("Temperature Controller","Heater is off. Temperature adjusted to optimal level: " + optimalTemperature + " degrees.");
         return currentTemperature;
