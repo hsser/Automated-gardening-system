@@ -259,10 +259,15 @@ public class GardenManager {
         eventManager.setOnPestAttack(action);
     }
 
-    public void changeWeather() {
+    public void toggleChangeWeather() {
+        WeatherToggleEvent weatherToggleEvent = eventManager.createWeatherToggleEvent();
+        weatherToggleEvent.trigger();
+    }
+
+    /*public void autoChangeWeather(){
         WeatherChangeEvent weatherChangeEvent = eventManager.createWeatherChangeEvent();
         weatherChangeEvent.trigger();
-    }
+    }*/
 
     public List<PlantGroup> getPlantGroups() { return plantGroups; }
     public Weather getWeather() { return weather; }
