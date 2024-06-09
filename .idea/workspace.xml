@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Minor changes on logs">
-      <change afterPath="$PROJECT_DIR$/src/main/files/garden_log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/GardenSimulationAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/GardenSimulationAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/GardenSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/GardenSimulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/files/garden_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/files/garden_log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/GardenLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/GardenLogger.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

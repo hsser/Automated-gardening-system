@@ -11,6 +11,9 @@ public class GardenLogger {
     private static final String LOG_FILE_PATH = "src/main/files/garden_log.txt";  // Path to the log file
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
+    private static final int TYPE_WIDTH = 25;
+    private static final int MESSAGE_WIDTH = 50;
+
     /**
      * Writes a log message to the log file with a timestamp.
      * @param logType The type of log message.
@@ -18,7 +21,8 @@ public class GardenLogger {
      */
     public static void log(String logType, String message) {
         String timestamp = formatter.format(LocalDateTime.now());
-        String logMessage = String.format("%s: [%s] %s%n", timestamp, logType, message);
+        String logTypeString = "[" + logType + "]";
+        String logMessage = String.format("%s %-" + TYPE_WIDTH + "s %s%n", timestamp, logTypeString, message);
 
         try {
             Files.writeString(Paths.get(LOG_FILE_PATH), logMessage, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
