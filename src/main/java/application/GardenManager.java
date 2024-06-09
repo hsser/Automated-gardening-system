@@ -310,10 +310,10 @@ public class GardenManager {
                 if (!plantGroup.isEmpty()) {
                     hasPlants = true;
                     plantGroup.getWaterSensor().dailyWaterDecrease(plantGroup);
-//                    if (plantGroup.getPlants().getFirst().isAlive()) {
-//                        plantGroup.updateWaterLevel(plantGroup.getCurrentWaterLevel());
+                    if (plantGroup.getPlants().getFirst().isAlive()) {
+                        plantGroup.updateWaterLevel(plantGroup.getCurrentWaterLevel());
 //                        plantGroup.getHealthSensor().checkHealth();
-//                    }
+                    }
                 }
             }
             if(hasPlants)

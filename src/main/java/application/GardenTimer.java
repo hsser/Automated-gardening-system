@@ -11,7 +11,7 @@ public class GardenTimer {
 
     public void start() {
         // TEST: Very small period; Previous: 20
-        scheduler.scheduleAtFixedRate(dailyTask, 0, 5, TimeUnit.SECONDS); //TODO: change to 1 hour
+        scheduler.scheduleAtFixedRate(dailyTask, 0, 10, TimeUnit.SECONDS); //TODO: change to 1 hour
     }
 
     public void stop() {
