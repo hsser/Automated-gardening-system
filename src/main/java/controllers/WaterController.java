@@ -61,6 +61,7 @@ public class WaterController {
                 for(Plant plant : plantGroup.getPlants()){
                     plant.setCurrentWaterLevel(currentWaterLevel - 5);
                 }
+
             }
         }
 //        System.out.println("Daily water level decrease applied. New water level of " + plant.getName() + " is " + plant.getCurrentWaterLevel());
