@@ -26,12 +26,7 @@ public class WeatherToggleEvent extends Event {
 
             for (PlantGroup plantGroup : plantGroups) {
                 if(!plantGroup.isEmpty()) {
-                    int increasedWaterLevel = plantGroup.getCurrentWaterLevel() + rainAmount;
-                    if (increasedWaterLevel > plantGroup.getMaxWaterLevel()) {
-                        increasedWaterLevel = plantGroup.getMaxWaterLevel();
-                    }
-                    plantGroup.setCurrentWaterLevel(increasedWaterLevel);
-                    plantGroup.updateWaterLevel(increasedWaterLevel);
+                    plantGroup.updateWaterLevel(plantGroup.getCurrentWaterLevel() + rainAmount);
                 }
             }
         } else {

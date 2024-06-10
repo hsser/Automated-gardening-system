@@ -18,44 +18,39 @@ public class WaterController {
      * Auto-watering of the plant based on its current water level.
      */
     public static void autoWatering(PlantGroup plantGroup) {
-        int currentWaterLevel = plantGroup.getCurrentWaterLevel();
-        GardenLogger.log("Water Controller",plantGroup.getName() +" water level is " + currentWaterLevel);
+        GardenLogger.log("Water Controller",plantGroup.getName() +" water level is " + plantGroup.getCurrentWaterLevel());
         GardenLogger.log("Water Controller", "Warning: The water level of the plants is too low! Auto watering system activates!");
-        increaseWaterLevel(plantGroup,currentWaterLevel);
+        increaseWaterLevel(plantGroup);
     }
 
     /**
      * Increase the water level of the plant.
-     *
-     * @param currentWaterLevel the current water level of the plant
      */
-    public static void increaseWaterLevel(PlantGroup plantGroup, int currentWaterLevel) {
+    public static void increaseWaterLevel(PlantGroup plantGroup) {
         // Increase the water level
         for(Plant plant : plantGroup.getPlants()){
-            plant.setCurrentWaterLevel(currentWaterLevel + 5);
+            plant.setCurrentWaterLevel(plant.getLowWaterThreshold());
         }
         GardenLogger.log("Water Controller","Now, " + plantGroup.getName() + " water level is updated to " + plantGroup.getCurrentWaterLevel());
     }
 
     /**
-     * Stops the watering of the plant and returns true.
+     * Turn WaterProtection on / off.
      */
-    public static boolean stopWatering(PlantGroup plantGroup) {
-        GardenLogger.log("Water Controller",plantGroup.getName() + " water level is " + plantGroup.getCurrentWaterLevel() + ", this value plus rain amount should below " + plantGroup.getMaxWaterLevel() + ". Overwatering warning！Watering protection activated.");
-        // TODO: Create a pretection animation
-        return true;
+    public static void turnWaterProtection(PlantGroup plantGroup, boolean on) {
+        if (on) {
+            GardenLogger.log("Water Controller", plantGroup.getName() + " water level is " + plantGroup.getCurrentWaterLevel() + ", this value should below high water threshold " + plantGroup.getHighWaterThreshold() + ". Warning! Water protection on.");
+            plantGroup.setCurrentWaterLevel(plantGroup.getHighWaterThreshold());
+        } else {
+            GardenLogger.log("Water Controller", plantGroup.getName() + " water level is " + plantGroup.getCurrentWaterLevel() + ", this value is below high water threshold " + plantGroup.getHighWaterThreshold() + ". Water protection off.");
+        }
+        plantGroup.setWaterProtection(on);
     }
 
     /**
      * Decreases the water level of the plant daily.
      */
     public static void dailyWaterDecrease(PlantGroup plantGroup) {
-        if(!plantGroup.isEmpty()){
-            int currentWaterLevel = plantGroup.getCurrentWaterLevel();
-            for(Plant plant : plantGroup.getPlants()){
-                plant.setCurrentWaterLevel(currentWaterLevel - 5);
-            }
-        }
-//        System.out.println("Daily water level decrease applied. New water level of " + plant.getName() + " is " + plant.getCurrentWaterLevel());
+        plantGroup.updateWaterLevel(plantGroup.getCurrentWaterLevel() - 5);
     }
 }

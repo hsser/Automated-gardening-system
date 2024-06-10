@@ -2,45 +2,49 @@ package sensors;
 
 import application.SubsystemEffectAction;
 import controllers.TemperatureController;
+import io.GardenLogger;
+import plant.PlantGroup;
 
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class TemperatureSensor {
-    private static TemperatureSensor instance;
-    private int temperature;
+    private AtomicInteger temperature;
     private static SubsystemEffectAction coolerOrHeaterOnAction;
     private HealthCheckCallback healthCheckCallback;
     private final ReentrantLock lock = new ReentrantLock();
+    private List<PlantGroup> plantGroups;
+    private TemperatureController temperatureController;
 
-    private TemperatureSensor() {}
-
-    public static synchronized TemperatureSensor getInstance() {
-        if (instance == null) {
-            instance = new TemperatureSensor();
-        }
-        return instance;
+    public TemperatureSensor(List<PlantGroup> plantGroups, AtomicInteger temperature) {
+        this.plantGroups = plantGroups;
+        this.temperature = temperature;
+        temperatureController = new TemperatureController(temperature);
     }
 
-    public int getTemperature() {
-        lock.lock();
-        try {
-            return temperature;
-        } finally {
-            lock.unlock();
-        }
+    public AtomicInteger getTemperature() {
+        return temperature;
     }
 
     public void setTemperature(int newTemperature) {
         lock.lock();
         try {
-            this.temperature = newTemperature;
+//            this.temperature = newTemperature;
 
-            if (healthCheckCallback != null) {
-                healthCheckCallback.execute();
-            }
+//            if (healthCheckCallback != null) {
+//                healthCheckCallback.execute();
+//            }
 
             TemperatureController.setCoolerOrHeaterOnAction(coolerOrHeaterOnAction);
-            this.temperature = TemperatureController.getInstance().adjustTemperature(newTemperature);
+            temperatureController.adjustTemperature(newTemperature);
+
+            // plantGroup will reduce health if temperature controller fails working
+            for (PlantGroup plantGroup : plantGroups) {
+                if (!plantGroup.isEmpty()) {
+                    plantGroup.updateStatusByTemperatureChange(temperature);
+                }
+            }
         } finally {
             lock.unlock();
         }

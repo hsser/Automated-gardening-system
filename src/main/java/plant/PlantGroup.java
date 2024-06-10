@@ -1,14 +1,16 @@
 package plant;
 
-import application.OffWateringProtectionAction;
-import application.OnWateringProtectionAction;
+import application.WateringProtectionAction;
 import application.PestAttackHandlingAction;
 import application.SubsystemEffectAction;
-import sensors.HealthSensor;
+import io.GardenLogger;
+//import sensors.HealthSensor;
 import sensors.PestSensor;
+import sensors.TemperatureSensor;
 import sensors.WaterSensor;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class PlantGroup {
     private List<Plant> plants;
@@ -17,12 +19,25 @@ public class PlantGroup {
     private String typeOfPestsAttacking;
     private WaterSensor waterSensor;
     private PestSensor pestSensor;
-    private HealthSensor healthSensor;
-    private OnWateringProtectionAction onWateringProtectionAction;
-    private OffWateringProtectionAction offWateringProtectionAction;
+//    private HealthSensor healthSensor;
+    private WateringProtectionAction wateringProtectionAction;
     private PestAttackHandlingAction pestAttackHandlingAction;
-    private SubsystemEffectAction subsystemEffectAction;
+    private boolean waterProtection;
+    private final int HEALTH_REDUCE_BY_HUMIDITY = 10;
+    private final int HEALTH_REDUCE_BY_TEMPERATURE = 15;
+    private final int HEALTH_REDUCE_BY_PEST = 20;
 
+    public boolean isWaterProtection() {
+        return waterProtection;
+    }
+
+    public void setWaterProtection(boolean waterProtection) {
+        boolean oldValue = this.waterProtection;
+        this.waterProtection = waterProtection;
+        if (waterProtection != oldValue && wateringProtectionAction != null) {
+            wateringProtectionAction.run(waterProtection);
+        }
+    }
 
     public PlantGroup(List<Plant> plants) {
         this.plants = plants;
@@ -74,7 +89,11 @@ public class PlantGroup {
     }
 
     public int getLowWaterThreshold() {
-        return plants.getFirst().getPlantLowWaterThreshold();
+        return plants.getFirst().getLowWaterThreshold();
+    }
+
+    public int getHighWaterThreshold() {
+        return plants.getFirst().getHighWaterThreshold();
     }
 
     public List<String> getPestList() {
@@ -93,9 +112,9 @@ public class PlantGroup {
         return waterSensor;
     }
 
-    public HealthSensor getHealthSensor() {
-        return healthSensor;
-    }
+//    public HealthSensor getHealthSensor() {
+//        return healthSensor;
+//    }
 
     public Plant get(int index) {
         return plants.get(index);
@@ -127,6 +146,10 @@ public class PlantGroup {
         this.numOfPestsAttacking = numOfPestsAttacking;
         pestSensor.setOnPestAttackHandling(pestAttackHandlingAction);
         pestSensor.monitorForPestAttack();
+        if (getNumOfPestsAttacking() > 0) {
+            GardenLogger.log("PlantGroup", getName() + " 'health is reduced because the pest is not handling.");
+            healthReduce(HEALTH_REDUCE_BY_PEST);
+        }
     }
 
     public void clearPest() {
@@ -143,21 +166,38 @@ public class PlantGroup {
     }
 
     public void updateWaterLevel(int waterLevel) {
-        this.waterSensor.setOnWateringProtection(onWateringProtectionAction);
-        this.waterSensor.setOffWateringProtection(offWateringProtectionAction);
-        this.waterSensor.setSprinklerAction(subsystemEffectAction);
+        setCurrentWaterLevel(waterLevel);
         this.waterSensor.updateWaterLevel(waterLevel);
+        GardenLogger.log("Water Sensor", getName() + "'s water level has been updated, it's current water level is " + getCurrentWaterLevel());
+        if (getCurrentWaterLevel() < getMinWaterLevel() || getCurrentWaterLevel() > getMaxWaterLevel()) {
+            GardenLogger.log("PlantGroup", getName() + " 'health is reduced because the water level is abnormal.");
+            healthReduce(HEALTH_REDUCE_BY_HUMIDITY);
+        }
+    }
+
+    public void updateStatusByTemperatureChange(AtomicInteger temperature) {
+        if (temperature.get() < getMinTemperatureLevel() ||
+                temperature.get() > getMaxTemperatureLevel()) {
+            healthReduce(HEALTH_REDUCE_BY_TEMPERATURE);
+            GardenLogger.log("PlantGroup", getName() + " health is reduced because the temperature level is abnormal.");
+        }
+    }
+
+    public void healthReduce(int healthReduce) {
+        int previousHealth = getHealth();
+        setHealth(previousHealth - healthReduce);
+        GardenLogger.log("PlantGroup", getName() + " health reduced from " + previousHealth + " to " + getHealth());
+        if (getHealth() <= 0) {
+            GardenLogger.log("PlantGroup", getName() + " has died.");
+        }
     }
 
     // UI
     public void setOnSubsystemsEffect(SubsystemEffectAction action) {
-        subsystemEffectAction = action;
+        this.waterSensor.setSprinklerAction(action);
     }
-    public void setOnWateringProtection(OnWateringProtectionAction action) {
-        onWateringProtectionAction = action;
-    }
-    public void setOffWateringProtection(OffWateringProtectionAction action) {
-        offWateringProtectionAction = action;
+    public void setOnWateringProtection(WateringProtectionAction action) {
+        wateringProtectionAction = action;
     }
     public void setOnPestAttackHandling(PestAttackHandlingAction action) {
         pestAttackHandlingAction = action;

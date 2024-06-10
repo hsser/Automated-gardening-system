@@ -22,7 +22,8 @@ public abstract class Plant{
     public int getMinTemperatureLevel() { return this.plantType.getMinTemperature(); }
     public int getMaxTemperatureLevel() { return this.plantType.getMaxTemperature(); }
     public int getCurrentWaterLevel() { return this.currentWaterLevel; }
-    public int getPlantLowWaterThreshold() {return this.plantType.getLowWaterThreshold();}
+    public int getLowWaterThreshold() {return this.plantType.getLowWaterThreshold();}
+    public int getHighWaterThreshold() {return this.plantType.getHighWaterThreshold();}
     public List<String> getPestList(){ return this.plantType.getPests();}
     public PlantType getPlantType() {
         return plantType;

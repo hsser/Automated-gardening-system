@@ -48,7 +48,7 @@ public class PestSensor {
                     plantGroup.getNumOfPestsAttacking() + " " +
                     plantGroup.getTypeOfPestsAttacking() + ((plantGroup.getNumOfPestsAttacking() > 1) ? "s!" : "!"));
 
-            pestController.pestAttacking();
+//            pestController.pestAttacking();
 
             /*if (healthCheckCallback != null) {
                 GardenLogger.log("Pest Sensor", "Executing health check callback for " + plantGroup.getName());

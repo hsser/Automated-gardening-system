@@ -24,6 +24,7 @@ public class GardenApplication extends Application {
         stage.setScene(scene);
         stage.show();
         gardenManager.startTimer();
+        GardenLogger.log("Kindly Remind","Game time！Ha!");
     }
 
     public static void main(String[] args) {

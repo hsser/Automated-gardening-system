@@ -61,6 +61,7 @@ public class GardenController {
     private Mode currentMode = Mode.NONE;  // The current mode of the garden controller
     private String currentPlantType = null;  // The type of seed currently selected;
     private String currentParasiteType = null;  // The type of parasite currently selected;
+    private int numWaterProtectionRequested = 0;
 
     private Image grassSoil = new Image(getClass().getResourceAsStream("/image/soil/1.png"));
     private Image normalSoil = new Image(getClass().getResourceAsStream("/image/soil/3.png"));
@@ -84,10 +85,18 @@ public class GardenController {
         });
         gardenManager.setOnDayChanged((Integer day) -> showCurrentDay(day));
         gardenManager.setOnSubsystemsEffect((String subsystem) -> showSubsystemsEffect(subsystem));
-        gardenManager.setOnWateringProtection(() -> showPlantCover());
-        gardenManager.setOffWateringProtection(() -> hidePlantCover());
+        gardenManager.setOnWateringProtection((boolean on) -> controlPlantCover(on));
         gardenManager.setOnPestAttackHandling((int plotIndex, String handlerType) -> showPestAttackHandlingEffect(Integer.toString(plotIndex + 1), handlerType));
         //gardenManager.setOnDeadPlant((int plotIndex) -> showDeadPlantEffect(Integer.toString(plotIndex + 1)));
+    }
+
+    private void controlPlantCover(boolean on) {
+        if (on) ++numWaterProtectionRequested; else --numWaterProtectionRequested;
+        if (on && numWaterProtectionRequested == 1) {
+            showPlantCover();
+        } else if (!on && numWaterProtectionRequested == 0) {
+            hidePlantCover();
+        }
     }
 
     @FXML
@@ -549,7 +558,7 @@ public class GardenController {
             String type = currentPlantGroup.getName();
             String quantity = String.valueOf(size);
             String humidity = String.valueOf(currentPlantGroup.getCurrentWaterLevel());
-            String temperature =  String.valueOf(TemperatureSensor.getInstance().getTemperature());
+            String temperature =  String.valueOf(gardenManager.getTemperature());
             String attackStatus = currentPlantGroup.getNumOfPestsAttacking() > 0 ? "Yes" : "No";
             String healthStatus = String.valueOf(currentPlantGroup.getHealth());
             setLabelValues(type, quantity, humidity, temperature, attackStatus, healthStatus);

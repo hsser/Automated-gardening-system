@@ -6,9 +6,7 @@ import io.GardenConfigLoader;
 import io.GardenLogger;
 import plant.*;
 import sensors.HealthSensor;
-import sensors.PestSensor;
 import sensors.TemperatureSensor;
-import sensors.WaterSensor;
 
 import java.io.IOException;
 import java.util.*;
@@ -25,16 +23,15 @@ public class GardenManager {
     private AtomicInteger temperature = new AtomicInteger(80);  // System's current temperature, default is 80
     private List<PlantGroup> plantGroups = new ArrayList<>();
     private Map<String, List<Integer>> plotIndicesOfVulnerablePlantByPest = new HashMap<>();
-    private EventManager eventManager = new EventManager(weather, temperature, plantGroups, plotIndicesOfVulnerablePlantByPest);
+    private TemperatureSensor temperatureSensor = new TemperatureSensor(plantGroups, temperature);
+    private EventManager eventManager = new EventManager(weather, temperature, plantGroups, plotIndicesOfVulnerablePlantByPest, temperatureSensor);
     private final int MAX_PLOT = 15;
     private int numberOfPlants = 0;
     private PlantChangeAction onPlantingChanged;
-    private OnWateringProtectionAction onWateringProtectionAction;
-    private OffWateringProtectionAction offWateringProtectionAction;
+    private WateringProtectionAction wateringProtectionAction;
     private PestAttackHandlingAction onPestAttackHandling;
     private SubsystemEffectAction onSubsystemsEffect;
     private Consumer<Integer> onDayChanged;
-    private TemperatureSensor temperatureSensor;
 
     // For loading plants from config file
     private GardenConfigLoader loader;
@@ -53,13 +50,12 @@ public class GardenManager {
 
         loader = new GardenConfigLoader(configPath);
 
-        this.temperatureSensor = TemperatureSensor.getInstance();
-        temperatureSensor.setTemperature(temperature.get());
+//        temperatureSensor.setTemperature(temperature.get());
         // Set the health check callback
-        temperatureSensor.setHealthCheckCallback(() -> {
-            // Logic to execute health checks
-            checkHealthForAllPlantGroups();
-        });
+//        temperatureSensor.setHealthCheckCallback(() -> {
+//            // Logic to execute health checks
+//            checkHealthForAllPlantGroups();
+//        });
         /*for (PlantGroup group : plantGroups) {
             PestSensor sensor = new PestSensor(group);
             sensor.setHealthCheckCallback(this::checkHealthForAllPlantGroups);
@@ -99,7 +95,7 @@ public class GardenManager {
     }
 
     public void temperature(int temperature) {
-        TemperatureChangeEvent temperatureChangeEvent =  eventManager.createTemperatureChangeEvent(temperature);
+        TemperatureChangeEvent temperatureChangeEvent =  eventManager.createTemperatureChangeEvent(temperature, temperatureSensor);
         temperatureChangeEvent.trigger();
     }
 
@@ -232,8 +228,7 @@ public class GardenManager {
         if (plantGroups.get(plotIndex).size() == 0) {
             plantGroups.set(plotIndex, plantGroup);
             plantGroup.setCurrentPlotIndex(plotIndex);
-            plantGroup.setOnWateringProtection(onWateringProtectionAction);
-            plantGroup.setOffWateringProtection(offWateringProtectionAction);
+            plantGroup.setOnWateringProtection(wateringProtectionAction);
             plantGroup.setOnPestAttackHandling(onPestAttackHandling);
             plantGroup.setOnSubsystemsEffect(onSubsystemsEffect);
             numberOfPlants += quantity;
@@ -288,8 +283,15 @@ public class GardenManager {
     public List<PlantGroup> getPlantGroups() { return plantGroups; }
     public Weather getWeather() { return weather; }
     public int getCurrentDay() { return currentDay; }
-    public void startTimer() { timer.start(); }
+    public void startTimer() { /*timer.start(); */}
     public void stopTimer() { timer.stop(); }
+    public TemperatureSensor getTemperatureSensor() {
+        return temperatureSensor;
+    }
+
+    public AtomicInteger getTemperature() {
+        return temperature;
+    }
 
     public void setOnDayChanged(Consumer<Integer> consumer) {
         this.onDayChanged = consumer;
@@ -309,11 +311,7 @@ public class GardenManager {
             for (PlantGroup plantGroup : plantGroups) {
                 if (!plantGroup.isEmpty()) {
                     hasPlants = true;
-                    plantGroup.getWaterSensor().dailyWaterDecrease(plantGroup);
-                    if (plantGroup.getPlants().getFirst().isAlive()) {
-                        plantGroup.updateWaterLevel(plantGroup.getCurrentWaterLevel());
-//                        plantGroup.getHealthSensor().checkHealth();
-                    }
+                    WaterController.dailyWaterDecrease(plantGroup);
                 }
             }
             if(hasPlants)
@@ -332,24 +330,21 @@ public class GardenManager {
         eventManager.triggerAllEvents();
     }
 
-    private void checkHealthForAllPlantGroups() {
-        for (PlantGroup plantGroup : plantGroups) {
-            if(!plantGroup.isEmpty()){
-                HealthSensor healthSensor = new HealthSensor(plantGroup);
-                healthSensor.checkHealth();
-            }
-        }
-    }
+//    private void checkHealthForAllPlantGroups() {
+//        for (PlantGroup plantGroup : plantGroups) {
+//            if(!plantGroup.isEmpty()){
+//                HealthSensor healthSensor = new HealthSensor(plantGroup);
+//                healthSensor.checkHealth();
+//            }
+//        }
+//    }
 
     public void setOnSubsystemsEffect(SubsystemEffectAction action) {
         this.onSubsystemsEffect = action;
         TemperatureSensor.setSubsystemsEffectAction(action);
     }
-    public void setOnWateringProtection(OnWateringProtectionAction action) {
-        this.onWateringProtectionAction = action;
-    }
-    public void setOffWateringProtection(OffWateringProtectionAction action) {
-        this.offWateringProtectionAction = action;
+    public void setOnWateringProtection(WateringProtectionAction action) {
+        this.wateringProtectionAction = action;
     }
     public void setOnPestAttackHandling(PestAttackHandlingAction action) {
         this.onPestAttackHandling = action;

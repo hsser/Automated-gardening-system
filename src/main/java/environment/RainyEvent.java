@@ -26,12 +26,7 @@ public class RainyEvent extends Event {
         weather.setWeatherType(weatherType);
         for (PlantGroup plantGroup : plantGroups) {
             if(!plantGroup.isEmpty()) {
-                int increasedWaterLevel = plantGroup.getCurrentWaterLevel() + rainAmount;
-                if (increasedWaterLevel > plantGroup.getMaxWaterLevel()) {
-                    increasedWaterLevel = plantGroup.getMaxWaterLevel();
-                }
-                plantGroup.setCurrentWaterLevel(increasedWaterLevel);
-                plantGroup.updateWaterLevel(increasedWaterLevel);
+                plantGroup.updateWaterLevel(plantGroup.getCurrentWaterLevel() + rainAmount);
             }
         }
         GardenLogger.log("Event", "Weather change to " + weatherType.getName() + ", the amount of rain is " + rainAmount);

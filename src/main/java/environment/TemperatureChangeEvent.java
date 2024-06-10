@@ -8,11 +8,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class TemperatureChangeEvent extends Event{
     private AtomicInteger temperature;
     int targetTemperature;
+    TemperatureSensor temperatureSensor;
 
-    public TemperatureChangeEvent(AtomicInteger temperature, int targetTemperature) {
+    public TemperatureChangeEvent(AtomicInteger temperature, int targetTemperature, TemperatureSensor temperatureSensor) {
         super("TemperatureChangeEvent");
         this.temperature = temperature;
         this.targetTemperature = targetTemperature;
+        this.temperatureSensor = temperatureSensor;
     }
 
     /**
@@ -22,6 +24,6 @@ public class TemperatureChangeEvent extends Event{
         int previousTemperature = temperature.get();
         temperature.set(targetTemperature);
         GardenLogger.log("Event", "Temperature change from " + previousTemperature + " °F to " + targetTemperature + " °F");
-        TemperatureSensor.getInstance().setTemperature(targetTemperature);
+        temperatureSensor.setTemperature(targetTemperature);
     }
 }
