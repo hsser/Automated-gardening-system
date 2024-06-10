@@ -32,7 +32,7 @@ public class WaterSensor {
         if (newWaterLevel < plantGroup.getHighWaterThreshold() && plantGroup.isWaterProtection()) {
             WaterController.turnWaterProtection(plantGroup, false);
         }
-        if (newWaterLevel >= plantGroup.getHighWaterThreshold() && !plantGroup.isWaterProtection()) {
+        if (newWaterLevel >= plantGroup.getHighWaterThreshold() /*&& !plantGroup.isWaterProtection()*/) {
             WaterController.turnWaterProtection(plantGroup, true);
         }
     }

@@ -14,17 +14,16 @@ public class GardenSimulator {
         api.rain(10);
         api.temperature(10);
         api.parasite("Aphid");
-        api.getState();
+        //api.getState();
         sleepOneHour();
         // day 2
         api.temperature(60);
         api.parasite("Aphid");
-        api.getState();
+        //api.getState();
         sleepOneHour();
         // day 3
         api.temperature(100);
         api.parasite("Aphid");
-        api.rain(20);
         sleepOneHour();
         // day 4
         api.temperature(120);
@@ -32,6 +31,7 @@ public class GardenSimulator {
         sleepOneHour();
         // day 5
         api.temperature(40);
+        api.rain(20);
         sleepOneHour();
 
         // day 6
@@ -112,6 +112,7 @@ public class GardenSimulator {
 
         api.getState();
 
+
     }
 
     /**
@@ -120,8 +121,8 @@ public class GardenSimulator {
     private static void sleepOneHour() {
         try {
             // Currently sleeping for 20 seconds for testing purposes
-            Thread.sleep(20000); // 3600000 milliseconds = 1 hour
-            System.out.println("One hour has passed.");
+            Thread.sleep(10000); // 3600000 milliseconds = 1 hour
+            //System.out.println("One hour has passed.");
         } catch (InterruptedException e) {
             System.out.println("Sleep was interrupted.");
         }

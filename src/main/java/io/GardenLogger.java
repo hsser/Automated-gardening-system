@@ -19,7 +19,7 @@ public class GardenLogger {
      * @param logType The type of log message.
      * @param message The message to log.
      */
-    public static void log(String logType, String message) {
+    public synchronized static void log(String logType, String message) {
         String timestamp = formatter.format(LocalDateTime.now());
         String logTypeString = "[" + logType + "]";
         String logMessage = String.format("%s %-" + TYPE_WIDTH + "s %s%n", timestamp, logTypeString, message);
