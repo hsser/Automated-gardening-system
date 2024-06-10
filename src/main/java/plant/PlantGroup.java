@@ -170,7 +170,7 @@ public class PlantGroup {
         this.waterSensor.updateWaterLevel(waterLevel);
         GardenLogger.log("Water Sensor", getName() + "'s water level has been updated, it's current water level is " + getCurrentWaterLevel());
         if (getCurrentWaterLevel() < getMinWaterLevel() || getCurrentWaterLevel() > getMaxWaterLevel()) {
-            GardenLogger.log("PlantGroup", getName() + " 'health is reduced because the water level is abnormal.");
+            GardenLogger.log("PlantGroup", getName() + "' health is reduced because the water level is abnormal.");
             healthReduce(HEALTH_REDUCE_BY_HUMIDITY);
         }
     }

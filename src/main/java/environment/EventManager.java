@@ -25,7 +25,7 @@ public class EventManager {
     private PestAttackAction pestAttackAction;
 
     final int LOWEST_TEMPERATURE = 40;
-    final int LOWEST_RAIN_AMOUNT = 1;  // TEST: High rain amount; Previous: 5
+    final int LOWEST_RAIN_AMOUNT = 5;
     final int MAX_RANDOM_NUM_OF_PEST = 100;
     final int MIN_NUM_OF_PEST = 1;
 
@@ -48,10 +48,10 @@ public class EventManager {
     }
 
     public WeatherChangeEvent createWeatherChangeEvent() {
-        return new WeatherChangeEvent(weather, LOWEST_RAIN_AMOUNT + random.nextInt(10), plantGroups);
+        return new WeatherChangeEvent(weather, LOWEST_RAIN_AMOUNT + random.nextInt(10), plantGroups, random);
     }
 
-    public TemperatureChangeEvent createTemperatureChangeEvent(int targetTemperature, TemperatureSensor temperatureSensor) {
+    public TemperatureChangeEvent createTemperatureChangeEvent(int targetTemperature) {
         return new TemperatureChangeEvent(temperature, targetTemperature, temperatureSensor);
     }
 
@@ -75,7 +75,7 @@ public class EventManager {
 
         // Create Events
         events.add(createWeatherChangeEvent());
-        events.add(createTemperatureChangeEvent(LOWEST_TEMPERATURE + random.nextInt(80), temperatureSensor));
+        events.add(createTemperatureChangeEvent(LOWEST_TEMPERATURE + random.nextInt(80)));
         events.add(createPestAttackEvent(pestType.get(random.nextInt(pestType.size()))));
 
         // Trigger Events

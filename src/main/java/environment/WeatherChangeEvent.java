@@ -10,19 +10,20 @@ public class WeatherChangeEvent extends Event{
     private Weather weather;
     private int rainAmount;
     private List<PlantGroup> plantGroups;
-    public WeatherChangeEvent(Weather weather, int rainAmount, List<PlantGroup> plantGroups) {
+    private Random random;
+    public WeatherChangeEvent(Weather weather, int rainAmount, List<PlantGroup> plantGroups, Random random) {
         super("WeatherChangeEvent");
         this.weather = weather;
         this.rainAmount = rainAmount;
         this.plantGroups = plantGroups;
+        this.random = random;
     }
 
     /**
      * Trigger weather change event and set the current weather to another.
      */
     @Override
-    public void trigger() {
-        Random random = new Random();
+    public synchronized void trigger() {
         boolean isRainy = random.nextBoolean();
 
         if (isRainy) {

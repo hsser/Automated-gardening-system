@@ -19,7 +19,7 @@ public class WeatherToggleEvent extends Event {
     /**
      * Trigger weather change event and set the current weather to another.
      */
-    public void trigger() {
+    public synchronized void trigger() {
         if (weather.isSunny()) {
             weather.setWeatherType(WeatherType.RAINY);
             GardenLogger.log("Event", "Weather change to " + weather.getWeatherType().getName() + ", the amount of rain is " + rainAmount);

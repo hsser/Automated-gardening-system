@@ -66,6 +66,11 @@ public class GardenManager {
 
     public void initializeGarden() {
         startTimer();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         plantFromLoader();
     }
 
@@ -95,7 +100,7 @@ public class GardenManager {
     }
 
     public void temperature(int temperature) {
-        TemperatureChangeEvent temperatureChangeEvent =  eventManager.createTemperatureChangeEvent(temperature, temperatureSensor);
+        TemperatureChangeEvent temperatureChangeEvent =  eventManager.createTemperatureChangeEvent(temperature);
         temperatureChangeEvent.trigger();
     }
 
@@ -311,13 +316,19 @@ public class GardenManager {
             for (PlantGroup plantGroup : plantGroups) {
                 if (!plantGroup.isEmpty()) {
                     hasPlants = true;
-                    WaterController.dailyWaterDecrease(plantGroup);
+                    break;
                 }
             }
-            if(hasPlants)
-                GardenLogger.log("Event","Daily water level decrease applied. ");
-            else
-                GardenLogger.log("Event","No plants in the garden. Daily water level decrease is not applied.");
+            if (hasPlants) {
+                GardenLogger.log("Event", "Daily water level decrease applied. All plants' water level decrease 5");
+                for (PlantGroup plantGroup : plantGroups) {
+                    if (!plantGroup.isEmpty()) {
+                        WaterController.dailyWaterDecrease(plantGroup);
+                    }
+                }
+            } else {
+                GardenLogger.log("Event", "No plants in the garden. Daily water level decrease is not applied.");
+            }
         }
 
         // Day change
