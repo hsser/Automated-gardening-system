@@ -1,6 +1,5 @@
 package api;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class GardenSimulator {
@@ -111,6 +110,7 @@ public class GardenSimulator {
         sleepOneHour();
 
         api.getState();
+        api.stopSimulation();
 
 
     }

@@ -2,11 +2,7 @@ package api;
 
 import application.GardenManager;
 import io.GardenLogger;
-import plant.Plant;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class GardenSimulationAPI {
@@ -22,12 +18,12 @@ public class GardenSimulationAPI {
     public Map<String, Object> getPlants() { return gardenManager.getPlants(); }
 
     public void rain(int amount) {
-        GardenLogger.log("API", "Rainy Event: Rain amount is " + amount);
+        GardenLogger.log("API", "Rain Event: Rain amount is " + amount);
         gardenManager.rain(amount);
     }
 
     public void temperature(int temperature) {
-        GardenLogger.log("API", "Temperature Event: Temperature is " + temperature);
+        GardenLogger.log("API", "Temperature Change Event: Temperature is set to " + temperature  + " °F");
         gardenManager.temperature(temperature);
     }
 
@@ -39,5 +35,9 @@ public class GardenSimulationAPI {
     public void getState() {
         GardenLogger.log("API", "Get state of the garden");
         gardenManager.getState();
+    }
+
+    public void stopSimulation() {
+        gardenManager.stopTimer();
     }
 }

@@ -111,8 +111,9 @@ public class GardenManager {
 
     public void getState() {
         StringBuilder state = new StringBuilder();
+        state.append("Garden State of Day ").append(currentDay).append("\n");
         state.append("===================================\n");
-        state.append("Garden State of Day ").append(currentDay).append(":\n");
+        state.append("Garden State of Day ").append(currentDay).append("\n");
         state.append("-----------------------------------\n");
         state.append("Weather: ").append(weather.getWeatherType()).append("\n");
         state.append("Temperature: ").append(temperature).append("\n");
@@ -139,7 +140,7 @@ public class GardenManager {
             }
         }
         state.append("===================================\n");
-        System.out.println(state.toString());
+        GardenLogger.log("State", state.toString());
     }
 
     /************************* PLANTING *************************/

@@ -168,9 +168,9 @@ public class PlantGroup {
     public void updateWaterLevel(int waterLevel) {
         setCurrentWaterLevel(waterLevel);
         this.waterSensor.updateWaterLevel(waterLevel);
-        GardenLogger.log("Water Sensor", getName() + "'s water level has been updated, it's current water level is " + getCurrentWaterLevel());
+        GardenLogger.log("Water Sensor", getName() + "'s water level has been updated to " + getCurrentWaterLevel());
         if (getCurrentWaterLevel() < getMinWaterLevel() || getCurrentWaterLevel() > getMaxWaterLevel()) {
-            GardenLogger.log("PlantGroup", getName() + "' health is reduced because the water level is abnormal.");
+            GardenLogger.log("PlantGroup", getName() + "'s health is reduced because the water level is abnormal.");
             healthReduce(HEALTH_REDUCE_BY_HUMIDITY);
         }
     }
@@ -179,14 +179,14 @@ public class PlantGroup {
         if (temperature.get() < getMinTemperatureLevel() ||
                 temperature.get() > getMaxTemperatureLevel()) {
             healthReduce(HEALTH_REDUCE_BY_TEMPERATURE);
-            GardenLogger.log("PlantGroup", getName() + " health is reduced because the temperature level is abnormal.");
+            GardenLogger.log("PlantGroup", getName() + " 's health is reduced because the temperature level is abnormal.");
         }
     }
 
     public void healthReduce(int healthReduce) {
         int previousHealth = getHealth();
         setHealth(previousHealth - healthReduce);
-        GardenLogger.log("PlantGroup", getName() + " health reduced from " + previousHealth + " to " + getHealth());
+        GardenLogger.log("PlantGroup", getName() + " 's health reduced from " + previousHealth + " to " + getHealth());
         if (getHealth() <= 0) {
             GardenLogger.log("PlantGroup", getName() + " has died.");
         }
