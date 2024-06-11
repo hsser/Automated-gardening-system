@@ -5,7 +5,6 @@ import environment.*;
 import io.GardenConfigLoader;
 import io.GardenLogger;
 import plant.*;
-import sensors.HealthSensor;
 import sensors.TemperatureSensor;
 
 import java.io.IOException;
@@ -16,8 +15,6 @@ import java.util.function.Consumer;
 /**
  * Manages the garden system, including weather, temperature, plants and events.
  */
-// TODO: Add timer, sensor and controller
-// TODO: Delete all TEST output
 public class GardenManager {
     private Weather weather = new Weather();  // System's current weather, default is sunny
     private AtomicInteger temperature = new AtomicInteger(80);  // System's current temperature, default is 80
@@ -50,16 +47,6 @@ public class GardenManager {
 
         loader = new GardenConfigLoader(configPath);
 
-//        temperatureSensor.setTemperature(temperature.get());
-        // Set the health check callback
-//        temperatureSensor.setHealthCheckCallback(() -> {
-//            // Logic to execute health checks
-//            checkHealthForAllPlantGroups();
-//        });
-        /*for (PlantGroup group : plantGroups) {
-            PestSensor sensor = new PestSensor(group);
-            sensor.setHealthCheckCallback(this::checkHealthForAllPlantGroups);
-        }*/
     }
 
     /************************* API *************************/
@@ -149,7 +136,6 @@ public class GardenManager {
         this.onPlantingChanged = action;
     }
 
-    // TODO: Add script planting mode.
     public void plantFromLoader() {
         try {
             plantConfigs = loader.loadPlantsConfigurations();
@@ -281,10 +267,6 @@ public class GardenManager {
         weatherToggleEvent.trigger();
     }
 
-    /*public void autoChangeWeather(){
-        WeatherChangeEvent weatherChangeEvent = eventManager.createWeatherChangeEvent();
-        weatherChangeEvent.trigger();
-    }*/
 
     public List<PlantGroup> getPlantGroups() { return plantGroups; }
     public Weather getWeather() { return weather; }
@@ -342,14 +324,6 @@ public class GardenManager {
         eventManager.triggerAllEvents();
     }
 
-//    private void checkHealthForAllPlantGroups() {
-//        for (PlantGroup plantGroup : plantGroups) {
-//            if(!plantGroup.isEmpty()){
-//                HealthSensor healthSensor = new HealthSensor(plantGroup);
-//                healthSensor.checkHealth();
-//            }
-//        }
-//    }
 
     public void setOnSubsystemsEffect(SubsystemEffectAction action) {
         this.onSubsystemsEffect = action;

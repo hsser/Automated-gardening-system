@@ -342,6 +342,7 @@ public class GardenController {
     void showWeatherChangeEffect(Weather weather) {
         Platform.runLater(() -> {
             if (!weather.isSunny()) {
+                rainPane.getChildren().clear();
                 createRaindrop();
                 rainy.setImage(sunny.getImage());
                 // Only set the normal soils to wet, not the grass soils
@@ -351,11 +352,11 @@ public class GardenController {
                         if (soil.getImage() == grassSoil) {
                             continue;
                         }
-                        // TODO: Add humidity to all the plants in the plot
                         soil.setImage(wetSoil);
                     }
                 }
-                animateImage("sunny", 1.0, 0.1, false);
+                if(sunny.isVisible())
+                    animateImage("sunny", 1.0, 0.1, false);
             } else {
                 rainy.setImage(new Image(getClass().getResourceAsStream("/image/icon/rainButton.png")));
                 rainPane.getChildren().clear();
@@ -502,7 +503,6 @@ public class GardenController {
      * @param parasiteType The type of parasite to show.
      */
     protected void showParasiteEffect(String soilId, String parasiteType) {
-        System.out.println("Parasite effect: " + soilId + " " + parasiteType);
         if (currentParasiteType == null) {
             currentParasiteType = parasiteType;
         }
@@ -670,7 +670,6 @@ public class GardenController {
         });
     }
 
-    // TODO: need to decide how long the effect should last
     protected void showPlantCover() {
         Platform.runLater(() -> {
             if(!plantCover.isVisible())

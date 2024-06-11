@@ -1,7 +1,6 @@
 package controllers;
 
 import io.GardenLogger;
-import plant.Plant;
 import plant.PlantGroup;
 
 /**
@@ -10,23 +9,9 @@ import plant.PlantGroup;
 public class PestController {
     private PlantGroup plantGroup;
 
-
     public PestController(PlantGroup plantGroup) {
         this.plantGroup = plantGroup;
     }
-
-    public void pestAttacking(){
-        int newHealth;
-        for(Plant plant: plantGroup.getPlants()){
-            newHealth = plant.getHealth() - 20;
-            if(newHealth > 0){
-                plant.setHealth(newHealth);
-            }else{
-                plant.setHealth(0);
-            }
-        }
-    }
-
 
     public void usePesticide() {
         // Specific logic to apply pesticide

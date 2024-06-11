@@ -12,7 +12,6 @@ import java.util.concurrent.locks.ReentrantLock;
 public class TemperatureSensor {
     private AtomicInteger temperature;
     private static SubsystemEffectAction coolerOrHeaterOnAction;
-    private HealthCheckCallback healthCheckCallback;
     private final ReentrantLock lock = new ReentrantLock();
     private List<PlantGroup> plantGroups;
     private TemperatureController temperatureController;
@@ -30,12 +29,6 @@ public class TemperatureSensor {
     public void setTemperature(int newTemperature) {
         lock.lock();
         try {
-//            this.temperature = newTemperature;
-
-//            if (healthCheckCallback != null) {
-//                healthCheckCallback.execute();
-//            }
-
             TemperatureController.setCoolerOrHeaterOnAction(coolerOrHeaterOnAction);
             temperatureController.adjustTemperature(newTemperature);
 
@@ -48,10 +41,6 @@ public class TemperatureSensor {
         } finally {
             lock.unlock();
         }
-    }
-
-    public void setHealthCheckCallback(HealthCheckCallback callback) {
-        this.healthCheckCallback = callback;
     }
 
     public static void setSubsystemsEffectAction(SubsystemEffectAction action) {

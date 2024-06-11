@@ -16,8 +16,6 @@ public class PestSensor {
     private PestController pestController;
     private Random random;  // Add a Random instance for method selection
     PestAttackHandlingAction handlingAction;
-    private HealthCheckCallback healthCheckCallback;
-
 
     /**
      * Constructs a PestSensor with a specific plant and initializes the associated pest controller.
@@ -28,10 +26,6 @@ public class PestSensor {
         this.plantGroup= plantGroup;
         this.pestController = new PestController(plantGroup);  // Initialize PestController with the same plant
         this.random = new Random();  // Initialize the Random instance
-    }
-
-    public void setHealthCheckCallback(HealthCheckCallback callback) {
-        this.healthCheckCallback = callback;
     }
 
     public void setOnPestAttackHandling(PestAttackHandlingAction handlingAction) {
@@ -48,13 +42,6 @@ public class PestSensor {
                     plantGroup.getNumOfPestsAttacking() + " " +
                     plantGroup.getTypeOfPestsAttacking() + ((plantGroup.getNumOfPestsAttacking() > 1) ? "s!" : "!"));
 
-//            pestController.pestAttacking();
-
-            /*if (healthCheckCallback != null) {
-                GardenLogger.log("Pest Sensor", "Executing health check callback for " + plantGroup.getName());
-                healthCheckCallback.execute();
-            }*/
-
             if (random.nextBoolean()) {
                 pestController.usePesticide();  // Randomly use pesticide
                 // Update UI: show pesticide
@@ -66,8 +53,6 @@ public class PestSensor {
                 if(handlingAction != null)
                     handlingAction.run(plantGroup.getCurrentPlotIndex(), "ladybug");
             }
-        } else {
-            //GardenLogger.log("Pest Sensor", "No pest attack detected on " + plantGroup.getName() + ".");
         }
     }
 }

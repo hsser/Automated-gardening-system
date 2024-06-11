@@ -9,7 +9,6 @@ import plant.PlantGroup;
 public class WaterSensor {
     private PlantGroup plantGroup;
     SubsystemEffectAction sprinklerAction;
-    private HealthCheckCallback healthCheckCallback;
 
     public WaterSensor(PlantGroup plantGroup) {
         this.plantGroup = plantGroup;
@@ -35,19 +34,6 @@ public class WaterSensor {
         if (newWaterLevel >= plantGroup.getHighWaterThreshold() /*&& !plantGroup.isWaterProtection()*/) {
             WaterController.turnWaterProtection(plantGroup, true);
         }
-    }
-
-    // TODO: Fix callback
-    public void dailyWaterDecrease(PlantGroup plantGroup){
-        WaterController.dailyWaterDecrease(plantGroup);
-
-        if (healthCheckCallback != null) {
-            healthCheckCallback.execute();
-        }
-    }
-
-    public void setHealthCheckCallback(HealthCheckCallback callback) {
-        this.healthCheckCallback = callback;
     }
 
 }

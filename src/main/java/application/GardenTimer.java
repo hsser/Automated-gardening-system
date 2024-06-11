@@ -1,5 +1,4 @@
 package application;
-import javafx.application.Platform;
 
 import java.util.concurrent.*;
 
