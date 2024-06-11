@@ -481,6 +481,7 @@ public class GardenController {
         parasiteSelectionPane.setVisible(false);
         overlayPane.setVisible(false);
         gardenManager.parasite(currentParasiteType);
+        currentParasiteType = null;
     }
 
     /**
@@ -501,6 +502,7 @@ public class GardenController {
      * @param parasiteType The type of parasite to show.
      */
     protected void showParasiteEffect(String soilId, String parasiteType) {
+        System.out.println("Parasite effect: " + soilId + " " + parasiteType);
         if (currentParasiteType == null) {
             currentParasiteType = parasiteType;
         }
