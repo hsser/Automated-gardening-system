@@ -38,3 +38,20 @@ Functionality: Detects pest activities and decides whether to release beneficial
 
 4. User Overrides:
 Description: Users have the capability to override automatic systems via the API, setting specific environmental conditions or triggering specific actions. These user-defined events coexist with daily automated events, ensuring that routine environmental adjustments occur regardless of user interventions.
+
+Plant Types and Environmental Requirements:
+
+1. Trees: Peach, Cherry
+Water Level: Minimum 20, Maximum 100
+Pests: Aphid, Spider
+Temperature Range: 32°F to 122°F
+
+2. Flowers: Hydrangea, Rose
+Water Level: Minimum 10, Maximum 50
+Pests: Aphid, Spider
+Temperature Range: 32°F to 122°F
+
+3. Crops: Cherry Tomato, Chili Pepper
+Water Level: Minimum 30, Maximum 80
+Pests: Aphid, Spider, Whitefly
+Temperature Range: 32°F to 122°F
