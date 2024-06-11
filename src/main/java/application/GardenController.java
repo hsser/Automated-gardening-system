@@ -554,11 +554,10 @@ public class GardenController {
         PlantGroup currentPlantGroup = gardenManager.getPlantGroups().get(Integer.parseInt(soilId) - 1);
         int size = currentPlantGroup.size();
         if (size > 0) {
-            //TODO: Add logic to get the plant number, humidity, temperature, attack status, and health status
             String type = currentPlantGroup.getName();
             String quantity = String.valueOf(size);
             String humidity = String.valueOf(currentPlantGroup.getCurrentWaterLevel());
-            String temperature =  String.valueOf(gardenManager.getTemperature());
+            String temperature =  String.valueOf(gardenManager.getTemperature()) + "°F";
             String attackStatus = currentPlantGroup.getNumOfPestsAttacking() > 0 ? "Yes" : "No";
             String healthStatus = String.valueOf(currentPlantGroup.getHealth());
             setLabelValues(type, quantity, humidity, temperature, attackStatus, healthStatus);

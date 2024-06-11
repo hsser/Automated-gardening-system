@@ -120,9 +120,7 @@ public class GardenSimulator {
      */
     private static void sleepOneHour() {
         try {
-            // Currently sleeping for 20 seconds for testing purposes
-            Thread.sleep(10000); // 3600000 milliseconds = 1 hour
-            //System.out.println("One hour has passed.");
+            Thread.sleep(3600000); // 3600000 milliseconds = 1 hour
         } catch (InterruptedException e) {
             System.out.println("Sleep was interrupted.");
         }
