@@ -84,77 +84,77 @@
          <children>
             <ImageView id="1" fx:id="soil1" accessibleRole="BUTTON" layoutX="219.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
             <ImageView id="2" fx:id="soil2" accessibleRole="BUTTON" layoutX="337.0" layoutY="59.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
             <ImageView id="3" fx:id="soil3" accessibleRole="BUTTON" layoutX="459.0" layoutY="114.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
             <ImageView id="4" fx:id="soil4" layoutX="582.0" layoutY="171.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
             <ImageView id="5" fx:id="soil5" layoutX="698.0" layoutY="231.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
             <ImageView id="6" fx:id="soil6" layoutX="111.0" layoutY="58.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
             <ImageView id="7" fx:id="soil7" layoutX="230.0" layoutY="116.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
             <ImageView id="8" fx:id="soil8" layoutX="348.0" layoutY="171.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
             <ImageView id="9" fx:id="soil9" layoutX="471.0" layoutY="226.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
             <ImageView id="10" fx:id="soil10" layoutX="584.0" layoutY="284.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
             <ImageView id="11" fx:id="soil11" layoutY="115.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
             <ImageView id="12" fx:id="soil12" layoutX="118.0" layoutY="173.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
             <ImageView id="13" fx:id="soil13" layoutX="237.0" layoutY="227.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
             <ImageView id="14" fx:id="soil14" layoutX="359.0" layoutY="282.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
             <ImageView id="15" fx:id="soil15" layoutX="478.0" layoutY="338.0" onMouseClicked="#handleSoilClick" preserveRatio="true">
                <image>
-                  <Image url="@../image/soil/3.png" />
+                  <Image url="@../image/soil/grass.png" />
                </image>
             </ImageView>
          </children>
@@ -820,7 +820,7 @@
                      <graphic>
                         <ImageView id="chiliPepper" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../image/crops/crop9/seed.png" />
+                              <Image url="@../image/icon/ChiliPepperButton.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -829,7 +829,7 @@
                      <graphic>
                         <ImageView id="CherryTomato" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../image/crops/crop7/seed.png" />
+                              <Image url="@../image/icon/CherryTomatoButton.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -841,7 +841,7 @@
                      <graphic>
                         <ImageView id="peach" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../image/crops/crop14/seed.png" />
+                              <Image url="@../image/icon/PeachButton.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -853,7 +853,7 @@
                      <graphic>
                         <ImageView id="cherry" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../image/crops/crop11/seed.png" />
+                              <Image url="@../image/icon/CherryButton.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -868,7 +868,7 @@
                      <graphic>
                         <ImageView id="rose" fitHeight="50.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../image/crops/rose/rose_icon.png" />
+                              <Image url="@../image/icon/RoseButton.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -880,7 +880,7 @@
                      <graphic>
                         <ImageView id="hydrangea" fitHeight="49.0" fitWidth="58.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../image/crops/hydrangea/hydrangea.png" />
+                              <Image url="@../image/icon/HydrangeaButton.png" />
                            </image>
                         </ImageView>
                      </graphic>

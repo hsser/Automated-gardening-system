@@ -12,7 +12,6 @@ public class GardenLogger {
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
     private static final int TYPE_WIDTH = 25;
-    private static final int MESSAGE_WIDTH = 50;
 
     /**
      * Writes a log message to the log file with a timestamp.

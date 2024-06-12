@@ -4,13 +4,79 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="Update logger">
+    <list default="true" id="53ab1291-5ae4-4044-a51c-d5546f74b49e" name="Changes" comment="delete unused methods, comments, TODOs, and images">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/CherryButton.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/CherryTomatoButton.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/ChiliPepperButton.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/HydrangeaButton.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/PeachButton.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/icon/RoseButton.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/soil/grass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/soil/normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/soil/wet.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/files/garden_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/files/garden_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/GardenSimulationAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/GardenSimulationAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/api/GardenSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/GardenSimulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/GardenTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GardenTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/TemperatureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/TemperatureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/GardenLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/GardenLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plant/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plant/Plant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/plant/PlantGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plant/PlantGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sensors/WaterSensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sensors/WaterSensor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application/garden-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application/garden-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop11/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop11/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop11/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop11/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop11/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop11/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop11/cron_end.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop11/cron_start.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop11/seed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop14/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop14/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop14/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop14/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop14/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop14/cron_end.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop14/cron_start.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop14/seed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop7/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop7/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop7/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop7/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop7/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop7/cron_end.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop7/cron_start.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop7/seed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop9/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop9/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop9/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop9/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop9/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop9/cron_end.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop9/cron_start.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/crop9/seed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/hydrangea.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/hydrangea/hydrangea.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/rose/rose_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/rose_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/seed 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/crops/seed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/icon/cursor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/plants/CherryTomato_initial.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/plants/Cherry_inital.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/plants/ChiliPepper_initial.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/plants/Hydrangea_initial.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/plants/Peach_initial.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/plants/Rose_initial.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/soil/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/soil/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/soil/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/soil/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/soil/5.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +165,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/sisihuang/Documents/scu/275/Automated-gardening-system&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -157,7 +224,13 @@
       <workItem from="1717714050332" duration="12752000" />
       <workItem from="1717989831735" duration="3702000" />
       <workItem from="1717996534451" duration="3942000" />
-      <workItem from="1718035189283" duration="12745000" />
+      <workItem from="1718035189283" duration="21893000" />
+      <workItem from="1718083065202" duration="892000" />
+      <workItem from="1718120980170" duration="3529000" />
+      <workItem from="1718124532722" duration="213000" />
+      <workItem from="1718124753493" duration="246000" />
+      <workItem from="1718125006771" duration="9763000" />
+      <workItem from="1718156268812" duration="5572000" />
     </task>
     <task id="LOCAL-00001" summary="Defining Plant Class">
       <option name="closed" value="true" />
@@ -399,7 +472,71 @@
       <option name="project" value="LOCAL" />
       <updated>1718045713448</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="update logs, update api">
+      <option name="closed" value="true" />
+      <created>1718056523765</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1718056523765</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Adjust initial water level of Flower">
+      <option name="closed" value="true" />
+      <created>1718069667219</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1718069667219</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Adjust timer interval to 1 hour. Add Usage Instructions">
+      <option name="closed" value="true" />
+      <created>1718078896864</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1718078896864</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Update Usage Instructions">
+      <option name="closed" value="true" />
+      <created>1718080021498</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1718080021498</updated>
+    </task>
+    <task id="LOCAL-00035" summary="fix wrong pest display issue">
+      <option name="closed" value="true" />
+      <created>1718121695866</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1718121695866</updated>
+    </task>
+    <task id="LOCAL-00036" summary="delete health sensor and controller">
+      <option name="closed" value="true" />
+      <created>1718123036949</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1718123036949</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Replace plant images">
+      <option name="closed" value="true" />
+      <created>1718125630859</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1718125630859</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Replace plant images">
+      <option name="closed" value="true" />
+      <created>1718125695089</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1718125695089</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -418,14 +555,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Rename and refactor several UI effect methods (showWateringEffect(), showPlantingEffect(),showParasiteEffect), making them can be called by GardenManager Class." />
-    <MESSAGE value="Add GardenTimer, update UI" />
-    <MESSAGE value="Add GardenConfigLoader class for loading config file, update GardenManager to handle planting part." />
-    <MESSAGE value="Implement logic in to handle plot status when click on certain plot. Fix several bugs." />
-    <MESSAGE value="Move GardenTimer into GardenManager" />
-    <MESSAGE value="Add cooler, heater, sprinkler to UI" />
-    <MESSAGE value="Add GardenSimulationAPI and GardenSimulator" />
-    <MESSAGE value="Update getPlants() in  GardenSimulationAPI" />
     <MESSAGE value="Add GardenLogger" />
     <MESSAGE value="Update API methods in GardenManager, update GardenSimulationAPI" />
     <MESSAGE value="Update UI, exclude script mode from UI" />
@@ -443,6 +572,14 @@
     <MESSAGE value="Update logs in api" />
     <MESSAGE value="Update UI" />
     <MESSAGE value="Update logger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update logger" />
+    <MESSAGE value="update logs, update api" />
+    <MESSAGE value="Adjust initial water level of Flower" />
+    <MESSAGE value="Adjust timer interval to 1 hour. Add Usage Instructions" />
+    <MESSAGE value="Update Usage Instructions" />
+    <MESSAGE value="fix wrong pest display issue" />
+    <MESSAGE value="delete health sensor and controller" />
+    <MESSAGE value="Replace plant images" />
+    <MESSAGE value="delete unused methods, comments, TODOs, and images" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete unused methods, comments, TODOs, and images" />
   </component>
 </project>

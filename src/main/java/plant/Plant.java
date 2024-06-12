@@ -25,9 +25,6 @@ public abstract class Plant{
     public int getLowWaterThreshold() {return this.plantType.getLowWaterThreshold();}
     public int getHighWaterThreshold() {return this.plantType.getHighWaterThreshold();}
     public List<String> getPestList(){ return this.plantType.getPests();}
-    public PlantType getPlantType() {
-        return plantType;
-    }
     public int getHealth() { return health; }
     public boolean isAlive() { return this.health > 0; }
 

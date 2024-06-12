@@ -70,7 +70,7 @@ public class GardenManager {
         for (PlantGroup plantGroup : plantGroups) {
             if (!plantGroup.isEmpty()) {
                 plants.add(plantGroup.getName());
-                waterRequirement.add(plantGroup.getCurrentWaterLevel()); // TODO: Check if this is correct
+                waterRequirement.add(plantGroup.getMinWaterLevel());
                 List<String> plantParasites = plantGroup.getPestList();
                 parasites.add(plantParasites);
             }
@@ -236,22 +236,6 @@ public class GardenManager {
         }
     }
 
-    // TEST BEGIN: printPestToPlotIndex
-    public void printPestToPlotIndex() {
-        for (Map.Entry<String, List<Integer>> entry : plotIndicesOfVulnerablePlantByPest.entrySet()) {
-            String pest = entry.getKey();
-            List<Integer> plotIndices = entry.getValue();
-            System.out.println("TEST-GardenManager: ");
-            System.out.println("Pest: " + pest);
-            System.out.print("Plot Indices: ");
-            for (Integer index : plotIndices) {
-                System.out.print(index + " ");
-            }
-            System.out.println(); // New line after each pest's plot indices
-        }
-    }
-    // TEST END: printPestToPlotIndex
-
     /************************* WEATHER *************************/
 
     public void setOnWeatherChanged(Consumer<Weather> consumer) {
@@ -267,15 +251,10 @@ public class GardenManager {
         weatherToggleEvent.trigger();
     }
 
-
     public List<PlantGroup> getPlantGroups() { return plantGroups; }
     public Weather getWeather() { return weather; }
-    public int getCurrentDay() { return currentDay; }
     public void startTimer() { timer.start(); }
     public void stopTimer() { timer.stop(); }
-    public TemperatureSensor getTemperatureSensor() {
-        return temperatureSensor;
-    }
 
     public AtomicInteger getTemperature() {
         return temperature;

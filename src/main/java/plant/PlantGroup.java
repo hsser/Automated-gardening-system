@@ -19,7 +19,6 @@ public class PlantGroup {
     private String typeOfPestsAttacking;
     private WaterSensor waterSensor;
     private PestSensor pestSensor;
-//    private HealthSensor healthSensor;
     private WateringProtectionAction wateringProtectionAction;
     private PestAttackHandlingAction pestAttackHandlingAction;
     private boolean waterProtection;
@@ -108,23 +107,7 @@ public class PlantGroup {
         return typeOfPestsAttacking;
     }
 
-    public WaterSensor getWaterSensor() {
-        return waterSensor;
-    }
-
-//    public HealthSensor getHealthSensor() {
-//        return healthSensor;
-//    }
-
-    public Plant get(int index) {
-        return plants.get(index);
-    }
-
     // Setters
-    public void setPlants(List<Plant> plants) {
-        this.plants = plants;
-    }
-
     public void setCurrentPlotIndex(int currentPlotIndex) {
         this.currentPlotIndex = currentPlotIndex;
     }

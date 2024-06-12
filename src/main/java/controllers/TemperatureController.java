@@ -11,7 +11,6 @@ public class TemperatureController {
     private final int LOW_TEMPERATURE_THRESHOLD = 50;
     private final int OPTIMAL_TEMPERATURE = 77;
 
-    private static TemperatureController instance;
     private static SubsystemEffectAction coolerOrHeaterOnAction;
 
     private AtomicInteger temperature;
@@ -19,14 +18,6 @@ public class TemperatureController {
     public TemperatureController(AtomicInteger temperature) {
         this.temperature = temperature;
     }
-
-//    public static synchronized TemperatureController getInstance() {
-//        if (instance == null) {
-//            instance = new TemperatureController();
-//            GardenLogger.log("Kindly Remind","Game time！Ha!");
-//        }
-//        return instance;
-//    }
 
     public void adjustTemperature(int currentTemperature) {
         if (currentTemperature > HIGH_TEMPERATURE_THRESHOLD) {

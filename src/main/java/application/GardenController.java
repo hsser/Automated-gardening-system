@@ -63,10 +63,9 @@ public class GardenController {
     private String currentParasiteType = null;  // The type of parasite currently selected;
     private int numWaterProtectionRequested = 0;
 
-    private Image grassSoil = new Image(getClass().getResourceAsStream("/image/soil/1.png"));
-    private Image normalSoil = new Image(getClass().getResourceAsStream("/image/soil/3.png"));
-    private Image wetSoil = new Image(getClass().getResourceAsStream("/image/soil/4.png"));
-    private Image deadPlant = new Image(getClass().getResourceAsStream("/image/crops/crop7/cron_end.png"));
+    private Image grassSoil = new Image(getClass().getResourceAsStream("/image/soil/grass.png"));
+    private Image normalSoil = new Image(getClass().getResourceAsStream("/image/soil/normal.png"));
+    private Image wetSoil = new Image(getClass().getResourceAsStream("/image/soil/wet.png"));
 
     private GardenManager gardenManager;
 
@@ -87,7 +86,6 @@ public class GardenController {
         gardenManager.setOnSubsystemsEffect((String subsystem) -> showSubsystemsEffect(subsystem));
         gardenManager.setOnWateringProtection((boolean on) -> controlPlantCover(on));
         gardenManager.setOnPestAttackHandling((int plotIndex, String handlerType) -> showPestAttackHandlingEffect(Integer.toString(plotIndex + 1), handlerType));
-        //gardenManager.setOnDeadPlant((int plotIndex) -> showDeadPlantEffect(Integer.toString(plotIndex + 1)));
     }
 
     private void controlPlantCover(boolean on) {
@@ -305,16 +303,6 @@ public class GardenController {
         currentPlantType = null;
     }
 
-    /**
-     * Handles the dead plant UI effect when a plant dies.
-     * @param soilId The id of the soil to show the dead plant effect on.
-     */
-    protected void showDeadPlantEffect(String soilId) {
-        ImageView plant = (ImageView) plantGroup.lookup("#" + soilId);
-        if (plant != null) {
-            plant.setImage(deadPlant);
-        }
-    }
 
     /**
      * Sets the values of the plant status labels.
