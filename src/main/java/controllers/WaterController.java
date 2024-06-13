@@ -19,7 +19,7 @@ public class WaterController {
      */
     public static void autoWatering(PlantGroup plantGroup) {
         GardenLogger.log("Water Controller",plantGroup.getName() +" water level is " + plantGroup.getCurrentWaterLevel());
-        GardenLogger.log("Water Controller", "Warning: " + plantGroup.getName() + " is too dry! Auto watering system activates!");
+        GardenLogger.log("Water Controller", "Warning: " + plantGroup.getName() + " is too dry! The auto watering system is activating!");
         increaseWaterLevel(plantGroup);
     }
 
@@ -39,10 +39,10 @@ public class WaterController {
      */
     public static void turnWaterProtection(PlantGroup plantGroup, boolean on) {
         if (on) {
-            GardenLogger.log("Water Controller", plantGroup.getName() + " water level is " + plantGroup.getCurrentWaterLevel() + " >= " + plantGroup.getHighWaterThreshold() + ". Overwatered! Plant cover on.");
+            GardenLogger.log("Water Controller", plantGroup.getName() + " water level is " + plantGroup.getCurrentWaterLevel() + " >= " + plantGroup.getHighWaterThreshold() + ". Overwatered! Activating plant cover.");
             plantGroup.setCurrentWaterLevel(plantGroup.getHighWaterThreshold());
         } else {
-            GardenLogger.log("Water Controller", plantGroup.getName() + " water level is " + plantGroup.getCurrentWaterLevel() + " < " + plantGroup.getHighWaterThreshold() + ". Plant cover off.");
+            GardenLogger.log("Water Controller", plantGroup.getName() + " water level is " + plantGroup.getCurrentWaterLevel() + " < " + plantGroup.getHighWaterThreshold() + ". Deactivating plant cover.");
         }
         plantGroup.setWaterProtection(on);
     }

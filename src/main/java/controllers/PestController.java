@@ -24,7 +24,7 @@ public class PestController {
         // Specific logic to release ladybugs
         GardenLogger.log("Pest Controller", "Deploying " + this.plantGroup.getNumOfPestsAttacking() +
                 " ladybug" + ((plantGroup.getNumOfPestsAttacking() > 1) ? "s" : "") +
-                " to help " + this.plantGroup.getName() + " fight off the pests.");
+                " to help " + this.plantGroup.getName() + " fight off pests.");
         plantGroup.clearPest();
     }
 }
