@@ -22,7 +22,7 @@ public class RainyEvent extends Event {
     /**
      * Trigger weather change event and set the current weather to another.
      */
-    public synchronized void trigger() {
+    public void trigger() {
         weather.setWeatherType(weatherType);
         GardenLogger.log("Event", "Weather change to " + weatherType.getName() + ", the amount of rain is " + rainAmount);
         for (PlantGroup plantGroup : plantGroups) {

@@ -23,7 +23,7 @@ public class WeatherChangeEvent extends Event{
      * Trigger weather change event and set the current weather to another.
      */
     @Override
-    public synchronized void trigger() {
+    public void trigger() {
         boolean isRainy = random.nextBoolean();
 
         if (isRainy) {

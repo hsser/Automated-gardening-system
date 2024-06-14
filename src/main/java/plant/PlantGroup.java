@@ -14,9 +14,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class PlantGroup {
     private List<Plant> plants;
+    private Object waterLevelLock = new Object();
+    private Object healthLock = new Object();
     private int currentPlotIndex;
     private int numOfPestsAttacking;
     private String typeOfPestsAttacking;
+    private Object pestLock = new Object();
     private WaterSensor waterSensor;
     private PestSensor pestSensor;
     private WateringProtectionAction wateringProtectionAction;
@@ -125,13 +128,15 @@ public class PlantGroup {
     }
 
     public void setPest(String typeOfPestsAttacking, int numOfPestsAttacking) {
-        this.typeOfPestsAttacking = typeOfPestsAttacking;
-        this.numOfPestsAttacking = numOfPestsAttacking;
-        pestSensor.setOnPestAttackHandling(pestAttackHandlingAction);
-        pestSensor.monitorForPestAttack();
-        if (getNumOfPestsAttacking() > 0) {
-            GardenLogger.log("PlantGroup", getName() + " 'health is reduced because the pest is not handling.");
-            healthReduce(HEALTH_REDUCE_BY_PEST);
+        synchronized (pestLock) {
+            this.typeOfPestsAttacking = typeOfPestsAttacking;
+            this.numOfPestsAttacking = numOfPestsAttacking;
+            pestSensor.setOnPestAttackHandling(pestAttackHandlingAction);
+            pestSensor.monitorForPestAttack();
+            if (getNumOfPestsAttacking() > 0) {
+                GardenLogger.log("PlantGroup", getName() + " 'health is reduced because the pest is not handling.");
+                healthReduce(HEALTH_REDUCE_BY_PEST);
+            }
         }
     }
 
@@ -149,12 +154,14 @@ public class PlantGroup {
     }
 
     public void updateWaterLevel(int waterLevel) {
-        setCurrentWaterLevel(waterLevel);
-        this.waterSensor.updateWaterLevel(waterLevel);
-        GardenLogger.log("Water Sensor", getName() + "'s water level has been updated to " + getCurrentWaterLevel());
-        if (getCurrentWaterLevel() < getMinWaterLevel() || getCurrentWaterLevel() > getMaxWaterLevel()) {
-            GardenLogger.log("PlantGroup", getName() + "'s health is reduced because the water level is abnormal.");
-            healthReduce(HEALTH_REDUCE_BY_HUMIDITY);
+        synchronized (waterLevelLock) {
+            setCurrentWaterLevel(waterLevel);
+            this.waterSensor.updateWaterLevel(waterLevel);
+            GardenLogger.log("Water Sensor", getName() + "'s water level has been updated to " + getCurrentWaterLevel());
+            if (getCurrentWaterLevel() < getMinWaterLevel() || getCurrentWaterLevel() > getMaxWaterLevel()) {
+                GardenLogger.log("PlantGroup", getName() + "'s health is reduced because the water level is abnormal.");
+                healthReduce(HEALTH_REDUCE_BY_HUMIDITY);
+            }
         }
     }
 
@@ -167,11 +174,13 @@ public class PlantGroup {
     }
 
     public void healthReduce(int healthReduce) {
-        int previousHealth = getHealth();
-        setHealth(previousHealth - healthReduce);
-        GardenLogger.log("PlantGroup", getName() + " 's health reduced from " + previousHealth + " to " + getHealth());
-        if (getHealth() <= 0) {
-            GardenLogger.log("PlantGroup", getName() + " has died.");
+        synchronized (healthLock) {
+            int previousHealth = getHealth();
+            setHealth(previousHealth - healthReduce);
+            GardenLogger.log("PlantGroup", getName() + " 's health reduced from " + previousHealth + " to " + getHealth());
+            if (getHealth() <= 0) {
+                GardenLogger.log("PlantGroup", getName() + " has died.");
+            }
         }
     }
 

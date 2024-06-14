@@ -20,10 +20,12 @@ public class TemperatureChangeEvent extends Event{
     /**
      * Trigger temperature change event and set the current temperature to the input value.
      */
-    public synchronized void trigger() {
-        int previousTemperature = temperature.get();
-        temperature.set(targetTemperature);
-        GardenLogger.log("Event", "Temperature change from " + previousTemperature + " °F to " + targetTemperature + " °F");
-        temperatureSensor.setTemperature(targetTemperature);
+    public void trigger() {
+        synchronized (temperature) {
+            int previousTemperature = temperature.get();
+            temperature.set(targetTemperature);
+            GardenLogger.log("Event", "Temperature change from " + previousTemperature + " °F to " + targetTemperature + " °F");
+            temperatureSensor.setTemperature(targetTemperature);
+        }
     }
 }

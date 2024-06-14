@@ -20,8 +20,9 @@ public class GardenLogger {
      */
     public synchronized static void log(String logType, String message) {
         String timestamp = formatter.format(LocalDateTime.now());
+        long threadId = Thread.currentThread().threadId();
         String logTypeString = "[" + logType + "]";
-        String logMessage = String.format("%s %-" + TYPE_WIDTH + "s %s%n", timestamp, logTypeString, message);
+        String logMessage = String.format("%s %-8d %-" + TYPE_WIDTH + "s %s%n", timestamp, threadId, logTypeString, message);
 
         try {
             Files.writeString(Paths.get(LOG_FILE_PATH), logMessage, StandardOpenOption.CREATE, StandardOpenOption.APPEND);

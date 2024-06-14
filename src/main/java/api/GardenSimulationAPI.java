@@ -18,12 +18,12 @@ public class GardenSimulationAPI {
     public Map<String, Object> getPlants() { return gardenManager.getPlants(); }
 
     public void rain(int amount) {
-        GardenLogger.log("API", "Rain Event: Rain amount is " + amount);
+        GardenLogger.log("API", "Rain Event: Changing rain amount to " + amount);
         gardenManager.rain(amount);
     }
 
     public void temperature(int temperature) {
-        GardenLogger.log("API", "Temperature Change Event: Temperature is set to " + temperature  + " °F");
+        GardenLogger.log("API", "Temperature Change Event: Changing temperature to " + temperature  + " °F");
         gardenManager.temperature(temperature);
     }
 

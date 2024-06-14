@@ -23,7 +23,7 @@ public class PestAttackEvent extends Event {
      * Trigger pest attack event, set the target plant to be under attack.
      * If there is no plant in the garden, print out the message accordingly
      */
-    public synchronized void trigger() {
+    public void trigger() {
         if (plantGroup != null) {
             if (plantGroup.getPlants().getFirst().isAlive()) {
                 GardenLogger.log("Event", numOfPest + " " + pest + " attack to " + plantGroup.getName() + " in plot " + (plotIndex + 1));
