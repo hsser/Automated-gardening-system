@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -24,6 +25,9 @@ public class GardenApplication extends Application {
         stage.setScene(scene);
         stage.show();
         gardenManager.startTimer();
+        stage.getScene().getWindow().addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, (WindowEvent event) -> {
+            gardenManager.stopTimer();
+        });
         GardenLogger.log("Kindly Remind","Game time！Ha!");
     }
 

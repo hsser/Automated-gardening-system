@@ -7,7 +7,8 @@ public class GardenSimulator {
         GardenSimulationAPI api = new GardenSimulationAPI();
         api.initializeGarden();
         Map<String, Object> initialPlantDetails = api.getPlants();
-        //System.out.println("Initial plant details: " + initialPlantDetails);
+
+        // Your script begins from here
 
         // day 1
         api.rain(10);
@@ -112,6 +113,7 @@ public class GardenSimulator {
         api.getState();
         api.stopSimulation();
 
+        // Your script ends from here.
 
     }
 
